@@ -1090,6 +1090,7 @@
         <button type="button" class="theory-tab-btn" id="inline_btn-t2" onclick="switchTheoryTab(2, 'inline_')">🌾 Chương 2: Carbohydrate (Glucid)</button>
         <button type="button" class="theory-tab-btn" id="inline_btn-t3" onclick="switchTheoryTab(3, 'inline_')">🧬 Chương 3: Amin - Amino Acid - Protein</button>
         <button type="button" class="theory-tab-btn" id="inline_btn-t4" onclick="switchTheoryTab(4, 'inline_')">⚡ Bảng Màu Hiện Tượng & 12 Cạm Bẫy</button>
+        <button type="button" class="theory-tab-btn" id="inline_btn-t5" onclick="switchTheoryTab(5, 'inline_')">🎯 Chuyên đề: Danh pháp Este | Xenlulozơ | Hiệu suất Amin</button>
     </div>
 
     <!-- THANH TÌM KIẾM TỪ KHÓA LÍ THUYẾT -->
@@ -1501,10 +1502,284 @@
                 <div style="font-size:12px; font-weight:800; color:var(--text-muted);">PHẦN III: TRẢ LỜI NGẮN (1 - 6)</div>
                 <div id="pal-p3" class="palette-grid"></div>
             </div>
-        </div>
-    </div>
+        
+        <!-- ========================================== -->
+        <!-- TAB 5: CHUYÊN ĐỀ ĐẶC BIỆT THEO YÊU CẦU -->
+        <!-- ========================================== -->
+        <div id="inline_tab-content-5" class="theory-tab-pane" style="display:none;">
+            
+            <!-- MỤC 1: GỌI TÊN VÀ CÔNG THỨC ESTE -->
+            <div class="theory-card" data-keywords="gọi tên công thức este ester danh pháp iupac isoamyl axetat benzyl vinyl phenyl metacrylat acrylat fomat axetat propionat">
+                <div class="theory-card-title">
+                    <span>1. Tra Cứu Toàn Diện: Danh Pháp & Công Thức Cấu Tạo Este (Ester)</span>
+                    <span class="badge-tip">Quy tắc vàng & Bẫy viết ngược</span>
+                </div>
+                
+                <div style="font-size:13px; line-height:1.6; margin-bottom:10px;">
+                    <div style="background:#eff6ff; border-left:3px solid #2563eb; padding:8px 12px; border-radius:0 8px 8px 0; margin-bottom:8px;">
+                        <b>Quy tắc chuẩn:</b> Tên Este = <b>Tên gốc hiđrocacbon R'</b> (đính với nguyên tử oxi) + <b>Tên gốc axit RCOO- (đuôi "at")</b>.<br>
+                        ⚠️ <b>CẢNH BÁO BẪY VIẾT ĐẢO NGƯỢC:</b><br>
+                        • Viết thuận: <b>R-COO-R'</b> (R' ở bên phải). Ví dụ: CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> → <i>Ethyl acetate</i>.<br>
+                        • Viết nghịch: <b>R'-OOC-R</b> hoặc <b>R'-OCO-R</b> (R' ở bên trái). Ví dụ: C<sub>2</sub>H<sub>5</sub>-OOC-CH<sub>3</sub> vẫn là <i>Ethyl acetate</i> (Axit axetic + Ancol etylic)!
+                    </div>
+                </div>
 
+                <!-- BẢNG GỐC R' VÀ GỐC AXIT -->
+                <div class="theory-grid-2" style="margin-bottom:12px;">
+                    <div>
+                        <b style="font-size:12.5px; color:#0f766e;">📌 Bảng Gốc Hiđrocacbon R' (Đọc trước):</b>
+                        <table class="chem-table" style="font-size:12px;">
+                            <tr><th>Gốc R'</th><th>Tên gọi</th><th>Đặc điểm cấu tạo</th></tr>
+                            <tr><td><b>-CH<sub>3</sub></b></td><td>Methyl (Metyl)</td><td>1 Cacbon</td></tr>
+                            <tr><td><b>-C<sub>2</sub>H<sub>5</sub></b> (-CH<sub>2</sub>CH<sub>3</sub>)</td><td>Ethyl (Etyl)</td><td>2 Cacbon no</td></tr>
+                            <tr><td><b>-CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></b></td><td>Propyl</td><td>3 Cacbon mạch thẳng</td></tr>
+                            <tr><td><b>-CH(CH<sub>3</sub>)<sub>2</sub></b></td><td>Isopropyl</td><td>3 Cacbon có nhánh C2</td></tr>
+                            <tr><td><b>-CH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub></b></td><td><b>Isoamyl</b></td><td>5 Cacbon (mùi chuối chín)</td></tr>
+                            <tr><td><b>-CH=CH<sub>2</sub></b></td><td><b>Vinyl</b></td><td>Nối đôi đính trực tiếp O</td></tr>
+                            <tr><td><b>-CH<sub>2</sub>-CH=CH<sub>2</sub></b></td><td><b>Allyl</b></td><td>Nối đôi cách O 1 nhóm CH<sub>2</sub></td></tr>
+                            <tr><td><b>-C<sub>6</sub>H<sub>5</sub></b></td><td><b>Phenyl</b></td><td>Vòng benzen đính trực tiếp O</td></tr>
+                            <tr><td><b>-CH<sub>2</sub>-C<sub>6</sub>H<sub>5</sub></b></td><td><b>Benzyl</b></td><td>Nhóm benzyl (mùi hoa nhài)</td></tr>
+                        </table>
+                    </div>
+                    <div>
+                        <b style="font-size:12.5px; color:#0f766e;">📌 Bảng Gốc Axit RCOO- (Đọc sau, đuôi "at"):</b>
+                        <table class="chem-table" style="font-size:12px;">
+                            <tr><th>Gốc RCOO-</th><th>Axit ban đầu</th><th>Tên gốc este</th></tr>
+                            <tr><td><b>H-COO-</b></td><td>Axit formic</td><td><b>Formate (Fomat)</b> <i>(Tráng bạc!)</i></td></tr>
+                            <tr><td><b>CH<sub>3</sub>-COO-</b></td><td>Axit acetic</td><td><b>Acetate (Axetat)</b></td></tr>
+                            <tr><td><b>C<sub>2</sub>H<sub>5</sub>-COO-</b></td><td>Axit propionic</td><td><b>Propionate (Propionat)</b></td></tr>
+                            <tr><td><b>CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>-COO-</b></td><td>Axit butyric</td><td><b>Butyrate (Butirat)</b></td></tr>
+                            <tr><td><b>CH<sub>2</sub>=CH-COO-</b></td><td>Axit acrylic</td><td><b>Acrylate (Acrylat)</b></td></tr>
+                            <tr><td><b>CH<sub>2</sub>=C(CH<sub>3</sub>)-COO-</b></td><td>Axit methacrylic</td><td><b>Methacrylate (Metacrylat)</b></td></tr>
+                            <tr><td><b>C<sub>6</sub>H<sub>5</sub>-COO-</b></td><td>Axit benzoic</td><td><b>Benzoate (Benzoat)</b></td></tr>
+                            <tr><td><b>-OOC-COO-</b></td><td>Axit oxalic</td><td><b>Oxalate (Oxalat)</b> <i>(2 chức)</i></td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- BẢNG TRA CỨU 20 ESTE TIÊU BIỂU -->
+                <b style="font-size:13px; color:#0f766e;">📋 Bảng Tra Cứu 20 Este Kinh Điển Thường Gặp Nhất Trong Đề Thi:</b>
+                <table class="chem-table">
+                    <tr><th>Công thức cấu tạo</th><th>Tên gọi Este (IUPAC / Thông thường)</th><th>Mùi thơm / Ứng dụng / Tính chất đặc biệt</th></tr>
+                    <tr><td><b>HCOOCH<sub>3</sub></b></td><td>Methyl formate (Metyl fomat)</td><td>Đồng phân đơn giản nhất, <b>có phản ứng tráng bạc (tạo 2 Ag)</b></td></tr>
+                    <tr><td><b>HCOOC<sub>2</sub>H<sub>5</sub></b></td><td>Ethyl formate (Etyl fomat)</td><td>Có phản ứng tráng bạc, mùi quả đào chín nhẹ</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOCH<sub>3</sub></b></td><td>Methyl acetate (Metyl axetat)</td><td>Dung môi công nghiệp pha sơn, mực in</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub></b></td><td>Ethyl acetate (Etyl axetat)</td><td>Dung môi tách chiết hương liệu, mùi quả thơm dễ chịu</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub></b></td><td><b>Isoamyl acetate (Isoamyl axetat)</b></td><td><b style="color:#d97706;">Mùi chuối chín đặc trưng</b> (cực hay hỏi trong trắc nghiệm)</td></tr>
+                    <tr><td><b>C<sub>3</sub>H<sub>7</sub>COOC<sub>2</sub>H<sub>5</sub></b> (Ethyl butyrate)</td><td>Ethyl butyrate (Etyl butirat)</td><td><b style="color:#059669;">Mùi quả dứa</b> chín thơm</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOCH<sub>2</sub>C<sub>6</sub>H<sub>5</sub></b></td><td><b>Benzyl acetate (Benzyl axetat)</b></td><td><b style="color:#7c3aed;">Mùi hoa nhài</b>, hương liệu nước hoa cao cấp</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOC<sub>10</sub>H<sub>17</sub></b></td><td>Geranyl acetate (Geranyl axetat)</td><td><b>Mùi hoa hồng</b> thơm ngát</td></tr>
+                    <tr><td><b>(CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>COOC<sub>2</sub>H<sub>5</sub></b></td><td>Ethyl isovalerate (Etyl isovalerat)</td><td><b>Mùi quả táo</b> chín giòn</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOCH=CH<sub>2</sub></b></td><td><b>Vinyl acetate (Vinyl axetat)</b></td><td>Thủy phân ra <b>Acetaldehyde (CH<sub>3</sub>CHO)</b>; trùng hợp tạo keo dán PVA</td></tr>
+                    <tr><td><b>CH<sub>2</sub>=CH-COOCH<sub>3</sub></b></td><td>Methyl acrylate (Metyl acrylat)</td><td>Este không no, làm mất màu nước Brom, trùng hợp tạo polime</td></tr>
+                    <tr><td><b>CH<sub>2</sub>=C(CH<sub>3</sub>)-COOCH<sub>3</sub></b></td><td><b>Methyl methacrylate (Metyl metacrylat)</b></td><td>Trùng hợp tạo <b>thủy tinh hữu cơ Plexiglas (PMM)</b> bền, trong suốt</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOC(CH<sub>3</sub>)=CH<sub>2</sub></b></td><td>Isopropenyl acetate (Isopropenyl axetat)</td><td>Thủy phân ra <b>Acetone (CH<sub>3</sub>COCH<sub>3</sub>)</b></td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOC<sub>6</sub>H<sub>5</sub></b></td><td><b>Phenyl acetate (Phenyl axetat)</b></td><td><b>Este của phenol:</b> Tác dụng với NaOH tỉ lệ <b>1 : 2</b> tạo <b>2 muối + H<sub>2</sub>O</b></td></tr>
+                    <tr><td><b>C<sub>6</sub>H<sub>5</sub>COOCH<sub>3</sub></b></td><td>Methyl benzoate (Metyl benzoat)</td><td>Este thơm của axit benzoic, có mùi thơm dễ chịu</td></tr>
+                    <tr><td><b>C<sub>2</sub>H<sub>5</sub>OOC-COOC<sub>2</sub>H<sub>5</sub></b></td><td>Diethyl oxalate (Đietyl oxalat)</td><td>Este 2 chức của axit oxalic và etanol</td></tr>
+                </table>
+            </div>
+
+            <!-- MỤC 2: PHƯƠNG TRÌNH VÀ ỨNG DỤNG CỦA CELLULOSE -->
+            <div class="theory-card" data-keywords="phương trình ứng dụng cellulose xenlulozơ xenlulozo thuốc súng không khói trinitrat tơ visco tơ axetat nước svayze ethanol sinh học giấy">
+                <div class="theory-card-title">
+                    <span>2. Trọn Bộ Phương Trình Phản Ứng & Ứng Dụng Thực Tiễn Của Cellulose (Xenlulozơ)</span>
+                    <span class="badge-formula">[C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub> (M = 162n)</span>
+                </div>
+
+                <div style="font-size:13px; line-height:1.6; margin-bottom:10px;">
+                    • <b>Bản chất cấu trúc:</b> Mắt xích gồm các gốc <b>β-glucose</b> nối với nhau qua liên kết <b>β-1,4-glycosidic</b>, chuỗi kéo dài không phân nhánh, không xoắn. Trong mỗi mắt xích C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> có <b>3 nhóm -OH tự do</b>, nên công thức cấu tạo được viết chuẩn là: <b>[C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub></b>.
+                </div>
+
+                <b style="font-size:13px; color:#0f766e;">🔬 5 Phương Trình Phản Ứng Hóa Học Cốt Lõi:</b>
+                
+                <div style="margin-top:8px; font-size:13px; line-height:1.6;">
+                    <b>1. Phản ứng với HNO<sub>3</sub> đặc (Phản ứng tạo thuốc súng không khói - Xenlulozơ trinitrat):</b>
+                    <div class="chem-eq">
+                        [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub> + 3n HNO<sub>3</sub> (đặc) ⎯⎯⎯⎯⎯→ [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(ONO<sub>2</sub>)<sub>3</sub>]<sub>n</sub> + 3n H<sub>2</sub>O  [H<sub>2</sub>SO<sub>4</sub> đặc, t°]
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Phân tử khối mắt xích: Xenlulozơ (<b>162</b>) + 3 × HNO<sub>3</sub> (63) → Xenlulozơ trinitrat (<b>297</b>) + 3 × H<sub>2</sub>O (18).<br>
+                        • Tỉ lệ số mol: 1 mắt xích : 3 HNO<sub>3</sub> : 1 xenlulozơ trinitrat.<br>
+                        • Ứng dụng: <b>Xenlulozơ trinitrat</b> là chất nổ cực mạnh, khi nổ sinh toàn khí (CO, CO<sub>2</sub>, N<sub>2</sub>, H<sub>2</sub>O), không tạo khói đen và không làm hỏng nòng súng → gọi là <b>thuốc súng không khói</b>.
+                    </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+                    <b>2. Phản ứng thủy phân (Tạo Glucose & Sản xuất Ethanol sinh học):</b>
+                    <div class="chem-eq">
+                        (C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> + n H<sub>2</sub>O ⎯⎯⎯⎯⎯→ n C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (Glucose)  [xúc tác H⁺, t° hoặc enzim cellulase]
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Sau đó lên men glucose: C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → 2 C<sub>2</sub>H<sub>5</sub>OH + 2 CO<sub>2</sub>↑.<br>
+                        • Ứng dụng: Tận dụng phế phẩm nông nghiệp dồi dào (mùn cưa, rơm rạ, vỏ trấu, bã mía) để sản xuất <b>xăng sinh học E5, E10</b> và hóa chất xanh bảo vệ môi trường.
+                    </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+                    <b>3. Phản ứng điều chế Tơ Visco (Tơ bán tổng hợp / nhân tạo):</b>
+                    <div class="chem-eq">
+                        Xenlulozơ + NaOH + CS<sub>2</sub> → Dung dịch Xenlulozơ xantogenat (nhớt, gọi là visco)<br>
+                        Ép visco qua lỗ nhỏ vào bể H<sub>2</sub>SO<sub>4</sub> loãng → Tái sinh sợi <b>Tơ Visco</b>
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Ứng dụng: Tơ visco có độ mềm mại, thoáng mát, hút ẩm tốt tương tự cotton, dùng dệt vải may mặc cao cấp.
+                    </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+                    <b>4. Phản ứng với anhiđrit axetic (Tạo Tơ Axetat):</b>
+                    <div class="chem-eq">
+                        [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub> + 3n (CH<sub>3</sub>CO)<sub>2</sub>O ⎯⎯⎯→ [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OCOCH<sub>3</sub>)<sub>3</sub>]<sub>n</sub> + 3n CH<sub>3</sub>COOH  [H<sub>2</sub>SO<sub>4</sub> đặc]
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Sản phẩm: Xenlulozơ triaxetat và điaxetat dùng kéo sợi <b>tơ axetat</b> óng ánh như tơ tằm, làm phim ảnh chống cháy và màng cách điện.
+                    </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+                    <b>5. Phản ứng hòa tan trong nước Svayze (Tơ đồng - amoniac):</b>
+                    <div class="chem-eq">
+                        Xenlulozơ + Dung dịch Svayze [Cu(NH<sub>3</sub>)<sub>4</sub>](OH)<sub>2</sub> → Phức chất màu xanh lam tan trong nước
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Xenlulozơ không tan trong nước và dung môi thông thường nhưng <b>tan tốt trong nước Svayze</b> (dung dịch đồng(II) hiđroxit trong amoniac đặc). Khi cho phức này vào axit loãng, xenlulozơ kết tủa lại thành sợi <i>tơ đồng - amoniac</i>.
+                    </div>
+                </div>
+
+                <!-- BẢNG TỔNG KẾT ỨNG DỤNG -->
+                <div style="margin-top:14px;">
+                    <b style="font-size:13px; color:#0f766e;">🌐 Bảng Tổng Hợp Ứng Dụng Thực Tiễn Của Cellulose Trong Đời Sống:</b>
+                    <table class="chem-table">
+                        <tr><th>Lĩnh vực</th><th>Nguồn nguyên liệu</th><th>Ứng dụng thực tế</th></tr>
+                        <tr><td><b>Xây dựng & Đồ gỗ</b></td><td>Gỗ tự nhiên (chứa 40 - 50% xenlulozơ)</td><td>Vật liệu xây nhà cửa, cầu cống, đóng tàu thuyền, bàn ghế nội thất</td></tr>
+                        <tr><td><b>Ngành Dệt may</b></td><td>Sợi bông nõn (98%), đay, gai, lanh</td><td>Dệt thành sợi, vải cotton, quần áo thoáng mát, may bao bì tải</td></tr>
+                        <tr><td><b>Sản xuất Giấy</b></td><td>Gỗ bạch đàn, keo, tre, nứa</td><td>Nghiền bột gỗ làm giấy viết, sách báo, bìa carton đóng gói</td></tr>
+                        <tr><td><b>Tơ sợi nhân tạo</b></td><td>Chế biến hóa học xenlulozơ</td><td>Tơ visco, tơ axetat, tơ đồng - amoniac dệt vải lụa nhân tạo</td></tr>
+                        <tr><td><b>Quốc phòng & Quân sự</b></td><td>Este hóa với axit nitric</td><td>Chế tạo thuốc súng không khói, đạn pháo, mìn phá đá</td></tr>
+                        <tr><td><b>Công nghiệp Năng lượng</b></td><td>Mùn cưa, rơm rạ, bã mía</td><td>Thủy phân lên men sản xuất cồn sinh học Bio-Ethanol (xăng E5)</td></tr>
+                        <tr><td><b>Y học & Đóng gói</b></td><td>Xenlulozơ tinh khiết</td><td>Bông băng y tế, màng bọc lọc máu nhân tạo, màng cellophan đóng gói</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- MỤC 3: BÀI TOÁN CÓ HIỆU SUẤT ĐIỀU CHẾ AMINE -->
+            <div class="theory-card" data-keywords="bài toán hiệu suất điều chế amine amin anilin benzen nitrobenzen sắt hcl fe casio mẹo bấm máy">
+                <div class="theory-card-title">
+                    <span>3. Phương Pháp & Công Thức Giải Nhanh: Bài Toán Có Hiệu Suất Điều Chế Amine</span>
+                    <span class="badge-trap">Mẹo bấm máy Casio 1 dòng</span>
+                </div>
+
+                <div style="font-size:13px; line-height:1.6; margin-bottom:12px;">
+                    <b>A. Các Sơ Đồ Phản Ứng Điều Chế Amine Trọng Tâm Trong Đề Thi:</b><br>
+                    • <b>Sơ đồ kinh điển 2 giai đoạn điều chế Aniline từ Benzen:</b>
+                    <div class="chem-eq">
+                        C<sub>6</sub>H<sub>6</sub> (78) ⎯⎯⎯⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> (123) ⎯⎯⎯⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> (93)  [Giai đoạn 1: HNO₃/H₂SO₄ (H₁%) | Giai đoạn 2: Fe/HCl (H₂%)]
+                    </div>
+                    • <b>Phản ứng khử Nitrobenzene bằng Fe/HCl:</b>
+                    <div class="chem-eq">
+                        C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> + 3 Fe + 7 HCl → C<sub>6</sub>H<sub>5</sub>NH<sub>3</sub>Cl + 3 FeCl<sub>2</sub> + 2 H<sub>2</sub>O<br>
+                        C<sub>6</sub>H<sub>5</sub>NH<sub>3</sub>Cl + NaOH → C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> + NaCl + H<sub>2</sub>O
+                    </div>
+                    • <b>Ankyl hóa Amoniac (Dẫn xuất halogen + NH<sub>3</sub>):</b>
+                    <div class="chem-eq">
+                        NH<sub>3</sub> + RX ⎯⎯⎯→ R-NH<sub>2</sub> + HX  (tiếp tục ankyl hóa ra amin bậc 2, bậc 3)
+                    </div>
+                </div>
+
+                <!-- BẢNG NGUYÊN TẮC HIỆU SUẤT -->
+                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:12px; margin-bottom:12px; font-size:13px; line-height:1.6;">
+                    <b style="color:#b45309; font-size:14px;">⚡ BẢNG NGUYÊN TẮC TÍNH HIỆU SUẤT VÀNG (NHÂN THUẬN - CHIA NGHỊCH):</b>
+                    <ul style="padding-left:18px; margin-top:6px;">
+                        <li><b>Tính xuôi (Biết chất ban đầu → Tìm sản phẩm thực tế):</b>
+                            <div class="chem-eq" style="background:#fff; margin:4px 0;">
+                                m<sub>sản phẩm (thực tế)</sub> = m<sub>sản phẩm (lí thuyết)</sub> × (H / 100)
+                            </div>
+                            <i>(Vì phản ứng có hao hụt nên lượng sản phẩm thu được luôn NHỎ HƠN lí thuyết → PHẢI NHÂN NHỎ HƠN 1).</i>
+                        </li>
+                        <li><b>Tính ngược (Biết sản phẩm thực tế cần thu → Tìm lượng nguyên liệu ban đầu cần lấy):</b>
+                            <div class="chem-eq" style="background:#fff; margin:4px 0;">
+                                m<sub>nguyên liệu (cần dùng)</sub> = m<sub>nguyên liệu (lí thuyết)</sub> ÷ (H / 100)
+                            </div>
+                            <i>(Vì phản ứng bị hao hụt nên phải lấy lượng nguyên liệu LỚN HƠN lí thuyết → PHẢI CHIA CHO H%).</i>
+                        </li>
+                        <li><b>Hiệu suất chuỗi nhiều giai đoạn liên tiếp (H₁, H₂, H₃...):</b>
+                            <div class="chem-eq" style="background:#fff; margin:4px 0;">
+                                H<sub>toàn phần</sub> = H₁ × H₂ × H₃...   (hoặc nhân/chia lần lượt từng H<sub>i</sub>%)
+                            </div>
+                        </li>
+                        <li><b>Độ tinh khiết p% (hoặc chứa t% tạp chất trơ):</b>
+                            <div class="chem-eq" style="background:#fff; margin:4px 0;">
+                                m<sub>chất nguyên chất</sub> = m<sub>quặng/hỗn hợp</sub> × (p / 100) = m<sub>quặng</sub> × ((100 - t) / 100)
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- BẢNG TRA CỨU KHỐI LƯỢNG MOL GIẢI NHANH -->
+                <b style="font-size:13px; color:#0f766e;">🎯 Bảng Số Liệu Khối Lượng Mol Thuộc Lòng Để Bấm Máy:</b>
+                <table class="chem-table" style="text-align:center;">
+                    <tr><th>Hợp chất</th><th>Benzen (C<sub>6</sub>H<sub>6</sub>)</th><th>Nitrobenzen (C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub>)</th><th>Anilin (C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>)</th><th>Kết tủa 2,4,6-tribromanilin</th><th>Methylamine (CH<sub>3</sub>NH<sub>2</sub>)</th></tr>
+                    <tr><td><b>Phân tử khối (M)</b></td><td><b style="color:#2563eb;">78</b></td><td><b style="color:#2563eb;">123</b></td><td><b style="color:#2563eb;">93</b></td><td><b style="color:#dc2626;">330</b></td><td><b style="color:#2563eb;">31</b></td></tr>
+                </table>
+
+                <!-- 3 BÀI TẬP VÍ DỤ MẪU KÈM LỜI GIẢI VÀ BẤM MÁY -->
+                <div style="margin-top:14px;">
+                    <b style="font-size:14px; color:#0f766e;">📝 3 Ví Dụ Mẫu Kinh Điển & Mẹo Bấm Máy Casio 1 Dòng:</b>
+
+                    <!-- VÍ DỤ 1 -->
+                    <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px; margin-top:8px; font-size:13px; line-height:1.6;">
+                        <b style="color:#1e293b;">Ví Dụ 1 (Tính sản phẩm từ nguyên liệu ban đầu có hiệu suất):</b><br>
+                        <i>Đề bài:</i> Khử hoàn toàn <b>246 kg</b> nitrobenzen (C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub>) bằng bột sắt và HCl dư, sau đó kiềm hóa thu được anilin (C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>). Biết hiệu suất toàn bộ quá trình đạt <b>80%</b>. Tính khối lượng anilin thu được?<br>
+                        <div style="margin-top:6px; color:#0f172a;">
+                            <b>Lời giải chi tiết:</b><br>
+                            Sơ đồ: C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> (M = 123) ⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> (M = 93)<br>
+                            Số mol C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> ban đầu = 246 / 123 = 2 kmol.<br>
+                            Theo lí thuyết, n<sub>anilin</sub> = n<sub>nitrobenzen</sub> = 2 kmol → m<sub>anilin (LT)</sub> = 2 × 93 = 186 kg.<br>
+                            Vì hiệu suất H = 80%, khối lượng anilin thực tế thu được là:<br>
+                            m<sub>anilin (TT)</sub> = 186 × (80 / 100) = <b>148,8 kg</b>.<br>
+                            <span class="badge-tip" style="margin-top:4px;">Bấm Casio 1 dòng:</span> <code>246 ÷ 123 × 93 × 0.8 = 148.8 kg</code>
+                        </div>
+                    </div>
+
+                    <!-- VÍ DỤ 2 -->
+                    <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px; margin-top:10px; font-size:13px; line-height:1.6;">
+                        <b style="color:#1e293b;">Ví Dụ 2 (Tính ngược lượng benzen ban đầu qua chuỗi 2 bước):</b><br>
+                        <i>Đề bài:</i> Để sản xuất được <b>27,9 gam</b> anilin cần dùng bao nhiêu gam benzen? Biết hiệu suất phản ứng nitro hóa benzen thành nitrobenzen là <b>75%</b> và hiệu suất khử nitrobenzen thành anilin là <b>80%</b>.<br>
+                        <div style="margin-top:6px; color:#0f172a;">
+                            <b>Lời giải chi tiết:</b><br>
+                            Sơ đồ chuỗi: C<sub>6</sub>H<sub>6</sub> (78) ⎯⎯⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> (123) ⎯⎯⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> (93)<br>
+                            n<sub>anilin cần thu</sub> = 27,9 / 93 = 0,3 mol.<br>
+                            Hiệu suất toàn phần: H<sub>toàn phần</sub> = 75% × 80% = 0,75 × 0,8 = 0,60 (tức 60%).<br>
+                            Lượng benzen theo lí thuyết: n<sub>benzen (LT)</sub> = 0,3 mol → m<sub>benzen (LT)</sub> = 0,3 × 78 = 23,4 gam.<br>
+                            Vì tính ngược lượng chất phản ứng ban đầu nên phải <b>chia cho hiệu suất</b>:<br>
+                            m<sub>benzen thực tế cần lấy</sub> = 23,4 ÷ 0,60 = <b>39,0 gam</b>.<br>
+                            <span class="badge-tip" style="margin-top:4px;">Bấm Casio 1 dòng:</span> <code>(27.9 ÷ 93) × 78 ÷ 0.75 ÷ 0.8 = 39 g</code>
+                        </div>
+                    </div>
+
+                    <!-- VÍ DỤ 3 -->
+                    <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px; margin-top:10px; font-size:13px; line-height:1.6;">
+                        <b style="color:#1e293b;">Ví Dụ 3 (Kết hợp hiệu suất điều chế với phản ứng kết tủa Brom):</b><br>
+                        <i>Đề bài:</i> Tiến hành điều chế anilin từ <b>15,6 gam</b> benzen với hiệu suất cả quá trình đạt <b>85%</b>. Cho toàn bộ lượng anilin thu được phản ứng hoàn toàn với lượng dư nước Brom. Tính khối lượng kết tủa trắng thu được?<br>
+                        <div style="margin-top:6px; color:#0f172a;">
+                            <b>Lời giải chi tiết:</b><br>
+                            Sơ đồ liên hoàn: C<sub>6</sub>H<sub>6</sub> (78) ⎯⎯(H=85%)⎯→ C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> (93) ⎯⎯+3Br₂⎯→ C<sub>6</sub>H<sub>2</sub>Br<sub>3</sub>NH<sub>2</sub>↓ (M = 330)<br>
+                            n<sub>benzen</sub> = 15,6 / 78 = 0,2 mol.<br>
+                            Lượng anilin thực tế tạo thành = 0,2 × 85% = 0,17 mol.<br>
+                            Theo phương trình với dung dịch brom: n<sub>kết tủa</sub> = n<sub>anilin</sub> = 0,17 mol.<br>
+                            Khối lượng kết tủa trắng (2,4,6-tribromanilin) = 0,17 × 330 = <b>56,1 gam</b>.<br>
+                            <span class="badge-tip" style="margin-top:4px;">Bấm Casio 1 dòng:</span> <code>(15.6 ÷ 78) × 0.85 × 330 = 56.1 g</code>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     
+    </div>
+        </div>
     <!-- MODAL LÍ THUYẾT ÔN TẬP TOÀN DIỆN -->
     <div id="theory-modal" class="modal-overlay" onclick="closeModal('theory-modal')">
         <div class="theory-modal-card" onclick="event.stopPropagation()">
@@ -1526,6 +1801,7 @@
         <button type="button" class="theory-tab-btn" id="modal_btn-t2" onclick="switchTheoryTab(2, 'modal_')">🌾 Chương 2: Carbohydrate (Glucid)</button>
         <button type="button" class="theory-tab-btn" id="modal_btn-t3" onclick="switchTheoryTab(3, 'modal_')">🧬 Chương 3: Amin - Amino Acid - Protein</button>
         <button type="button" class="theory-tab-btn" id="modal_btn-t4" onclick="switchTheoryTab(4, 'modal_')">⚡ Bảng Màu Hiện Tượng & 12 Cạm Bẫy</button>
+        <button type="button" class="theory-tab-btn" id="modal_btn-t5" onclick="switchTheoryTab(5, 'modal_')">🎯 Chuyên đề: Danh pháp Este | Xenlulozơ | Hiệu suất Amin</button>
     </div>
 
     <!-- THANH TÌM KIẾM TỪ KHÓA LÍ THUYẾT -->
@@ -1896,12 +2172,286 @@
             </div>
 
         </div>
-    </div>
     
+        <!-- ========================================== -->
+        <!-- TAB 5: CHUYÊN ĐỀ ĐẶC BIỆT THEO YÊU CẦU -->
+        <!-- ========================================== -->
+        <div id="modal_tab-content-5" class="theory-tab-pane" style="display:none;">
+            
+            <!-- MỤC 1: GỌI TÊN VÀ CÔNG THỨC ESTE -->
+            <div class="theory-card" data-keywords="gọi tên công thức este ester danh pháp iupac isoamyl axetat benzyl vinyl phenyl metacrylat acrylat fomat axetat propionat">
+                <div class="theory-card-title">
+                    <span>1. Tra Cứu Toàn Diện: Danh Pháp & Công Thức Cấu Tạo Este (Ester)</span>
+                    <span class="badge-tip">Quy tắc vàng & Bẫy viết ngược</span>
+                </div>
+                
+                <div style="font-size:13px; line-height:1.6; margin-bottom:10px;">
+                    <div style="background:#eff6ff; border-left:3px solid #2563eb; padding:8px 12px; border-radius:0 8px 8px 0; margin-bottom:8px;">
+                        <b>Quy tắc chuẩn:</b> Tên Este = <b>Tên gốc hiđrocacbon R'</b> (đính với nguyên tử oxi) + <b>Tên gốc axit RCOO- (đuôi "at")</b>.<br>
+                        ⚠️ <b>CẢNH BÁO BẪY VIẾT ĐẢO NGƯỢC:</b><br>
+                        • Viết thuận: <b>R-COO-R'</b> (R' ở bên phải). Ví dụ: CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> → <i>Ethyl acetate</i>.<br>
+                        • Viết nghịch: <b>R'-OOC-R</b> hoặc <b>R'-OCO-R</b> (R' ở bên trái). Ví dụ: C<sub>2</sub>H<sub>5</sub>-OOC-CH<sub>3</sub> vẫn là <i>Ethyl acetate</i> (Axit axetic + Ancol etylic)!
+                    </div>
+                </div>
+
+                <!-- BẢNG GỐC R' VÀ GỐC AXIT -->
+                <div class="theory-grid-2" style="margin-bottom:12px;">
+                    <div>
+                        <b style="font-size:12.5px; color:#0f766e;">📌 Bảng Gốc Hiđrocacbon R' (Đọc trước):</b>
+                        <table class="chem-table" style="font-size:12px;">
+                            <tr><th>Gốc R'</th><th>Tên gọi</th><th>Đặc điểm cấu tạo</th></tr>
+                            <tr><td><b>-CH<sub>3</sub></b></td><td>Methyl (Metyl)</td><td>1 Cacbon</td></tr>
+                            <tr><td><b>-C<sub>2</sub>H<sub>5</sub></b> (-CH<sub>2</sub>CH<sub>3</sub>)</td><td>Ethyl (Etyl)</td><td>2 Cacbon no</td></tr>
+                            <tr><td><b>-CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></b></td><td>Propyl</td><td>3 Cacbon mạch thẳng</td></tr>
+                            <tr><td><b>-CH(CH<sub>3</sub>)<sub>2</sub></b></td><td>Isopropyl</td><td>3 Cacbon có nhánh C2</td></tr>
+                            <tr><td><b>-CH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub></b></td><td><b>Isoamyl</b></td><td>5 Cacbon (mùi chuối chín)</td></tr>
+                            <tr><td><b>-CH=CH<sub>2</sub></b></td><td><b>Vinyl</b></td><td>Nối đôi đính trực tiếp O</td></tr>
+                            <tr><td><b>-CH<sub>2</sub>-CH=CH<sub>2</sub></b></td><td><b>Allyl</b></td><td>Nối đôi cách O 1 nhóm CH<sub>2</sub></td></tr>
+                            <tr><td><b>-C<sub>6</sub>H<sub>5</sub></b></td><td><b>Phenyl</b></td><td>Vòng benzen đính trực tiếp O</td></tr>
+                            <tr><td><b>-CH<sub>2</sub>-C<sub>6</sub>H<sub>5</sub></b></td><td><b>Benzyl</b></td><td>Nhóm benzyl (mùi hoa nhài)</td></tr>
+                        </table>
+                    </div>
+                    <div>
+                        <b style="font-size:12.5px; color:#0f766e;">📌 Bảng Gốc Axit RCOO- (Đọc sau, đuôi "at"):</b>
+                        <table class="chem-table" style="font-size:12px;">
+                            <tr><th>Gốc RCOO-</th><th>Axit ban đầu</th><th>Tên gốc este</th></tr>
+                            <tr><td><b>H-COO-</b></td><td>Axit formic</td><td><b>Formate (Fomat)</b> <i>(Tráng bạc!)</i></td></tr>
+                            <tr><td><b>CH<sub>3</sub>-COO-</b></td><td>Axit acetic</td><td><b>Acetate (Axetat)</b></td></tr>
+                            <tr><td><b>C<sub>2</sub>H<sub>5</sub>-COO-</b></td><td>Axit propionic</td><td><b>Propionate (Propionat)</b></td></tr>
+                            <tr><td><b>CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>-COO-</b></td><td>Axit butyric</td><td><b>Butyrate (Butirat)</b></td></tr>
+                            <tr><td><b>CH<sub>2</sub>=CH-COO-</b></td><td>Axit acrylic</td><td><b>Acrylate (Acrylat)</b></td></tr>
+                            <tr><td><b>CH<sub>2</sub>=C(CH<sub>3</sub>)-COO-</b></td><td>Axit methacrylic</td><td><b>Methacrylate (Metacrylat)</b></td></tr>
+                            <tr><td><b>C<sub>6</sub>H<sub>5</sub>-COO-</b></td><td>Axit benzoic</td><td><b>Benzoate (Benzoat)</b></td></tr>
+                            <tr><td><b>-OOC-COO-</b></td><td>Axit oxalic</td><td><b>Oxalate (Oxalat)</b> <i>(2 chức)</i></td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- BẢNG TRA CỨU 20 ESTE TIÊU BIỂU -->
+                <b style="font-size:13px; color:#0f766e;">📋 Bảng Tra Cứu 20 Este Kinh Điển Thường Gặp Nhất Trong Đề Thi:</b>
+                <table class="chem-table">
+                    <tr><th>Công thức cấu tạo</th><th>Tên gọi Este (IUPAC / Thông thường)</th><th>Mùi thơm / Ứng dụng / Tính chất đặc biệt</th></tr>
+                    <tr><td><b>HCOOCH<sub>3</sub></b></td><td>Methyl formate (Metyl fomat)</td><td>Đồng phân đơn giản nhất, <b>có phản ứng tráng bạc (tạo 2 Ag)</b></td></tr>
+                    <tr><td><b>HCOOC<sub>2</sub>H<sub>5</sub></b></td><td>Ethyl formate (Etyl fomat)</td><td>Có phản ứng tráng bạc, mùi quả đào chín nhẹ</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOCH<sub>3</sub></b></td><td>Methyl acetate (Metyl axetat)</td><td>Dung môi công nghiệp pha sơn, mực in</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub></b></td><td>Ethyl acetate (Etyl axetat)</td><td>Dung môi tách chiết hương liệu, mùi quả thơm dễ chịu</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub></b></td><td><b>Isoamyl acetate (Isoamyl axetat)</b></td><td><b style="color:#d97706;">Mùi chuối chín đặc trưng</b> (cực hay hỏi trong trắc nghiệm)</td></tr>
+                    <tr><td><b>C<sub>3</sub>H<sub>7</sub>COOC<sub>2</sub>H<sub>5</sub></b> (Ethyl butyrate)</td><td>Ethyl butyrate (Etyl butirat)</td><td><b style="color:#059669;">Mùi quả dứa</b> chín thơm</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOCH<sub>2</sub>C<sub>6</sub>H<sub>5</sub></b></td><td><b>Benzyl acetate (Benzyl axetat)</b></td><td><b style="color:#7c3aed;">Mùi hoa nhài</b>, hương liệu nước hoa cao cấp</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOC<sub>10</sub>H<sub>17</sub></b></td><td>Geranyl acetate (Geranyl axetat)</td><td><b>Mùi hoa hồng</b> thơm ngát</td></tr>
+                    <tr><td><b>(CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>COOC<sub>2</sub>H<sub>5</sub></b></td><td>Ethyl isovalerate (Etyl isovalerat)</td><td><b>Mùi quả táo</b> chín giòn</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOCH=CH<sub>2</sub></b></td><td><b>Vinyl acetate (Vinyl axetat)</b></td><td>Thủy phân ra <b>Acetaldehyde (CH<sub>3</sub>CHO)</b>; trùng hợp tạo keo dán PVA</td></tr>
+                    <tr><td><b>CH<sub>2</sub>=CH-COOCH<sub>3</sub></b></td><td>Methyl acrylate (Metyl acrylat)</td><td>Este không no, làm mất màu nước Brom, trùng hợp tạo polime</td></tr>
+                    <tr><td><b>CH<sub>2</sub>=C(CH<sub>3</sub>)-COOCH<sub>3</sub></b></td><td><b>Methyl methacrylate (Metyl metacrylat)</b></td><td>Trùng hợp tạo <b>thủy tinh hữu cơ Plexiglas (PMM)</b> bền, trong suốt</td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOC(CH<sub>3</sub>)=CH<sub>2</sub></b></td><td>Isopropenyl acetate (Isopropenyl axetat)</td><td>Thủy phân ra <b>Acetone (CH<sub>3</sub>COCH<sub>3</sub>)</b></td></tr>
+                    <tr><td><b>CH<sub>3</sub>COOC<sub>6</sub>H<sub>5</sub></b></td><td><b>Phenyl acetate (Phenyl axetat)</b></td><td><b>Este của phenol:</b> Tác dụng với NaOH tỉ lệ <b>1 : 2</b> tạo <b>2 muối + H<sub>2</sub>O</b></td></tr>
+                    <tr><td><b>C<sub>6</sub>H<sub>5</sub>COOCH<sub>3</sub></b></td><td>Methyl benzoate (Metyl benzoat)</td><td>Este thơm của axit benzoic, có mùi thơm dễ chịu</td></tr>
+                    <tr><td><b>C<sub>2</sub>H<sub>5</sub>OOC-COOC<sub>2</sub>H<sub>5</sub></b></td><td>Diethyl oxalate (Đietyl oxalat)</td><td>Este 2 chức của axit oxalic và etanol</td></tr>
+                </table>
             </div>
+
+            <!-- MỤC 2: PHƯƠNG TRÌNH VÀ ỨNG DỤNG CỦA CELLULOSE -->
+            <div class="theory-card" data-keywords="phương trình ứng dụng cellulose xenlulozơ xenlulozo thuốc súng không khói trinitrat tơ visco tơ axetat nước svayze ethanol sinh học giấy">
+                <div class="theory-card-title">
+                    <span>2. Trọn Bộ Phương Trình Phản Ứng & Ứng Dụng Thực Tiễn Của Cellulose (Xenlulozơ)</span>
+                    <span class="badge-formula">[C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub> (M = 162n)</span>
+                </div>
+
+                <div style="font-size:13px; line-height:1.6; margin-bottom:10px;">
+                    • <b>Bản chất cấu trúc:</b> Mắt xích gồm các gốc <b>β-glucose</b> nối với nhau qua liên kết <b>β-1,4-glycosidic</b>, chuỗi kéo dài không phân nhánh, không xoắn. Trong mỗi mắt xích C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> có <b>3 nhóm -OH tự do</b>, nên công thức cấu tạo được viết chuẩn là: <b>[C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub></b>.
+                </div>
+
+                <b style="font-size:13px; color:#0f766e;">🔬 5 Phương Trình Phản Ứng Hóa Học Cốt Lõi:</b>
+                
+                <div style="margin-top:8px; font-size:13px; line-height:1.6;">
+                    <b>1. Phản ứng với HNO<sub>3</sub> đặc (Phản ứng tạo thuốc súng không khói - Xenlulozơ trinitrat):</b>
+                    <div class="chem-eq">
+                        [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub> + 3n HNO<sub>3</sub> (đặc) ⎯⎯⎯⎯⎯→ [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(ONO<sub>2</sub>)<sub>3</sub>]<sub>n</sub> + 3n H<sub>2</sub>O  [H<sub>2</sub>SO<sub>4</sub> đặc, t°]
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Phân tử khối mắt xích: Xenlulozơ (<b>162</b>) + 3 × HNO<sub>3</sub> (63) → Xenlulozơ trinitrat (<b>297</b>) + 3 × H<sub>2</sub>O (18).<br>
+                        • Tỉ lệ số mol: 1 mắt xích : 3 HNO<sub>3</sub> : 1 xenlulozơ trinitrat.<br>
+                        • Ứng dụng: <b>Xenlulozơ trinitrat</b> là chất nổ cực mạnh, khi nổ sinh toàn khí (CO, CO<sub>2</sub>, N<sub>2</sub>, H<sub>2</sub>O), không tạo khói đen và không làm hỏng nòng súng → gọi là <b>thuốc súng không khói</b>.
+                    </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+                    <b>2. Phản ứng thủy phân (Tạo Glucose & Sản xuất Ethanol sinh học):</b>
+                    <div class="chem-eq">
+                        (C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> + n H<sub>2</sub>O ⎯⎯⎯⎯⎯→ n C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (Glucose)  [xúc tác H⁺, t° hoặc enzim cellulase]
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Sau đó lên men glucose: C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → 2 C<sub>2</sub>H<sub>5</sub>OH + 2 CO<sub>2</sub>↑.<br>
+                        • Ứng dụng: Tận dụng phế phẩm nông nghiệp dồi dào (mùn cưa, rơm rạ, vỏ trấu, bã mía) để sản xuất <b>xăng sinh học E5, E10</b> và hóa chất xanh bảo vệ môi trường.
+                    </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+                    <b>3. Phản ứng điều chế Tơ Visco (Tơ bán tổng hợp / nhân tạo):</b>
+                    <div class="chem-eq">
+                        Xenlulozơ + NaOH + CS<sub>2</sub> → Dung dịch Xenlulozơ xantogenat (nhớt, gọi là visco)<br>
+                        Ép visco qua lỗ nhỏ vào bể H<sub>2</sub>SO<sub>4</sub> loãng → Tái sinh sợi <b>Tơ Visco</b>
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Ứng dụng: Tơ visco có độ mềm mại, thoáng mát, hút ẩm tốt tương tự cotton, dùng dệt vải may mặc cao cấp.
+                    </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+                    <b>4. Phản ứng với anhiđrit axetic (Tạo Tơ Axetat):</b>
+                    <div class="chem-eq">
+                        [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub> + 3n (CH<sub>3</sub>CO)<sub>2</sub>O ⎯⎯⎯→ [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OCOCH<sub>3</sub>)<sub>3</sub>]<sub>n</sub> + 3n CH<sub>3</sub>COOH  [H<sub>2</sub>SO<sub>4</sub> đặc]
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Sản phẩm: Xenlulozơ triaxetat và điaxetat dùng kéo sợi <b>tơ axetat</b> óng ánh như tơ tằm, làm phim ảnh chống cháy và màng cách điện.
+                    </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:13px; line-height:1.6;">
+                    <b>5. Phản ứng hòa tan trong nước Svayze (Tơ đồng - amoniac):</b>
+                    <div class="chem-eq">
+                        Xenlulozơ + Dung dịch Svayze [Cu(NH<sub>3</sub>)<sub>4</sub>](OH)<sub>2</sub> → Phức chất màu xanh lam tan trong nước
+                    </div>
+                    <div style="font-size:12.5px; color:#475569; padding-left:10px;">
+                        • Xenlulozơ không tan trong nước và dung môi thông thường nhưng <b>tan tốt trong nước Svayze</b> (dung dịch đồng(II) hiđroxit trong amoniac đặc). Khi cho phức này vào axit loãng, xenlulozơ kết tủa lại thành sợi <i>tơ đồng - amoniac</i>.
+                    </div>
+                </div>
+
+                <!-- BẢNG TỔNG KẾT ỨNG DỤNG -->
+                <div style="margin-top:14px;">
+                    <b style="font-size:13px; color:#0f766e;">🌐 Bảng Tổng Hợp Ứng Dụng Thực Tiễn Của Cellulose Trong Đời Sống:</b>
+                    <table class="chem-table">
+                        <tr><th>Lĩnh vực</th><th>Nguồn nguyên liệu</th><th>Ứng dụng thực tế</th></tr>
+                        <tr><td><b>Xây dựng & Đồ gỗ</b></td><td>Gỗ tự nhiên (chứa 40 - 50% xenlulozơ)</td><td>Vật liệu xây nhà cửa, cầu cống, đóng tàu thuyền, bàn ghế nội thất</td></tr>
+                        <tr><td><b>Ngành Dệt may</b></td><td>Sợi bông nõn (98%), đay, gai, lanh</td><td>Dệt thành sợi, vải cotton, quần áo thoáng mát, may bao bì tải</td></tr>
+                        <tr><td><b>Sản xuất Giấy</b></td><td>Gỗ bạch đàn, keo, tre, nứa</td><td>Nghiền bột gỗ làm giấy viết, sách báo, bìa carton đóng gói</td></tr>
+                        <tr><td><b>Tơ sợi nhân tạo</b></td><td>Chế biến hóa học xenlulozơ</td><td>Tơ visco, tơ axetat, tơ đồng - amoniac dệt vải lụa nhân tạo</td></tr>
+                        <tr><td><b>Quốc phòng & Quân sự</b></td><td>Este hóa với axit nitric</td><td>Chế tạo thuốc súng không khói, đạn pháo, mìn phá đá</td></tr>
+                        <tr><td><b>Công nghiệp Năng lượng</b></td><td>Mùn cưa, rơm rạ, bã mía</td><td>Thủy phân lên men sản xuất cồn sinh học Bio-Ethanol (xăng E5)</td></tr>
+                        <tr><td><b>Y học & Đóng gói</b></td><td>Xenlulozơ tinh khiết</td><td>Bông băng y tế, màng bọc lọc máu nhân tạo, màng cellophan đóng gói</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- MỤC 3: BÀI TOÁN CÓ HIỆU SUẤT ĐIỀU CHẾ AMINE -->
+            <div class="theory-card" data-keywords="bài toán hiệu suất điều chế amine amin anilin benzen nitrobenzen sắt hcl fe casio mẹo bấm máy">
+                <div class="theory-card-title">
+                    <span>3. Phương Pháp & Công Thức Giải Nhanh: Bài Toán Có Hiệu Suất Điều Chế Amine</span>
+                    <span class="badge-trap">Mẹo bấm máy Casio 1 dòng</span>
+                </div>
+
+                <div style="font-size:13px; line-height:1.6; margin-bottom:12px;">
+                    <b>A. Các Sơ Đồ Phản Ứng Điều Chế Amine Trọng Tâm Trong Đề Thi:</b><br>
+                    • <b>Sơ đồ kinh điển 2 giai đoạn điều chế Aniline từ Benzen:</b>
+                    <div class="chem-eq">
+                        C<sub>6</sub>H<sub>6</sub> (78) ⎯⎯⎯⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> (123) ⎯⎯⎯⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> (93)  [Giai đoạn 1: HNO₃/H₂SO₄ (H₁%) | Giai đoạn 2: Fe/HCl (H₂%)]
+                    </div>
+                    • <b>Phản ứng khử Nitrobenzene bằng Fe/HCl:</b>
+                    <div class="chem-eq">
+                        C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> + 3 Fe + 7 HCl → C<sub>6</sub>H<sub>5</sub>NH<sub>3</sub>Cl + 3 FeCl<sub>2</sub> + 2 H<sub>2</sub>O<br>
+                        C<sub>6</sub>H<sub>5</sub>NH<sub>3</sub>Cl + NaOH → C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> + NaCl + H<sub>2</sub>O
+                    </div>
+                    • <b>Ankyl hóa Amoniac (Dẫn xuất halogen + NH<sub>3</sub>):</b>
+                    <div class="chem-eq">
+                        NH<sub>3</sub> + RX ⎯⎯⎯→ R-NH<sub>2</sub> + HX  (tiếp tục ankyl hóa ra amin bậc 2, bậc 3)
+                    </div>
+                </div>
+
+                <!-- BẢNG NGUYÊN TẮC HIỆU SUẤT -->
+                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:12px; margin-bottom:12px; font-size:13px; line-height:1.6;">
+                    <b style="color:#b45309; font-size:14px;">⚡ BẢNG NGUYÊN TẮC TÍNH HIỆU SUẤT VÀNG (NHÂN THUẬN - CHIA NGHỊCH):</b>
+                    <ul style="padding-left:18px; margin-top:6px;">
+                        <li><b>Tính xuôi (Biết chất ban đầu → Tìm sản phẩm thực tế):</b>
+                            <div class="chem-eq" style="background:#fff; margin:4px 0;">
+                                m<sub>sản phẩm (thực tế)</sub> = m<sub>sản phẩm (lí thuyết)</sub> × (H / 100)
+                            </div>
+                            <i>(Vì phản ứng có hao hụt nên lượng sản phẩm thu được luôn NHỎ HƠN lí thuyết → PHẢI NHÂN NHỎ HƠN 1).</i>
+                        </li>
+                        <li><b>Tính ngược (Biết sản phẩm thực tế cần thu → Tìm lượng nguyên liệu ban đầu cần lấy):</b>
+                            <div class="chem-eq" style="background:#fff; margin:4px 0;">
+                                m<sub>nguyên liệu (cần dùng)</sub> = m<sub>nguyên liệu (lí thuyết)</sub> ÷ (H / 100)
+                            </div>
+                            <i>(Vì phản ứng bị hao hụt nên phải lấy lượng nguyên liệu LỚN HƠN lí thuyết → PHẢI CHIA CHO H%).</i>
+                        </li>
+                        <li><b>Hiệu suất chuỗi nhiều giai đoạn liên tiếp (H₁, H₂, H₃...):</b>
+                            <div class="chem-eq" style="background:#fff; margin:4px 0;">
+                                H<sub>toàn phần</sub> = H₁ × H₂ × H₃...   (hoặc nhân/chia lần lượt từng H<sub>i</sub>%)
+                            </div>
+                        </li>
+                        <li><b>Độ tinh khiết p% (hoặc chứa t% tạp chất trơ):</b>
+                            <div class="chem-eq" style="background:#fff; margin:4px 0;">
+                                m<sub>chất nguyên chất</sub> = m<sub>quặng/hỗn hợp</sub> × (p / 100) = m<sub>quặng</sub> × ((100 - t) / 100)
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- BẢNG TRA CỨU KHỐI LƯỢNG MOL GIẢI NHANH -->
+                <b style="font-size:13px; color:#0f766e;">🎯 Bảng Số Liệu Khối Lượng Mol Thuộc Lòng Để Bấm Máy:</b>
+                <table class="chem-table" style="text-align:center;">
+                    <tr><th>Hợp chất</th><th>Benzen (C<sub>6</sub>H<sub>6</sub>)</th><th>Nitrobenzen (C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub>)</th><th>Anilin (C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>)</th><th>Kết tủa 2,4,6-tribromanilin</th><th>Methylamine (CH<sub>3</sub>NH<sub>2</sub>)</th></tr>
+                    <tr><td><b>Phân tử khối (M)</b></td><td><b style="color:#2563eb;">78</b></td><td><b style="color:#2563eb;">123</b></td><td><b style="color:#2563eb;">93</b></td><td><b style="color:#dc2626;">330</b></td><td><b style="color:#2563eb;">31</b></td></tr>
+                </table>
+
+                <!-- 3 BÀI TẬP VÍ DỤ MẪU KÈM LỜI GIẢI VÀ BẤM MÁY -->
+                <div style="margin-top:14px;">
+                    <b style="font-size:14px; color:#0f766e;">📝 3 Ví Dụ Mẫu Kinh Điển & Mẹo Bấm Máy Casio 1 Dòng:</b>
+
+                    <!-- VÍ DỤ 1 -->
+                    <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px; margin-top:8px; font-size:13px; line-height:1.6;">
+                        <b style="color:#1e293b;">Ví Dụ 1 (Tính sản phẩm từ nguyên liệu ban đầu có hiệu suất):</b><br>
+                        <i>Đề bài:</i> Khử hoàn toàn <b>246 kg</b> nitrobenzen (C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub>) bằng bột sắt và HCl dư, sau đó kiềm hóa thu được anilin (C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>). Biết hiệu suất toàn bộ quá trình đạt <b>80%</b>. Tính khối lượng anilin thu được?<br>
+                        <div style="margin-top:6px; color:#0f172a;">
+                            <b>Lời giải chi tiết:</b><br>
+                            Sơ đồ: C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> (M = 123) ⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> (M = 93)<br>
+                            Số mol C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> ban đầu = 246 / 123 = 2 kmol.<br>
+                            Theo lí thuyết, n<sub>anilin</sub> = n<sub>nitrobenzen</sub> = 2 kmol → m<sub>anilin (LT)</sub> = 2 × 93 = 186 kg.<br>
+                            Vì hiệu suất H = 80%, khối lượng anilin thực tế thu được là:<br>
+                            m<sub>anilin (TT)</sub> = 186 × (80 / 100) = <b>148,8 kg</b>.<br>
+                            <span class="badge-tip" style="margin-top:4px;">Bấm Casio 1 dòng:</span> <code>246 ÷ 123 × 93 × 0.8 = 148.8 kg</code>
+                        </div>
+                    </div>
+
+                    <!-- VÍ DỤ 2 -->
+                    <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px; margin-top:10px; font-size:13px; line-height:1.6;">
+                        <b style="color:#1e293b;">Ví Dụ 2 (Tính ngược lượng benzen ban đầu qua chuỗi 2 bước):</b><br>
+                        <i>Đề bài:</i> Để sản xuất được <b>27,9 gam</b> anilin cần dùng bao nhiêu gam benzen? Biết hiệu suất phản ứng nitro hóa benzen thành nitrobenzen là <b>75%</b> và hiệu suất khử nitrobenzen thành anilin là <b>80%</b>.<br>
+                        <div style="margin-top:6px; color:#0f172a;">
+                            <b>Lời giải chi tiết:</b><br>
+                            Sơ đồ chuỗi: C<sub>6</sub>H<sub>6</sub> (78) ⎯⎯⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> (123) ⎯⎯⎯⎯⎯→ C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> (93)<br>
+                            n<sub>anilin cần thu</sub> = 27,9 / 93 = 0,3 mol.<br>
+                            Hiệu suất toàn phần: H<sub>toàn phần</sub> = 75% × 80% = 0,75 × 0,8 = 0,60 (tức 60%).<br>
+                            Lượng benzen theo lí thuyết: n<sub>benzen (LT)</sub> = 0,3 mol → m<sub>benzen (LT)</sub> = 0,3 × 78 = 23,4 gam.<br>
+                            Vì tính ngược lượng chất phản ứng ban đầu nên phải <b>chia cho hiệu suất</b>:<br>
+                            m<sub>benzen thực tế cần lấy</sub> = 23,4 ÷ 0,60 = <b>39,0 gam</b>.<br>
+                            <span class="badge-tip" style="margin-top:4px;">Bấm Casio 1 dòng:</span> <code>(27.9 ÷ 93) × 78 ÷ 0.75 ÷ 0.8 = 39 g</code>
+                        </div>
+                    </div>
+
+                    <!-- VÍ DỤ 3 -->
+                    <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px; margin-top:10px; font-size:13px; line-height:1.6;">
+                        <b style="color:#1e293b;">Ví Dụ 3 (Kết hợp hiệu suất điều chế với phản ứng kết tủa Brom):</b><br>
+                        <i>Đề bài:</i> Tiến hành điều chế anilin từ <b>15,6 gam</b> benzen với hiệu suất cả quá trình đạt <b>85%</b>. Cho toàn bộ lượng anilin thu được phản ứng hoàn toàn với lượng dư nước Brom. Tính khối lượng kết tủa trắng thu được?<br>
+                        <div style="margin-top:6px; color:#0f172a;">
+                            <b>Lời giải chi tiết:</b><br>
+                            Sơ đồ liên hoàn: C<sub>6</sub>H<sub>6</sub> (78) ⎯⎯(H=85%)⎯→ C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> (93) ⎯⎯+3Br₂⎯→ C<sub>6</sub>H<sub>2</sub>Br<sub>3</sub>NH<sub>2</sub>↓ (M = 330)<br>
+                            n<sub>benzen</sub> = 15,6 / 78 = 0,2 mol.<br>
+                            Lượng anilin thực tế tạo thành = 0,2 × 85% = 0,17 mol.<br>
+                            Theo phương trình với dung dịch brom: n<sub>kết tủa</sub> = n<sub>anilin</sub> = 0,17 mol.<br>
+                            Khối lượng kết tủa trắng (2,4,6-tribromanilin) = 0,17 × 330 = <b>56,1 gam</b>.<br>
+                            <span class="badge-tip" style="margin-top:4px;">Bấm Casio 1 dòng:</span> <code>(15.6 ÷ 78) × 0.85 × 330 = 56.1 g</code>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
         </div>
     </div>
-        
+    </div>
     <!-- MODAL BẢNG NGUYÊN TỬ KHỐI -->
     <div id="ntk-modal" class="modal-overlay" onclick="closeModal('ntk-modal')">
         <div class="modal-card" onclick="event.stopPropagation()">
@@ -2904,7 +3454,7 @@
 
     function switchTheoryTab(tabIndex, scopePrefix) {
         const p = scopePrefix || '';
-        for (let i = 1; i <= 4; i++) {
+        for (let i = 1; i <= 5; i++) {
             const pane = document.getElementById(`${p}tab-content-${i}`);
             const btn = document.getElementById(`${p}btn-t${i}`);
             if (pane) pane.style.display = (i === tabIndex) ? 'block' : 'none';
@@ -2925,7 +3475,7 @@
         }
 
         // Nếu có từ khóa, mở hiển thị tất cả các tab panes để tìm kiếm xuyên suốt
-        for (let i = 1; i <= 4; i++) {
+        for (let i = 1; i <= 5; i++) {
             const pane = document.getElementById(`${p}tab-content-${i}`);
             if (pane) pane.style.display = 'block';
         }
