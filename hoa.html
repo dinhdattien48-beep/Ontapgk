@@ -735,6 +735,237 @@
         }
 
         .hidden { display: none !important; }
+    
+        /* LÍ THUYẾT ÔN TẬP TRỌNG TÂM - DEV BY TDAT */
+        .btn-theory {
+            background: linear-gradient(135deg, #0d9488, #0f766e);
+            color: #ffffff;
+            border: 1px solid #115e59;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 7px 11px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(13, 148, 136, 0.3);
+            transition: all 0.2s ease;
+        }
+        .btn-theory:hover {
+            background: linear-gradient(135deg, #0f766e, #134e4a);
+            transform: translateY(-1px);
+        }
+
+        .theory-modal-card {
+            background: #fff;
+            width: 100%;
+            max-width: 960px;
+            border-radius: 18px;
+            max-height: 90vh;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+        }
+
+        .theory-hero-banner {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+            color: #ffffff;
+            padding: 16px 20px;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .theory-hero-title {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .theory-hero-sub {
+            font-size: 12.5px;
+            opacity: 0.92;
+            margin-top: 3px;
+        }
+
+        .theory-tabs-nav {
+            display: flex;
+            gap: 6px;
+            padding: 10px 14px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .theory-tabs-nav::-webkit-scrollbar { display: none; }
+
+        .theory-tab-btn {
+            border: 1px solid #cbd5e1;
+            background: #fff;
+            color: #475569;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 13px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .theory-tab-btn:hover {
+            border-color: #0d9488;
+            color: #0f766e;
+        }
+        .theory-tab-btn.active {
+            background: #0d9488;
+            color: #fff;
+            border-color: #0d9488;
+            box-shadow: 0 2px 6px rgba(13, 148, 136, 0.28);
+        }
+
+        .theory-search-bar {
+            padding: 10px 14px;
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .theory-search-input {
+            flex: 1;
+            padding: 9px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 13px;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .theory-search-input:focus {
+            border-color: #0d9488;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+        }
+
+        .theory-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .theory-card:hover {
+            border-color: #94a3b8;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .theory-card-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #e2e8f0;
+            flex-wrap: wrap;
+        }
+
+        .badge-trap {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-tip {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-formula {
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .chem-eq {
+            background: #f8fafc;
+            border-left: 3px solid #0d9488;
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 13px;
+            color: #0f172a;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        .chem-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            margin: 10px 0;
+        }
+        .chem-table th {
+            background: #f1f5f9;
+            color: #1e293b;
+            font-weight: 700;
+            padding: 8px 10px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+        }
+        .chem-table td {
+            padding: 8px 10px;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .chem-table tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+
+        .theory-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        @media (max-width: 680px) {
+            .theory-grid-2 { grid-template-columns: 1fr; }
+        }
+
     </style>
 </head>
 <body>
@@ -753,6 +984,7 @@
                 </div>
             </div>
             <div class="header-actions">
+                <button type="button" class="btn-theory" onclick="openTheoryModal()">📖 Lí Thuyết Ôn Tập</button>
                 <button type="button" class="btn-ntk" onclick="openModal('ntk-modal')">Bảng NTK</button>
                 <div id="timer-box" class="timer-pill">
                     <span>⏱</span>
@@ -770,6 +1002,7 @@
             <button type="button" class="filter-tab" id="tab-p2" onclick="setFilter('p2')">Phần II: Đúng/Sai (4)</button>
             <button type="button" class="filter-tab" id="tab-p3" onclick="setFilter('p3')">Phần III: Trả lời ngắn (6)</button>
             <button type="button" class="filter-tab" id="tab-unanswered" onclick="setFilter('unanswered')">Chưa làm</button>
+            <button type="button" class="filter-tab" id="tab-theory" onclick="setFilter('theory')" style="border-color:#0d9488; color:#0f766e; background:#f0fdfa;">📖 Ôn Lí Thuyết</button>
         </div>
     </header>
 
@@ -838,6 +1071,399 @@
             </div>
             <div id="list-p3"></div>
         </div>
+
+        <!-- PHẦN LÍ THUYẾT ÔN TẬP TRỌNG TÂM (INLINE VIEW) -->
+        <div id="wrap-theory" class="hidden">
+            <div class="theory-hero-banner">
+                <div>
+                    <div class="theory-hero-title">📖 CẨM NANG LÍ THUYẾT TRỌNG TÂM HÓA HỌC 12</div>
+                    <div class="theory-hero-sub">Hệ thống hóa toàn bộ Este - Lipit, Carbohydrate, Hợp chất chứa Nitơ & 12 Cạm bẫy GDPT 2018 | <b>Dev by TDat</b></div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button type="button" class="nav-btn submit" style="background:#ffffff; color:#0f766e; border:none; font-weight:800;" onclick="setFilter('all')">⬅ Trở về làm bài thi</button>
+                </div>
+            </div>
+            
+    <!-- THANH TABS CHUYỂN CHỦ ĐỀ -->
+    <div class="theory-tabs-nav">
+        <button type="button" class="theory-tab-btn active" id="inline_btn-t1" onclick="switchTheoryTab(1, 'inline_')">🧪 Chương 1: Este - Lipit - Xà phòng</button>
+        <button type="button" class="theory-tab-btn" id="inline_btn-t2" onclick="switchTheoryTab(2, 'inline_')">🌾 Chương 2: Carbohydrate (Glucid)</button>
+        <button type="button" class="theory-tab-btn" id="inline_btn-t3" onclick="switchTheoryTab(3, 'inline_')">🧬 Chương 3: Amin - Amino Acid - Protein</button>
+        <button type="button" class="theory-tab-btn" id="inline_btn-t4" onclick="switchTheoryTab(4, 'inline_')">⚡ Bảng Màu Hiện Tượng & 12 Cạm Bẫy</button>
+    </div>
+
+    <!-- THANH TÌM KIẾM TỪ KHÓA LÍ THUYẾT -->
+    <div class="theory-search-bar">
+        <span>🔍</span>
+        <input type="text" class="theory-search-input" id="inline_search-input" placeholder="Tìm kiếm nhanh lí thuyết (vd: Este phenol, Sorbitol, Quỳ tím, Biure, Thủy phân, Nước cứng...)" oninput="filterTheoryCards(this.value, 'inline_')">
+        <button type="button" class="theory-tab-btn" onclick="document.getElementById('inline_search-input').value=''; filterTheoryCards('', 'inline_');" style="padding:5px 10px;">Xóa</button>
+    </div>
+
+    <div class="theory-cards-container" id="inline_cards-wrap" style="padding: 14px 2px;">
+        <!-- ========================================== -->
+        <!-- TAB 1: ESTE - LIPIT - CHẤT GIẶT RỬA -->
+        <!-- ========================================== -->
+        <div id="inline_tab-content-1" class="theory-tab-pane">
+            
+            <div class="theory-card" data-keywords="este ester đồng phân công thức no đơn chức danh pháp">
+                <div class="theory-card-title">
+                    <span>1. Khái Niệm, Đồng Phân & Danh Pháp Este (Ester)</span>
+                    <span class="badge-formula">C<sub>n</sub>H<sub>2n</sub>O<sub>2</sub> (n ≥ 2)</span>
+                </div>
+                <p style="font-size:13.5px; color:#334155; margin-bottom:8px;">
+                    • <b>Định nghĩa:</b> Khi thay thế nhóm <b>-OH</b> ở nhóm cacboxyl (<b>-COOH</b>) của axit cacboxylic bằng nhóm <b>-OR'</b> (của ancol hoặc phenol), ta thu được este.<br>
+                    • <b>Công thức chung:</b> R-COO-R' (R là H hoặc gốc hiđrocacbon; R' bắt buộc là gốc hiđrocacbon, không thể là H).<br>
+                    • <b>Đồng phân este no, đơn chức, mạch hở:</b> Công thức tính nhanh số đồng phân: <b>2<sup>n-2</sup></b> (với 2 ≤ n ≤ 5).
+                </p>
+                <table class="chem-table">
+                    <tr><th>CTPT</th><th>Số đp Este</th><th>Các đồng phân Este tiêu biểu</th><th>Ghi chú</th></tr>
+                    <tr><td><b>C<sub>2</sub>H<sub>4</sub>O<sub>2</sub></b></td><td>1</td><td>HCOOCH<sub>3</sub> (Methyl formate)</td><td>Có phản ứng tráng bạc</td></tr>
+                    <tr><td><b>C<sub>3</sub>H<sub>6</sub>O<sub>2</sub></b></td><td>2</td><td>HCOOC<sub>2</sub>H<sub>5</sub> (Ethyl formate), CH<sub>3</sub>COOCH<sub>3</sub> (Methyl acetate)</td><td>1 este tráng bạc</td></tr>
+                    <tr><td><b>C<sub>4</sub>H<sub>8</sub>O<sub>2</sub></b></td><td>4</td><td>HCOOCH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>, HCOOCH(CH<sub>3</sub>)<sub>2</sub>, CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>, C<sub>2</sub>H<sub>5</sub>COOCH<sub>3</sub></td><td>2 este tráng bạc</td></tr>
+                    <tr><td><b>C<sub>5</sub>H<sub>10</sub>O<sub>2</sub></b></td><td>9</td><td>HCOOC<sub>4</sub>H<sub>9</sub> (4 đp), CH<sub>3</sub>COOC<sub>3</sub>H<sub>7</sub> (2 đp), C<sub>2</sub>H<sub>5</sub>COOC<sub>2</sub>H<sub>5</sub> (1 đp), C<sub>3</sub>H<sub>7</sub>COOCH<sub>3</sub> (2 đp)</td><td>4 este tráng bạc</td></tr>
+                </table>
+                <div style="font-size:13px; background:#eff6ff; border-left:3px solid #2563eb; padding:8px 12px; border-radius:0 8px 8px 0; margin-top:8px;">
+                    <b>Quy tắc gọi tên este:</b> <i>Tên gốc R'</i> + <i>Tên gốc axit RCOO- (đuôi "at")</i>.<br>
+                    Ví dụ: CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub> (Ethyl acetate), CH<sub>2</sub>=CH-COOCH<sub>3</sub> (Methyl acrylate), CH<sub>3</sub>COOCH=CH<sub>2</sub> (Vinyl acetate), CH<sub>3</sub>COOCH<sub>2</sub>C<sub>6</sub>H<sub>5</sub> (Benzyl acetate).
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="tính chất vật lý mùi thơm quả chín nhiệt độ sôi liên kết hidro chuối dứa hoa nhài">
+                <div class="theory-card-title">
+                    <span>2. Tính Chất Vật Lí, Mùi Hương & So Sánh Nhiệt Độ Sôi</span>
+                    <span class="badge-tip">Mùi thơm hoa quả</span>
+                </div>
+                <div class="theory-grid-2">
+                    <div style="font-size:13px; line-height:1.6;">
+                        <b style="color:#0f766e;">Mùi hương đặc trưng trong đề thi:</b>
+                        <ul style="padding-left:18px; margin-top:4px;">
+                            <li><b>Isoamyl acetate</b> [CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub>]: Mùi <b>chuối chín</b>.</li>
+                            <li><b>Benzyl acetate</b> [CH<sub>3</sub>COOCH<sub>2</sub>C<sub>6</sub>H<sub>5</sub>]: Mùi <b>hoa nhài</b>.</li>
+                            <li><b>Ethyl butyrate & Ethyl propionate</b>: Mùi <b>quả dứa</b>.</li>
+                            <li><b>Geranyl acetate</b>: Mùi <b>hoa hồng</b>.</li>
+                            <li><b>Ethyl isovalerate</b>: Mùi <b>quả táo</b>.</li>
+                        </ul>
+                    </div>
+                    <div style="font-size:13px; line-height:1.6;">
+                        <b style="color:#0f766e;">So sánh nhiệt độ sôi (cùng số C hoặc M xấp xỉ):</b>
+                        <div class="chem-eq" style="margin-top:4px; font-weight:700; color:#1d4ed8;">
+                            Axit cacboxylic > Ancol > Este ≈ Anđehit / Xeton > Hiđrocacbon
+                        </div>
+                        <p style="font-size:12px; color:#64748b; margin-top:4px;">
+                            <i>Giải thích:</i> Axit có liên kết H liên phân tử bền dạng đime; ancol có liên kết H; este <b>KHÔNG có liên kết hiđro</b> giữa các phân tử với nhau nên nhiệt độ sôi thấp hơn nhiều và rất ít tan trong nước, nhẹ hơn nước.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="phản ứng thủy phân xà phòng hóa este phenol vinyl este tráng bạc đặc biệt">
+                <div class="theory-card-title">
+                    <span>3. Tính Chất Hóa Học & Các Dạng Este Đặc Biệt</span>
+                    <span class="badge-trap">Trọng tâm câu phân loại</span>
+                </div>
+                <p style="font-size:13px; margin-bottom:6px;">
+                    <b>a) Thủy phân trong môi trường axit (H<sup>+</sup>, t°):</b> Phản ứng <b>thuận nghịch (2 chiều)</b>.<br>
+                    <span class="chem-eq">RCOOR' + H<sub>2</sub>O ⇌ RCOOH + R'OH  (Hỗn hợp sau phản ứng tách lớp vì este dư không tan)</span>
+                </p>
+                <p style="font-size:13px; margin-bottom:6px;">
+                    <b>b) Thủy phân trong môi trường kiềm (Xà phòng hóa - NaOH/KOH, t°):</b> Phản ứng <b>1 chiều (hoàn toàn)</b>.<br>
+                    <span class="chem-eq">RCOOR' + NaOH → RCOONa + R'OH  (Hỗn hợp sau phản ứng đồng nhất nếu sản phẩm tan)</span>
+                </p>
+                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:12px; margin-top:8px; font-size:13px; line-height:1.6;">
+                    <b style="color:#b45309;">⚠️ 4 TRƯỜNG HỢP ESTE ĐẶC BIỆT THƯỜNG XUYÊN CÓ BẪY:</b><br>
+                    1. <b>Este của phenol:</b> Tác dụng với NaOH theo tỉ lệ <b>1 : 2</b>, tạo <b>2 muối + H<sub>2</sub>O</b>, KHÔNG tạo ancol!<br>
+                    <span class="chem-eq" style="background:#fff;">RCOOC<sub>6</sub>H<sub>5</sub> + 2NaOH → RCOONa + C<sub>6</sub>H<sub>5</sub>ONa + H<sub>2</sub>O</span>
+                    2. <b>Vinyl este (C nối đôi đính trực tiếp oxi):</b> Thủy phân tạo <b>anđehit</b>.<br>
+                    <span class="chem-eq" style="background:#fff;">CH<sub>3</sub>COOCH=CH<sub>2</sub> + NaOH → CH<sub>3</sub>COONa + CH<sub>3</sub>CHO (Acetaldehyde)</span>
+                    3. <b>Este có nhánh tại C nối đôi:</b> Thủy phân tạo <b>xeton</b>.<br>
+                    <span class="chem-eq" style="background:#fff;">CH<sub>3</sub>COOC(CH<sub>3</sub>)=CH<sub>2</sub> + NaOH → CH<sub>3</sub>COONa + CH<sub>3</sub>-CO-CH<sub>3</sub> (Acetone)</span>
+                    4. <b>Este của axit formic (HCOOR):</b> Có nhóm -CHO nên tham gia <b>phản ứng tráng gương (tạo 2 Ag)</b>.
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="lipit lipid chất béo triglixerit tripanmitin tristearin triolein trilinolein hidro hóa ôi mỡ">
+                <div class="theory-card-title">
+                    <span>4. Lipit & Chất Béo (Triglyceride)</span>
+                    <span class="badge-formula">Trieste của Glixerol</span>
+                </div>
+                <p style="font-size:13px; margin-bottom:8px;">
+                    • <b>Định nghĩa:</b> Chất béo là trieste của glycerol với các axit béo (axit monocacboxylic mạch C dài, không phân nhánh, số C chẵn từ 12-24C).<br>
+                    • <b>4 Axit béo & 4 Chất béo kinh điển:</b>
+                </p>
+                <table class="chem-table">
+                    <tr><th>Tên Axit béo</th><th>CTPT Axit (M)</th><th>Tên Chất béo (Triglyceride)</th><th>CTPT Chất béo (M)</th><th>Trạng thái (t° thường)</th></tr>
+                    <tr><td><b>Axit palmitic</b></td><td>C<sub>15</sub>H<sub>31</sub>COOH (256 - no)</td><td><b>Tripalmitin</b></td><td>(C<sub>15</sub>H<sub>31</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> (<b>806</b>)</td><td>Chất rắn (mỡ động vật)</td></tr>
+                    <tr><td><b>Axit stearic</b></td><td>C<sub>17</sub>H<sub>35</sub>COOH (284 - no)</td><td><b>Tristearin</b></td><td>(C<sub>17</sub>H<sub>35</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> (<b>890</b>)</td><td>Chất rắn (mỡ động vật)</td></tr>
+                    <tr><td><b>Axit oleic</b></td><td>C<sub>17</sub>H<sub>33</sub>COOH (282 - 1 C=C)</td><td><b>Triolein</b></td><td>(C<sub>17</sub>H<sub>33</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> (<b>884</b>)</td><td>Chất lỏng (dầu thực vật)</td></tr>
+                    <tr><td><b>Axit linoleic</b></td><td>C<sub>17</sub>H<sub>31</sub>COOH (280 - 2 C=C)</td><td><b>Trilinolein</b></td><td>(C<sub>17</sub>H<sub>31</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> (<b>878</b>)</td><td>Chất lỏng (dầu thực vật)</td></tr>
+                </table>
+                <div style="font-size:13px; margin-top:8px; line-height:1.6;">
+                    • <b>Phản ứng xà phòng hóa chất béo:</b> Luôn thu được muối axit béo (xà phòng) và <b>glycerol</b> với tỉ lệ mol <b>1 : 3 : 3 : 1</b>.<br>
+                    <span class="chem-eq">(RCOO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> + 3NaOH → 3RCOONa + C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub></span>
+                    • <b>Phản ứng hiđro hóa chất béo lỏng:</b> Chuyển chất béo lỏng (dầu) thành chất béo rắn (bơ nhân tạo / margarin để dễ bảo quản):<br>
+                    <span class="chem-eq">Triolein (lỏng) + 3H<sub>2</sub> ⎯⎯⎯⎯→ Tristearin (rắn)  [xúc tác Ni, t°, p]</span>
+                    • <b>Hiện tượng ôi mỡ:</b> Liên kết đôi C=C của chất béo không no bị oxi không khí oxi hóa chậm tạo peoxit, chất này vỡ ra thành các aldehyde và ketone có mùi khét, hôi độc hại.
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="xà phòng chất giặt rửa tổng hợp nước cứng cơ chế tẩy rửa">
+                <div class="theory-card-title">
+                    <span>5. Xà Phòng & Chất Giặt Rửa Tổng Hợp</span>
+                    <span class="badge-tip">Đầu ưa nước - Đuôi kị nước</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Cấu trúc hạt tẩy rửa:</b> Gồm 2 phần: <b>Đầu ưa nước</b> (phân cực như -COO<sup>-</sup>Na<sup>+</sup>, -SO<sub>3</sub><sup>-</sup>Na<sup>+</sup>) và <b>Đuôi kị nước</b> (không phân cực, mạch hiđrocacbon dài R-).<br>
+                    • <b>Cơ chế giặt rửa:</b> Đuôi kị nước ghim sâu vào giọt dầu bẩn, đầu ưa nước hướng ra ngoài liên kết với nước. Lực cơ học (vò, khuấy) kéo giọt bẩn phân tán thành các vi hạt lơ lửng (nhũ tương) rồi bị xả trôi.<br>
+                    • <b>So sánh then chốt với nước cứng (chứa Ca<sup>2+</sup>, Mg<sup>2+</sup>):</b>
+                    <table class="chem-table">
+                        <tr><th>Tiêu chí</th><th>Xà phòng (RCOONa / RCOOK)</th><th>Chất giặt rửa tổng hợp (ROSO<sub>3</sub>Na / R-C<sub>6</sub>H<sub>4</sub>-SO<sub>3</sub>Na)</th></tr>
+                        <tr><td>Nguồn gốc</td><td>Thực vật, động vật (thủy phân chất béo)</td><td>Tổng hợp từ dầu mỏ (hóa dầu)</td></tr>
+                        <tr><td>Trong nước cứng</td><td><b style="color:#dc2626;">MẤT TÁC DỤNG</b> vì tạo kết tủa (RCOO)<sub>2</sub>Ca↓, (RCOO)<sub>2</sub>Mg↓ làm ố vải</td><td><b style="color:#16a34a;">DÙNG TỐT</b> vì muối canxi/magie của sunfat, sunfonat tan tốt trong nước</td></tr>
+                        <tr><td>Môi trường</td><td>Dễ phân hủy sinh học, thân thiện môi trường</td><td>Chất giặt có mạch nhánh khó phân hủy, gây bọt ô nhiễm nguồn nước</td></tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 2: CARBOHYDRATE -->
+        <!-- ========================================== -->
+        <div id="inline_tab-content-2" class="theory-tab-pane" style="display:none;">
+            
+            <div class="theory-card" data-keywords="carbohydrate glucid phân loại monosaccarit disaccarit polysaccarit">
+                <div class="theory-card-title">
+                    <span>1. Tổng Quan & Phân Loại Carbohydrate (C<sub>n</sub>(H<sub>2</sub>O)<sub>m</sub>)</span>
+                    <span class="badge-formula">Glucid / Cacbohiđrat</span>
+                </div>
+                <table class="chem-table">
+                    <tr><th>Nhóm</th><th>Đại diện tiêu biểu</th><th>Công thức phân tử (M)</th><th>Đặc điểm thủy phân</th></tr>
+                    <tr><td><b>Monosaccharide</b></td><td><b>Glucose</b> (đường nho)<br><b>Fructose</b> (đường mật ong)</td><td>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (<b>180</b>)</td><td><b>Không bị thủy phân</b></td></tr>
+                    <tr><td><b>Disaccharide</b></td><td><b>Saccharose</b> (đường mía)<br><b>Maltose</b> (đường mạch nha)</td><td>C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> (<b>342</b>)</td><td>Thủy phân cho <b>2 phân tử monosaccarit</b></td></tr>
+                    <tr><td><b>Polysaccharide</b></td><td><b>Tinh bột</b> (gạo, ngô, khoai)<br><b>Cellulose</b> (gỗ, bông, đay)</td><td>(C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> (<b>162n</b>)</td><td>Thủy phân cho <b>nhiều phân tử glucose</b></td></tr>
+                </table>
+            </div>
+
+            <div class="theory-card" data-keywords="glucose glucozo fructose fructozo tráng bạc đồng oxit sorbitol nước brom">
+                <div class="theory-card-title">
+                    <span>2. Glucose & Fructose (Đồng Phân C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, M = 180)</span>
+                    <span class="badge-trap">Phân biệt bằng nước Brom</span>
+                </div>
+                <div class="theory-grid-2">
+                    <div style="font-size:13px; line-height:1.6;">
+                        <b style="color:#0f766e; font-size:14px;">GLUCOSE (Đường nho):</b>
+                        <ul style="padding-left:18px; margin-top:4px;">
+                            <li><b>Cấu tạo:</b> Dạng hở có <b>5 nhóm -OH kề nhau</b> và <b>1 nhóm -CHO</b> (CH<sub>2</sub>OH-[CHOH]<sub>4</sub>-CHO). Trong dung dịch chủ yếu ở dạng vòng α và β.</li>
+                            <li><b>Phản ứng ancol đa chức:</b> Hòa tan Cu(OH)<sub>2</sub> ở t° thường → <b>dung dịch màu xanh lam thẫm</b> (phức đồng).</li>
+                            <li><b>Phản ứng anđehit:</b>
+                                <br>- Tráng bạc: Tạo <b>2 Ag↓</b> sáng bóng.
+                                <br>- Khử Cu(OH)<sub>2</sub> trong kiềm đun nóng: Tạo <b>kết tủa đỏ gạch Cu<sub>2</sub>O↓</b>.
+                                <br>- <b style="color:#dc2626;">Làm MẤT MÀU dung dịch nước brom (Br<sub>2</sub>)</b> tạo axit gluconic.
+                            </li>
+                            <li><b>Khử bằng H<sub>2</sub> (Ni, t°):</b> Tạo <b>Sorbitol</b> (C<sub>6</sub>H<sub>14</sub>O<sub>6</sub>).</li>
+                            <li><b>Lên men rượu:</b> C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → 2C<sub>2</sub>H<sub>5</sub>OH + 2CO<sub>2</sub>↑.</li>
+                            <li>Nồng độ trong máu người bình thường: <b>khoảng 0,1%</b> (~4,4 - 7,2 mmol/L).</li>
+                        </ul>
+                    </div>
+                    <div style="font-size:13px; line-height:1.6;">
+                        <b style="color:#0f766e; font-size:14px;">FRUCTOSE (Đường mật ong):</b>
+                        <ul style="padding-left:18px; margin-top:4px;">
+                            <li><b>Cấu tạo:</b> Đồng phân của glucose, có <b>5 nhóm -OH</b> và <b>1 nhóm xeton (C=O tại C2)</b>. Chiếm ~40% trong mật ong, độ ngọt lớn nhất.</li>
+                            <li><b>Chuyển hóa trong môi trường kiềm (OH<sup>-</sup>):</b>
+                                <div class="chem-eq" style="margin:4px 0;">Fructose ⇌ Glucose  (xúc tác OH⁻)</div>
+                            </li>
+                            <li>Vì chuyển thành glucose trong kiềm nên Fructose <b>VẪN CÓ</b> phản ứng tráng bạc (AgNO<sub>3</sub>/NH<sub>3</sub>) và khử Cu(OH)<sub>2</sub> khi đun nóng.</li>
+                            <li><b style="color:#dc2626; font-size:13.5px;">⚠️ BẪY SO SÁNH QUYẾT ĐỊNH:</b> Fructose <b>KHÔNG LÀM MẤT MÀU nước brom (Br<sub>2</sub>)</b> vì brom là môi trường axit/trung tính không thể chuyển hóa fructose thành glucose.<br>
+                            👉 <i>Muốn phân biệt Glucose và Fructose, bắt buộc dùng <b>dung dịch nước Brom</b>!</i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="saccharose saccarozo đường mía củ cải thủy phân không tráng bạc">
+                <div class="theory-card-title">
+                    <span>3. Saccharose (Đường Mía - C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, M = 342)</span>
+                    <span class="badge-tip">Không tráng bạc</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Cấu tạo:</b> Gồm <b>1 gốc α-glucose</b> và <b>1 gốc β-fructose</b> liên kết qua nguyên tử oxi giữa C1 của glu và C2 của fruc (liên kết α,β-1,2-glycosidic).<br>
+                    • <b>Đặc điểm then chốt:</b> Phân tử <b>KHÔNG còn nhóm -OH hemiaxetal tự do</b> → Không thể mở vòng tạo nhóm anđehit.<br>
+                    • <b>Tính chất hóa học:</b>
+                    <ul style="padding-left:18px; margin-top:4px;">
+                        <li>Hòa tan Cu(OH)<sub>2</sub> ở t° thường tạo <b>dung dịch màu xanh lam</b> (do có nhiều nhóm -OH kề nhau).</li>
+                        <li><b style="color:#dc2626;">KHÔNG có tính khử:</b> KHÔNG tráng bạc, KHÔNG khử Cu(OH)<sub>2</sub> đun nóng, KHÔNG làm mất màu nước brom.</li>
+                        <li><b>Phản ứng thủy phân (H<sup>+</sup>, t° hoặc men):</b>
+                            <span class="chem-eq">C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> + H<sub>2</sub>O → C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (Glucose) + C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (Fructose)</span>
+                            👉 Hỗn hợp sau khi thủy phân đem tráng bạc: <b>1 mol Saccharose tạo tối đa 4 mol Ag</b>!
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="tinh bột amilose amilopectin cellulose xenlulozo iot tơ visco thuốc súng không khói">
+                <div class="theory-card-title">
+                    <span>4. Tinh Bột & Cellulose ((C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub>, M = 162n)</span>
+                    <span class="badge-trap">Không phải đồng phân</span>
+                </div>
+                <table class="chem-table">
+                    <tr><th>Đặc điểm</th><th>TINH BỘT</th><th>CELLULOSE (XENLULOZƠ)</th></tr>
+                    <tr><td>Cấu tạo mắt xích</td><td>Các gốc <b>α-glucose</b></td><td>Các gốc <b>β-glucose</b></td></tr>
+                    <tr><td>Dạng mạch</td><td>Gồm <b>Amylose</b> (mạch không phân nhánh, xoắn lò xo, liên kết α-1,4) và <b>Amylopectin</b> (mạch phân nhánh, liên kết α-1,4 và α-1,6)</td><td>Mạch <b>kéo dài không phân nhánh</b>, các chuỗi liên kết song song bằng liên kết hiđro (liên kết β-1,4-glicozit)</td></tr>
+                    <tr><td>Nhóm -OH tự do</td><td>Nhiều nhóm -OH</td><td>Mỗi mắt xích có <b>3 nhóm -OH tự do</b>: [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub></td></tr>
+                    <tr><td>Phản ứng đặc trưng</td><td>Tác dụng với dung dịch <b>I<sub>2</sub> → Dung dịch màu xanh tím</b> (đun nóng mất màu, để nguội xuất hiện lại)</td><td>• Tan trong <b>nước Svayze</b> ([Cu(NH<sub>3</sub>)<sub>4</sub>](OH)<sub>2</sub>)<br>• Tác dụng HNO<sub>3</sub> đặc (H<sub>2</sub>SO<sub>4</sub> đặc) tạo <b>Xenlulozơ trinitrat</b> [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(ONO<sub>2</sub>)<sub>3</sub>]<sub>n</sub> làm <i>thuốc súng không khói</i>.</td></tr>
+                    <tr><td>Ứng dụng tơ</td><td>Không dùng kéo tơ</td><td>Chế tạo <b>Tơ visco</b> (hòa tan bằng CS<sub>2</sub> + NaOH) và <b>Tơ axetat</b> (phản ứng với anhiđrit axetic) → đều là <i>tơ bán tổng hợp (nhân tạo)</i>.</td></tr>
+                </table>
+                <div style="background:#fee2e2; border-left:3px solid #dc2626; padding:8px 12px; border-radius:0 8px 8px 0; margin-top:8px; font-size:13px; color:#991b1b;">
+                    <b>LƯU Ý CỰC KỲ QUAN TRỌNG:</b> Tinh bột và Xenlulozơ <b>KHÔNG PHẢI là đồng phân của nhau</b> vì hệ số polime hóa n khác nhau rất nhiều (n của xenlulozơ lớn hơn tinh bột rất nhiều lần). Cả hai đều không có phản ứng tráng bạc.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 3: AMIN - AMINO ACID - PROTEIN -->
+        <!-- ========================================== -->
+        <div id="inline_tab-content-3" class="theory-tab-pane" style="display:none;">
+            
+            <div class="theory-card" data-keywords="amin amine bậc amin tính bazơ anilin kết tủa trắng brom quỳ tím">
+                <div class="theory-card-title">
+                    <span>1. Amin: Phân Loại Bậc, Tính Bazơ & Phản Ứng Của Anilin</span>
+                    <span class="badge-tip">Bậc amin ≠ Bậc ancol</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Bậc amin:</b> Bằng <b>số nguyên tử H</b> trong phân tử NH<sub>3</sub> bị thay thế bởi gốc hiđrocacbon.<br>
+                    &nbsp;&nbsp;- Bậc I: R-NH<sub>2</sub> (vd: CH<sub>3</sub>NH<sub>2</sub>, C<sub>2</sub>H<sub>5</sub>NH<sub>2</sub>, C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>, (CH<sub>3</sub>)<sub>3</sub>C-NH<sub>2</sub>).<br>
+                    &nbsp;&nbsp;- Bậc II: R-NH-R' (vd: CH<sub>3</sub>-NH-CH<sub>3</sub>: Dimethylamine).<br>
+                    &nbsp;&nbsp;- Bậc III: R-N(R')-R'' (vd: (CH<sub>3</sub>)<sub>3</sub>N: Trimethylamine).<br>
+                    • <b>So sánh lực bazơ:</b> Cặp e tự do trên nguyên tử N có khả năng nhận proton H<sup>+</sup>.<br>
+                    <div class="chem-eq" style="color:#1d4ed8; font-weight:700;">
+                        Amin béo bậc II > Amin béo bậc I > NH<sub>3</sub> > Amin thơm (Aniline C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>)
+                    </div>
+                    • <b>Tác dụng quỳ tím:</b> Các amin béo tan tốt trong nước làm <b>quỳ tím hóa xanh</b>. <b>Anilin (C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>)</b> có tính bazơ cực yếu do vòng benzen hút e, <b>KHÔNG làm đổi màu quỳ tím</b>.<br>
+                    • <b>Phản ứng nhận biết Anilin:</b> Tác dụng với dung dịch nước brom (Br<sub>2</sub>) tạo <b>kết tủa trắng 2,4,6-tribromoaniline</b> (M = 330).<br>
+                    <span class="chem-eq">C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> + 3Br<sub>2</sub> → C<sub>6</sub>H<sub>2</sub>Br<sub>3</sub>NH<sub>2</sub>↓ (trắng) + 3HBr</span>
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="amino acid glycine alanine valine glutamic acid lysine ion lưỡng cực quỳ tím">
+                <div class="theory-card-title">
+                    <span>2. Amino Acid: Cấu Tạo, Lưỡng Tính & 5 Chất Tiêu Chuẩn</span>
+                    <span class="badge-formula">H<sub>2</sub>N-R-COOH</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Khái niệm:</b> Hợp chất hữu cơ tạp chức, phân tử chứa đồng thời nhóm <b>amino (-NH<sub>2</sub>)</b> và nhóm <b>cacboxyl (-COOH)</b>.<br>
+                    • <b>Cấu tạo ion lưỡng cực:</b> Trong tinh thể và dung dịch, nhóm -COOH cho proton sang nhóm -NH<sub>2</sub> tạo <b><sup>+</sup>H<sub>3</sub>N-R-COO<sup>-</sup></b>. Vì vậy amino acid là chất rắn kết tinh, nhiệt độ nóng chảy cao, tan tốt trong nước.<br>
+                    • <b>Tính chất lưỡng tính:</b> Tác dụng vừa với axit mạnh (HCl), vừa với bazơ mạnh (NaOH).<br>
+                </div>
+                <table class="chem-table">
+                    <tr><th>Tên thông thường</th><th>Kí hiệu</th><th>Công thức cấu tạo thu gọn</th><th>Phân tử khối (M)</th><th>Tác dụng lên quỳ tím</th></tr>
+                    <tr><td><b>Glycine</b></td><td>Gly</td><td>H<sub>2</sub>N-CH<sub>2</sub>-COOH</td><td><b>75</b></td><td><span style="color:#64748b; font-weight:700;">Không đổi màu</span> (1 NH<sub>2</sub> = 1 COOH)</td></tr>
+                    <tr><td><b>Alanine</b></td><td>Ala</td><td>CH<sub>3</sub>-CH(NH<sub>2</sub>)-COOH</td><td><b>89</b></td><td><span style="color:#64748b; font-weight:700;">Không đổi màu</span> (1 NH<sub>2</sub> = 1 COOH)</td></tr>
+                    <tr><td><b>Valine</b></td><td>Val</td><td>(CH<sub>3</sub>)<sub>2</sub>CH-CH(NH<sub>2</sub>)-COOH</td><td><b>117</b></td><td><span style="color:#64748b; font-weight:700;">Không đổi màu</span> (1 NH<sub>2</sub> = 1 COOH)</td></tr>
+                    <tr><td><b>Glutamic acid</b></td><td>Glu</td><td>HOOC-CH<sub>2</sub>-CH<sub>2</sub>-CH(NH<sub>2</sub>)-COOH</td><td><b>147</b></td><td><span style="color:#dc2626; font-weight:700;">HÓA ĐỎ / HỒNG</span> (2 COOH > 1 NH<sub>2</sub>)</td></tr>
+                    <tr><td><b>Lysine</b></td><td>Lys</td><td>H<sub>2</sub>N-(CH<sub>2</sub>)<sub>4</sub>-CH(NH<sub>2</sub>)-COOH</td><td><b>146</b></td><td><span style="color:#2563eb; font-weight:700;">HÓA XANH</span> (2 NH<sub>2</sub> > 1 COOH)</td></tr>
+                </table>
+            </div>
+
+            <div class="theory-card" data-keywords="peptit peptide protein phản ứng biure màu tím đông tụ trứng hno3 vàng dipeptit">
+                <div class="theory-card-title">
+                    <span>3. Peptide, Protein & Phản Ứng Màu Biure</span>
+                    <span class="badge-trap">Dipeptit không có phản ứng Biure</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Liên kết peptit:</b> Là liên kết <b>-CO-NH-</b> giữa 2 đơn vị <b>α-amino acid</b>. Peptit gồm n gốc α-amino acid thì có <b>(n - 1) liên kết peptit</b>.<br>
+                    • <b>Phản ứng thủy phân trong kiềm:</b><br>
+                    <span class="chem-eq">Peptit<sub>n</sub> + n NaOH → Muối + 1 H<sub>2</sub>O  (Chỉ sinh ra 1 H<sub>2</sub>O duy nhất nếu amino acid 1 nhóm COOH)</span>
+                    • <b style="color:#7c3aed; font-size:14px;">PHẢN ỨNG MÀU BIURE (CỰC KỲ QUAN TRỌNG):</b>
+                    <ul style="padding-left:18px; margin-top:4px;">
+                        <li><b>Điều kiện:</b> Phân tử phải có từ <b>2 liên kết peptit trở lên</b> (nghĩa là từ <b>TRIPEPTIT trở lên</b>) hoặc <b>PROTEIN</b>.</li>
+                        <li><b>Hiện tượng:</b> Trong môi trường kiềm, tác dụng với Cu(OH)<sub>2</sub> tạo phức chất màu <b>TÍM</b> đặc trưng.</li>
+                        <li><b style="color:#dc2626;">⚠️ BẪY THI THƯỜNG GẶP:</b> <b>DIPEPTIT (chỉ có 1 liên kết peptit như Gly-Ala, Ala-Ala) KHÔNG có phản ứng màu Biure!</b></li>
+                    </ul>
+                    • <b>Protein:</b>
+                    <ul style="padding-left:18px; margin-top:4px;">
+                        <li><b>Sự đông tụ:</b> Bị đông tụ không thuận nghịch bởi <i>nhiệt độ</i> (luộc trứng, nấu riêu cua), <i>axit, bazơ</i> hoặc <i>muối kim loại nặng</i>.</li>
+                        <li><b>Phản ứng với HNO<sub>3</sub> đặc:</b> Tạo kết tủa màu <b>VÀNG</b> (do phản ứng nitro hóa các vòng benzen của amino acid thơm trong chuỗi protein).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 4: BẢNG MÀU HIỆN TƯỢNG & 12 BẪY TRẮC NGHIỆM -->
+        <!-- ========================================== -->
+        <div id="inline_tab-content-4" class="theory-tab-pane" style="display:none;">
+            
+            <div class="theory-card" data-keywords="bảng màu nhận biết hiện tượng kết tủa đỏ gạch tráng bạc xanh lam tím vàng">
+                <div class="theory-card-title">
+                    <span>1. Bảng Tra Cứu Nhanh Màu Sắc & Hiện Tượng Hóa Học 12</span>
+                    <span class="badge-tip">Tra cứu tức thì</span>
+                </div>
+                <table class="chem-table">
+                    <tr><th>Thuốc thử / Điều kiện</th><th>Chất tham gia</th><th>Hiện tượng quan sát</th><th>Bản chất hóa học</th></tr>
+                    <tr><td><b>AgNO<sub>3</sub> / NH<sub>3</sub>, t°</b></td><td>Glucose, Fructose, Este fomat (HCOOR), Anđehit</td><td><b style="color:#475569;">Kết tủa trắng bạc (Ag↓)</b> bám gương</td><td>Khử ion Ag<sup>+</sup> thành Ag kim loại</td></tr>
+                    <tr><td><b>Cu(OH)<sub>2</sub> trong kiềm, t°</b></td><td>Glucose, Fructose, Anđehit</td><td><b style="color:#dc2626;">Kết tủa đỏ gạch (Cu<sub>2</sub>O↓)</b></td><td>Oxi hóa nhóm -CHO thành -COONa</td></tr>
+                    <tr><td><b>Cu(OH)<sub>2</sub> ở t° thường</b></td><td>Glycerol, Ethylene glycol, Glucose, Fructose, Saccharose</td><td><b style="color:#2563eb;">Dung dịch màu xanh lam thẫm</b></td><td>Phức đồng của ancol đa chức có các nhóm -OH kề nhau</td></tr>
+                    <tr><td><b>Cu(OH)<sub>2</sub> trong kiềm (Biure)</b></td><td>Tripeptit trở lên, lòng trắng trứng (Protein)</td><td><b style="color:#7c3aed;">Dung dịch màu tím</b> đặc trưng</td><td>Phức đồng với các liên kết peptit (-CO-NH-)</td></tr>
+                    <tr><td><b>HNO<sub>3</sub> đặc</b></td><td>Lòng trắng trứng (Protein)</td><td><b style="color:#ca8a04;">Kết tủa màu vàng</b></td><td>Nitro hóa vòng thơm (nhóm phenyl)</td></tr>
+                    <tr><td><b>Dung dịch I<sub>2</sub></b></td><td>Hồ tinh bột</td><td><b style="color:#3b82f6;">Hợp chất màu xanh tím</b> (nóng mất, nguội hiện lại)</td><td>Phân tử I<sub>2</sub> bị giữ trong chuỗi xoắn của amilose</td></tr>
+                    <tr><td><b>Dung dịch nước Brom (Br<sub>2</sub>)</b></td><td>Aniline (C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>) hoặc Phenol (C<sub>6</sub>H<sub>5</sub>OH)</td><td><b style="color:#64748b;">Kết tủa trắng</b></td><td>Thế 3 nguyên tử Br vào vị trí ortho, para (2,4,6)</td></tr>
+                </table>
+            </div>
+
+            <div class="theory-card" data-keywords="12 bẫy cạm bẫy trắc nghiệm gdpt 2018 sai lầm thường gặp">
+                <div class="theory-card-title">
+                    <span>2. Tuyển Tập 12 Cạm Bẫy Trắc Nghiệm GDPT 2018 Cực Dễ Mất Điểm</span>
+                    <span class="badge-trap">Tránh mất điểm oan</span>
+                </div>
+                <div style="font-size:13px; line-height:1.7;">
+                    <ol style="padding-left:18px;">
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy dipeptit thử biure:</b> Cho Gly-Ala tác dụng Cu(OH)<sub>2</sub> có ra màu tím không? 👉 <b>KHÔNG</b>. Phải có từ 2 liên kết peptit trở lên (tripeptit trở lên) mới có phản ứng màu Biure.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy Fructose làm mất màu dung dịch Brom:</b> Fructose có làm mất màu nước brom không? 👉 <b>KHÔNG</b>. Nước brom không có tính kiềm nên fructose không chuyển thành glucose được. Dùng nước brom để nhận biết glucose và fructose.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy số liên kết peptit:</b> Phân tử Peptit tạo bởi n gốc α-amino acid thì có <b>(n - 1) liên kết peptit</b>, không phải n liên kết.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy đồng phân của Tinh bột và Xenlulozơ:</b> Đều viết là (C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> nhưng n khác nhau hàng chục nghìn lần 👉 <b>KHÔNG PHẢI đồng phân</b>.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy thủy phân este phenol:</b> Este của phenol (RCOOC<sub>6</sub>H<sub>5</sub>) tác dụng với NaOH theo tỉ lệ <b>1 : 2</b>, sinh ra <b>2 muối + H<sub>2</sub>O</b>, KHÔNG tạo ancol.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy quỳ tím amino acid:</b> Gly, Ala, Val trung tính (quỳ không đổi); Axit glutamic có 2 nhóm COOH (quỳ hóa đỏ); Lysine có 2 nhóm NH<sub>2</sub> (quỳ hóa xanh). Không phải amino acid nào cũng làm đổi màu quỳ tím.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy bậc của Amin:</b> Bậc amin tính theo số nguyên tử H của NH<sub>3</sub> bị thế. Chất (CH<sub>3</sub>)<sub>3</sub>C-NH<sub>2</sub> (tert-butylamine) là <b>amin bậc 1</b> vì chỉ có 1 nhóm -NH<sub>2</sub>, không phải bậc 3!
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy nước cứng và chất giặt:</b> Xà phòng mất bọt trong nước cứng do tạo kết tủa (RCOO)<sub>2</sub>Ca↓; còn <b>chất giặt rửa tổng hợp vẫn dùng tốt trong nước cứng</b>.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy dầu mỡ bôi trơn xe máy:</b> Dầu nhờn mỡ máy là hỗn hợp hiđrocacbon (ancan), <b>KHÔNG phải chất béo hay este</b>.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy phân loại tơ nhân tạo (bán tổng hợp):</b> Tơ visco và tơ axetat là <b>tơ bán tổng hợp (tơ nhân tạo)</b> xuất phát từ cellulose thiên nhiên; còn tơ nilon-6,6, olon, capron là <b>tơ tổng hợp</b>.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy tính khử của Saccharose:</b> Saccharose không mở vòng nên không tráng bạc và không khử Cu(OH)<sub>2</sub> đun nóng. Chỉ sau khi thủy phân thành glu + fruc thì sản phẩm mới tráng bạc (tỉ lệ 1 Sac → 4 Ag).
+                        </li>
+                        <li>
+                            <b>Bẫy thủy phân este trong môi trường axit:</b> Luôn là <b>phản ứng thuận nghịch (hai chiều)</b>, sau phản ứng luôn còn este dư tách lớp; còn thủy phân trong kiềm là <b>phản ứng một chiều</b>.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+        </div>
+        
     </main>
 
     <!-- THANH CÔNG CỤ CỐ ĐỊNH DƯỚI ĐÁY -->
@@ -878,6 +1504,404 @@
         </div>
     </div>
 
+    
+    <!-- MODAL LÍ THUYẾT ÔN TẬP TOÀN DIỆN -->
+    <div id="theory-modal" class="modal-overlay" onclick="closeModal('theory-modal')">
+        <div class="theory-modal-card" onclick="event.stopPropagation()">
+            <div class="modal-head" style="background: linear-gradient(135deg, #0f766e, #0d9488); color:#fff; border-bottom:none;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:16px;">📖 Lí Thuyết Ôn Tập Hóa 12 (GDPT 2018)</span>
+                    <span style="font-size:11px; background:rgba(255,255,255,0.2); padding:2px 8px; border-radius:12px;">Dev by TDat</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <button type="button" class="theory-tab-btn" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.3); font-size:11px;" onclick="closeModal('theory-modal'); setFilter('theory');">Toàn màn hình ↗</button>
+                    <button type="button" class="modal-close" style="background:rgba(255,255,255,0.2); color:#fff;" onclick="closeModal('theory-modal')">✕</button>
+                </div>
+            </div>
+            <div class="modal-body" style="padding:0; flex:1; overflow-y:auto; background:#f8fafc;">
+                
+    <!-- THANH TABS CHUYỂN CHỦ ĐỀ -->
+    <div class="theory-tabs-nav">
+        <button type="button" class="theory-tab-btn active" id="modal_btn-t1" onclick="switchTheoryTab(1, 'modal_')">🧪 Chương 1: Este - Lipit - Xà phòng</button>
+        <button type="button" class="theory-tab-btn" id="modal_btn-t2" onclick="switchTheoryTab(2, 'modal_')">🌾 Chương 2: Carbohydrate (Glucid)</button>
+        <button type="button" class="theory-tab-btn" id="modal_btn-t3" onclick="switchTheoryTab(3, 'modal_')">🧬 Chương 3: Amin - Amino Acid - Protein</button>
+        <button type="button" class="theory-tab-btn" id="modal_btn-t4" onclick="switchTheoryTab(4, 'modal_')">⚡ Bảng Màu Hiện Tượng & 12 Cạm Bẫy</button>
+    </div>
+
+    <!-- THANH TÌM KIẾM TỪ KHÓA LÍ THUYẾT -->
+    <div class="theory-search-bar">
+        <span>🔍</span>
+        <input type="text" class="theory-search-input" id="modal_search-input" placeholder="Tìm kiếm nhanh lí thuyết (vd: Este phenol, Sorbitol, Quỳ tím, Biure, Thủy phân, Nước cứng...)" oninput="filterTheoryCards(this.value, 'modal_')">
+        <button type="button" class="theory-tab-btn" onclick="document.getElementById('modal_search-input').value=''; filterTheoryCards('', 'modal_');" style="padding:5px 10px;">Xóa</button>
+    </div>
+
+    <div class="theory-cards-container" id="modal_cards-wrap" style="padding: 14px 2px;">
+        <!-- ========================================== -->
+        <!-- TAB 1: ESTE - LIPIT - CHẤT GIẶT RỬA -->
+        <!-- ========================================== -->
+        <div id="modal_tab-content-1" class="theory-tab-pane">
+            
+            <div class="theory-card" data-keywords="este ester đồng phân công thức no đơn chức danh pháp">
+                <div class="theory-card-title">
+                    <span>1. Khái Niệm, Đồng Phân & Danh Pháp Este (Ester)</span>
+                    <span class="badge-formula">C<sub>n</sub>H<sub>2n</sub>O<sub>2</sub> (n ≥ 2)</span>
+                </div>
+                <p style="font-size:13.5px; color:#334155; margin-bottom:8px;">
+                    • <b>Định nghĩa:</b> Khi thay thế nhóm <b>-OH</b> ở nhóm cacboxyl (<b>-COOH</b>) của axit cacboxylic bằng nhóm <b>-OR'</b> (của ancol hoặc phenol), ta thu được este.<br>
+                    • <b>Công thức chung:</b> R-COO-R' (R là H hoặc gốc hiđrocacbon; R' bắt buộc là gốc hiđrocacbon, không thể là H).<br>
+                    • <b>Đồng phân este no, đơn chức, mạch hở:</b> Công thức tính nhanh số đồng phân: <b>2<sup>n-2</sup></b> (với 2 ≤ n ≤ 5).
+                </p>
+                <table class="chem-table">
+                    <tr><th>CTPT</th><th>Số đp Este</th><th>Các đồng phân Este tiêu biểu</th><th>Ghi chú</th></tr>
+                    <tr><td><b>C<sub>2</sub>H<sub>4</sub>O<sub>2</sub></b></td><td>1</td><td>HCOOCH<sub>3</sub> (Methyl formate)</td><td>Có phản ứng tráng bạc</td></tr>
+                    <tr><td><b>C<sub>3</sub>H<sub>6</sub>O<sub>2</sub></b></td><td>2</td><td>HCOOC<sub>2</sub>H<sub>5</sub> (Ethyl formate), CH<sub>3</sub>COOCH<sub>3</sub> (Methyl acetate)</td><td>1 este tráng bạc</td></tr>
+                    <tr><td><b>C<sub>4</sub>H<sub>8</sub>O<sub>2</sub></b></td><td>4</td><td>HCOOCH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>, HCOOCH(CH<sub>3</sub>)<sub>2</sub>, CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>, C<sub>2</sub>H<sub>5</sub>COOCH<sub>3</sub></td><td>2 este tráng bạc</td></tr>
+                    <tr><td><b>C<sub>5</sub>H<sub>10</sub>O<sub>2</sub></b></td><td>9</td><td>HCOOC<sub>4</sub>H<sub>9</sub> (4 đp), CH<sub>3</sub>COOC<sub>3</sub>H<sub>7</sub> (2 đp), C<sub>2</sub>H<sub>5</sub>COOC<sub>2</sub>H<sub>5</sub> (1 đp), C<sub>3</sub>H<sub>7</sub>COOCH<sub>3</sub> (2 đp)</td><td>4 este tráng bạc</td></tr>
+                </table>
+                <div style="font-size:13px; background:#eff6ff; border-left:3px solid #2563eb; padding:8px 12px; border-radius:0 8px 8px 0; margin-top:8px;">
+                    <b>Quy tắc gọi tên este:</b> <i>Tên gốc R'</i> + <i>Tên gốc axit RCOO- (đuôi "at")</i>.<br>
+                    Ví dụ: CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub> (Ethyl acetate), CH<sub>2</sub>=CH-COOCH<sub>3</sub> (Methyl acrylate), CH<sub>3</sub>COOCH=CH<sub>2</sub> (Vinyl acetate), CH<sub>3</sub>COOCH<sub>2</sub>C<sub>6</sub>H<sub>5</sub> (Benzyl acetate).
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="tính chất vật lý mùi thơm quả chín nhiệt độ sôi liên kết hidro chuối dứa hoa nhài">
+                <div class="theory-card-title">
+                    <span>2. Tính Chất Vật Lí, Mùi Hương & So Sánh Nhiệt Độ Sôi</span>
+                    <span class="badge-tip">Mùi thơm hoa quả</span>
+                </div>
+                <div class="theory-grid-2">
+                    <div style="font-size:13px; line-height:1.6;">
+                        <b style="color:#0f766e;">Mùi hương đặc trưng trong đề thi:</b>
+                        <ul style="padding-left:18px; margin-top:4px;">
+                            <li><b>Isoamyl acetate</b> [CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub>]: Mùi <b>chuối chín</b>.</li>
+                            <li><b>Benzyl acetate</b> [CH<sub>3</sub>COOCH<sub>2</sub>C<sub>6</sub>H<sub>5</sub>]: Mùi <b>hoa nhài</b>.</li>
+                            <li><b>Ethyl butyrate & Ethyl propionate</b>: Mùi <b>quả dứa</b>.</li>
+                            <li><b>Geranyl acetate</b>: Mùi <b>hoa hồng</b>.</li>
+                            <li><b>Ethyl isovalerate</b>: Mùi <b>quả táo</b>.</li>
+                        </ul>
+                    </div>
+                    <div style="font-size:13px; line-height:1.6;">
+                        <b style="color:#0f766e;">So sánh nhiệt độ sôi (cùng số C hoặc M xấp xỉ):</b>
+                        <div class="chem-eq" style="margin-top:4px; font-weight:700; color:#1d4ed8;">
+                            Axit cacboxylic > Ancol > Este ≈ Anđehit / Xeton > Hiđrocacbon
+                        </div>
+                        <p style="font-size:12px; color:#64748b; margin-top:4px;">
+                            <i>Giải thích:</i> Axit có liên kết H liên phân tử bền dạng đime; ancol có liên kết H; este <b>KHÔNG có liên kết hiđro</b> giữa các phân tử với nhau nên nhiệt độ sôi thấp hơn nhiều và rất ít tan trong nước, nhẹ hơn nước.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="phản ứng thủy phân xà phòng hóa este phenol vinyl este tráng bạc đặc biệt">
+                <div class="theory-card-title">
+                    <span>3. Tính Chất Hóa Học & Các Dạng Este Đặc Biệt</span>
+                    <span class="badge-trap">Trọng tâm câu phân loại</span>
+                </div>
+                <p style="font-size:13px; margin-bottom:6px;">
+                    <b>a) Thủy phân trong môi trường axit (H<sup>+</sup>, t°):</b> Phản ứng <b>thuận nghịch (2 chiều)</b>.<br>
+                    <span class="chem-eq">RCOOR' + H<sub>2</sub>O ⇌ RCOOH + R'OH  (Hỗn hợp sau phản ứng tách lớp vì este dư không tan)</span>
+                </p>
+                <p style="font-size:13px; margin-bottom:6px;">
+                    <b>b) Thủy phân trong môi trường kiềm (Xà phòng hóa - NaOH/KOH, t°):</b> Phản ứng <b>1 chiều (hoàn toàn)</b>.<br>
+                    <span class="chem-eq">RCOOR' + NaOH → RCOONa + R'OH  (Hỗn hợp sau phản ứng đồng nhất nếu sản phẩm tan)</span>
+                </p>
+                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:12px; margin-top:8px; font-size:13px; line-height:1.6;">
+                    <b style="color:#b45309;">⚠️ 4 TRƯỜNG HỢP ESTE ĐẶC BIỆT THƯỜNG XUYÊN CÓ BẪY:</b><br>
+                    1. <b>Este của phenol:</b> Tác dụng với NaOH theo tỉ lệ <b>1 : 2</b>, tạo <b>2 muối + H<sub>2</sub>O</b>, KHÔNG tạo ancol!<br>
+                    <span class="chem-eq" style="background:#fff;">RCOOC<sub>6</sub>H<sub>5</sub> + 2NaOH → RCOONa + C<sub>6</sub>H<sub>5</sub>ONa + H<sub>2</sub>O</span>
+                    2. <b>Vinyl este (C nối đôi đính trực tiếp oxi):</b> Thủy phân tạo <b>anđehit</b>.<br>
+                    <span class="chem-eq" style="background:#fff;">CH<sub>3</sub>COOCH=CH<sub>2</sub> + NaOH → CH<sub>3</sub>COONa + CH<sub>3</sub>CHO (Acetaldehyde)</span>
+                    3. <b>Este có nhánh tại C nối đôi:</b> Thủy phân tạo <b>xeton</b>.<br>
+                    <span class="chem-eq" style="background:#fff;">CH<sub>3</sub>COOC(CH<sub>3</sub>)=CH<sub>2</sub> + NaOH → CH<sub>3</sub>COONa + CH<sub>3</sub>-CO-CH<sub>3</sub> (Acetone)</span>
+                    4. <b>Este của axit formic (HCOOR):</b> Có nhóm -CHO nên tham gia <b>phản ứng tráng gương (tạo 2 Ag)</b>.
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="lipit lipid chất béo triglixerit tripanmitin tristearin triolein trilinolein hidro hóa ôi mỡ">
+                <div class="theory-card-title">
+                    <span>4. Lipit & Chất Béo (Triglyceride)</span>
+                    <span class="badge-formula">Trieste của Glixerol</span>
+                </div>
+                <p style="font-size:13px; margin-bottom:8px;">
+                    • <b>Định nghĩa:</b> Chất béo là trieste của glycerol với các axit béo (axit monocacboxylic mạch C dài, không phân nhánh, số C chẵn từ 12-24C).<br>
+                    • <b>4 Axit béo & 4 Chất béo kinh điển:</b>
+                </p>
+                <table class="chem-table">
+                    <tr><th>Tên Axit béo</th><th>CTPT Axit (M)</th><th>Tên Chất béo (Triglyceride)</th><th>CTPT Chất béo (M)</th><th>Trạng thái (t° thường)</th></tr>
+                    <tr><td><b>Axit palmitic</b></td><td>C<sub>15</sub>H<sub>31</sub>COOH (256 - no)</td><td><b>Tripalmitin</b></td><td>(C<sub>15</sub>H<sub>31</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> (<b>806</b>)</td><td>Chất rắn (mỡ động vật)</td></tr>
+                    <tr><td><b>Axit stearic</b></td><td>C<sub>17</sub>H<sub>35</sub>COOH (284 - no)</td><td><b>Tristearin</b></td><td>(C<sub>17</sub>H<sub>35</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> (<b>890</b>)</td><td>Chất rắn (mỡ động vật)</td></tr>
+                    <tr><td><b>Axit oleic</b></td><td>C<sub>17</sub>H<sub>33</sub>COOH (282 - 1 C=C)</td><td><b>Triolein</b></td><td>(C<sub>17</sub>H<sub>33</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> (<b>884</b>)</td><td>Chất lỏng (dầu thực vật)</td></tr>
+                    <tr><td><b>Axit linoleic</b></td><td>C<sub>17</sub>H<sub>31</sub>COOH (280 - 2 C=C)</td><td><b>Trilinolein</b></td><td>(C<sub>17</sub>H<sub>31</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> (<b>878</b>)</td><td>Chất lỏng (dầu thực vật)</td></tr>
+                </table>
+                <div style="font-size:13px; margin-top:8px; line-height:1.6;">
+                    • <b>Phản ứng xà phòng hóa chất béo:</b> Luôn thu được muối axit béo (xà phòng) và <b>glycerol</b> với tỉ lệ mol <b>1 : 3 : 3 : 1</b>.<br>
+                    <span class="chem-eq">(RCOO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> + 3NaOH → 3RCOONa + C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub></span>
+                    • <b>Phản ứng hiđro hóa chất béo lỏng:</b> Chuyển chất béo lỏng (dầu) thành chất béo rắn (bơ nhân tạo / margarin để dễ bảo quản):<br>
+                    <span class="chem-eq">Triolein (lỏng) + 3H<sub>2</sub> ⎯⎯⎯⎯→ Tristearin (rắn)  [xúc tác Ni, t°, p]</span>
+                    • <b>Hiện tượng ôi mỡ:</b> Liên kết đôi C=C của chất béo không no bị oxi không khí oxi hóa chậm tạo peoxit, chất này vỡ ra thành các aldehyde và ketone có mùi khét, hôi độc hại.
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="xà phòng chất giặt rửa tổng hợp nước cứng cơ chế tẩy rửa">
+                <div class="theory-card-title">
+                    <span>5. Xà Phòng & Chất Giặt Rửa Tổng Hợp</span>
+                    <span class="badge-tip">Đầu ưa nước - Đuôi kị nước</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Cấu trúc hạt tẩy rửa:</b> Gồm 2 phần: <b>Đầu ưa nước</b> (phân cực như -COO<sup>-</sup>Na<sup>+</sup>, -SO<sub>3</sub><sup>-</sup>Na<sup>+</sup>) và <b>Đuôi kị nước</b> (không phân cực, mạch hiđrocacbon dài R-).<br>
+                    • <b>Cơ chế giặt rửa:</b> Đuôi kị nước ghim sâu vào giọt dầu bẩn, đầu ưa nước hướng ra ngoài liên kết với nước. Lực cơ học (vò, khuấy) kéo giọt bẩn phân tán thành các vi hạt lơ lửng (nhũ tương) rồi bị xả trôi.<br>
+                    • <b>So sánh then chốt với nước cứng (chứa Ca<sup>2+</sup>, Mg<sup>2+</sup>):</b>
+                    <table class="chem-table">
+                        <tr><th>Tiêu chí</th><th>Xà phòng (RCOONa / RCOOK)</th><th>Chất giặt rửa tổng hợp (ROSO<sub>3</sub>Na / R-C<sub>6</sub>H<sub>4</sub>-SO<sub>3</sub>Na)</th></tr>
+                        <tr><td>Nguồn gốc</td><td>Thực vật, động vật (thủy phân chất béo)</td><td>Tổng hợp từ dầu mỏ (hóa dầu)</td></tr>
+                        <tr><td>Trong nước cứng</td><td><b style="color:#dc2626;">MẤT TÁC DỤNG</b> vì tạo kết tủa (RCOO)<sub>2</sub>Ca↓, (RCOO)<sub>2</sub>Mg↓ làm ố vải</td><td><b style="color:#16a34a;">DÙNG TỐT</b> vì muối canxi/magie của sunfat, sunfonat tan tốt trong nước</td></tr>
+                        <tr><td>Môi trường</td><td>Dễ phân hủy sinh học, thân thiện môi trường</td><td>Chất giặt có mạch nhánh khó phân hủy, gây bọt ô nhiễm nguồn nước</td></tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 2: CARBOHYDRATE -->
+        <!-- ========================================== -->
+        <div id="modal_tab-content-2" class="theory-tab-pane" style="display:none;">
+            
+            <div class="theory-card" data-keywords="carbohydrate glucid phân loại monosaccarit disaccarit polysaccarit">
+                <div class="theory-card-title">
+                    <span>1. Tổng Quan & Phân Loại Carbohydrate (C<sub>n</sub>(H<sub>2</sub>O)<sub>m</sub>)</span>
+                    <span class="badge-formula">Glucid / Cacbohiđrat</span>
+                </div>
+                <table class="chem-table">
+                    <tr><th>Nhóm</th><th>Đại diện tiêu biểu</th><th>Công thức phân tử (M)</th><th>Đặc điểm thủy phân</th></tr>
+                    <tr><td><b>Monosaccharide</b></td><td><b>Glucose</b> (đường nho)<br><b>Fructose</b> (đường mật ong)</td><td>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (<b>180</b>)</td><td><b>Không bị thủy phân</b></td></tr>
+                    <tr><td><b>Disaccharide</b></td><td><b>Saccharose</b> (đường mía)<br><b>Maltose</b> (đường mạch nha)</td><td>C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> (<b>342</b>)</td><td>Thủy phân cho <b>2 phân tử monosaccarit</b></td></tr>
+                    <tr><td><b>Polysaccharide</b></td><td><b>Tinh bột</b> (gạo, ngô, khoai)<br><b>Cellulose</b> (gỗ, bông, đay)</td><td>(C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> (<b>162n</b>)</td><td>Thủy phân cho <b>nhiều phân tử glucose</b></td></tr>
+                </table>
+            </div>
+
+            <div class="theory-card" data-keywords="glucose glucozo fructose fructozo tráng bạc đồng oxit sorbitol nước brom">
+                <div class="theory-card-title">
+                    <span>2. Glucose & Fructose (Đồng Phân C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, M = 180)</span>
+                    <span class="badge-trap">Phân biệt bằng nước Brom</span>
+                </div>
+                <div class="theory-grid-2">
+                    <div style="font-size:13px; line-height:1.6;">
+                        <b style="color:#0f766e; font-size:14px;">GLUCOSE (Đường nho):</b>
+                        <ul style="padding-left:18px; margin-top:4px;">
+                            <li><b>Cấu tạo:</b> Dạng hở có <b>5 nhóm -OH kề nhau</b> và <b>1 nhóm -CHO</b> (CH<sub>2</sub>OH-[CHOH]<sub>4</sub>-CHO). Trong dung dịch chủ yếu ở dạng vòng α và β.</li>
+                            <li><b>Phản ứng ancol đa chức:</b> Hòa tan Cu(OH)<sub>2</sub> ở t° thường → <b>dung dịch màu xanh lam thẫm</b> (phức đồng).</li>
+                            <li><b>Phản ứng anđehit:</b>
+                                <br>- Tráng bạc: Tạo <b>2 Ag↓</b> sáng bóng.
+                                <br>- Khử Cu(OH)<sub>2</sub> trong kiềm đun nóng: Tạo <b>kết tủa đỏ gạch Cu<sub>2</sub>O↓</b>.
+                                <br>- <b style="color:#dc2626;">Làm MẤT MÀU dung dịch nước brom (Br<sub>2</sub>)</b> tạo axit gluconic.
+                            </li>
+                            <li><b>Khử bằng H<sub>2</sub> (Ni, t°):</b> Tạo <b>Sorbitol</b> (C<sub>6</sub>H<sub>14</sub>O<sub>6</sub>).</li>
+                            <li><b>Lên men rượu:</b> C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → 2C<sub>2</sub>H<sub>5</sub>OH + 2CO<sub>2</sub>↑.</li>
+                            <li>Nồng độ trong máu người bình thường: <b>khoảng 0,1%</b> (~4,4 - 7,2 mmol/L).</li>
+                        </ul>
+                    </div>
+                    <div style="font-size:13px; line-height:1.6;">
+                        <b style="color:#0f766e; font-size:14px;">FRUCTOSE (Đường mật ong):</b>
+                        <ul style="padding-left:18px; margin-top:4px;">
+                            <li><b>Cấu tạo:</b> Đồng phân của glucose, có <b>5 nhóm -OH</b> và <b>1 nhóm xeton (C=O tại C2)</b>. Chiếm ~40% trong mật ong, độ ngọt lớn nhất.</li>
+                            <li><b>Chuyển hóa trong môi trường kiềm (OH<sup>-</sup>):</b>
+                                <div class="chem-eq" style="margin:4px 0;">Fructose ⇌ Glucose  (xúc tác OH⁻)</div>
+                            </li>
+                            <li>Vì chuyển thành glucose trong kiềm nên Fructose <b>VẪN CÓ</b> phản ứng tráng bạc (AgNO<sub>3</sub>/NH<sub>3</sub>) và khử Cu(OH)<sub>2</sub> khi đun nóng.</li>
+                            <li><b style="color:#dc2626; font-size:13.5px;">⚠️ BẪY SO SÁNH QUYẾT ĐỊNH:</b> Fructose <b>KHÔNG LÀM MẤT MÀU nước brom (Br<sub>2</sub>)</b> vì brom là môi trường axit/trung tính không thể chuyển hóa fructose thành glucose.<br>
+                            👉 <i>Muốn phân biệt Glucose và Fructose, bắt buộc dùng <b>dung dịch nước Brom</b>!</i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="saccharose saccarozo đường mía củ cải thủy phân không tráng bạc">
+                <div class="theory-card-title">
+                    <span>3. Saccharose (Đường Mía - C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, M = 342)</span>
+                    <span class="badge-tip">Không tráng bạc</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Cấu tạo:</b> Gồm <b>1 gốc α-glucose</b> và <b>1 gốc β-fructose</b> liên kết qua nguyên tử oxi giữa C1 của glu và C2 của fruc (liên kết α,β-1,2-glycosidic).<br>
+                    • <b>Đặc điểm then chốt:</b> Phân tử <b>KHÔNG còn nhóm -OH hemiaxetal tự do</b> → Không thể mở vòng tạo nhóm anđehit.<br>
+                    • <b>Tính chất hóa học:</b>
+                    <ul style="padding-left:18px; margin-top:4px;">
+                        <li>Hòa tan Cu(OH)<sub>2</sub> ở t° thường tạo <b>dung dịch màu xanh lam</b> (do có nhiều nhóm -OH kề nhau).</li>
+                        <li><b style="color:#dc2626;">KHÔNG có tính khử:</b> KHÔNG tráng bạc, KHÔNG khử Cu(OH)<sub>2</sub> đun nóng, KHÔNG làm mất màu nước brom.</li>
+                        <li><b>Phản ứng thủy phân (H<sup>+</sup>, t° hoặc men):</b>
+                            <span class="chem-eq">C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> + H<sub>2</sub>O → C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (Glucose) + C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (Fructose)</span>
+                            👉 Hỗn hợp sau khi thủy phân đem tráng bạc: <b>1 mol Saccharose tạo tối đa 4 mol Ag</b>!
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="tinh bột amilose amilopectin cellulose xenlulozo iot tơ visco thuốc súng không khói">
+                <div class="theory-card-title">
+                    <span>4. Tinh Bột & Cellulose ((C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub>, M = 162n)</span>
+                    <span class="badge-trap">Không phải đồng phân</span>
+                </div>
+                <table class="chem-table">
+                    <tr><th>Đặc điểm</th><th>TINH BỘT</th><th>CELLULOSE (XENLULOZƠ)</th></tr>
+                    <tr><td>Cấu tạo mắt xích</td><td>Các gốc <b>α-glucose</b></td><td>Các gốc <b>β-glucose</b></td></tr>
+                    <tr><td>Dạng mạch</td><td>Gồm <b>Amylose</b> (mạch không phân nhánh, xoắn lò xo, liên kết α-1,4) và <b>Amylopectin</b> (mạch phân nhánh, liên kết α-1,4 và α-1,6)</td><td>Mạch <b>kéo dài không phân nhánh</b>, các chuỗi liên kết song song bằng liên kết hiđro (liên kết β-1,4-glicozit)</td></tr>
+                    <tr><td>Nhóm -OH tự do</td><td>Nhiều nhóm -OH</td><td>Mỗi mắt xích có <b>3 nhóm -OH tự do</b>: [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub></td></tr>
+                    <tr><td>Phản ứng đặc trưng</td><td>Tác dụng với dung dịch <b>I<sub>2</sub> → Dung dịch màu xanh tím</b> (đun nóng mất màu, để nguội xuất hiện lại)</td><td>• Tan trong <b>nước Svayze</b> ([Cu(NH<sub>3</sub>)<sub>4</sub>](OH)<sub>2</sub>)<br>• Tác dụng HNO<sub>3</sub> đặc (H<sub>2</sub>SO<sub>4</sub> đặc) tạo <b>Xenlulozơ trinitrat</b> [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(ONO<sub>2</sub>)<sub>3</sub>]<sub>n</sub> làm <i>thuốc súng không khói</i>.</td></tr>
+                    <tr><td>Ứng dụng tơ</td><td>Không dùng kéo tơ</td><td>Chế tạo <b>Tơ visco</b> (hòa tan bằng CS<sub>2</sub> + NaOH) và <b>Tơ axetat</b> (phản ứng với anhiđrit axetic) → đều là <i>tơ bán tổng hợp (nhân tạo)</i>.</td></tr>
+                </table>
+                <div style="background:#fee2e2; border-left:3px solid #dc2626; padding:8px 12px; border-radius:0 8px 8px 0; margin-top:8px; font-size:13px; color:#991b1b;">
+                    <b>LƯU Ý CỰC KỲ QUAN TRỌNG:</b> Tinh bột và Xenlulozơ <b>KHÔNG PHẢI là đồng phân của nhau</b> vì hệ số polime hóa n khác nhau rất nhiều (n của xenlulozơ lớn hơn tinh bột rất nhiều lần). Cả hai đều không có phản ứng tráng bạc.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 3: AMIN - AMINO ACID - PROTEIN -->
+        <!-- ========================================== -->
+        <div id="modal_tab-content-3" class="theory-tab-pane" style="display:none;">
+            
+            <div class="theory-card" data-keywords="amin amine bậc amin tính bazơ anilin kết tủa trắng brom quỳ tím">
+                <div class="theory-card-title">
+                    <span>1. Amin: Phân Loại Bậc, Tính Bazơ & Phản Ứng Của Anilin</span>
+                    <span class="badge-tip">Bậc amin ≠ Bậc ancol</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Bậc amin:</b> Bằng <b>số nguyên tử H</b> trong phân tử NH<sub>3</sub> bị thay thế bởi gốc hiđrocacbon.<br>
+                    &nbsp;&nbsp;- Bậc I: R-NH<sub>2</sub> (vd: CH<sub>3</sub>NH<sub>2</sub>, C<sub>2</sub>H<sub>5</sub>NH<sub>2</sub>, C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>, (CH<sub>3</sub>)<sub>3</sub>C-NH<sub>2</sub>).<br>
+                    &nbsp;&nbsp;- Bậc II: R-NH-R' (vd: CH<sub>3</sub>-NH-CH<sub>3</sub>: Dimethylamine).<br>
+                    &nbsp;&nbsp;- Bậc III: R-N(R')-R'' (vd: (CH<sub>3</sub>)<sub>3</sub>N: Trimethylamine).<br>
+                    • <b>So sánh lực bazơ:</b> Cặp e tự do trên nguyên tử N có khả năng nhận proton H<sup>+</sup>.<br>
+                    <div class="chem-eq" style="color:#1d4ed8; font-weight:700;">
+                        Amin béo bậc II > Amin béo bậc I > NH<sub>3</sub> > Amin thơm (Aniline C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>)
+                    </div>
+                    • <b>Tác dụng quỳ tím:</b> Các amin béo tan tốt trong nước làm <b>quỳ tím hóa xanh</b>. <b>Anilin (C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>)</b> có tính bazơ cực yếu do vòng benzen hút e, <b>KHÔNG làm đổi màu quỳ tím</b>.<br>
+                    • <b>Phản ứng nhận biết Anilin:</b> Tác dụng với dung dịch nước brom (Br<sub>2</sub>) tạo <b>kết tủa trắng 2,4,6-tribromoaniline</b> (M = 330).<br>
+                    <span class="chem-eq">C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> + 3Br<sub>2</sub> → C<sub>6</sub>H<sub>2</sub>Br<sub>3</sub>NH<sub>2</sub>↓ (trắng) + 3HBr</span>
+                </div>
+            </div>
+
+            <div class="theory-card" data-keywords="amino acid glycine alanine valine glutamic acid lysine ion lưỡng cực quỳ tím">
+                <div class="theory-card-title">
+                    <span>2. Amino Acid: Cấu Tạo, Lưỡng Tính & 5 Chất Tiêu Chuẩn</span>
+                    <span class="badge-formula">H<sub>2</sub>N-R-COOH</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Khái niệm:</b> Hợp chất hữu cơ tạp chức, phân tử chứa đồng thời nhóm <b>amino (-NH<sub>2</sub>)</b> và nhóm <b>cacboxyl (-COOH)</b>.<br>
+                    • <b>Cấu tạo ion lưỡng cực:</b> Trong tinh thể và dung dịch, nhóm -COOH cho proton sang nhóm -NH<sub>2</sub> tạo <b><sup>+</sup>H<sub>3</sub>N-R-COO<sup>-</sup></b>. Vì vậy amino acid là chất rắn kết tinh, nhiệt độ nóng chảy cao, tan tốt trong nước.<br>
+                    • <b>Tính chất lưỡng tính:</b> Tác dụng vừa với axit mạnh (HCl), vừa với bazơ mạnh (NaOH).<br>
+                </div>
+                <table class="chem-table">
+                    <tr><th>Tên thông thường</th><th>Kí hiệu</th><th>Công thức cấu tạo thu gọn</th><th>Phân tử khối (M)</th><th>Tác dụng lên quỳ tím</th></tr>
+                    <tr><td><b>Glycine</b></td><td>Gly</td><td>H<sub>2</sub>N-CH<sub>2</sub>-COOH</td><td><b>75</b></td><td><span style="color:#64748b; font-weight:700;">Không đổi màu</span> (1 NH<sub>2</sub> = 1 COOH)</td></tr>
+                    <tr><td><b>Alanine</b></td><td>Ala</td><td>CH<sub>3</sub>-CH(NH<sub>2</sub>)-COOH</td><td><b>89</b></td><td><span style="color:#64748b; font-weight:700;">Không đổi màu</span> (1 NH<sub>2</sub> = 1 COOH)</td></tr>
+                    <tr><td><b>Valine</b></td><td>Val</td><td>(CH<sub>3</sub>)<sub>2</sub>CH-CH(NH<sub>2</sub>)-COOH</td><td><b>117</b></td><td><span style="color:#64748b; font-weight:700;">Không đổi màu</span> (1 NH<sub>2</sub> = 1 COOH)</td></tr>
+                    <tr><td><b>Glutamic acid</b></td><td>Glu</td><td>HOOC-CH<sub>2</sub>-CH<sub>2</sub>-CH(NH<sub>2</sub>)-COOH</td><td><b>147</b></td><td><span style="color:#dc2626; font-weight:700;">HÓA ĐỎ / HỒNG</span> (2 COOH > 1 NH<sub>2</sub>)</td></tr>
+                    <tr><td><b>Lysine</b></td><td>Lys</td><td>H<sub>2</sub>N-(CH<sub>2</sub>)<sub>4</sub>-CH(NH<sub>2</sub>)-COOH</td><td><b>146</b></td><td><span style="color:#2563eb; font-weight:700;">HÓA XANH</span> (2 NH<sub>2</sub> > 1 COOH)</td></tr>
+                </table>
+            </div>
+
+            <div class="theory-card" data-keywords="peptit peptide protein phản ứng biure màu tím đông tụ trứng hno3 vàng dipeptit">
+                <div class="theory-card-title">
+                    <span>3. Peptide, Protein & Phản Ứng Màu Biure</span>
+                    <span class="badge-trap">Dipeptit không có phản ứng Biure</span>
+                </div>
+                <div style="font-size:13px; line-height:1.6;">
+                    • <b>Liên kết peptit:</b> Là liên kết <b>-CO-NH-</b> giữa 2 đơn vị <b>α-amino acid</b>. Peptit gồm n gốc α-amino acid thì có <b>(n - 1) liên kết peptit</b>.<br>
+                    • <b>Phản ứng thủy phân trong kiềm:</b><br>
+                    <span class="chem-eq">Peptit<sub>n</sub> + n NaOH → Muối + 1 H<sub>2</sub>O  (Chỉ sinh ra 1 H<sub>2</sub>O duy nhất nếu amino acid 1 nhóm COOH)</span>
+                    • <b style="color:#7c3aed; font-size:14px;">PHẢN ỨNG MÀU BIURE (CỰC KỲ QUAN TRỌNG):</b>
+                    <ul style="padding-left:18px; margin-top:4px;">
+                        <li><b>Điều kiện:</b> Phân tử phải có từ <b>2 liên kết peptit trở lên</b> (nghĩa là từ <b>TRIPEPTIT trở lên</b>) hoặc <b>PROTEIN</b>.</li>
+                        <li><b>Hiện tượng:</b> Trong môi trường kiềm, tác dụng với Cu(OH)<sub>2</sub> tạo phức chất màu <b>TÍM</b> đặc trưng.</li>
+                        <li><b style="color:#dc2626;">⚠️ BẪY THI THƯỜNG GẶP:</b> <b>DIPEPTIT (chỉ có 1 liên kết peptit như Gly-Ala, Ala-Ala) KHÔNG có phản ứng màu Biure!</b></li>
+                    </ul>
+                    • <b>Protein:</b>
+                    <ul style="padding-left:18px; margin-top:4px;">
+                        <li><b>Sự đông tụ:</b> Bị đông tụ không thuận nghịch bởi <i>nhiệt độ</i> (luộc trứng, nấu riêu cua), <i>axit, bazơ</i> hoặc <i>muối kim loại nặng</i>.</li>
+                        <li><b>Phản ứng với HNO<sub>3</sub> đặc:</b> Tạo kết tủa màu <b>VÀNG</b> (do phản ứng nitro hóa các vòng benzen của amino acid thơm trong chuỗi protein).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 4: BẢNG MÀU HIỆN TƯỢNG & 12 BẪY TRẮC NGHIỆM -->
+        <!-- ========================================== -->
+        <div id="modal_tab-content-4" class="theory-tab-pane" style="display:none;">
+            
+            <div class="theory-card" data-keywords="bảng màu nhận biết hiện tượng kết tủa đỏ gạch tráng bạc xanh lam tím vàng">
+                <div class="theory-card-title">
+                    <span>1. Bảng Tra Cứu Nhanh Màu Sắc & Hiện Tượng Hóa Học 12</span>
+                    <span class="badge-tip">Tra cứu tức thì</span>
+                </div>
+                <table class="chem-table">
+                    <tr><th>Thuốc thử / Điều kiện</th><th>Chất tham gia</th><th>Hiện tượng quan sát</th><th>Bản chất hóa học</th></tr>
+                    <tr><td><b>AgNO<sub>3</sub> / NH<sub>3</sub>, t°</b></td><td>Glucose, Fructose, Este fomat (HCOOR), Anđehit</td><td><b style="color:#475569;">Kết tủa trắng bạc (Ag↓)</b> bám gương</td><td>Khử ion Ag<sup>+</sup> thành Ag kim loại</td></tr>
+                    <tr><td><b>Cu(OH)<sub>2</sub> trong kiềm, t°</b></td><td>Glucose, Fructose, Anđehit</td><td><b style="color:#dc2626;">Kết tủa đỏ gạch (Cu<sub>2</sub>O↓)</b></td><td>Oxi hóa nhóm -CHO thành -COONa</td></tr>
+                    <tr><td><b>Cu(OH)<sub>2</sub> ở t° thường</b></td><td>Glycerol, Ethylene glycol, Glucose, Fructose, Saccharose</td><td><b style="color:#2563eb;">Dung dịch màu xanh lam thẫm</b></td><td>Phức đồng của ancol đa chức có các nhóm -OH kề nhau</td></tr>
+                    <tr><td><b>Cu(OH)<sub>2</sub> trong kiềm (Biure)</b></td><td>Tripeptit trở lên, lòng trắng trứng (Protein)</td><td><b style="color:#7c3aed;">Dung dịch màu tím</b> đặc trưng</td><td>Phức đồng với các liên kết peptit (-CO-NH-)</td></tr>
+                    <tr><td><b>HNO<sub>3</sub> đặc</b></td><td>Lòng trắng trứng (Protein)</td><td><b style="color:#ca8a04;">Kết tủa màu vàng</b></td><td>Nitro hóa vòng thơm (nhóm phenyl)</td></tr>
+                    <tr><td><b>Dung dịch I<sub>2</sub></b></td><td>Hồ tinh bột</td><td><b style="color:#3b82f6;">Hợp chất màu xanh tím</b> (nóng mất, nguội hiện lại)</td><td>Phân tử I<sub>2</sub> bị giữ trong chuỗi xoắn của amilose</td></tr>
+                    <tr><td><b>Dung dịch nước Brom (Br<sub>2</sub>)</b></td><td>Aniline (C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub>) hoặc Phenol (C<sub>6</sub>H<sub>5</sub>OH)</td><td><b style="color:#64748b;">Kết tủa trắng</b></td><td>Thế 3 nguyên tử Br vào vị trí ortho, para (2,4,6)</td></tr>
+                </table>
+            </div>
+
+            <div class="theory-card" data-keywords="12 bẫy cạm bẫy trắc nghiệm gdpt 2018 sai lầm thường gặp">
+                <div class="theory-card-title">
+                    <span>2. Tuyển Tập 12 Cạm Bẫy Trắc Nghiệm GDPT 2018 Cực Dễ Mất Điểm</span>
+                    <span class="badge-trap">Tránh mất điểm oan</span>
+                </div>
+                <div style="font-size:13px; line-height:1.7;">
+                    <ol style="padding-left:18px;">
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy dipeptit thử biure:</b> Cho Gly-Ala tác dụng Cu(OH)<sub>2</sub> có ra màu tím không? 👉 <b>KHÔNG</b>. Phải có từ 2 liên kết peptit trở lên (tripeptit trở lên) mới có phản ứng màu Biure.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy Fructose làm mất màu dung dịch Brom:</b> Fructose có làm mất màu nước brom không? 👉 <b>KHÔNG</b>. Nước brom không có tính kiềm nên fructose không chuyển thành glucose được. Dùng nước brom để nhận biết glucose và fructose.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy số liên kết peptit:</b> Phân tử Peptit tạo bởi n gốc α-amino acid thì có <b>(n - 1) liên kết peptit</b>, không phải n liên kết.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy đồng phân của Tinh bột và Xenlulozơ:</b> Đều viết là (C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> nhưng n khác nhau hàng chục nghìn lần 👉 <b>KHÔNG PHẢI đồng phân</b>.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy thủy phân este phenol:</b> Este của phenol (RCOOC<sub>6</sub>H<sub>5</sub>) tác dụng với NaOH theo tỉ lệ <b>1 : 2</b>, sinh ra <b>2 muối + H<sub>2</sub>O</b>, KHÔNG tạo ancol.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy quỳ tím amino acid:</b> Gly, Ala, Val trung tính (quỳ không đổi); Axit glutamic có 2 nhóm COOH (quỳ hóa đỏ); Lysine có 2 nhóm NH<sub>2</sub> (quỳ hóa xanh). Không phải amino acid nào cũng làm đổi màu quỳ tím.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy bậc của Amin:</b> Bậc amin tính theo số nguyên tử H của NH<sub>3</sub> bị thế. Chất (CH<sub>3</sub>)<sub>3</sub>C-NH<sub>2</sub> (tert-butylamine) là <b>amin bậc 1</b> vì chỉ có 1 nhóm -NH<sub>2</sub>, không phải bậc 3!
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy nước cứng và chất giặt:</b> Xà phòng mất bọt trong nước cứng do tạo kết tủa (RCOO)<sub>2</sub>Ca↓; còn <b>chất giặt rửa tổng hợp vẫn dùng tốt trong nước cứng</b>.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy dầu mỡ bôi trơn xe máy:</b> Dầu nhờn mỡ máy là hỗn hợp hiđrocacbon (ancan), <b>KHÔNG phải chất béo hay este</b>.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy phân loại tơ nhân tạo (bán tổng hợp):</b> Tơ visco và tơ axetat là <b>tơ bán tổng hợp (tơ nhân tạo)</b> xuất phát từ cellulose thiên nhiên; còn tơ nilon-6,6, olon, capron là <b>tơ tổng hợp</b>.
+                        </li>
+                        <li style="margin-bottom:8px;">
+                            <b>Bẫy tính khử của Saccharose:</b> Saccharose không mở vòng nên không tráng bạc và không khử Cu(OH)<sub>2</sub> đun nóng. Chỉ sau khi thủy phân thành glu + fruc thì sản phẩm mới tráng bạc (tỉ lệ 1 Sac → 4 Ag).
+                        </li>
+                        <li>
+                            <b>Bẫy thủy phân este trong môi trường axit:</b> Luôn là <b>phản ứng thuận nghịch (hai chiều)</b>, sau phản ứng luôn còn este dư tách lớp; còn thủy phân trong kiềm là <b>phản ứng một chiều</b>.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+            </div>
+        </div>
+    </div>
+        
     <!-- MODAL BẢNG NGUYÊN TỬ KHỐI -->
     <div id="ntk-modal" class="modal-overlay" onclick="closeModal('ntk-modal')">
         <div class="modal-card" onclick="event.stopPropagation()">
@@ -1800,37 +2824,50 @@
        ========================================================================= */
     function setFilter(mode) {
         state.filter = mode;
-        ["all", "p1", "p2", "p3", "unanswered"].forEach(m => {
-            document.getElementById(`tab-${m}`).classList.toggle("active", m === mode);
+        ["all", "p1", "p2", "p3", "unanswered", "theory"].forEach(m => {
+            const el = document.getElementById(`tab-${m}`);
+            if (el) el.classList.toggle("active", m === mode);
         });
 
         const w1 = document.getElementById("wrap-p1");
         const w2 = document.getElementById("wrap-p2");
         const w3 = document.getElementById("wrap-p3");
+        const wt = document.getElementById("wrap-theory");
+
+        if (mode === "theory") {
+            if (w1) w1.classList.add("hidden");
+            if (w2) w2.classList.add("hidden");
+            if (w3) w3.classList.add("hidden");
+            if (wt) wt.classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            return;
+        }
+
+        if (wt) wt.classList.add("hidden");
 
         // Hiện lại tất cả card trước
         document.querySelectorAll(".q-card").forEach(c => c.classList.remove("hidden"));
 
         if (mode === "all") {
-            w1.classList.remove("hidden");
-            w2.classList.remove("hidden");
-            w3.classList.remove("hidden");
+            if (w1) w1.classList.remove("hidden");
+            if (w2) w2.classList.remove("hidden");
+            if (w3) w3.classList.remove("hidden");
         } else if (mode === "p1") {
-            w1.classList.remove("hidden");
-            w2.classList.add("hidden");
-            w3.classList.add("hidden");
+            if (w1) w1.classList.remove("hidden");
+            if (w2) w2.classList.add("hidden");
+            if (w3) w3.classList.add("hidden");
         } else if (mode === "p2") {
-            w1.classList.add("hidden");
-            w2.classList.remove("hidden");
-            w3.classList.add("hidden");
+            if (w1) w1.classList.add("hidden");
+            if (w2) w2.classList.remove("hidden");
+            if (w3) w3.classList.add("hidden");
         } else if (mode === "p3") {
-            w1.classList.add("hidden");
-            w2.classList.add("hidden");
-            w3.classList.remove("hidden");
+            if (w1) w1.classList.add("hidden");
+            if (w2) w2.classList.add("hidden");
+            if (w3) w3.classList.remove("hidden");
         } else if (mode === "unanswered") {
-            w1.classList.remove("hidden");
-            w2.classList.remove("hidden");
-            w3.classList.remove("hidden");
+            if (w1) w1.classList.remove("hidden");
+            if (w2) w2.classList.remove("hidden");
+            if (w3) w3.classList.remove("hidden");
             applyUnansweredFilter();
         }
     }
@@ -1857,6 +2894,53 @@
         }
     }
 
+    
+    /* =========================================================================
+       HỆ THỐNG ĐIỀU HƯỚNG & TÌM KIẾM LÍ THUYẾT - DEV BY TDAT
+       ========================================================================= */
+    function openTheoryModal() {
+        openModal('theory-modal');
+    }
+
+    function switchTheoryTab(tabIndex, scopePrefix) {
+        const p = scopePrefix || '';
+        for (let i = 1; i <= 4; i++) {
+            const pane = document.getElementById(`${p}tab-content-${i}`);
+            const btn = document.getElementById(`${p}btn-t${i}`);
+            if (pane) pane.style.display = (i === tabIndex) ? 'block' : 'none';
+            if (btn) btn.classList.toggle('active', i === tabIndex);
+        }
+    }
+
+    function filterTheoryCards(keyword, scopePrefix) {
+        const p = scopePrefix || '';
+        const kw = (keyword || '').toLowerCase().trim();
+        const container = document.getElementById(`${p}cards-wrap`);
+        if (!container) return;
+
+        const cards = container.querySelectorAll('.theory-card');
+        if (!kw) {
+            cards.forEach(c => c.style.display = 'block');
+            return;
+        }
+
+        // Nếu có từ khóa, mở hiển thị tất cả các tab panes để tìm kiếm xuyên suốt
+        for (let i = 1; i <= 4; i++) {
+            const pane = document.getElementById(`${p}tab-content-${i}`);
+            if (pane) pane.style.display = 'block';
+        }
+
+        cards.forEach(card => {
+            const text = (card.innerText || '').toLowerCase();
+            const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+            if (text.includes(kw) || keywords.includes(kw)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    
     function openModal(id) {
         document.getElementById(id).style.display = "flex";
     }
