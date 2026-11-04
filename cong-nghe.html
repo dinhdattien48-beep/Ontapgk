@@ -1,0 +1,3295 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ôn Tập & Thi Thử Giữa Kì Công Nghệ Lâm Nghiệp 2026 – 2027</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            forest: {
+              50: '#f0fdf5',
+              100: '#dcfce8',
+              200: '#bbf7d1',
+              300: '#86efad',
+              400: '#4ade80',
+              500: '#16a34a',
+              600: '#15803d',
+              700: '#166534',
+              800: '#14532d',
+              900: '#0f3f22',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f6f8f6;
+      color: #1e293b;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5cb;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a394;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.22s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-emerald-200 selection:text-emerald-950">
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-900/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between py-3 gap-3">
+        <!-- Brand -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-600 to-forest-800 text-white flex items-center justify-center shadow-md shadow-emerald-700/20 shrink-0">
+              <i class="fa-solid fa-tree text-lg"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Công Nghệ Lâm Nghiệp</span>
+                <span class="text-xs font-medium text-slate-500">Năm học 2026 – 2027</span>
+              </div>
+              <h1 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight mt-0.5">
+                Đề Cương Ôn Tập & Thi Thử Giữa Kì
+              </h1>
+            </div>
+          </div>
+          <!-- Quick mobile badge -->
+          <button onclick="switchTab('handbook')" title="Xem lưu ý bẫy đề Câu 6" class="md:hidden inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-xl bg-amber-100 text-amber-800 border border-amber-200">
+            <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+            <span>Lưu ý Câu 6</span>
+          </button>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar pb-0.5 md:pb-0" aria-label="Chế độ học tập">
+          <button id="tab-btn-study" onclick="switchTab('study')" class="nav-tab-btn shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>Ôn tập chi tiết</span>
+            <span class="px-1.5 py-0.5 text-[11px] rounded-full bg-emerald-800/15 font-bold">46</span>
+          </button>
+          <button id="tab-btn-exam" onclick="switchTab('exam')" class="nav-tab-btn shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+            <i class="fa-solid fa-stopwatch"></i>
+            <span>Thi thử Ma trận</span>
+          </button>
+          <button id="tab-btn-handbook" onclick="switchTab('handbook')" class="nav-tab-btn shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span>Sổ tay & Bẫy đề</span>
+            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+          </button>
+          <button id="tab-btn-history" onclick="switchTab('history')" class="nav-tab-btn shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Lịch sử</span>
+            <span id="history-count-badge" class="hidden px-1.5 py-0.5 text-[11px] rounded-full bg-slate-200 text-slate-700 font-bold">0</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-5 sm:py-7">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: ÔN TẬP CHI TIẾT                     -->
+    <!-- ========================================== -->
+    <section id="view-study" class="space-y-5 animate-fade-in">
+      <!-- Top Alert Banner for Paper Error Q6 & Study Progress -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <div class="lg:col-span-8 bg-gradient-to-r from-emerald-800 via-forest-800 to-emerald-900 rounded-2xl p-4 sm:p-5 text-white shadow-md flex flex-col justify-between gap-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/15 px-2.5 py-1 rounded-full mb-2">
+                <i class="fa-solid fa-seedling text-emerald-300"></i>
+                Ngân hàng chuẩn 100% theo tờ đề cương gốc
+              </span>
+              <h2 class="text-lg sm:text-xl font-bold">Chế độ Ôn tập tương tác & Giải thích chuyên sâu</h2>
+              <p class="text-emerald-100/90 text-xs sm:text-sm mt-1 leading-relaxed">
+                Bấm trực tiếp vào từng đáp án để tự kiểm tra trí nhớ và đọc giải thích chi tiết, hoặc bật chế độ <strong>Hiện toàn bộ đáp án</strong> để đọc lướt nhanh trước giờ kiểm tra.
+              </p>
+            </div>
+          </div>
+          <!-- Progress stats -->
+          <div class="grid grid-cols-3 gap-2.5 pt-1 border-t border-white/15 text-center sm:text-left">
+            <div class="bg-white/10 rounded-xl px-3 py-2">
+              <div class="text-[11px] text-emerald-200">Đã luyện tập</div>
+              <div class="text-base sm:text-lg font-extrabold" id="study-stat-practiced">0 / 46 câu</div>
+            </div>
+            <div class="bg-white/10 rounded-xl px-3 py-2">
+              <div class="text-[11px] text-emerald-200">Đánh dấu sao</div>
+              <div class="text-base sm:text-lg font-extrabold text-amber-300" id="study-stat-starred">0 câu</div>
+            </div>
+            <div class="bg-white/10 rounded-xl px-3 py-2">
+              <div class="text-[11px] text-emerald-200">Câu cần lưu ý / hay sai</div>
+              <div class="text-base sm:text-lg font-extrabold text-rose-300" id="study-stat-wrong">0 câu</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special Warning Card for Câu 6 -->
+        <div class="lg:col-span-4 bg-amber-50 border-2 border-amber-300/80 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center gap-2 text-amber-900 font-extrabold text-sm">
+              <span class="w-7 h-7 rounded-lg bg-amber-200 text-amber-800 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </span>
+              <span>ĐÍNH CHÍNH QUAN TRỌNG TRÊN ĐỀ GIẤY!</span>
+            </div>
+            <p class="text-xs sm:text-sm text-amber-900/90 mt-2 leading-relaxed">
+              Ở <strong>Câu 6 Phần I</strong>, tờ đề giấy khoanh bút chì nhầm vào đáp án <strong>A</strong>. Đề hỏi <em>"hậu quả của suy thoái rừng"</em> nên đáp án chính xác bắt buộc là <strong>B</strong> (gây xói mòn, lũ quét, giảm đa dạng sinh học).
+            </p>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-amber-200/80 flex items-center justify-between gap-2">
+            <span class="text-[11px] font-medium text-amber-800">Lưu ý: Đề gốc khuyết số Câu 19</span>
+            <button onclick="jumpToQuestion('P1_6')" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white transition shadow-sm shrink-0">
+              Xem Câu 6 ngay <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter & Control Bar -->
+      <div class="bg-white rounded-2xl border border-slate-200/80 p-3.5 sm:p-4 shadow-sm space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5">
+          <!-- Search input -->
+          <div class="lg:col-span-4 relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+            <input
+              id="study-search"
+              type="text"
+              oninput="renderStudyList()"
+              placeholder="Tìm từ khóa (vd: vỏ bầu, kiểm lâm, ngập mặn, FSC...)"
+              class="w-full pl-9 pr-8 py-2.5 text-sm rounded-xl border border-slate-200 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none transition"
+            />
+            <button id="clear-search-btn" onclick="clearStudySearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Filter Part -->
+          <div class="lg:col-span-3">
+            <select id="study-filter-part" onchange="renderStudyList()" class="w-full py-2.5 px-3 text-sm rounded-xl border border-slate-200 bg-slate-50/60 font-medium text-slate-700 focus:border-emerald-600 outline-none">
+              <option value="ALL">Tất cả phần (36 câu P.I + 10 câu P.II)</option>
+              <option value="P1">Phần I: Trắc nghiệm 4 lựa chọn (36 câu)</option>
+              <option value="P2">Phần II: Trắc nghiệm Đúng - Sai (10 câu)</option>
+            </select>
+          </div>
+
+          <!-- Filter Topic -->
+          <div class="lg:col-span-3">
+            <select id="study-filter-topic" onchange="renderStudyList()" class="w-full py-2.5 px-3 text-sm rounded-xl border border-slate-200 bg-slate-50/60 font-medium text-slate-700 focus:border-emerald-600 outline-none">
+              <option value="ALL">Tất cả 3 chủ đề kiến thức</option>
+              <option value="T1">Chủ đề 1: Khái quát & Ngành nghề lâm nghiệp</option>
+              <option value="T2">Chủ đề 2: Quản lý, bảo vệ & Khai thác rừng</option>
+              <option value="T3">Chủ đề 3: Sinh trưởng & Kỹ thuật trồng rừng</option>
+            </select>
+          </div>
+
+          <!-- Filter Special Status -->
+          <div class="lg:col-span-2">
+            <select id="study-filter-status" onchange="renderStudyList()" class="w-full py-2.5 px-3 text-sm rounded-xl border border-slate-200 bg-slate-50/60 font-medium text-slate-700 focus:border-emerald-600 outline-none">
+              <option value="ALL">Mọi trạng thái</option>
+              <option value="STARRED">⭐ Đã đánh dấu sao</option>
+              <option value="WRONG">⚠️ Đã làm sai</option>
+              <option value="UNANSWERED">⏳ Chưa tự làm</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Bottom Action Row -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100">
+          <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
+            <span id="study-result-count" class="font-semibold text-emerald-800">Đang hiển thị 46 câu hỏi</span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <!-- Toggle Show All Answers -->
+            <button id="btn-toggle-all-answers" onclick="toggleShowAllAnswers()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition">
+              <i id="icon-toggle-all" class="fa-regular fa-eye"></i>
+              <span id="text-toggle-all">Hiện toàn bộ đáp án & giải thích</span>
+            </button>
+
+            <!-- Reset Study Practice -->
+            <button onclick="confirmResetStudyProgress()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 text-slate-600 hover:bg-slate-100 transition">
+              <i class="fa-solid fa-rotate-left"></i>
+              <span>Làm mới lựa chọn</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Questions List Container -->
+      <div id="study-questions-container" class="space-y-4"></div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: THI THỬ MA TRẬN THẬT (TÍNH GIỜ)      -->
+    <!-- ========================================== -->
+    <section id="view-exam" class="hidden animate-fade-in">
+      <!-- SUBVIEW 2A: EXAM SETUP & MATRIX -->
+      <div id="exam-setup-screen" class="space-y-6">
+        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden">
+          <div class="bg-gradient-to-r from-emerald-800 to-forest-900 px-5 sm:px-8 py-6 text-white">
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-400/20 text-emerald-200 mb-2">
+              <i class="fa-solid fa-graduation-cap"></i> Cấu trúc đề mới Bộ GD&ĐT
+            </span>
+            <h2 class="text-xl sm:text-2xl font-extrabold">Phòng Thi Thử Giữa Kì Tính Giờ</h2>
+            <p class="text-emerald-100/90 text-sm mt-1 max-w-3xl">
+              Mô phỏng sát 100% kỳ thi thật trên lớp: tự động bốc đề phân tầng theo ma trận kiến thức, trộn thứ tự phương án A/B/C/D chống học tủ vị trí và chấm điểm lũy tiến Phần Đúng - Sai.
+            </p>
+          </div>
+
+          <div class="p-5 sm:p-8 space-y-6">
+            <!-- Exam Mode Cards -->
+            <div>
+              <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">1. Chọn chế độ đề thi</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Mode Standard 45m -->
+                <label id="card-mode-standard" onclick="selectExamMode('standard')" class="cursor-pointer rounded-2xl border-2 border-emerald-600 bg-emerald-50/50 p-4 sm:p-5 transition-all flex flex-col justify-between gap-3">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0">
+                        45'
+                      </div>
+                      <div>
+                        <div class="font-bold text-slate-900 text-base">Đề chuẩn Ma trận Giữa kì</div>
+                        <div class="text-xs text-emerald-700 font-semibold">Khuyên dùng • Thang điểm 10,0 chuẩn</div>
+                      </div>
+                    </div>
+                    <input type="radio" name="examMode" value="standard" checked class="w-5 h-5 accent-emerald-600 mt-1" />
+                  </div>
+                  <div class="text-xs sm:text-sm text-slate-600 space-y-1 pt-2 border-t border-emerald-200/60">
+                    <div>• <strong>Phần I (6,0 điểm):</strong> 24 câu TNKQ (0,25 điểm/câu)</div>
+                    <div>• <strong>Phần II (4,0 điểm):</strong> 4 câu Đúng - Sai (16 ý, chấm lũy tiến 0,1 → 0,25 → 0,5 → 1,0đ)</div>
+                    <div>• <strong>Thời gian:</strong> 45 phút (bốc ngẫu nhiên phân tầng từ đề cương)</div>
+                  </div>
+                </label>
+
+                <!-- Mode Full 60m -->
+                <label id="card-mode-full" onclick="selectExamMode('full')" class="cursor-pointer rounded-2xl border-2 border-slate-200 hover:border-emerald-300 bg-white p-4 sm:p-5 transition-all flex flex-col justify-between gap-3">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center font-bold shrink-0">
+                        60'
+                      </div>
+                      <div>
+                        <div class="font-bold text-slate-900 text-base">Thi tổng duyệt Full Đề cương</div>
+                        <div class="text-xs text-slate-500 font-semibold">Quét sạch 100% câu hỏi đề cương</div>
+                      </div>
+                    </div>
+                    <input type="radio" name="examMode" value="full" class="w-5 h-5 accent-emerald-600 mt-1" />
+                  </div>
+                  <div class="text-xs sm:text-sm text-slate-600 space-y-1 pt-2 border-t border-slate-100">
+                    <div>• <strong>Phần I (6,0 điểm quy đổi):</strong> Toàn bộ 36 câu TNKQ</div>
+                    <div>• <strong>Phần II (4,0 điểm quy đổi):</strong> Toàn bộ 10 câu Đúng - Sai (40 ý)</div>
+                    <div>• <strong>Thời gian:</strong> 60 phút (kiểm tra tổng lực không sót câu nào)</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Anti-rote Shuffle Switch -->
+            <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <i class="fa-solid fa-shuffle"></i>
+                </div>
+                <div>
+                  <div class="font-bold text-slate-900 text-sm sm:text-base">
+                    Đảo vị trí đáp án A, B, C, D & trộn thứ tự câu (Giống phần mềm McMIX)
+                  </div>
+                  <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                    Trong tờ đề cương gốc, phần lớn câu có đáp án đúng nằm ở vị trí <strong>A</strong>. Khi đi thi thật, nhà trường sẽ trộn đảo đáp án — hãy giữ công tắc này <strong>BẬT</strong> để rèn phản xạ đọc hiểu bản chất!
+                  </p>
+                </div>
+              </div>
+              <label class="inline-flex items-center cursor-pointer shrink-0 self-end sm:self-center">
+                <input id="exam-shuffle-toggle" type="checkbox" checked class="sr-only peer">
+                <div class="w-12 h-7 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all relative peer-checked:bg-emerald-600"></div>
+                <span class="ml-2.5 text-sm font-bold text-emerald-800">Đang BẬT</span>
+              </label>
+            </div>
+
+            <!-- Matrix Specification Table -->
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500">2. Bảng Ma trận đặc tả đề thi chuẩn Giữa kì (45 phút)</h3>
+                <span class="text-xs font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">Chuẩn cấu trúc 2026–2027</span>
+              </div>
+              <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                      <th class="py-3 px-3.5 font-bold">Chủ đề kiến thức</th>
+                      <th class="py-3 px-2.5 text-center font-bold">P.I - Nhận biết</th>
+                      <th class="py-3 px-2.5 text-center font-bold">P.I - Thông hiểu</th>
+                      <th class="py-3 px-2.5 text-center font-bold">P.I - Vận dụng</th>
+                      <th class="py-3 px-2.5 text-center font-bold bg-emerald-50/70 text-emerald-900">Phần II (Đúng/Sai)</th>
+                      <th class="py-3 px-3.5 text-right font-bold">Tổng điểm</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-200/80 bg-white">
+                    <tr>
+                      <td class="py-3 px-3.5 font-semibold text-slate-800">
+                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1.5"></span>
+                        1. Khái quát & Ngành nghề lâm nghiệp
+                      </td>
+                      <td class="py-3 px-2.5 text-center">4 câu</td>
+                      <td class="py-3 px-2.5 text-center">2 câu</td>
+                      <td class="py-3 px-2.5 text-center text-slate-400">—</td>
+                      <td class="py-3 px-2.5 text-center bg-emerald-50/40 font-semibold text-emerald-800">1 câu (4 ý)</td>
+                      <td class="py-3 px-3.5 text-right font-bold text-slate-900">2,50 đ (25%)</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-3.5 font-semibold text-slate-800">
+                        <span class="inline-block w-2 h-2 rounded-full bg-teal-500 mr-1.5"></span>
+                        2. Quản lý, bảo vệ & Khai thác rừng bền vững
+                      </td>
+                      <td class="py-3 px-2.5 text-center">1 câu</td>
+                      <td class="py-3 px-2.5 text-center">4 câu</td>
+                      <td class="py-3 px-2.5 text-center">4 câu</td>
+                      <td class="py-3 px-2.5 text-center bg-emerald-50/40 font-semibold text-emerald-800">1 câu (4 ý)</td>
+                      <td class="py-3 px-3.5 text-right font-bold text-slate-900">3,25 đ (32,5%)</td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 px-3.5 font-semibold text-slate-800">
+                        <span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1.5"></span>
+                        3. Quy luật sinh trưởng & Kỹ thuật trồng rừng
+                      </td>
+                      <td class="py-3 px-2.5 text-center">3 câu</td>
+                      <td class="py-3 px-2.5 text-center">5 câu</td>
+                      <td class="py-3 px-2.5 text-center">1 câu</td>
+                      <td class="py-3 px-2.5 text-center bg-emerald-50/40 font-semibold text-emerald-800">2 câu (8 ý)</td>
+                      <td class="py-3 px-3.5 text-right font-bold text-slate-900">4,25 đ (42,5%)</td>
+                    </tr>
+                    <tr class="bg-slate-50 font-bold text-slate-900">
+                      <td class="py-3 px-3.5">Tổng cộng toàn đề</td>
+                      <td class="py-3 px-2.5 text-center text-emerald-700">8 câu (2,0đ)</td>
+                      <td class="py-3 px-2.5 text-center text-emerald-700">11 câu (2,75đ)</td>
+                      <td class="py-3 px-2.5 text-center text-emerald-700">5 câu (1,25đ)</td>
+                      <td class="py-3 px-2.5 text-center bg-emerald-100/60 text-emerald-900">4 câu (4,0đ)</td>
+                      <td class="py-3 px-3.5 text-right text-emerald-700 text-base">10,0 điểm</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="text-xs text-slate-500 mt-2">
+                <i class="fa-solid fa-circle-info mr-1 text-emerald-600"></i>
+                <strong>Quy tắc chấm Phần II (Bộ GD&ĐT):</strong> Mỗi câu có 4 ý (a, b, c, d). Trả lời đúng 1 ý được <strong>0,1đ</strong>; đúng 2 ý được <strong>0,25đ</strong>; đúng 3 ý được <strong>0,5đ</strong>; đúng cả 4 ý được trọn vẹn <strong>1,0đ</strong>.
+              </p>
+            </div>
+
+            <!-- Start CTA -->
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+              <div id="retry-wrong-banner" class="hidden w-full sm:w-auto">
+                <button onclick="startWrongQuestionsExam()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-sm font-bold bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 transition">
+                  <i class="fa-solid fa-bolt"></i>
+                  <span>Luyện riêng các câu từng sai (<span id="wrong-pool-count">0</span> câu)</span>
+                </button>
+              </div>
+              <button onclick="startExam()" class="w-full sm:w-auto ml-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl text-base font-extrabold bg-gradient-to-r from-emerald-600 to-forest-700 hover:from-emerald-700 hover:to-forest-800 text-white shadow-lg shadow-emerald-700/25 transition transform active:scale-[0.99]">
+                <i class="fa-solid fa-play"></i>
+                <span>Bắt đầu làm bài ngay</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBVIEW 2B: ACTIVE EXAM ROOM -->
+      <div id="exam-active-screen" class="hidden">
+        <!-- Sticky Mobile/Top Exam Bar -->
+        <div class="sticky top-[68px] md:top-[64px] z-30 bg-white/95 backdrop-blur border border-emerald-900/15 rounded-2xl p-3 sm:px-5 shadow-md mb-5 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div id="exam-timer-box" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-950 text-white font-mono text-base sm:text-lg font-extrabold tracking-wider shadow-inner">
+              <i class="fa-regular fa-clock text-emerald-400"></i>
+              <span id="exam-timer-display">45:00</span>
+            </div>
+            <div>
+              <div id="exam-mode-label" class="text-xs sm:text-sm font-bold text-slate-900">Đề chuẩn Ma trận (45p)</div>
+              <div class="text-xs text-slate-500">Đã hoàn thành: <strong id="exam-answered-count" class="text-emerald-700">0/28</strong> câu</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="toggleMobilePalette()" class="lg:hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold border border-slate-200 bg-slate-50 text-slate-700">
+              <i class="fa-solid fa-table-cells"></i>
+              <span>Bảng câu hỏi</span>
+            </button>
+            <button onclick="confirmCancelExam()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">
+              <i class="fa-solid fa-xmark"></i>
+              <span class="hidden sm:inline">Thoát</span>
+            </button>
+            <button onclick="requestSubmitExam()" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Nộp bài chấm điểm</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <!-- Exam Questions Column -->
+          <div id="exam-questions-list" class="lg:col-span-8 xl:col-span-9 space-y-5"></div>
+
+          <!-- Desktop Question Palette Sidebar -->
+          <aside id="exam-palette- wrapper" class="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-[148px]">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-sm text-slate-900">Phiếu trả lời nhanh</h3>
+                <span id="exam-flag-counter" class="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">0 cờ xem lại</span>
+              </div>
+
+              <!-- Legend -->
+              <div class="grid grid-cols-3 gap-1.5 text-[11px] text-slate-600">
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600 inline-block"></span> Đã làm đủ</div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-200 border border-amber-400 inline-block"></span> Đang dở</div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-100 border border-slate-300 inline-block"></span> Chưa làm</div>
+              </div>
+
+              <div id="exam-palette-desktop" class="space-y-3 max-h-[60vh] overflow-y-auto pr-1"></div>
+
+              <button onclick="requestSubmitExam()" class="w-full py-3 rounded-xl font-extrabold text-sm bg-emerald-600 hover:bg-emerald-700 text-white shadow transition">
+                Nộp bài ngay
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- SUBVIEW 2C: EXAM RESULTS & REVIEW -->
+      <div id="exam-result-screen" class="hidden space-y-6"></div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: SỔ TAY TÓM TẮT & LƯU Ý BẪY ĐỀ       -->
+    <!-- ========================================== -->
+    <section id="view-handbook" class="hidden space-y-6 animate-fade-in">
+      <!-- Critical Trap Alert Box -->
+      <div class="bg-amber-50 border-2 border-amber-400 rounded-3xl p-5 sm:p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-200/80 text-amber-950 text-xs font-extrabold uppercase tracking-wide">
+              <i class="fa-solid fa-bell"></i> Cảnh báo 2 bẫy cực dễ mất điểm khi đi thi
+            </div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">1. Lỗi khoanh nhầm đáp án ở Câu 6 Phần I trên tờ đề giấy</h2>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Trên bản in giấy có nét bút khoanh vào <strong>A</strong> ở Câu 6: <em>"Khi phân tích về hậu quả của việc suy thoái tài nguyên rừng đối với môi trường sinh thái, phát biểu nào sau đây là chính xác?"</em>.
+              <br/>• Phương án A (<em>Làm tăng tỷ lệ che phủ đất và giúp điều hòa nguồn nước ngầm tốt hơn</em>) là <strong>vai trò tích cực của rừng</strong>, hoàn toàn SAI với câu hỏi về hậu quả suy thoái.
+              <br/>• <strong>Đáp án đúng 100% phải là B:</strong> <em>"Gây xói mòn đất nghiêm trọng, tăng nguy cơ lũ quét, sạt lở đất và làm giảm đa dạng sinh học."</em>
+            </p>
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 pt-2">2. Cấm học vẹt "Khoanh toàn A" & Chú ý các câu hỏi phủ định</h3>
+            <p class="text-sm text-slate-700 leading-relaxed">
+              Trong tờ đề cương gốc, người biên soạn đặt đáp án đúng ở câu A khá nhiều (28/36 câu), chỉ có <strong>8 câu khác A</strong> là:
+              <strong>Câu 1 (D)</strong>, <strong>Câu 3 (B)</strong>, <strong>Câu 6 (B)</strong>, <strong>Câu 7 (B)</strong>, <strong>Câu 12 (B)</strong>, <strong>Câu 13 (B)</strong>, <strong>Câu 20 (B)</strong>, <strong>Câu 21 (B)</strong>, <strong>Câu 32 (B)</strong> (9 câu). Tuy nhiên khi ra đề chính thức, phần mềm trộn đề sẽ <strong>đảo ngẫu nhiên vị trí A, B, C, D</strong>. Ngoài ra cần đọc kỹ từ khóa phủ định in đậm như <strong>"không phản ánh đúng"</strong> (Câu 1) và <strong>"sai trái"</strong> (Câu 31).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Core Topics Summary Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Topic 1 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg font-bold">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">Chủ đề 1: Khái quát & Ngành nghề Lâm nghiệp</h3>
+            <ul class="text-xs sm:text-sm text-slate-600 space-y-2 leading-relaxed">
+              <li>• <strong>Vai trò Kinh tế:</strong> Cung cấp gỗ (mộc, giấy, xây dựng, xuất khẩu >14–15 tỷ USD/năm), lâm sản ngoài gỗ và nguồn thu lớn từ <strong>Chi trả dịch vụ môi trường rừng (PFES)</strong>.</li>
+              <li>• <strong>Vai trò Sinh thái – Xã hội:</strong> Hấp thụ $CO_2$, cung cấp $O_2$, điều hòa khí hậu, giữ nước ngầm, chống xói mòn, chắn sóng ven biển; tạo việc làm và sinh kế vùng cao.</li>
+              <li>• <strong>Đặc trưng sản xuất:</strong> Chu kỳ kinh doanh <strong>rất dài</strong> (nhiều năm đến hàng chục năm), địa bàn rộng lớn gắn với đất lâm nghiệp đồi núi, phụ thuộc tự nhiên.</li>
+              <li>• <strong>Yêu cầu nghề nghiệp (Kỹ sư lâm sinh, Kiểm lâm...):</strong> Kiến thức sinh lý thực vật & lâm sinh, am hiểu pháp luật/tiêu chuẩn quốc tế <strong>FSC</strong>, kỷ luật an toàn lao động, dũng cảm và sức khỏe dẻo dai ngoài trời.</li>
+            </ul>
+          </div>
+          <div class="pt-3 border-t border-slate-100 text-xs font-semibold text-emerald-700">
+            Gồm 8 câu Phần I & 3 câu Phần II
+          </div>
+        </div>
+
+        <!-- Topic 2 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="w-11 h-11 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center text-lg font-bold">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">Chủ đề 2: Quản lý, Bảo vệ & Khai thác bền vững</h3>
+            <ul class="text-xs sm:text-sm text-slate-600 space-y-2 leading-relaxed">
+              <li>• <strong>Thực trạng rừng VN:</strong> Độ che phủ tăng (>42%) nhờ rừng trồng mở rộng, nhưng <strong>rừng tự nhiên giàu</strong> (miền Trung, Tây Nguyên) và <strong>rừng ngập mặn</strong> (do phá nuôi tôm tự phát) vẫn chịu áp lực suy giảm.</li>
+              <li>• <strong>Nguyên nhân suy thoái:</strong> Khai thác gỗ/săn bắt trái phép, đốt nương làm rẫy bất cẩn, cháy rừng mùa khô, chuyển mục đích sử dụng đất rừng thiếu kiểm soát.</li>
+              <li>• <strong>Khai thác bền vững & Khai thác chọn:</strong> Đáp ứng hiện tại nhưng vẫn giữ tiềm năng cho thế hệ sau. Chặt cây già/sâu bệnh, giữ cây non khỏe giúp duy trì độ che phủ và tự tái sinh.</li>
+              <li>• <strong>Giải pháp cốt lõi:</strong> Giao đất giao rừng cấp sổ lâu dài + hỗ trợ sinh kế vùng đệm (du lịch sinh thái, PFES) + đường băng cản lửa/chòi canh + toàn dân tham gia tuần tra, tố giác.</li>
+            </ul>
+          </div>
+          <div class="pt-3 border-t border-slate-100 text-xs font-semibold text-teal-700">
+            Gồm 15 câu Phần I & 3 câu Phần II
+          </div>
+        </div>
+
+        <!-- Topic 3 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold">
+              <i class="fa-solid fa-sun-plant-wilt"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900">Chủ đề 3: Quy luật Sinh trưởng & Kỹ thuật Lâm sinh</h3>
+            <ul class="text-xs sm:text-sm text-slate-600 space-y-2 leading-relaxed">
+              <li>• <strong>Quy luật sinh trưởng:</strong> Phụ thuộc kiểu gen loài + ngoại cảnh (mưa, nhiệt, sáng, đất). Mang <strong>tính pha theo tuổi</strong> (đầu chậm → giữa tăng vọt → già chậm dần) và <strong>tính nhịp điệu mùa</strong> (mùa sinh trưởng & mùa nghỉ).</li>
+              <li>• <strong>Thời vụ trồng rừng:</strong> Chọn lúc mưa ẩm, nhiệt độ mát mẻ phù hợp từng vùng (miền Bắc vụ xuân mưa phùn, miền Nam đầu mùa mưa) để cây nhanh bén rễ, tỷ lệ sống >90%.</li>
+              <li>• <strong>Xử lý thực bì:</strong> Dọn cỏ dại, giảm ổ sâu bệnh, tạo thông thoáng cuốc hố.</li>
+              <li>• <strong>Chăm sóc & Tỉa thưa:</strong> Cây con cần làm cỏ, xới đất, vun gốc; rừng khép tán (rừng sào) cần <strong>tỉa thưa</strong> cây còi cọc/sâu bệnh để tập trung ánh sáng & dinh dưỡng cho cây tốt.</li>
+            </ul>
+          </div>
+          <div class="pt-3 border-t border-slate-100 text-xs font-semibold text-amber-700">
+            Gồm 13 câu Phần I & 4 câu Phần II
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Tables -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <!-- Table 1: Growth stages -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+          <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-chart-simple text-emerald-600"></i>
+            So sánh các giai đoạn sinh trưởng của cây rừng
+          </h3>
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-xs sm:text-sm text-left">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-3">Giai đoạn</th>
+                  <th class="p-3">Đặc điểm nổi bật</th>
+                  <th class="p-3">Tác động kỹ thuật</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr>
+                  <td class="p-3 font-bold text-slate-800">1. Nảy mầm & Cây non (Ấu niên)</td>
+                  <td class="p-3 text-slate-600">Rễ còn nông, tốc độ tăng trưởng ban đầu chậm, mẫn cảm với cỏ dại & khô hạn.</td>
+                  <td class="p-3 text-slate-600">Làm cỏ, phát quang dây leo, xới đất, vun gốc, dặm cây chết (Không bón phân hóa học liều cao gây xót rễ).</td>
+                </tr>
+                <tr class="bg-emerald-50/40">
+                  <td class="p-3 font-bold text-emerald-900">2. Trưởng thành / Trung niên</td>
+                  <td class="p-3 text-slate-700"><strong>Rễ đâm sâu mạnh mẽ, tốc độ tăng chiều cao & tích lũy sinh khối đạt CỰC ĐẠI.</strong> Bắt đầu ra hoa, kết quả tạo hạt giống tái sinh.</td>
+                  <td class="p-3 text-slate-700">Chặt tỉa thưa nuôi dưỡng, bón phân thúc tăng sinh khối gỗ lớn, tuần tra PCCCR & phòng sâu bệnh.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-slate-800">3. Già cỗi (Thành thục – Suy giảm)</td>
+                  <td class="p-3 text-slate-600">Sinh trưởng chiều cao và đường kính chậm dần rồi ngừng lại, sức đề kháng giảm.</td>
+                  <td class="p-3 text-slate-600">Khai thác chọn hoặc khai thác chính theo quy hoạch và xúc tiến tái sinh rừng mới.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Table 2: Planting methods -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+          <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-hand-holding-droplet text-emerald-600"></i>
+            Quy trình chuẩn: Trồng cây con có bầu vs Gieo hạt đất dốc
+          </h3>
+          <div class="space-y-3 text-xs sm:text-sm">
+            <div class="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200 space-y-1.5">
+              <div class="font-bold text-emerald-950">A. Kỹ thuật trồng rừng bằng cây con có bầu (Câu 10, Câu 23)</div>
+              <p class="text-slate-700 leading-relaxed">
+                <strong>Bước 1:</strong> Đào hố kích thước phù hợp trước khi trồng, bón lót phân hữu cơ trộn đều với lớp đất mặt.<br/>
+                <strong>Bước 2:</strong> <strong>Xé/rạch bỏ lớp vỏ bầu nylon</strong> không tự phân hủy (giữ nguyên bầu đất không vỡ) để rễ dễ đâm sâu ra ngoài, không bị bó nghẹt.<br/>
+                <strong>Bước 3:</strong> Đặt cây <strong>thẳng đứng</strong> giữa hố, lấp đất và nén chặt vừa phải quanh gốc, vun gốc giữ ẩm để cây đứng vững trước gió bão.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div class="font-bold text-slate-900">B. Gieo hạt trực tiếp trên đất đồi núi dốc (Câu 35)</div>
+              <p class="text-slate-700 leading-relaxed">
+                • Bắt buộc tạo các <strong>rãnh theo đường đồng mức</strong> (ngang dốc) để cản dòng chảy rửa trôi.<br/>
+                • Vùi lấp hạt ở độ sâu vừa phải và <strong>che phủ mặt đất</strong> (rơm rạ, cỏ khô) để giữ ẩm và tránh mưa lớn xói trôi hạt.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: LỊCH SỬ LÀM BÀI                     -->
+    <!-- ========================================== -->
+    <section id="view-history" class="hidden space-y-6 animate-fade-in">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h2 class="text-xl font-extrabold text-slate-900">Lịch sử Thi thử & Theo dõi Tiến bộ</h2>
+          <p class="text-sm text-slate-500">Toàn bộ kết quả làm bài và danh sách câu hay sai được lưu tự động trên trình duyệt của bạn.</p>
+        </div>
+        <button id="btn-clear-history" onclick="confirmClearHistory()" class="self-start sm:self-auto inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-rose-600 border border-rose-200 bg-rose-50 hover:bg-rose-100 transition">
+          <i class="fa-regular fa-trash-can"></i>
+          <span>Xóa lịch sử</span>
+        </button>
+      </div>
+
+      <!-- Summary KPIs -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5" id="history-kpi-grid"></div>
+
+      <!-- Wrong Questions Bank -->
+      <div id="history-wrong-bank" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm"></div>
+
+      <!-- Attempts List -->
+      <div id="history-attempts-list" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200/80 py-5 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <div>
+        <strong class="text-slate-700">Ôn Tập Giữa Kì Công Nghệ Nông Nghiệp (Lâm Nghiệp)</strong> • Năm học 2026 – 2027
+      </div>
+      <div>
+        36 câu Phần I + 10 câu Phần II (Đúng chuẩn thang điểm Bộ GD&ĐT)
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE QUESTION PALETTE DRAWER -->
+  <div id="mobile-palette-modal" class="fixed inset-0 z-50 hidden bg-slate-900/50 backdrop-blur-xs flex items-end justify-center">
+    <div class="bg-white w-full max-h-[80vh] rounded-t-3xl p-5 space-y-4 overflow-y-auto animate-fade-in">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-extrabold text-base text-slate-900">Bảng danh sách câu hỏi</h3>
+        <button onclick="toggleMobilePalette()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="exam-palette-mobile" class="space-y-3"></div>
+      <button onclick="toggleMobilePalette(); requestSubmitExam();" class="w-full py-3 rounded-xl font-extrabold text-sm bg-emerald-600 text-white">
+        Nộp bài chấm điểm
+      </button>
+    </div>
+  </div>
+
+  <!-- CUSTOM DIALOG MODAL (NO NATIVE ALERT/CONFIRM) -->
+  <div id="custom-modal" class="fixed inset-0 z-50 hidden bg-slate-900/55 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-4 animate-fade-in">
+      <div class="flex items-start gap-3.5">
+        <div id="modal-icon-box" class="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shrink-0">
+          <i id="modal-icon" class="fa-solid fa-circle-question"></i>
+        </div>
+        <div class="space-y-1">
+          <h3 id="modal-title" class="text-lg font-extrabold text-slate-900">Xác nhận</h3>
+          <p id="modal-message" class="text-sm text-slate-600 leading-relaxed"></p>
+        </div>
+      </div>
+      <div class="flex items-center justify-end gap-2.5 pt-2">
+        <button id="modal-cancel-btn" onclick="closeModal()" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">
+          Quay lại
+        </button>
+        <button id="modal-confirm-btn" class="px-5 py-2.5 rounded-xl text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition">
+          Đồng ý
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 pointer-events-none space-y-2"></div>
+
+  <!-- APPLICATION SCRIPT -->
+  <script>
+    // =========================================================================
+    // 1. METADATA & COMPLETE VERIFIED QUESTION BANK (36 PART I + 10 PART II)
+    // =========================================================================
+    const TOPICS = {
+      T1: {
+        id: 'T1',
+        short: 'Chủ đề 1: Khái quát & Ngành nghề',
+        name: 'Khái quát về Lâm nghiệp & Ngành nghề lâm nghiệp',
+        badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200'
+      },
+      T2: {
+        id: 'T2',
+        short: 'Chủ đề 2: Quản lý & Bảo vệ rừng',
+        name: 'Quản lý, bảo vệ & Khai thác tài nguyên rừng bền vững',
+        badgeClass: 'bg-teal-100 text-teal-800 border-teal-200'
+      },
+      T3: {
+        id: 'T3',
+        short: 'Chủ đề 3: Sinh trưởng & Trồng rừng',
+        name: 'Quy luật sinh trưởng & Kỹ thuật trồng, chăm sóc rừng',
+        badgeClass: 'bg-amber-100 text-amber-900 border-amber-200'
+      }
+    };
+
+    const LEVELS = {
+      NB: { label: 'Nhận biết', cls: 'bg-slate-100 text-slate-700' },
+      TH: { label: 'Thông hiểu', cls: 'bg-sky-100 text-sky-800' },
+      VD: { label: 'Vận dụng', cls: 'bg-purple-100 text-purple-800' }
+    };
+
+    // PHẦN I: 36 CÂU TRẮC NGHIỆM NHIỀU LỰA CHỌN (Đề gốc đánh số 1->37, khuyết số 19)
+    const PART1_QUESTIONS = [
+      {
+        id: 'P1_1',
+        num: 1,
+        topic: 'T1',
+        level: 'NB',
+        question: 'Phát biểu nào sau đây <strong>không</strong> phản ánh đúng vai trò hoặc triển vọng của lâm nghiệp đối với đời sống và môi trường?',
+        options: {
+          A: 'Cung cấp gỗ và lâm sản ngoài gỗ phục vụ cho các ngành công nghiệp và tiêu dùng.',
+          B: 'Điều hòa khí hậu, bảo vệ nguồn nước và chống xói mòn đất hiệu quả.',
+          C: 'Góp phần quan trọng trong việc tạo việc làm, nâng cao thu nhập cho người lao động vùng núi.',
+          D: 'Làm cạn kiệt nhanh chóng các nguồn tài nguyên thiên nhiên và gây ô nhiễm môi trường đất.'
+        },
+        answer: 'D',
+        explanation: 'Đề hỏi phát biểu <strong>không</strong> đúng. A, B, C lần lượt nêu đúng vai trò kinh tế, môi trường sinh thái và xã hội của lâm nghiệp. Phương án D mô tả tác động tiêu cực phá hủy môi trường, hoàn toàn trái ngược với vai trò và định hướng phát triển lâm nghiệp bền vững.'
+      },
+      {
+        id: 'P1_2',
+        num: 2,
+        topic: 'T1',
+        level: 'NB',
+        question: 'Hoạt động nào sau đây thuộc nhóm các hoạt động lâm nghiệp cơ bản?',
+        options: {
+          A: 'Trồng rừng, chăm sóc rừng và khai thác rừng hợp lý.',
+          B: 'Khai thác cát sỏi lòng sông và xây dựng thủy điện.',
+          C: 'Đốt nương làm rẫy du canh truyền thống.',
+          D: 'Mở rộng diện tích đất đô thị hóa trên đất nông nghiệp.'
+        },
+        answer: 'A',
+        explanation: 'Các hoạt động lâm nghiệp cơ bản bao gồm: quản lý bảo vệ rừng, phát triển rừng (trồng mới, chăm sóc, khoanh nuôi tái sinh), khai thác rừng hợp lý và chế biến - thương mại lâm sản. B thuộc công nghiệp/xây dựng, C gây suy thoái rừng, D thuộc đô thị hóa.'
+      },
+      {
+        id: 'P1_3',
+        num: 3,
+        topic: 'T1',
+        level: 'TH',
+        question: 'Nhận định nào sau đây phân tích <strong>đúng</strong> yêu cầu cơ bản đối với người lao động của một số ngành nghề phổ biến trong lâm nghiệp (như nghề trồng rừng hoặc bảo vệ rừng)?',
+        options: {
+          A: 'Chỉ cần sức khỏe tốt mà không cần có kiến thức chuyên môn về sinh học cây rừng.',
+          B: 'Phải có kiến thức về sinh lý thực vật, kỹ thuật lâm sinh, tinh thần trách nhiệm cao và khả năng làm việc trong điều kiện địa hình khó khăn.',
+          C: 'Không cần trang bị các kỹ năng vận hành công cụ hay thiết bị bảo hộ lao động hiện đại.',
+          D: 'Chỉ làm việc trong không gian văn phòng khép kín, không tiếp xúc với thiên nhiên.'
+        },
+        answer: 'B',
+        explanation: 'Đặc thù lâm nghiệp là làm việc ngoài trời ở địa hình đồi núi hiểm trở, đối tượng là sinh vật rừng có chu kỳ dài nên đòi hỏi cả chuyên môn (sinh lý thực vật, lâm sinh), kỹ năng an toàn lao động lẫn sức khỏe dẻo dai và tinh thần trách nhiệm.'
+      },
+      {
+        id: 'P1_4',
+        num: 4,
+        topic: 'T2',
+        level: 'NB',
+        question: 'Theo báo cáo của cơ quan quản lý lâm nghiệp, một trong những nguyên nhân chủ yếu làm suy thoái tài nguyên rừng tự nhiên ở nhiều vùng là do đâu?',
+        options: {
+          A: 'Nạn cháy rừng, khai thác gỗ quá mức trái phép và chuyển đổi mục đích sử dụng đất rừng chưa hợp lý.',
+          B: 'Sự gia tăng quá mức của các loài động vật ăn cỏ nhỏ trong rừng sâu.',
+          C: 'Do lượng mưa quá nhiều vào mùa mưa làm cây rừng bị úng ngập tự nhiên.',
+          D: 'Do nhà nước quy hoạch toàn bộ diện tích rừng tự nhiên thành khu dân cư.'
+        },
+        answer: 'A',
+        explanation: 'Ba tác nhân trực tiếp hàng đầu làm suy giảm diện tích và chất lượng rừng tự nhiên là khai thác gỗ/lâm sản trái phép quá mức, cháy rừng và chuyển đổi mục đích sử dụng đất rừng sang thủy điện, nông nghiệp, hạ tầng thiếu kiểm soát.'
+      },
+      {
+        id: 'P1_5',
+        num: 5,
+        topic: 'T2',
+        level: 'TH',
+        question: 'Biện pháp nào dưới đây là giải pháp thiết thực nhằm khắc phục và hạn chế tình trạng suy thoái tài nguyên rừng?',
+        options: {
+          A: 'Tăng cường giao đất, giao rừng cho người dân kết hợp với đẩy mạnh công tác trồng rừng mới và phòng chống cháy rừng.',
+          B: 'Khuyến khích người dân đốt dọn thực bì tự do để canh tác nông nghiệp.',
+          C: 'Chuyển đổi toàn bộ diện tích rừng phòng hộ sang đất khu công nghiệp.',
+          D: 'Ngừng hẳn mọi hoạt động khai thác lâm sản và chăm sóc rừng.'
+        },
+        answer: 'A',
+        explanation: 'Giao đất, giao rừng gắn quyền lợi với trách nhiệm của chủ rừng, kết hợp trồng rừng mới và phòng cháy chữa cháy rừng (PCCCR) là giải pháp đồng bộ, bền vững. B và C làm mất rừng; D cực đoan vì rừng trồng vẫn cần chăm sóc và khai thác hợp lý.'
+      },
+      {
+        id: 'P1_6',
+        num: 6,
+        topic: 'T2',
+        level: 'TH',
+        warningNote: 'Chú ý: Trên tờ đề cương giấy khoanh nhầm đáp án A! Đáp án chính xác bắt buộc là B vì đề hỏi HẬU QUẢ của SUY THOÁI rừng.',
+        question: 'Khi phân tích về hậu quả của việc suy thoái tài nguyên rừng đối với môi trường sinh thái, phát biểu nào sau đây là chính xác?',
+        options: {
+          A: 'Làm tăng tỷ lệ che phủ đất và giúp điều hòa nguồn nước ngầm tốt hơn.',
+          B: 'Gây xói mòn đất nghiêm trọng, tăng nguy cơ lũ quét, sạt lở đất và làm giảm đa dạng sinh học.',
+          C: 'Làm gia tăng nhanh chóng số lượng các loài động vật hoang dã quý hiếm.',
+          D: 'Giúp ổn định khí hậu vùng và giảm thiểu hiệu ứng nhà kính.'
+        },
+        answer: 'B',
+        explanation: 'Khi rừng bị suy thoái, lớp thảm mục và tán cây che chắn mưa không còn, rễ cây giữ đất suy giảm dẫn đến rửa trôi, xói mòn đất, lũ quét, sạt lở và mất nơi cư trú của sinh vật (giảm đa dạng sinh học). Các phương án A, C, D là lợi ích khi bảo vệ và phát triển rừng tốt, không phải hậu quả của suy thoái rừng!'
+      },
+      {
+        id: 'P1_7',
+        num: 7,
+        topic: 'T3',
+        level: 'TH',
+        question: 'Trong các giai đoạn sinh trưởng và phát triển của cây rừng, giai đoạn nào cây trồng bắt đầu hình thành hệ thống rễ sâu và sinh trưởng chiều cao mạnh mẽ nhất?',
+        options: {
+          A: 'Giai đoạn hạt nảy mầm và cây con.',
+          B: 'Giai đoạn cây trưởng thành (tăng trưởng mạnh về sinh khối).',
+          C: 'Giai đoạn cây già cỗi, bắt đầu suy giảm sinh trưởng.',
+          D: 'Giai đoạn rụng lá mùa khô.'
+        },
+        answer: 'B',
+        explanation: 'Ở giai đoạn hạt nảy mầm và cây con mới trồng, hệ rễ còn nông và sinh trưởng ban đầu chậm để thích nghi. Bước sang giai đoạn trưởng thành (đặc biệt thời kỳ đầu/trung niên), cây phát triển hệ rễ sâu rộng, tăng trưởng chiều cao, đường kính và tích lũy sinh khối đạt cực đại.'
+      },
+      {
+        id: 'P1_8',
+        num: 8,
+        topic: 'T3',
+        level: 'TH',
+        question: 'Quy luật sinh trưởng và phát triển của cây rừng có đặc điểm gì nổi bật?',
+        options: {
+          A: 'Diễn ra theo nhịp điệu phụ thuộc vào điều kiện ngoại cảnh (nhiệt độ, ánh sáng, lượng mưa) và đặc tính di truyền của loài.',
+          B: 'Tốc độ sinh trưởng của mọi loài cây rừng luôn hoàn toàn giống nhau bất kể điều kiện đất đai.',
+          C: 'Cây rừng chỉ sinh trưởng vào ban đêm và ngừng hoàn toàn vào ban ngày.',
+          D: 'Không chịu sự chi phối của các yếu tố dinh dưỡng trong đất.'
+        },
+        answer: 'A',
+        explanation: 'Sự sinh trưởng (tăng kích thước, khối lượng) và phát triển (phân hóa cơ quan, ra hoa kết quả) của cây rừng mang tính quy luật theo pha lứa tuổi và theo nhịp điệu mùa, chịu sự quy định của kiểu gen (đặc tính di truyền loài) và tác động trực tiếp của ngoại cảnh (khí hậu, đất đai, dinh dưỡng).'
+      },
+      {
+        id: 'P1_9',
+        num: 9,
+        topic: 'T3',
+        level: 'TH',
+        question: 'Ý nghĩa quan trọng nhất của việc trồng rừng đúng thời vụ (thời điểm có nhiệt độ, độ ẩm thuận lợi) là gì?',
+        options: {
+          A: 'Giúp cây trồng nhanh chóng bén rễ, tỉ lệ sống cao và sinh trưởng tốt trong giai đoạn đầu.',
+          B: 'Giúp tiết kiệm tối đa chi phí mua phân bón hóa học cho cây.',
+          C: 'Giúp cây rừng không bao giờ bị sâu bệnh tấn công trong suốt vòng đời.',
+          D: 'Làm cho gỗ cây có màu sắc đẹp hơn khi khai thác.'
+        },
+        answer: 'A',
+        explanation: 'Rừng trồng trên quy mô đồi núi rộng lớn rất khó tưới nước nhân tạo thường xuyên. Trồng đúng thời vụ (có mưa ẩm, nhiệt độ mát mẻ) giúp cây con không bị mất nước, nhanh hồi phục và bén rễ vào đất mới, quyết định trực tiếp đến tỉ lệ sống.'
+      },
+      {
+        id: 'P1_10',
+        num: 10,
+        topic: 'T3',
+        level: 'VD',
+        question: 'Tại sao trong kỹ thuật trồng rừng bằng cây con có bầu, người ta lại phải xé bỏ lớp vỏ bầu (nếu bằng nylon không tự phân hủy) trước khi đặt cây xuống hố?',
+        options: {
+          A: 'Để rễ cây dễ dàng đâm sâu ra đất xung quanh, tránh hiện tượng rễ bị bó nghẹt ảnh hưởng đến sự sinh trưởng của cây.',
+          B: 'Để giảm trọng lượng của cây con khi vận chuyển lên đồi núi cao.',
+          C: 'Để nước mưa dễ dàng bốc hơi qua phần gốc cây con.',
+          D: 'Để kích thích cây ra hoa sớm hơn thời kỳ tự nhiên.'
+        },
+        answer: 'A',
+        explanation: 'Túi bầu nylon không tự phân hủy trong đất; nếu không rạch/xé bỏ vỏ bầu trước khi đặt xuống hố (nhưng vẫn giữ nguyên khối đất bầu không vỡ), rễ cây sẽ bị bó xoắn bên trong túi, không vươn ra hút nước và dinh dưỡng được, làm cây còi cọc và dễ đổ ngã khi có gió bão.'
+      },
+      {
+        id: 'P1_11',
+        num: 11,
+        topic: 'T2',
+        level: 'TH',
+        question: 'Khi đánh giá thực trạng công tác trồng, chăm sóc và bảo vệ rừng tại nhiều địa phương hiện nay, nhận định nào sau đây là đúng?',
+        options: {
+          A: 'Diện tích rừng trồng kinh tế ngày càng được mở rộng, tuy nhiên chất lượng và diện tích rừng tự nhiên giàu vẫn chịu nhiều áp lực suy giảm.',
+          B: 'Công tác bảo vệ rừng đã giải quyết triệt để 100% các vụ vi phạm lâm luật trên cả nước.',
+          C: 'Người dân địa phương không còn tham gia vào các hoạt động bảo vệ rừng cộng đồng.',
+          D: 'Việc khai thác rừng tự nhiên hiện nay hoàn toàn không tuân theo bất kỳ quy định nào.'
+        },
+        answer: 'A',
+        explanation: 'Thực trạng lâm nghiệp Việt Nam hiện nay là độ che phủ tăng nhờ diện tích rừng trồng (keo, bạch đàn...) mở rộng mạnh, song rừng tự nhiên giàu và đa dạng sinh học ở một số điểm nóng vẫn chịu sức ép suy thoái cần bảo vệ nghiêm ngặt. Các ý B, C, D dùng từ tuyệt đối sai thực tế.'
+      },
+      {
+        id: 'P1_12',
+        num: 12,
+        topic: 'T2',
+        level: 'NB',
+        question: 'Mục tiêu cốt lõi của việc khai thác tài nguyên rừng bền vững là gì?',
+        options: {
+          A: 'Khai thác tối đa sản lượng gỗ trong thời gian ngắn nhất để thu lợi nhuận cao.',
+          B: 'Vừa đáp ứng nhu cầu về lâm sản cho thế hệ hiện tại, vừa duy trì và bảo vệ tiềm năng của rừng để đáp ứng nhu cầu của các thế hệ mai sau.',
+          C: 'Giữ nguyên trạng thái rừng không bao giờ được phép tác động hay khai thác bất kỳ sản phẩm nào.',
+          D: 'Chuyển hóa toàn bộ diện tích rừng tự nhiên thành rừng trồng độc canh cây công nghiệp.'
+        },
+        answer: 'B',
+        explanation: 'Khai thác rừng bền vững kết hợp hài hòa lợi ích kinh tế hiện tại với bảo tồn tài nguyên, khả năng tái sinh và chức năng sinh thái của rừng cho tương lai (lượng khai thác không vượt quá lượng tăng trưởng tái sinh).'
+      },
+      {
+        id: 'P1_13',
+        num: 13,
+        topic: 'T1',
+        level: 'NB',
+        question: 'Đặc trưng cơ bản nào sau đây thuộc về sản xuất lâm nghiệp?',
+        options: {
+          A: 'Chu kỳ sản xuất ngắn, thu hồi vốn nhanh theo từng tháng.',
+          B: 'Chu kỳ sản xuất dài, không gian rộng lớn và gắn liền với đất lâm nghiệp.',
+          C: 'Hoàn toàn diễn ra trong nhà kính và không phụ thuộc vào đất đai.',
+          D: 'Chỉ tập trung ở các đồng bằng phù sa màu mỡ ven biển.'
+        },
+        answer: 'B',
+        explanation: 'Sản xuất lâm nghiệp có tính đặc thù: chu kỳ kinh doanh rất dài (từ 5–7 năm với rừng nguyên liệu giấy đến hàng chục năm với rừng gỗ lớn), địa bàn sản xuất rộng lớn, chủ yếu ở đồi núi dốc và phụ thuộc chặt chẽ vào điều kiện tự nhiên.'
+      },
+      {
+        id: 'P1_14',
+        num: 14,
+        topic: 'T3',
+        level: 'NB',
+        question: 'Hoạt động nào dưới đây được coi là hoạt động chăm sóc và bảo vệ rừng cơ bản?',
+        options: {
+          A: 'Phát quang bụi rậm, làm cỏ dại, xới đất và phòng trừ sâu bệnh hại cây rừng.',
+          B: 'San lấp mặt bằng để xây dựng các khu đô thị mới.',
+          C: 'Đốt than củi tự do từ gỗ rừng tự nhiên già cỗi.',
+          D: 'Săn bắt động vật hoang dã phục vụ nhu cầu thương mại.'
+        },
+        answer: 'A',
+        explanation: 'Chăm sóc rừng sau khi trồng gồm: phát quang dây leo bụi rậm chèn ép ánh sáng, làm cỏ, xới đất vun gốc, bón phân thúc, tỉa dặm và phòng trừ sâu bệnh hại. B, C, D là các hành vi xâm hại rừng.'
+      },
+      {
+        id: 'P1_15',
+        num: 15,
+        topic: 'T1',
+        level: 'NB',
+        question: 'Khi phân tích vai trò của lâm nghiệp đối với môi trường sinh thái, nhận định nào sau đây là chính xác nhất?',
+        options: {
+          A: 'Rừng giúp hấp thụ khí carbon dioxide, cung cấp oxy, điều hòa khí hậu và bảo vệ nguồn nước ngầm.',
+          B: 'Rừng làm tăng nhiệt độ không khí và gây khô hạn nghiêm trọng cho các vùng lân cận.',
+          C: 'Rừng đóng vai trò chính trong việc phát thải khí nhà kính gây biến đổi khí hậu.',
+          D: 'Rừng không có tác động gì đến chu trình tuần hoàn nước của Trái Đất.'
+        },
+        answer: 'A',
+        explanation: 'Thông qua quang hợp và cấu trúc tán rừng - thảm mục, rừng là "lá phổi xanh" hấp thụ CO₂, nhả O₂, giảm hiệu ứng nhà kính, điều tiết dòng chảy mặt sang nước ngầm và giữ ổn định khí hậu.'
+      },
+      {
+        id: 'P1_16',
+        num: 16,
+        topic: 'T2',
+        level: 'TH',
+        question: 'Theo các chuyên gia môi trường, nguyên nhân nào dưới đây dẫn đến tình trạng suy giảm đa dạng sinh học trong các khu rừng tự nhiên?',
+        options: {
+          A: 'Tình trạng săn bắt, buôn bán động vật hoang dã trái phép và mất cảnh quan sinh cảnh do phá rừng.',
+          B: 'Việc trồng quá nhiều các loài cây bản địa có sức sống mạnh.',
+          C: 'Sự gia tăng của các hoạt động tham quan du lịch sinh thái có kiểm soát chặt chẽ.',
+          D: 'Việc khoanh nuôi tái sinh rừng tự nhiên hàng năm.'
+        },
+        answer: 'A',
+        explanation: 'Mất sinh cảnh sống (do phá rừng, chia cắt hành lang sinh thái) và săn bắt, buôn bán trái phép động thực vật hoang dã là hai nguyên nhân trực tiếp đẩy nhiều loài nguy cấp vào bờ vực tuyệt chủng. B, C, D đều hỗ trợ bảo tồn đa dạng sinh học.'
+      },
+      {
+        id: 'P1_17',
+        num: 17,
+        topic: 'T2',
+        level: 'TH',
+        question: 'Nhận định nào sau đây phản ánh <strong>đúng</strong> nguyên nhân và giải pháp khắc phục hiện tượng cháy rừng trong mùa khô?',
+        options: {
+          A: 'Nguyên nhân chủ yếu do sơ suất khi dùng lửa của con người hoặc thời tiết khô hạn; giải pháp là lập chòi quan sát, làm đường băng cản lửa và kiểm soát chặt nguồn lửa.',
+          B: 'Nguyên nhân do mưa nhiều; giải pháp là xây thêm đập thủy lợi.',
+          C: 'Nguyên nhân do cây rừng tự phát sáng; giải pháp là chặt bỏ hết cây to.',
+          D: 'Cháy rừng là hiện tượng tự nhiên không cần có giải pháp can thiệp.'
+        },
+        answer: 'A',
+        explanation: 'Vào mùa khô hanh, vật liệu cháy (lá khô, cành mục) tích tụ dày; chỉ cần bất cẩn khi đốt nương, đốt ong, hút thuốc... sẽ bùng phát cháy lớn. Biện pháp chuẩn là xây dựng đường băng cản lửa, chòi canh lửa/cảnh báo sớm và quản lý chặt nguồn nhiệt.'
+      },
+      {
+        id: 'P1_18',
+        num: 18,
+        topic: 'T2',
+        level: 'VD',
+        question: 'Hành động nào dưới đây là việc <strong>nên làm</strong> để góp phần bảo vệ tài nguyên rừng ngay từ khi còn ngồi trên ghế nhà trường?',
+        options: {
+          A: 'Tuyên truyền, nâng cao nhận thức cho người thân về tác hại của việc phá rừng và tích cực tham gia trồng cây xanh.',
+          B: 'Sử dụng các sản phẩm gỗ quý hiếm không rõ nguồn gốc xuất xứ.',
+          C: 'Tham gia đốt phá rừng làm nương rẫy vào mùa vụ mới.',
+          D: 'Thờ ơ với các phong trào trồng cây gây rừng tại địa phương.'
+        },
+        answer: 'A',
+        explanation: 'Học sinh có thể đóng góp thiết thực bằng việc trồng cây xanh, tiết kiệm giấy, không tiêu thụ sản phẩm động vật hoang dã/gỗ lậu và vận động gia đình, cộng đồng tuân thủ pháp luật bảo vệ rừng.'
+      },
+      {
+        id: 'P1_20',
+        num: 20,
+        originalLabel: 'Câu 20 (Đề gốc khuyết số 19)',
+        topic: 'T3',
+        level: 'NB',
+        question: 'Giai đoạn nào trong vòng đời của cây rừng có tốc độ sinh trưởng chiều cao và tích lũy sinh khối đạt giá trị lớn nhất?',
+        options: {
+          A: 'Giai đoạn cây non mới trồng.',
+          B: 'Giai đoạn cây trưởng thành (tuổi trung niên của rừng).',
+          C: 'Giai đoạn cây bắt đầu bị sâu bệnh phá hoại nặng.',
+          D: 'Giai đoạn cây chết khô mục.'
+        },
+        answer: 'B',
+        explanation: 'Theo quy luật sinh trưởng theo pha (đường cong chữ S), ở tuổi trung niên (giai đoạn trưởng thành), bộ lá và hệ rễ đã hoàn thiện tối đa nên cường độ quang hợp và tốc độ tích lũy sinh khối gỗ, chiều cao, đường kính đạt đỉnh cao nhất.'
+      },
+      {
+        id: 'P1_21',
+        num: 21,
+        topic: 'T3',
+        level: 'TH',
+        question: 'Tại sao trong quản lý rừng, người ta thường tiến hành chặt tỉa những cây bị sâu bệnh, còi cọc hoặc mật độ quá dày trong rừng trồng?',
+        options: {
+          A: 'Để tận dụng gỗ củi và giảm không gian sống của các loài chim.',
+          B: 'Nhằm điều chỉnh mật độ hợp lý, giúp các cây còn lại nhận đủ ánh sáng, chất dinh dưỡng để sinh trưởng tốt hơn.',
+          C: 'Làm giảm tổng diện tích rừng để tiết kiệm diện tích đất.',
+          D: 'Tăng nguy cơ lây lan dịch bệnh sang các khu vực rừng lân cận.'
+        },
+        answer: 'B',
+        explanation: 'Khi rừng khép tán, sự cạnh tranh ánh sáng, nước và khoáng giữa các cây tăng gay gắt. Chặt nuôi dưỡng (tỉa thưa) loại bỏ cây phẩm chất kém/sâu bệnh giúp tập trung không gian dinh dưỡng cho các cây mục tiêu vươn cao, tăng đường kính thân gỗ lớn và ngăn dịch bệnh lây lan.'
+      },
+      {
+        id: 'P1_22',
+        num: 22,
+        topic: 'T3',
+        level: 'NB',
+        question: 'Việc xác định đúng thời vụ trồng rừng ở các vùng sinh thái khác nhau dựa trên yếu tố chủ yếu nào?',
+        options: {
+          A: 'Chế độ mưa, nhiệt độ và độ ẩm không khí thuận lợi nhất trong năm.',
+          B: 'Sở thích cá nhân của người chủ rừng.',
+          C: 'Lịch âm lịch cổ truyền của người dân địa phương.',
+          D: 'Sự biến động của giá gỗ trên thị trường quốc tế.'
+        },
+        answer: 'A',
+        explanation: 'Thời vụ trồng rừng được quyết định bởi điều kiện khí hậu từng vùng (nhiệt độ ấm áp, đất đủ ẩm, có mưa đều): ví dụ miền Bắc trồng vụ xuân (mưa phùn) và vụ thu; Bắc Trung Bộ vụ thu - đông; Nam Bộ và Tây Nguyên trồng vào đầu mùa mưa.'
+      },
+      {
+        id: 'P1_23',
+        num: 23,
+        topic: 'T3',
+        level: 'TH',
+        question: 'Mô tả nào sau đây diễn tả đúng một công đoạn trong kĩ thuật trồng rừng bằng cây con?',
+        options: {
+          A: 'Đào hố kích thước phù hợp, lót phân hữu cơ trộn đều với lớp đất mặt, rạch vỏ bầu, đặt cây thẳng đứng, lấp đất và nén chặt vừa phải quanh gốc.',
+          B: 'Ném hạt giống trực tiếp xuống mặt đất khô cằn mà không cần làm đất hay lấp hố.',
+          C: 'Trồng cây ngập sâu hoàn toàn phần ngọn cây xuống dưới lòng đất ẩm.',
+          D: 'Không cần bón lót phân hay nén đất quanh gốc sau khi đặt cây con.'
+        },
+        answer: 'A',
+        explanation: 'Quy trình chuẩn trồng cây con có bầu gồm: Tạo lỗ trong hố đã bón lót → Rạch bỏ vỏ bầu → Đặt bầu cây thẳng đứng giữa hố (cổ rễ ngang mặt đất) → Lấp đất lần 1 và nén chặt quanh bầu → Lấp đất lần 2 cao hơn cổ rễ 1–2 cm và vun gốc.'
+      },
+      {
+        id: 'P1_24',
+        num: 24,
+        topic: 'T2',
+        level: 'TH',
+        question: 'Khi phân tích thực trạng bảo vệ rừng ở nhiều tỉnh thành, việc giao đất giao rừng gắn với cấp giấy chứng nhận quyền sử dụng đất lâm nghiệp mang lại ý nghĩa gì?',
+        options: {
+          A: 'Giúp người dân yên tâm đầu tư dài hạn, gắn bó trách nhiệm bảo vệ và phát triển kinh tế từ rừng.',
+          B: 'Làm cho người dân mất quyền sở hữu đất đai truyền thống.',
+          C: 'Khiến diện tích rừng bị tàn phá nhanh hơn do không có sự quản lý nhà nước.',
+          D: 'Chỉ phục vụ cho mục đích thống kê số liệu hành chính.'
+        },
+        answer: 'A',
+        explanation: 'Vì chu kỳ lâm nghiệp dài, khi rừng có chủ cụ thể và được pháp luật bảo hộ quyền sử dụng ổn định lâu dài, người dân yên tâm bỏ vốn, công sức trồng, chăm sóc và chủ động tuần tra giữ rừng như tài sản của chính gia đình mình.'
+      },
+      {
+        id: 'P1_25',
+        num: 25,
+        topic: 'T2',
+        level: 'VD',
+        question: 'Biện pháp nào sau đây có hiệu quả cao trong việc nâng cao ý thức bảo vệ rừng tại cộng đồng dân cư vùng cao?',
+        options: {
+          A: 'Tăng cường giáo dục pháp luật lâm nghiệp, gắn quyền lợi kinh tế từ rừng với trách nhiệm bảo vệ của người dân.',
+          B: 'Cấm tuyệt đối người dân không được vào rừng với mọi hình thức.',
+          C: 'Phạt tiền cực nặng mà không cần tuyên truyền giải thích cho người dân hiểu.',
+          D: 'Giao toàn bộ trách nhiệm bảo vệ rừng cho lực lượng kiểm lâm mà không cần sự tham gia của cộng đồng.'
+        },
+        answer: 'A',
+        explanation: 'Bảo vệ rừng bền vững ở vùng cao phải kết hợp tuyên truyền dễ hiểu với đảm bảo sinh kế hợp pháp (khoán bảo vệ rừng, hưởng lợi lâm sản phụ, dịch vụ môi trường rừng). Chỉ cấm đoán mà không giải quyết sinh kế hoặc thiếu tuyên truyền đều kém hiệu quả.'
+      },
+      {
+        id: 'P1_26',
+        num: 26,
+        topic: 'T1',
+        level: 'NB',
+        question: 'Ý nghĩa nào sau đây phản ánh đúng vai trò của lâm nghiệp đối với nền kinh tế quốc dân?',
+        options: {
+          A: 'Cung cấp nguyên liệu gỗ cho ngành công nghiệp giấy, mộc, xây dựng và phát triển kinh tế đồi rừng.',
+          B: 'Làm giảm sút thu nhập của người dân sinh sống ở khu vực miền núi.',
+          C: 'Làm tê liệt các hoạt động thương mại lâm sản quốc tế.',
+          D: 'Không có đóng góp nào đáng kể vào GDP của quốc gia.'
+        },
+        answer: 'A',
+        explanation: 'Về kinh tế, lâm nghiệp cung cấp gỗ cho xây dựng, chế biến đồ mộc xuất khẩu, nguyên liệu giấy, dược liệu, lâm sản ngoài gỗ, du lịch sinh thái và dịch vụ môi trường rừng, đóng góp hàng chục tỷ USD kim ngạch xuất khẩu mỗi năm.'
+      },
+      {
+        id: 'P1_27',
+        num: 27,
+        topic: 'T1',
+        level: 'NB',
+        question: 'Hành động nào dưới đây là một trong các hoạt động cơ bản của lâm nghiệp?',
+        options: {
+          A: 'Trồng rừng phòng hộ ven biển để chắn sóng và chống sạt lở.',
+          B: 'Khai thác khoáng sản lộ thiên quy mô lớn trên đỉnh núi cao.',
+          C: 'Xây dựng các khu đô thị sinh thái trên diện tích rừng nguyên sinh.',
+          D: 'Đốt rác thải nhựa công nghiệp trong rừng sâu.'
+        },
+        answer: 'A',
+        explanation: 'Trồng rừng phòng hộ ven biển (chắn sóng, chắn gió, cố định cát bay, chống xói lở bờ biển) thuộc nhóm hoạt động phát triển và bảo vệ rừng trong lâm nghiệp. B, C, D là hoạt động gây tổn hại rừng và môi trường.'
+      },
+      {
+        id: 'P1_28',
+        num: 28,
+        topic: 'T1',
+        level: 'TH',
+        question: 'Khi phân tích yêu cầu đối với người lao động làm nghề quản lý và bảo vệ rừng (kiểm lâm), phát biểu nào sau đây là chính xác?',
+        options: {
+          A: 'Cần có bản lĩnh vững vàng, tinh thần dũng cảm, am hiểu pháp luật lâm nghiệp và sức khỏe tốt để tuần tra địa bàn hiểm trở.',
+          B: 'Chỉ cần kỹ năng sử dụng máy tính văn phòng, không cần ra ngoài trời.',
+          C: 'Không cần phải nắm vững các quy định pháp luật về bảo vệ rừng.',
+          D: 'Làm việc độc lập hoàn toàn, không cần phối hợp với lực lượng công an hay chính quyền địa phương.'
+        },
+        answer: 'A',
+        explanation: 'Kiểm lâm là lực lượng thừa hành pháp luật chuyên trách bảo vệ rừng, thường xuyên tuần tra rừng sâu, đối mặt với lâm tặc, cháy rừng nên bắt buộc phải giỏi nghiệp vụ pháp luật, dũng cảm, có sức khỏe bền bỉ và phối hợp chặt chẽ với chính quyền, công an, cộng đồng.'
+      },
+      {
+        id: 'P1_29',
+        num: 29,
+        topic: 'T2',
+        level: 'TH',
+        question: 'Nguyên nhân chủ yếu nào làm cho diện tích rừng ngập mặn ở nhiều vùng ven biển bị suy giảm nghiêm trọng trong những thập kỷ qua?',
+        options: {
+          A: 'Do việc chuyển đổi ồ ạt đất rừng ngập mặn sang nuôi trồng thủy sản (như nuôi tôm) chưa hợp lý và tác động của biến đổi khí hậu.',
+          B: 'Do lượng mưa ven biển quá ít làm cây ngập mặn tự chết khô.',
+          C: 'Do sự phát triển quá mức của các loài cá nhỏ dưới tán rừng.',
+          D: 'Do nhà nước quy hoạch toàn bộ làm cảng biển quốc tế.'
+        },
+        answer: 'A',
+        explanation: 'Phá rừng ngập mặn tự phát để đào đầm nuôi tôm thâm canh/quảng canh thiếu quy hoạch, cộng với xói lở bờ biển và nước biển dâng do biến đổi khí hậu là nguyên nhân chính khiến diện tích rừng ngập mặn bị thu hẹp mạnh.'
+      },
+      {
+        id: 'P1_30',
+        num: 30,
+        topic: 'T2',
+        level: 'VD',
+        question: 'Giải pháp nào dưới đây là hiệu quả nhất để phục hồi diện tích rừng ngập mặn bị suy thoái ở các tỉnh ven biển?',
+        options: {
+          A: 'Tổ chức các chiến dịch trồng mới cây đước, cây mắm kết hợp với quy hoạch vùng nuôi trồng thủy sản bền vững.',
+          B: 'San lấp toàn bộ khu vực bãi bồi ven biển để làm khu công nghiệp.',
+          C: 'Chặn nguồn nước thủy triều ra vào các cửa sông.',
+          D: 'Ngừng hoàn toàn mọi sự can thiệp của con người, để tự nhiên tự phục hồi trong mọi trường hợp.'
+        },
+        answer: 'A',
+        explanation: 'Trồng phục hồi các loài cây ngập mặn bản địa (đước, mắm, bần, vẹt...) kết hợp mô hình lâm - ngư kết hợp bền vững (như mô hình tôm - rừng giữ tỷ lệ che phủ rừng theo quy định) vừa khôi phục hệ sinh thái vừa đảm bảo thu nhập cho người dân.'
+      },
+      {
+        id: 'P1_31',
+        num: 31,
+        topic: 'T2',
+        level: 'VD',
+        question: 'Hành động nào sau đây là <strong>sai trái</strong> và không nên làm khi đi tham quan, cắm trại tại các khu rừng nguyên sinh?',
+        options: {
+          A: 'Vứt rác bừa bãi và đốt lửa trại tự do không quản lý ở khu vực dễ bắt cháy.',
+          B: 'Tuân thủ nghiêm ngặt nội quy của Ban quản lý khu bảo tồn thiên nhiên.',
+          C: 'Thu gom rác thải cá nhân mang về điểm tập kết sau khi kết thúc buổi cắm trại.',
+          D: 'Di chuyển theo đúng các tuyến đường mòn được phép tham quan.'
+        },
+        answer: 'A',
+        explanation: 'Đề hỏi hành động <strong>sai trái</strong>. Xả rác nhựa gây ô nhiễm hệ sinh thái rừng, còn đốt lửa tự do trên thảm thực bì khô rất dễ gây thảm họa cháy rừng nguyên sinh. B, C, D là các quy tắc du lịch sinh thái có trách nhiệm.'
+      },
+      {
+        id: 'P1_32',
+        num: 32,
+        topic: 'T3',
+        level: 'NB',
+        question: 'Giai đoạn nào của cây rừng bắt đầu xuất hiện hiện tượng ra hoa, kết quả và hình thành hạt giống phục vụ cho tái sinh tự nhiên?',
+        options: {
+          A: 'Giai đoạn cây con mới bén rễ.',
+          B: 'Giai đoạn cây trưởng thành / thành thục.',
+          C: 'Giai đoạn cây non chưa có cành nhánh.',
+          D: 'Giai đoạn cây bị gãy đổ mục nát.'
+        },
+        answer: 'B',
+        explanation: 'Kết thúc giai đoạn non (ấu niên), cây bước vào giai đoạn trưởng thành (thành thục sinh sản) đánh dấu bằng sự phân hóa mầm hoa, ra hoa, kết quả và tạo hạt giống có sức sống tốt phục vụ nhân giống và tái sinh rừng.'
+      },
+      {
+        id: 'P1_33',
+        num: 33,
+        topic: 'T3',
+        level: 'TH',
+        question: 'Tại sao quy luật sinh trưởng và phát triển của cây rừng lại mang tính theo mùa (mùa sinh trưởng và mùa nghỉ)?',
+        options: {
+          A: 'Vì cây rừng chịu sự chi phối trực tiếp của nhịp điệu ánh sáng, nhiệt độ và lượng mưa thay đổi theo các mùa trong năm.',
+          B: 'Vì cây rừng cần thời gian ngủ đông hoàn toàn không trao đổi chất trong suốt 12 tháng.',
+          C: 'Vì con người bắt buộc cây rừng phải ngừng sinh trưởng vào mùa hè.',
+          D: 'Vì đất trong rừng mất hết chất dinh dưỡng vào mùa mưa.'
+        },
+        answer: 'A',
+        explanation: 'Mùa xuân - hè nhiệt độ ấm, ánh sáng dồi dào, mưa nhiều giúp cây quang hợp mạnh và sinh trưởng nhanh (tạo vòng năm gỗ rộng, nhạt màu); mùa thu - đông lạnh khô hạn, cây giảm sinh trưởng hoặc rụng lá bước vào kỳ nghỉ (vòng gỗ hẹp, sẫm màu).'
+      },
+      {
+        id: 'P1_34',
+        num: 34,
+        topic: 'T3',
+        level: 'TH',
+        question: 'Ý nghĩa trực tiếp của việc thực hiện đúng kỹ thuật xử lý thực bì trước khi tiến hành trồng rừng là gì?',
+        options: {
+          A: 'Làm sạch cỏ dại, giảm nguồn sâu bệnh hại và tạo thông thoáng, thuận lợi cho việc cuốc hố trồng cây.',
+          B: 'Làm cho đất đai bị bạc màu và xói mòn mạnh mẽ hơn.',
+          C: 'Tăng độ dày của lớp đá ong dưới lòng đất.',
+          D: 'Giúp tiêu diệt toàn bộ hệ sinh thái vi sinh vật có lợi trong đất.'
+        },
+        answer: 'A',
+        explanation: 'Xử lý thực bì đúng kỹ thuật (phát dọn theo băng/theo đám trên đất dốc, không đốt tràn lan gây xói mòn) giúp loại bỏ cỏ dại cạnh tranh dinh dưỡng, hạn chế nơi trú ẩn của sâu bệnh/chuột hại và tạo mặt bằng thuận tiện để đào hố, trồng cây.'
+      },
+      {
+        id: 'P1_35',
+        num: 35,
+        topic: 'T3',
+        level: 'VD',
+        question: 'Khi tiến hành trồng rừng bằng phương pháp gieo hạt trực tiếp trên đất dốc, người làm rừng cần lưu ý điều kiện nào để hạn chế hạt bị trôi dạt khi mưa lớn?',
+        options: {
+          A: 'Phải tạo các rãnh theo đường đồng mức, vùi lấp hạt ở độ sâu vừa phải và che phủ mặt đất giữ ẩm.',
+          B: 'Gieo hạt trên bề mặt dốc đứng mà không cần làm đất hay che phủ.',
+          C: 'Tưới nước áp lực cực mạnh ngay sau khi gieo hạt.',
+          D: 'Chọn những ngày mưa bão lớn nhất trong năm để gieo hạt.'
+        },
+        answer: 'A',
+        explanation: 'Làm đất tạo rãnh/băng ngang dốc theo đường đồng mức giúp cản dòng chảy mặt khi mưa xuống; kết hợp lấp đất vừa phải và che phủ rơm rạ/cỏ khô giúp giữ ẩm, tránh chim thú ăn hạt và ngăn nước mưa xói trôi hạt giống.'
+      },
+      {
+        id: 'P1_36',
+        num: 36,
+        topic: 'T2',
+        level: 'VD',
+        question: 'Khi đánh giá thực trạng khai thác tài nguyên rừng ở địa phương, việc áp dụng phương thức khai thác chọn (chặt những cây già, cây sâu bệnh, giữ lại cây non và cây khỏe) có ưu điểm gì nổi bật?',
+        options: {
+          A: 'Duy trì được độ che phủ và cấu trúc của rừng, bảo vệ đất không bị xói mòn và giúp rừng tự phục hồi tốt.',
+          B: 'Giúp khai thác sạch toàn bộ gỗ trong một lần với chi phí thấp nhất.',
+          C: 'Làm cho diện tích rừng chuyển đổi thành đất trống ngay lập tức.',
+          D: 'Không đòi hỏi bất kỳ kỹ thuật giám sát nào từ kiểm lâm.'
+        },
+        answer: 'A',
+        explanation: 'Khác với khai thác trắng (chặt toàn bộ cây trên lô), khai thác chọn chỉ lấy đi những cây đã đạt tuổi thành thục công nghệ hoặc sâu bệnh với cường độ giới hạn, nhờ đó tán rừng không bị phá vỡ đột ngột, khả năng phòng hộ chống xói mòn và tái sinh tự nhiên được duy trì liên tục.'
+      },
+      {
+        id: 'P1_37',
+        num: 37,
+        topic: 'T2',
+        level: 'VD',
+        question: 'Để nâng cao ý thức bảo vệ tài nguyên rừng cho người dân ở các vùng đệm vườn quốc gia, biện pháp nào mang tính bền vững nhất?',
+        options: {
+          A: 'Phát triển sinh kế thay thế (như du lịch sinh thái cộng đồng, nghề phụ) kết hợp với chi trả dịch vụ môi trường rừng để nâng cao thu nhập cho người dân.',
+          B: 'Dùng biện pháp hành chính cưỡng chế, tịch thu toàn bộ tài sản của người dân sinh sống gần rừng.',
+          C: 'Đóng cửa hoàn toàn không cho người dân tiếp cận với bất kỳ nguồn lực nào từ rừng.',
+          D: 'Không cần tuyên truyền mà chỉ giao phó cho lực lượng chức năng xử lý vi phạm.'
+        },
+        answer: 'A',
+        explanation: 'Áp lực xâm hại vùng lõi vườn quốc gia thường bắt nguồn từ khó khăn kinh tế của cư dân vùng đệm. Tạo sinh kế bền vững (du lịch sinh thái, trồng cây dược liệu dưới tán rừng vùng đệm, chi trả dịch vụ môi trường rừng - PFES) giúp người dân sống tốt nhờ giữ rừng.'
+      }
+    ];
+
+    // PHẦN II: 10 CÂU TRẮC NGHIỆM ĐÚNG - SAI HOÀN CHỈNH
+    const PART2_QUESTIONS = [
+      {
+        id: 'P2_1',
+        num: 1,
+        topic: 'T1',
+        passage: 'Theo Tổng cục Lâm nghiệp, ngành lâm nghiệp Việt Nam trong những năm qua không chỉ đóng góp quan trọng vào kim ngạch xuất khẩu gỗ và lâm sản (đạt trên 14-15 tỷ USD/năm) mà còn cung cấp dịch vụ môi trường rừng, thu hàng nghìn tỷ đồng mỗi năm từ tiền chi trả dịch vụ môi trường rừng, tạo sinh kế bền vững cho hàng triệu hộ gia đình miền núi.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Ngành lâm nghiệp chỉ có vai trò cung cấp gỗ nguyên liệu thuần túy, không mang lại giá trị về mặt kinh tế dịch vụ môi trường.',
+            answer: false,
+            explanation: 'Sai. Đoạn tư liệu nêu rõ ngoài gỗ và lâm sản, ngành còn cung cấp dịch vụ môi trường rừng thu hàng nghìn tỷ đồng mỗi năm.'
+          },
+          {
+            key: 'b',
+            text: 'Việc chi trả dịch vụ môi trường rừng là một minh chứng cho thấy giá trị đa dạng của lâm nghiệp đối với kinh tế và xã hội.',
+            answer: true,
+            explanation: 'Đúng. Vừa tạo nguồn thu tài chính bảo vệ môi trường, vừa tạo sinh kế bền vững cho hàng triệu hộ gia đình miền núi.'
+          },
+          {
+            key: 'c',
+            text: 'Học sinh có thể định hướng lựa chọn các ngành nghề như kỹ sư lâm sinh, kiểm lâm nếu có sức khỏe tốt, yêu thiên nhiên và có chuyên môn phù hợp.',
+            answer: true,
+            explanation: 'Đúng. Đây là các ngành nghề tiêu biểu của lâm nghiệp, phù hợp với người yêu thiên nhiên, có thể lực và kiến thức chuyên môn.'
+          },
+          {
+            key: 'd',
+            text: 'Người lao động trong ngành lâm nghiệp không cần phải tuân thủ các quy định về bảo vệ hệ sinh thái khi thực hiện công tác quản lý rừng.',
+            answer: false,
+            explanation: 'Sai. Mọi hoạt động quản lý, khai thác rừng đều bắt buộc tuân thủ nghiêm ngặt quy định pháp luật và bảo vệ hệ sinh thái.'
+          }
+        ]
+      },
+      {
+        id: 'P2_2',
+        num: 2,
+        topic: 'T2',
+        passage: 'Báo cáo của Bộ Nông nghiệp và Phát triển nông thôn về tài nguyên rừng cho thấy, dù diện tích độ che phủ rừng toàn quốc đã tăng lên (đạt trên 42%), nhưng tại một số khu vực miền Trung và Tây Nguyên, diện tích rừng tự nhiên giàu vẫn bị suy giảm do chuyển mục đích sử dụng sang làm các dự án phát triển kinh tế và tình trạng phá rừng trái phép.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Độ che phủ rừng toàn quốc tăng cao đồng nghĩa với việc các khu vực rừng tự nhiên giàu hoàn toàn không gặp bất kỳ áp lực suy giảm nào.',
+            answer: false,
+            explanation: 'Sai. Độ che phủ chung tăng chủ yếu nhờ rừng trồng, còn rừng tự nhiên giàu tại miền Trung và Tây Nguyên vẫn bị suy giảm.'
+          },
+          {
+            key: 'b',
+            text: 'Chuyển mục đích sử dụng đất rừng chưa hợp lý và phá rừng trái phép là những nguyên nhân thực tế làm suy thoái tài nguyên rừng tự nhiên.',
+            answer: true,
+            explanation: 'Đúng. Được trích xuất trực tiếp và chính xác từ báo cáo thực tiễn trong đoạn tư liệu.'
+          },
+          {
+            key: 'c',
+            text: 'Xây dựng các quy định nghiêm ngặt về đánh giá tác động môi trường khi chuyển mục đích sử dụng rừng là một giải pháp thiết thực để hạn chế suy thoái.',
+            answer: true,
+            explanation: 'Đúng. Kiểm soát chặt phê duyệt dự án giúp ngăn chặn việc lấy đất rừng tự nhiên tràn lan.'
+          },
+          {
+            key: 'd',
+            text: 'Để bảo vệ rừng, người dân địa phương không nên tham gia tố giác tội phạm lâm luật mà nên để cơ quan chức năng tự xử lý hoàn toàn.',
+            answer: false,
+            explanation: 'Sai. Bảo vệ rừng là trách nhiệm toàn dân; sự giám sát và tố giác kịp thời từ cộng đồng địa phương giữ vai trò then chốt.'
+          }
+        ]
+      },
+      {
+        id: 'P2_3',
+        num: 3,
+        topic: 'T3',
+        passage: 'Kết quả nghiên cứu sinh thái rừng tại các Vườn quốc gia cho thấy tốc độ sinh trưởng chiều cao và đường kính thân cây rừng tuân theo quy luật pha (giai đoạn đầu tăng chậm, giai đoạn giữa tăng nhanh và giai đoạn già cỗi chậm dần). Việc áp dụng đúng quy luật này vào tỉa thưa rừng trồng giúp cây nhận đủ ánh sáng và dinh dưỡng tối ưu.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Cây rừng sinh trưởng với tốc độ nhanh đồng đều và không thay đổi trong suốt mọi giai đoạn vòng đời của chúng.',
+            answer: false,
+            explanation: 'Sai. Sinh trưởng của cây rừng biến đổi theo pha: giai đoạn đầu tăng chậm, giai đoạn giữa tăng nhanh vọt và già cỗi chậm dần.'
+          },
+          {
+            key: 'b',
+            text: 'Hiểu rõ quy luật sinh trưởng phát triển giúp người làm rừng xác định đúng thời điểm chăm sóc, bón phân và tỉa thưa hợp lý.',
+            answer: true,
+            explanation: 'Đúng. Giúp tác động kỹ thuật đúng lúc cây cần dinh dưỡng và không gian ánh sáng nhất.'
+          },
+          {
+            key: 'c',
+            text: 'Việc áp dụng quy luật sinh trưởng vào thực tiễn địa phương đòi hỏi phải căn cứ vào điều kiện khí hậu và thổ nhưỡng cụ thể của vùng đó.',
+            answer: true,
+            explanation: 'Đúng. Tốc độ và thời điểm chuyển pha của cây chịu ảnh hưởng lớn bởi lập địa và khí hậu từng vùng.'
+          },
+          {
+            key: 'd',
+            text: 'Chúng ta có thể bắt cây rừng sinh trưởng đạt tối đa ngay từ giai đoạn hạt mới nảy mầm bằng cách bón thật nhiều phân hóa học liều cao.',
+            answer: false,
+            explanation: 'Sai. Trái quy luật sinh học; hệ rễ mầm non rất mẫn cảm, bón phân hóa học liều cao sẽ gây ngộ độc thẩm thấu làm xót rễ và chết cây.'
+          }
+        ]
+      },
+      {
+        id: 'P2_4',
+        num: 4,
+        topic: 'T3',
+        passage: 'Theo hướng dẫn kỹ thuật trồng rừng của Viện Khoa học Lâm nghiệp Việt Nam, việc ấn định thời vụ trồng rừng vụ xuân hoặc vụ mưa phùn ở miền Bắc giúp cây con có tỷ lệ sống trên 90% nhờ độ ẩm đất cao; ngược lại, trồng vào mùa khô nắng hạn gay gắt sẽ làm tỷ lệ cây chết tăng đột biến.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Thời vụ trồng rừng đóng vai trò quan trọng vì nó quyết định trực tiếp đến khả năng bén rễ và tỷ lệ sống sót của cây con.',
+            answer: true,
+            explanation: 'Đúng. Độ ẩm đất và không khí thuận lợi giúp cây con giữ cân bằng nước, đạt tỷ lệ sống trên 90%.'
+          },
+          {
+            key: 'b',
+            text: 'Kỹ thuật trồng rừng quy định có thể áp dụng rập khuôn một thời vụ duy nhất cho tất cả các vùng miền có khí hậu khác nhau trên cả nước.',
+            answer: false,
+            explanation: 'Sai. Khí hậu phân hóa Bắc - Trung - Nam có mùa mưa khác nhau nên mỗi vùng sinh thái phải bố trí lịch thời vụ riêng phù hợp.'
+          },
+          {
+            key: 'c',
+            text: 'Trồng rừng vào mùa khô hạn gay gắt là giải pháp tối ưu giúp cây con phát triển nhanh mà không cần tưới nước.',
+            answer: false,
+            explanation: 'Sai. Mùa khô hạn thiếu nước và bốc hơi mạnh làm cây héo khô, tỷ lệ cây chết tăng đột biến.'
+          },
+          {
+            key: 'd',
+            text: 'Mô tả đúng kỹ thuật đào hố, bón lót phân hữu cơ và đặt cây đúng chiều giúp cây rừng phát triển vững chắc trước gió bão.',
+            answer: true,
+            explanation: 'Đúng. Làm đất sâu, bón lót và đặt cây thẳng đứng giúp hệ rễ phát triển cân đối, ăn sâu bám chắc vào đất.'
+          }
+        ]
+      },
+      {
+        id: 'P2_5',
+        num: 5,
+        topic: 'T1',
+        passage: 'Theo thống kê của ngành lâm nghiệp, Việt Nam hiện có hàng vạn lao động tham gia vào các chuỗi giá trị chế biến và xuất khẩu gỗ. Các đặc trưng của ngành đòi hỏi người lao động không chỉ có sức khỏe dẻo dai mà còn cần am hiểu quy trình kỹ thuật lâm sinh và có ý thức kỷ luật lao động nghiêm ngặt.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Sản xuất lâm nghiệp có chu kỳ ngắn hạn tính theo tuần, tương tự như trồng rau màu ngắn ngày.',
+            answer: false,
+            explanation: 'Sai. Sản xuất lâm nghiệp có chu kỳ rất dài, kéo dài nhiều năm đến hàng chục năm.'
+          },
+          {
+            key: 'b',
+            text: 'Người lao động trong lâm nghiệp cần có kiến thức kỹ thuật lâm sinh và sức khỏe để thích nghi với điều kiện làm việc ngoài trời.',
+            answer: true,
+            explanation: 'Đúng. Phù hợp hoàn toàn với đặc thù công việc lâm sinh ngoài thực địa và thông tin trong đoạn tư liệu.'
+          },
+          {
+            key: 'c',
+            text: 'Vai trò của lâm nghiệp chỉ giới hạn trong việc khai thác gỗ tự nhiên, không bao gồm chế biến và bảo vệ môi trường.',
+            answer: false,
+            explanation: 'Sai. Lâm nghiệp bao gồm chuỗi giá trị đồng bộ từ trồng rừng, bảo vệ môi trường đến chế biến sâu và xuất khẩu.'
+          },
+          {
+            key: 'd',
+            text: 'Học sinh tìm hiểu nghề nghiệp lâm nghiệp có thể tự đánh giá sự phù hợp của bản thân dựa trên sở thích làm việc với thiên nhiên và năng lực thể chất.',
+            answer: true,
+            explanation: 'Đúng. Đối chiếu sở thích, sức khỏe và năng lực với yêu cầu nghề nghiệp là cơ sở hướng nghiệp đúng đắn.'
+          }
+        ]
+      },
+      {
+        id: 'P2_6',
+        num: 6,
+        topic: 'T2',
+        passage: 'Số liệu từ Cục Kiểm lâm cho thấy nguyên nhân dẫn đến suy thoái rừng phần lớn xuất phát từ các hoạt động đốt nương làm rẫy bất cẩn, khai thác gỗ trái phép và sức ép phát triển hạ tầng. Để khắc phục, nhà nước đã thực hiện nhiều chính sách nghiêm ngặt về quản lý, bảo vệ và phục hồi rừng phòng hộ.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Phá rừng trái phép và đốt nương làm rẫy bất cẩn là những nguyên nhân chủ yếu gây suy thoái tài nguyên rừng thực tế.',
+            answer: true,
+            explanation: 'Đúng. Được nêu trực tiếp trong số liệu thống kê thực tế của Cục Kiểm lâm.'
+          },
+          {
+            key: 'b',
+            text: 'Việc phục hồi rừng phòng hộ không mang lại ý nghĩa gì trong việc chống xói mòn và bảo vệ nguồn nước.',
+            answer: false,
+            explanation: 'Sai. Chức năng cốt lõi nhất của rừng phòng hộ đầu nguồn chính là điều tiết nguồn nước, chống xói mòn, lũ quét và sạt lở.'
+          },
+          {
+            key: 'c',
+            text: 'Cộng đồng dân cư địa phương đóng vai trò quan trọng trong việc tham gia tuần tra, tố giác các hành vi vi phạm pháp luật về bảo vệ rừng.',
+            answer: true,
+            explanation: 'Đúng. Người dân sinh sống gần rừng là lực lượng tại chỗ quan trọng phối hợp cùng kiểm lâm giữ rừng.'
+          },
+          {
+            key: 'd',
+            text: 'Không cần thiết phải ban hành các chế tài xử phạt nặng đối với hành vi phá hoại rừng trái phép.',
+            answer: false,
+            explanation: 'Sai. Cần có chế tài hành chính và hình sự nghiêm khắc để đủ sức răn đe các hành vi hủy hoại rừng.'
+          }
+        ]
+      },
+      {
+        id: 'P2_7',
+        num: 7,
+        topic: 'T3',
+        passage: 'Trong các tài liệu hướng dẫn kỹ thuật của Ban quản lý rừng phòng hộ, quy luật sinh trưởng của cây rừng qua từng giai đoạn tuổi đòi hỏi các nhà quản lý phải áp dụng đúng biện pháp chăm sóc như vun gốc, làm cỏ ở giai đoạn cây con và tỉa thưa ở giai đoạn rừng sào để cây phát triển tối ưu.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Quy luật sinh trưởng của cây rừng cho thấy tốc độ phát triển diễn ra đồng đều ở mọi lứa tuổi mà không thay đổi.',
+            answer: false,
+            explanation: 'Sai. Mỗi giai đoạn lứa tuổi có tốc độ sinh trưởng và nhu cầu sinh thái khác nhau.'
+          },
+          {
+            key: 'b',
+            text: 'Chăm sóc rừng đúng kỹ thuật ở giai đoạn cây con giúp nâng cao tỷ lệ sống và khả năng chống chịu sâu bệnh.',
+            answer: true,
+            explanation: 'Đúng. Làm cỏ, xới đất, vun gốc giai đoạn đầu giúp cây con không bị cỏ dại chèn ép, sinh trưởng khỏe mạnh.'
+          },
+          {
+            key: 'c',
+            text: 'Việc vận dụng quy luật sinh trưởng vào thực tiễn đòi hỏi phải theo dõi sát sao tình trạng thực tế của rừng tại địa phương.',
+            answer: true,
+            explanation: 'Đúng. Phải khảo sát thực trạng khép tán, sinh trưởng thực tế của rừng để quyết định thời điểm và cường độ chăm sóc/tỉa thưa chính xác.'
+          },
+          {
+            key: 'd',
+            text: 'Cây rừng ở giai đoạn trưởng thành không cần bất kỳ sự quan tâm hay tác động bảo vệ nào từ con người nữa.',
+            answer: false,
+            explanation: 'Sai. Rừng trưởng thành vẫn phải được tuần tra phòng cháy chữa cháy, phòng trừ dịch sâu bệnh và bảo vệ khỏi khai thác lậu.'
+          }
+        ]
+      },
+      {
+        id: 'P2_8',
+        num: 8,
+        topic: 'T3',
+        passage: 'Theo quy trình kỹ thuật trồng rừng sản xuất (như cây keo, cây bạch đàn), việc chọn giống cây khỏe mạnh, không sâu bệnh kết hợp với việc bố trí thời vụ trồng vào đầu mùa mưa giúp rễ cây phát triển nhanh, bám chắc vào đất.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Chọn giống cây con khỏe mạnh, sạch bệnh là một khâu quan trọng trong kỹ thuật trồng rừng.',
+            answer: true,
+            explanation: 'Đúng. Cây giống đạt chuẩn kích thước, cứng cáp, sạch bệnh quyết định sức sống và năng suất rừng trồng.'
+          },
+          {
+            key: 'b',
+            text: 'Trồng rừng vào đầu mùa mưa giúp cung cấp lượng nước tự nhiên dồi dào, tạo điều kiện cho cây con bén rễ nhanh chóng.',
+            answer: true,
+            explanation: 'Đúng. Độ ẩm đất cao ổn định kéo dài suốt mùa mưa giúp rễ phát triển mạnh trước khi bước vào mùa khô.'
+          },
+          {
+            key: 'c',
+            text: 'Kỹ thuật trồng rừng không cần quan tâm đến việc xử lý hố hay bón lót phân hữu cơ cho cây con.',
+            answer: false,
+            explanation: 'Sai. Đào hố trước và bón lót phân hữu cơ trộn lớp đất mặt là khâu bắt buộc để đất tơi xốp và đủ dinh dưỡng ban đầu trên đất đồi nghèo kiệt.'
+          },
+          {
+            key: 'd',
+            text: 'Liên hệ thực tiễn cho thấy việc trồng rừng phòng hộ đầu nguồn đòi hỏi tiêu chuẩn kỹ thuật nghiêm ngặt hơn so với rừng sản xuất thông thường.',
+            answer: true,
+            explanation: 'Đúng. Rừng phòng hộ đầu nguồn thường ở địa hình dốc cao, đất xấu, yêu cầu chọn loài cây bản địa rễ sâu bền vững và kỹ thuật làm đất chống xói mòn khắt khe hơn.'
+          }
+        ]
+      },
+      {
+        id: 'P2_9',
+        num: 9,
+        topic: 'T1',
+        passage: 'Theo Bộ Lao động - Thương binh và Xã hội phối hợp với Bộ Nông nghiệp và PTNT, các vị trí việc làm trong lĩnh vực lâm nghiệp ngày càng đòi hỏi cao về năng lực chuyên môn, từ khâu ươm giống, trồng rừng, quản lý bảo vệ đến chế biến gỗ công nghệ cao, nhằm đáp ứng tiêu chuẩn chứng chỉ rừng quốc tế (FSC).',
+        statements: [
+          {
+            key: 'a',
+            text: 'Ngành nghề trong lâm nghiệp hiện đại chỉ yêu cầu sức khỏe thể chất mà không cần trình độ chuyên môn kỹ thuật.',
+            answer: false,
+            explanation: 'Sai. Lâm nghiệp hiện đại ứng dụng công nghệ sinh học nhân giống, GIS/viễn thám quản lý rừng và dây chuyền CNC chế biến gỗ nên rất cần chuyên môn cao.'
+          },
+          {
+            key: 'b',
+            text: 'Việc áp dụng các tiêu chuẩn chứng chỉ rừng quốc tế đòi hỏi người lao động và nhà quản lý phải tuân thủ nghiêm ngặt các quy trình kỹ thuật bền vững.',
+            answer: true,
+            explanation: 'Đúng. Chứng chỉ FSC yêu cầu truy xuất nguồn gốc gỗ hợp pháp, bảo vệ môi trường sinh thái và quyền lợi người lao động chặt chẽ.'
+          },
+          {
+            key: 'c',
+            text: 'Học sinh có thể tự định hướng nghề nghiệp bằng cách tìm hiểu kỹ các yêu cầu năng lực của các ngành nghề lâm nghiệp phổ biến.',
+            answer: true,
+            explanation: 'Đúng. Giúp học sinh chủ động rèn luyện kiến thức và kỹ năng phù hợp với vị trí việc làm tương lai.'
+          },
+          {
+            key: 'd',
+            text: 'Vai trò của lâm nghiệp trong nền kinh tế chỉ dừng lại ở mức độ cung cấp củi đun thô sơ cho sinh hoạt gia đình.',
+            answer: false,
+            explanation: 'Sai. Lâm nghiệp hiện đại là ngành kinh tế - kỹ thuật xuất khẩu hàng chục tỷ USD sản phẩm gỗ chế biến cao cấp và cung cấp dịch vụ sinh thái.'
+          }
+        ]
+      },
+      {
+        id: 'P2_10',
+        num: 10,
+        topic: 'T2',
+        passage: 'Báo cáo công tác quản lý bảo vệ rừng của Chi cục Kiểm lâm địa phương ghi nhận, tình trạng phá rừng làm nương rẫy và khai thác lâm sản trái phép tuy đã giảm nhưng vẫn còn tiềm ẩn phức tạp tại các khu vực vùng sâu, vùng xa; đòi hỏi các giải pháp đồng bộ về giao đất giao rừng và sinh kế cho đồng bào.',
+        statements: [
+          {
+            key: 'a',
+            text: 'Phá rừng làm nương rẫy tự do và khai thác lâm sản trái phép là những nguyên nhân thực tế gây suy thoái rừng.',
+            answer: true,
+            explanation: 'Đúng. Phản ánh đúng ghi nhận thực tiễn của Chi cục Kiểm lâm trong đoạn tư liệu.'
+          },
+          {
+            key: 'b',
+            text: 'Giải pháp giao đất giao rừng kết hợp hỗ trợ sinh kế cho đồng bào vùng cao giúp giảm áp lực khai thác tài nguyên rừng tự nhiên.',
+            answer: true,
+            explanation: 'Đúng. Khi có đất sản xuất ổn định và thu nhập bền vững, người dân không còn phải phá rừng làm rẫy tự phát.'
+          },
+          {
+            key: 'c',
+            text: 'Việc tuần tra bảo vệ rừng chỉ là trách nhiệm riêng của lực lượng kiểm lâm, người dân không có quyền tham gia.',
+            answer: false,
+            explanation: 'Sai. Luật Lâm nghiệp quy định rõ nhà nước khuyến khích và tạo điều kiện cho cộng đồng dân cư tham gia đồng quản lý, tuần tra bảo vệ rừng.'
+          },
+          {
+            key: 'd',
+            text: 'Suy thoái tài nguyên rừng không gây ảnh hưởng gì đến nguồn nước sinh hoạt và sản xuất nông nghiệp hạ lưu.',
+            answer: false,
+            explanation: 'Sai. Mất rừng đầu nguồn làm mùa mưa lũ lụt dữ dội, mùa khô cạn kiệt suối và hồ chứa, gây hạn hán nghiêm trọng cho sản xuất nông nghiệp và sinh hoạt vùng hạ lưu.'
+          }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 2. APPLICATION STATE & LOCALSTORAGE PERSISTENCE
+    // =========================================================================
+    const STORAGE_KEYS = {
+      STARRED: 'cn_ln_2026_starred',
+      WRONG_IDS: 'cn_ln_2026_wrong_ids',
+      STUDY_ANSWERS: 'cn_ln_2026_study_answers',
+      HISTORY: 'cn_ln_2026_exam_history'
+    };
+
+    let state = {
+      activeTab: 'study',
+      showAllAnswers: false,
+      starredIds: [],
+      wrongQuestionCounts: {}, // { questionId: count }
+      studyAnswers: {},        // { P1_1: 'D', P2_1: { a: false, b: true } }
+      examHistory: [],
+
+      // Exam Session State
+      selectedExamMode: 'standard', // 'standard' | 'full' | 'wrong_only'
+      examSession: null             // active or completed exam session
+    };
+
+    function loadPersistedState() {
+      try {
+        const sStarred = localStorage.getItem(STORAGE_KEYS.STARRED);
+        if (sStarred) state.starredIds = JSON.parse(sStarred);
+
+        const sWrong = localStorage.getItem(STORAGE_KEYS.WRONG_IDS);
+        if (sWrong) state.wrongQuestionCounts = JSON.parse(sWrong);
+
+        const sStudy = localStorage.getItem(STORAGE_KEYS.STUDY_ANSWERS);
+        if (sStudy) state.studyAnswers = JSON.parse(sStudy);
+
+        const sHistory = localStorage.getItem(STORAGE_KEYS.HISTORY);
+        if (sHistory) state.examHistory = JSON.parse(sHistory);
+      } catch (err) {
+        console.warn('Không thể đọc localStorage:', err);
+      }
+    }
+
+    function savePersistedState() {
+      try {
+        localStorage.setItem(STORAGE_KEYS.STARRED, JSON.stringify(state.starredIds));
+        localStorage.setItem(STORAGE_KEYS.WRONG_IDS, JSON.stringify(state.wrongQuestionCounts));
+        localStorage.setItem(STORAGE_KEYS.STUDY_ANSWERS, JSON.stringify(state.studyAnswers));
+        localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(state.examHistory));
+      } catch (err) {
+        console.warn('Không thể lưu localStorage:', err);
+      }
+    }
+
+    // =========================================================================
+    // 3. UI HELPERS: TABS, MODAL & TOAST
+    // =========================================================================
+    function switchTab(tabName) {
+      // Prevent accidental tab switch if exam is actively running? Allow switching, timer still runs, or warn gently via banner
+      state.activeTab = tabName;
+      const tabs = ['study', 'exam', 'handbook', 'history'];
+      tabs.forEach(t => {
+        const view = document.getElementById(`view-${t}`);
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tabName) {
+          view.classList.remove('hidden');
+          btn.className = 'nav-tab-btn shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-700 text-white shadow-sm transition-all';
+        } else {
+          view.classList.add('hidden');
+          btn.className = 'nav-tab-btn shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-emerald-50 hover:text-emerald-800 transition-all';
+        }
+      });
+
+      if (tabName === 'study') {
+        renderStudyList();
+        updateStudyStats();
+      } else if (tabName === 'exam') {
+        updateExamSetupWrongBanner();
+      } else if (tabName === 'history') {
+        renderHistoryView();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const colors = {
+        success: 'bg-emerald-900 text-white border-emerald-700',
+        warning: 'bg-amber-600 text-white border-amber-500',
+        info: 'bg-slate-800 text-white border-slate-700'
+      };
+      toast.className = `pointer-events-auto flex items-center gap-2.5 px-4 py-3 rounded-2xl border shadow-lg text-xs sm:text-sm font-semibold animate-fade-in ${colors[type] || colors.info}`;
+      toast.innerHTML = `<i class="fa-solid ${type === 'warning' ? 'fa-triangle-exclamation' : 'fa-circle-check'}"></i><span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.25s ease';
+        setTimeout(() => toast.remove(), 260);
+      }, 2600);
+    }
+
+    let modalConfirmCallback = null;
+    function openModal({ title, message, confirmText = 'Đồng ý', cancelText = 'Quay lại', variant = 'emerald', showCancel = true, onConfirm }) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-message').innerHTML = message;
+      const confirmBtn = document.getElementById('modal-confirm-btn');
+      const cancelBtn = document.getElementById('modal-cancel-btn');
+      const iconBox = document.getElementById('modal-icon-box');
+      const icon = document.getElementById('modal-icon');
+
+      confirmBtn.textContent = confirmText;
+      cancelBtn.textContent = cancelText;
+      cancelBtn.classList.toggle('hidden', !showCancel);
+
+      if (variant === 'danger') {
+        confirmBtn.className = 'px-5 py-2.5 rounded-xl text-sm font-bold bg-rose-600 hover:bg-rose-700 text-white shadow-sm transition';
+        iconBox.className = 'w-11 h-11 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-lg shrink-0';
+        icon.className = 'fa-solid fa-triangle-exclamation';
+      } else if (variant === 'warning') {
+        confirmBtn.className = 'px-5 py-2.5 rounded-xl text-sm font-bold bg-amber-600 hover:bg-amber-700 text-white shadow-sm transition';
+        iconBox.className = 'w-11 h-11 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg shrink-0';
+        icon.className = 'fa-solid fa-circle-exclamation';
+      } else {
+        confirmBtn.className = 'px-5 py-2.5 rounded-xl text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition';
+        iconBox.className = 'w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shrink-0';
+        icon.className = 'fa-solid fa-circle-question';
+      }
+
+      modalConfirmCallback = onConfirm;
+      confirmBtn.onclick = () => {
+        const cb = modalConfirmCallback;
+        closeModal();
+        if (cb) cb();
+      };
+
+      document.getElementById('custom-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('custom-modal').classList.add('hidden');
+      modalConfirmCallback = null;
+    }
+
+    // =========================================================================
+    // 4. TAB 1: STUDY MODE LOGIC & RENDERING
+    // =========================================================================
+    function isQuestionPracticedInStudy(qId) {
+      const ans = state.studyAnswers[qId];
+      if (!ans) return false;
+      if (qId.startsWith('P1_')) return typeof ans === 'string';
+      if (qId.startsWith('P2_')) return Object.keys(ans).length > 0;
+      return false;
+    }
+
+    function updateStudyStats() {
+      const allIds = [...PART1_QUESTIONS.map(q => q.id), ...PART2_QUESTIONS.map(q => q.id)];
+      const practicedCount = allIds.filter(id => isQuestionPracticedInStudy(id)).length;
+      const starredCount = state.starredIds.length;
+      const wrongCount = Object.keys(state.wrongQuestionCounts).filter(k => state.wrongQuestionCounts[k] > 0).length;
+
+      document.getElementById('study-stat-practiced').textContent = `${practicedCount} / 46 câu`;
+      document.getElementById('study-stat-starred').textContent = `${starredCount} câu`;
+      document.getElementById('study-stat-wrong').textContent = `${wrongCount} câu`;
+
+      const histBadge = document.getElementById('history-count-badge');
+      if (state.examHistory.length > 0) {
+        histBadge.textContent = state.examHistory.length;
+        histBadge.classList.remove('hidden');
+      } else {
+        histBadge.classList.add('hidden');
+      }
+    }
+
+    function toggleStar(qId) {
+      const idx = state.starredIds.indexOf(qId);
+      if (idx >= 0) {
+        state.starredIds.splice(idx, 1);
+      } else {
+        state.starredIds.push(qId);
+        showToast('Đã đánh dấu sao câu hỏi cần ôn kỹ');
+      }
+      savePersistedState();
+      updateStudyStats();
+      renderStudyList();
+    }
+
+    function toggleShowAllAnswers() {
+      state.showAllAnswers = !state.showAllAnswers;
+      const btn = document.getElementById('btn-toggle-all-answers');
+      const icon = document.getElementById('icon-toggle-all');
+      const text = document.getElementById('text-toggle-all');
+      if (state.showAllAnswers) {
+        btn.className = 'inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold border border-emerald-700 bg-emerald-700 text-white transition shadow-sm';
+        icon.className = 'fa-regular fa-eye-slash';
+        text.textContent = 'Ẩn đáp án để tự luyện';
+      } else {
+        btn.className = 'inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition';
+        icon.className = 'fa-regular fa-eye';
+        text.textContent = 'Hiện toàn bộ đáp án & giải thích';
+      }
+      renderStudyList();
+    }
+
+    function clearStudySearch() {
+      document.getElementById('study-search').value = '';
+      renderStudyList();
+    }
+
+    function confirmResetStudyProgress() {
+      openModal({
+        title: 'Làm mới lựa chọn ôn tập?',
+        message: 'Các phương án bạn đã bấm chọn thử trong tab Ôn tập sẽ được xóa trắng để bạn tự chọn lại từ đầu (các câu đánh dấu sao và lịch sử thi thử vẫn được giữ nguyên).',
+        confirmText: 'Làm mới ngay',
+        variant: 'warning',
+        onConfirm: () => {
+          state.studyAnswers = {};
+          savePersistedState();
+          updateStudyStats();
+          renderStudyList();
+          showToast('Đã làm mới trạng thái tự luyện!');
+        }
+      });
+    }
+
+    function selectStudyP1Option(qId, optKey) {
+      const q = PART1_QUESTIONS.find(item => item.id === qId);
+      if (!q) return;
+      state.studyAnswers[qId] = optKey;
+      if (optKey !== q.answer) {
+        state.wrongQuestionCounts[qId] = (state.wrongQuestionCounts[qId] || 0) + 1;
+      }
+      savePersistedState();
+      updateStudyStats();
+      renderStudyList();
+    }
+
+    function selectStudyP2Statement(qId, stmtKey, boolVal) {
+      const q = PART2_QUESTIONS.find(item => item.id === qId);
+      if (!q) return;
+      if (!state.studyAnswers[qId]) state.studyAnswers[qId] = {};
+      state.studyAnswers[qId][stmtKey] = boolVal;
+
+      const stmt = q.statements.find(s => s.key === stmtKey);
+      if (stmt && stmt.answer !== boolVal) {
+        state.wrongQuestionCounts[qId] = (state.wrongQuestionCounts[qId] || 0) + 1;
+      }
+      savePersistedState();
+      updateStudyStats();
+      renderStudyList();
+    }
+
+    function jumpToQuestion(qId) {
+      switchTab('study');
+      document.getElementById('study-search').value = '';
+      document.getElementById('study-filter-part').value = 'ALL';
+      document.getElementById('study-filter-topic').value = 'ALL';
+      document.getElementById('study-filter-status').value = 'ALL';
+      renderStudyList();
+      setTimeout(() => {
+        const el = document.getElementById(`study-card-${qId}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.add('ring-4', 'ring-amber-400');
+          setTimeout(() => el.classList.remove('ring-4', 'ring-amber-400'), 2200);
+        }
+      }, 80);
+    }
+
+    function stripHtml(html) {
+      return html.replace(/<[^>]*>?/gm, '');
+    }
+
+    function renderStudyList() {
+      const searchVal = document.getElementById('study-search').value.trim().toLowerCase();
+      document.getElementById('clear-search-btn').classList.toggle('hidden', !searchVal);
+
+      const partFilter = document.getElementById('study-filter-part').value;
+      const topicFilter = document.getElementById('study-filter-topic').value;
+      const statusFilter = document.getElementById('study-filter-status').value;
+
+      const filterFn = (q, isP1) => {
+        if (partFilter === 'P1' && !isP1) return false;
+        if (partFilter === 'P2' && isP1) return false;
+        if (topicFilter !== 'ALL' && q.topic !== topicFilter) return false;
+
+        if (statusFilter === 'STARRED' && !state.starredIds.includes(q.id)) return false;
+        if (statusFilter === 'WRONG' && !(state.wrongQuestionCounts[q.id] > 0)) return false;
+        if (statusFilter === 'UNANSWERED' && isQuestionPracticedInStudy(q.id)) return false;
+
+        if (searchVal) {
+          let haystack = `câu ${q.num} `;
+          if (isP1) {
+            haystack += `${stripHtml(q.question)} ${Object.values(q.options).join(' ')} ${stripHtml(q.explanation)}`;
+          } else {
+            haystack += `${q.passage} ${q.statements.map(s => s.text + ' ' + s.explanation).join(' ')}`;
+          }
+          if (!haystack.toLowerCase().includes(searchVal)) return false;
+        }
+        return true;
+      };
+
+      const filteredP1 = PART1_QUESTIONS.filter(q => filterFn(q, true));
+      const filteredP2 = PART2_QUESTIONS.filter(q => filterFn(q, false));
+      const totalShown = filteredP1.length + filteredP2.length;
+
+      document.getElementById('study-result-count').textContent =
+        `Đang hiển thị ${totalShown} / 46 câu hỏi (${filteredP1.length} câu Phần I, ${filteredP2.length} câu Phần II)`;
+
+      const container = document.getElementById('study-questions-container');
+      if (totalShown === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-2xl border border-slate-200 p-10 text-center space-y-3">
+            <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto text-2xl">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="font-bold text-slate-800 text-base">Không tìm thấy câu hỏi phù hợp bộ lọc</div>
+            <p class="text-xs sm:text-sm text-slate-500">Hãy thử xóa từ khóa hoặc chuyển bộ lọc trạng thái về "Mọi trạng thái".</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+
+      // Render Part I Section
+      if (filteredP1.length > 0) {
+        html += `
+          <div class="flex items-center justify-between pt-1">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-6 rounded-full bg-emerald-600"></span>
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-900">PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN (${filteredP1.length} câu)</h3>
+            </div>
+            <span class="text-xs font-medium text-slate-500 hidden sm:inline">0,25 điểm / câu trong đề chuẩn</span>
+          </div>
+        `;
+
+        filteredP1.forEach(q => {
+          const userChoice = state.studyAnswers[q.id];
+          const revealed = state.showAllAnswers || Boolean(userChoice);
+          const isStarred = state.starredIds.includes(q.id);
+          const wrongCount = state.wrongQuestionCounts[q.id] || 0;
+          const topicMeta = TOPICS[q.topic];
+          const levelMeta = LEVELS[q.level];
+          const labelTitle = q.originalLabel || `Câu ${q.num}`;
+
+          html += `
+            <article id="study-card-${q.id}" class="bg-white rounded-2xl border ${q.warningNote ? 'border-amber-300' : 'border-slate-200/90'} p-4 sm:p-6 shadow-xs transition-all space-y-4">
+              <!-- Card Header -->
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-lg bg-emerald-900 text-white text-xs font-extrabold">${labelTitle}</span>
+                  <span class="px-2.5 py-1 rounded-lg border text-xs font-semibold ${topicMeta.badgeClass}">${topicMeta.short}</span>
+                  <span class="px-2 py-1 rounded-lg text-[11px] font-semibold ${levelMeta.cls}">${levelMeta.label}</span>
+                  ${wrongCount > 0 ? `<span class="px-2 py-1 rounded-lg bg-rose-50 text-rose-700 border border-rose-200 text-[11px] font-bold"><i class="fa-solid fa-circle-exclamation mr-1"></i>Từng sai ${wrongCount} lần</span>` : ''}
+                </div>
+                <button onclick="toggleStar('${q.id}')" title="Đánh dấu sao câu hỏi này" class="w-9 h-9 rounded-xl border ${isStarred ? 'bg-amber-50 border-amber-300 text-amber-500' : 'border-slate-200 text-slate-400 hover:text-amber-500'} flex items-center justify-center shrink-0 transition">
+                  <i class="${isStarred ? 'fa-solid' : 'fa-regular'} fa-star"></i>
+                </button>
+              </div>
+
+              ${q.warningNote ? `
+                <div class="rounded-xl bg-amber-50 border border-amber-300 px-3.5 py-2.5 text-xs sm:text-sm text-amber-950 font-semibold flex items-start gap-2.5">
+                  <i class="fa-solid fa-triangle-exclamation text-amber-600 mt-0.5"></i>
+                  <span>${q.warningNote}</span>
+                </div>
+              ` : ''}
+
+              <!-- Question Stem -->
+              <div class="text-sm sm:text-base font-semibold text-slate-900 leading-relaxed">
+                ${q.question}
+              </div>
+
+              <!-- Options Grid -->
+              <div class="grid grid-cols-1 gap-2.5">
+                ${['A', 'B', 'C', 'D'].map(letter => {
+                  const isCorrectOpt = q.answer === letter;
+                  const isSelected = userChoice === letter;
+
+                  let optStyle = 'border-slate-200 hover:border-emerald-400 hover:bg-emerald-50/40 bg-slate-50/40 text-slate-800';
+                  let badgeStyle = 'bg-white border-slate-300 text-slate-700';
+                  let rightIcon = '';
+
+                  if (revealed) {
+                    if (isCorrectOpt) {
+                      optStyle = 'border-emerald-500 bg-emerald-50/80 text-emerald-950 ring-1 ring-emerald-500/30';
+                      badgeStyle = 'bg-emerald-600 border-emerald-600 text-white';
+                      rightIcon = `<span class="ml-auto text-xs font-bold text-emerald-700 shrink-0 flex items-center gap-1"><i class="fa-solid fa-circle-check text-sm"></i> Đáp án đúng</span>`;
+                    } else if (isSelected && !isCorrectOpt) {
+                      optStyle = 'border-rose-400 bg-rose-50/80 text-rose-950';
+                      badgeStyle = 'bg-rose-600 border-rose-600 text-white';
+                      rightIcon = `<span class="ml-auto text-xs font-bold text-rose-700 shrink-0 flex items-center gap-1"><i class="fa-solid fa-circle-xmark text-sm"></i> Bạn chọn sai</span>`;
+                    } else {
+                      optStyle = 'border-slate-200/70 bg-white text-slate-500 opacity-80';
+                    }
+                  }
+
+                  return `
+                    <button
+                      type="button"
+                      onclick="selectStudyP1Option('${q.id}', '${letter}')"
+                      class="w-full text-left p-3 sm:p-3.5 rounded-xl border transition-all flex items-start sm:items-center gap-3 ${optStyle}"
+                    >
+                      <span class="w-7 h-7 rounded-lg border text-xs font-extrabold flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 ${badgeStyle}">
+                        ${letter}
+                      </span>
+                      <span class="text-xs sm:text-sm font-medium leading-relaxed flex-1">${q.options[letter]}</span>
+                      ${rightIcon}
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+
+              <!-- Detailed Explanation -->
+              ${revealed ? `
+                <div class="rounded-xl bg-emerald-50/60 border border-emerald-200/90 p-3.5 sm:p-4 text-xs sm:text-sm text-slate-800 space-y-1 animate-fade-in">
+                  <div class="font-bold text-emerald-900 flex items-center gap-1.5">
+                    <i class="fa-solid fa-lightbulb text-emerald-600"></i>
+                    <span>Giải thích chi tiết (Đáp án đúng: ${q.answer})</span>
+                  </div>
+                  <p class="leading-relaxed text-slate-700">${q.explanation}</p>
+                </div>
+              ` : ''}
+            </article>
+          `;
+        });
+      }
+
+      // Render Part II Section
+      if (filteredP2.length > 0) {
+        html += `
+          <div class="flex items-center justify-between pt-5">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-6 rounded-full bg-teal-600"></span>
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-900">PHẦN II. TRẮC NGHIỆM ĐÚNG - SAI (${filteredP2.length} câu)</h3>
+            </div>
+            <span class="text-xs font-medium text-slate-500 hidden sm:inline">Tối đa 1,0 điểm / câu (4 ý a, b, c, d)</span>
+          </div>
+        `;
+
+        filteredP2.forEach(q => {
+          const userMap = state.studyAnswers[q.id] || {};
+          const isStarred = state.starredIds.includes(q.id);
+          const wrongCount = state.wrongQuestionCounts[q.id] || 0;
+          const topicMeta = TOPICS[q.topic];
+
+          html += `
+            <article id="study-card-${q.id}" class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-6 shadow-xs space-y-4">
+              <!-- Header -->
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-lg bg-teal-800 text-white text-xs font-extrabold">Phần II • Câu ${q.num}</span>
+                  <span class="px-2.5 py-1 rounded-lg border text-xs font-semibold ${topicMeta.badgeClass}">${topicMeta.short}</span>
+                  ${wrongCount > 0 ? `<span class="px-2 py-1 rounded-lg bg-rose-50 text-rose-700 border border-rose-200 text-[11px] font-bold"><i class="fa-solid fa-circle-exclamation mr-1"></i>Từng nhầm ý</span>` : ''}
+                </div>
+                <button onclick="toggleStar('${q.id}')" title="Đánh dấu sao câu hỏi này" class="w-9 h-9 rounded-xl border ${isStarred ? 'bg-amber-50 border-amber-300 text-amber-500' : 'border-slate-200 text-slate-400 hover:text-amber-500'} flex items-center justify-center shrink-0 transition">
+                  <i class="${isStarred ? 'fa-solid' : 'fa-regular'} fa-star"></i>
+                </button>
+              </div>
+
+              <!-- Real-world Context Passage -->
+              <div class="rounded-xl bg-slate-50 border-l-4 border-teal-600 p-3.5 sm:p-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <span class="font-bold text-slate-900 not-italic block mb-1">Đọc đoạn minh chứng thực tế:</span>
+                <span class="italic">"${q.passage}"</span>
+              </div>
+
+              <!-- 4 Statements -->
+              <div class="space-y-3">
+                ${q.statements.map(stmt => {
+                  const hasAnsweredStmt = typeof userMap[stmt.key] === 'boolean';
+                  const stmtRevealed = state.showAllAnswers || hasAnsweredStmt;
+                  const userVal = userMap[stmt.key];
+                  const isCorrect = hasAnsweredStmt && userVal === stmt.answer;
+
+                  let cardBorder = 'border-slate-200 bg-white';
+                  if (stmtRevealed) {
+                    if (hasAnsweredStmt) {
+                      cardBorder = isCorrect ? 'border-emerald-400 bg-emerald-50/40' : 'border-rose-300 bg-rose-50/40';
+                    } else {
+                      cardBorder = 'border-emerald-200 bg-emerald-50/25';
+                    }
+                  }
+
+                  const btnTrueActive = (hasAnsweredStmt && userVal === true)
+                    ? (stmt.answer === true ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-rose-600 text-white border-rose-600')
+                    : (state.showAllAnswers && stmt.answer === true ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-slate-700 border-slate-300 hover:border-emerald-500');
+
+                  const btnFalseActive = (hasAnsweredStmt && userVal === false)
+                    ? (stmt.answer === false ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-rose-600 text-white border-rose-600')
+                    : (state.showAllAnswers && stmt.answer === false ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-slate-700 border-slate-300 hover:border-emerald-500');
+
+                  return `
+                    <div class="rounded-xl border p-3.5 transition-all space-y-2.5 ${cardBorder}">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed flex-1">
+                          <span class="font-extrabold text-teal-900 mr-1">${stmt.key})</span> ${stmt.text}
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                          <button
+                            type="button"
+                            onclick="selectStudyP2Statement('${q.id}', '${stmt.key}', true)"
+                            class="px-3.5 py-1.5 rounded-lg border text-xs font-bold transition ${btnTrueActive}"
+                          >
+                            Đúng
+                          </button>
+                          <button
+                            type="button"
+                            onclick="selectStudyP2Statement('${q.id}', '${stmt.key}', false)"
+                            class="px-3.5 py-1.5 rounded-lg border text-xs font-bold transition ${btnFalseActive}"
+                          >
+                            Sai
+                          </button>
+                        </div>
+                      </div>
+                      ${stmtRevealed ? `
+                        <div class="pt-2 border-t border-slate-200/70 text-xs text-slate-700 flex items-start gap-2 animate-fade-in">
+                          <span class="px-2 py-0.5 rounded font-extrabold shrink-0 ${stmt.answer ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                            Đáp án: ${stmt.answer ? 'ĐÚNG' : 'SAI'}
+                          </span>
+                          <span class="leading-relaxed">${stmt.explanation}</span>
+                        </div>
+                      ` : ''}
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </article>
+          `;
+        });
+
+        // Helpful Note about incomplete Question 11 on Page 10 of handout
+        if (partFilter !== 'P1' && !searchVal && statusFilter === 'ALL' && (topicFilter === 'ALL' || topicFilter === 'T3')) {
+          html += `
+            <div class="rounded-2xl bg-slate-100 border border-slate-200/90 p-4 text-xs sm:text-sm text-slate-600 flex items-start gap-3">
+              <i class="fa-solid fa-file-circle-question text-slate-500 text-base mt-0.5"></i>
+              <div class="leading-relaxed">
+                <strong class="text-slate-800">Ghi chú đối chiếu tờ đề cương gốc (Cuối trang 10):</strong>
+                Ở cuối trang 10 có phần mở đầu <em>"Câu 11: Các kết quả thực nghiệm lâm sinh cho thấy, việc nắm vững quy luật sinh trưởng theo pha của cây rừng giúp các chủ rừng xác định chính xác thời điểm bón phân thúc vào giai đoạn cây tăng trưởng mạnh về sinh khối, nhờ đó nâng cao năng suất rừng trồng gỗ lớn"</em> nhưng đề in khuyết trang tiếp theo chứa 4 mệnh đề a, b, c, d. Vì vậy ngân hàng câu hỏi lấy trọn vẹn <strong>10 câu hoàn chỉnh (Câu 1 → Câu 10)</strong>, còn kiến thức cốt lõi của đoạn dẫn Câu 11 đã được tích hợp đầy đủ trong Sổ tay Chủ đề 3.
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      container.innerHTML = html;
+    }
+
+    // =========================================================================
+    // 5. TAB 2: TIMED MOCK EXAM ENGINE (STRATIFIED MATRIX + ANTI-ROTE SHUFFLE)
+    // =========================================================================
+    let examTimerInterval = null;
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function pickRandomN(arr, n) {
+      return shuffleArray(arr).slice(0, Math.min(n, arr.length));
+    }
+
+    function selectExamMode(mode) {
+      state.selectedExamMode = mode;
+      const cardStd = document.getElementById('card-mode-standard');
+      const cardFull = document.getElementById('card-mode-full');
+      const radios = document.getElementsByName('examMode');
+
+      radios.forEach(r => { r.checked = (r.value === mode); });
+
+      if (mode === 'standard') {
+        cardStd.className = 'cursor-pointer rounded-2xl border-2 border-emerald-600 bg-emerald-50/50 p-4 sm:p-5 transition-all flex flex-col justify-between gap-3';
+        cardFull.className = 'cursor-pointer rounded-2xl border-2 border-slate-200 hover:border-emerald-300 bg-white p-4 sm:p-5 transition-all flex flex-col justify-between gap-3';
+      } else {
+        cardFull.className = 'cursor-pointer rounded-2xl border-2 border-emerald-600 bg-emerald-50/50 p-4 sm:p-5 transition-all flex flex-col justify-between gap-3';
+        cardStd.className = 'cursor-pointer rounded-2xl border-2 border-slate-200 hover:border-emerald-300 bg-white p-4 sm:p-5 transition-all flex flex-col justify-between gap-3';
+      }
+    }
+
+    function updateExamSetupWrongBanner() {
+      const wrongIds = Object.keys(state.wrongQuestionCounts).filter(id => state.wrongQuestionCounts[id] > 0);
+      const banner = document.getElementById('retry-wrong-banner');
+      if (wrongIds.length > 0) {
+        document.getElementById('wrong-pool-count').textContent = wrongIds.length;
+        banner.classList.remove('hidden');
+      } else {
+        banner.classList.add('hidden');
+      }
+    }
+
+    // Build stratified 24 Part I + 4 Part II exam according to matrix
+    function buildStandardMatrixQuestions() {
+      const byCriteria = (topic, level) => PART1_QUESTIONS.filter(q => q.topic === topic && q.level === level);
+
+      // Matrix:
+      // T1: 4 NB, 2 TH (total 6)
+      // T2: 1 NB, 4 TH, 4 VD (total 9)
+      // T3: 3 NB, 5 TH, 1 VD (total 9)
+      const p1Selected = [
+        ...pickRandomN(byCriteria('T1', 'NB'), 4),
+        ...pickRandomN(byCriteria('T1', 'TH'), 2),
+        ...pickRandomN(byCriteria('T2', 'NB'), 1),
+        ...pickRandomN(byCriteria('T2', 'TH'), 4),
+        ...pickRandomN(byCriteria('T2', 'VD'), 4),
+        ...pickRandomN(byCriteria('T3', 'NB'), 3),
+        ...pickRandomN(byCriteria('T3', 'TH'), 5),
+        ...pickRandomN(byCriteria('T3', 'VD'), 1)
+      ];
+
+      // Part II Matrix: 1 T1, 1 T2, 2 T3 (total 4)
+      const p2Selected = [
+        ...pickRandomN(PART2_QUESTIONS.filter(q => q.topic === 'T1'), 1),
+        ...pickRandomN(PART2_QUESTIONS.filter(q => q.topic === 'T2'), 1),
+        ...pickRandomN(PART2_QUESTIONS.filter(q => q.topic === 'T3'), 2)
+      ];
+
+      return { p1Selected, p2Selected };
+    }
+
+    function prepareExamItems(p1List, p2List, shouldShuffle) {
+      const orderedP1 = shouldShuffle ? shuffleArray(p1List) : [...p1List];
+      const orderedP2 = shouldShuffle ? shuffleArray(p2List) : [...p2List];
+
+      const p1Items = orderedP1.map((q, idx) => {
+        const origKeys = shouldShuffle ? shuffleArray(['A', 'B', 'C', 'D']) : ['A', 'B', 'C', 'D'];
+        const displayLabels = ['A', 'B', 'C', 'D'];
+        const displayOptions = {};
+        let correctDisplayLetter = 'A';
+
+        displayLabels.forEach((dispLetter, i) => {
+          const origKey = origKeys[i];
+          displayOptions[dispLetter] = q.options[origKey];
+          if (origKey === q.answer) {
+            correctDisplayLetter = dispLetter;
+          }
+        });
+
+        return {
+          examIndex: idx + 1,
+          part: 'P1',
+          sourceId: q.id,
+          origNum: q.num,
+          originalLabel: q.originalLabel || `Câu ${q.num} đề gốc`,
+          topic: q.topic,
+          level: q.level,
+          warningNote: q.warningNote || null,
+          question: q.question,
+          displayOptions,
+          correctDisplayLetter,
+          origCorrectLetter: q.answer,
+          explanation: q.explanation,
+          userAnswer: null,
+          flagged: false
+        };
+      });
+
+      const p2Items = orderedP2.map((q, idx) => {
+        return {
+          examIndex: idx + 1,
+          part: 'P2',
+          sourceId: q.id,
+          origNum: q.num,
+          originalLabel: `Phần II - Câu ${q.num} đề gốc`,
+          topic: q.topic,
+          passage: q.passage,
+          statements: q.statements.map(s => ({ ...s })),
+          userAnswers: {}, // { a: true/false, ... }
+          flagged: false
+        };
+      });
+
+      return { p1Items, p2Items };
+    }
+
+    function startExam(customQuestionIds = null) {
+      const shouldShuffle = document.getElementById('exam-shuffle-toggle').checked;
+      let p1Pool = [];
+      let p2Pool = [];
+      let durationSec = 45 * 60;
+      let modeTitle = 'Đề chuẩn Ma trận Giữa kì (45 phút)';
+      let modeKey = state.selectedExamMode;
+
+      if (customQuestionIds && customQuestionIds.length > 0) {
+        p1Pool = PART1_QUESTIONS.filter(q => customQuestionIds.includes(q.id));
+        p2Pool = PART2_QUESTIONS.filter(q => customQuestionIds.includes(q.id));
+        durationSec = Math.max(10, (p1Pool.length * 1 + p2Pool.length * 3)) * 60;
+        modeTitle = `Luyện lại ${p1Pool.length + p2Pool.length} câu từng làm sai`;
+        modeKey = 'wrong_retry';
+      } else if (state.selectedExamMode === 'standard') {
+        const built = buildStandardMatrixQuestions();
+        p1Pool = built.p1Selected;
+        p2Pool = built.p2Selected;
+        durationSec = 45 * 60;
+        modeTitle = 'Đề chuẩn Ma trận Giữa kì (24 câu P.I + 4 câu P.II)';
+      } else {
+        p1Pool = [...PART1_QUESTIONS];
+        p2Pool = [...PART2_QUESTIONS];
+        durationSec = 60 * 60;
+        modeTitle = 'Thi tổng duyệt Full Đề cương (36 câu P.I + 10 câu P.II)';
+      }
+
+      const { p1Items, p2Items } = prepareExamItems(p1Pool, p2Pool, shouldShuffle);
+
+      state.examSession = {
+        modeKey,
+        modeTitle,
+        shuffled: shouldShuffle,
+        totalSeconds: durationSec,
+        remainingSeconds: durationSec,
+        startedAt: Date.now(),
+        submitted: false,
+        p1Items,
+        p2Items,
+        reviewFilter: 'ALL'
+      };
+
+      // Switch subviews
+      document.getElementById('exam-setup-screen').classList.add('hidden');
+      document.getElementById('exam-result-screen').classList.add('hidden');
+      document.getElementById('exam-active-screen').classList.remove('hidden');
+
+      document.getElementById('exam-mode-label').textContent = modeTitle;
+      renderActiveExamQuestions();
+      updateExamPaletteAndProgress();
+      startExamTimer();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startWrongQuestionsExam() {
+      const wrongIds = Object.keys(state.wrongQuestionCounts).filter(id => state.wrongQuestionCounts[id] > 0);
+      if (wrongIds.length === 0) {
+        showToast('Bạn chưa có câu sai nào cần làm lại!', 'info');
+        return;
+      }
+      switchTab('exam');
+      startExam(wrongIds);
+    }
+
+    function startExamTimer() {
+      if (examTimerInterval) clearInterval(examTimerInterval);
+      updateTimerDisplay();
+
+      examTimerInterval = setInterval(() => {
+        if (!state.examSession || state.examSession.submitted) {
+          clearInterval(examTimerInterval);
+          return;
+        }
+        state.examSession.remainingSeconds -= 1;
+        updateTimerDisplay();
+
+        if (state.examSession.remainingSeconds <= 0) {
+          clearInterval(examTimerInterval);
+          showToast('Đã hết thời gian làm bài! Hệ thống tự động thu bài.', 'warning');
+          finalizeExamSubmission();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      if (!state.examSession) return;
+      const sec = Math.max(0, state.examSession.remainingSeconds);
+      const mins = Math.floor(sec / 60);
+      const rem = sec % 60;
+      const disp = `${String(mins).padStart(2, '0')}:${String(rem).padStart(2, '0')}`;
+      const el = document.getElementById('exam-timer-display');
+      const box = document.getElementById('exam-timer-box');
+      if (el) el.textContent = disp;
+      if (box) {
+        if (sec <= 300) {
+          box.className = 'flex items-center gap-2 px-3.5 py-2 rounded-xl bg-rose-600 text-white font-mono text-base sm:text-lg font-extrabold tracking-wider animate-pulse';
+        } else {
+          box.className = 'flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-950 text-white font-mono text-base sm:text-lg font-extrabold tracking-wider shadow-inner';
+        }
+      }
+    }
+
+    function renderActiveExamQuestions() {
+      const sess = state.examSession;
+      if (!sess) return;
+      const container = document.getElementById('exam-questions-list');
+      let html = '';
+
+      if (sess.p1Items.length > 0) {
+        html += `
+          <div class="bg-emerald-900 text-white rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-xs">
+            <div>
+              <div class="text-xs uppercase tracking-wider text-emerald-300 font-bold">Phần I</div>
+              <div class="font-extrabold text-sm sm:text-base">Trắc nghiệm khách quan nhiều lựa chọn (${sess.p1Items.length} câu)</div>
+            </div>
+            <span class="text-xs bg-white/15 px-2.5 py-1 rounded-lg font-semibold">Chọn 1 phương án đúng nhất</span>
+          </div>
+        `;
+
+        sess.p1Items.forEach((item, idx) => {
+          html += `
+            <div id="exam-q-P1-${idx}" class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs space-y-4">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-3 py-1 rounded-lg bg-emerald-700 text-white text-xs font-extrabold">Câu ${item.examIndex}</span>
+                  <span class="text-xs text-slate-400 font-medium">(${item.originalLabel})</span>
+                  <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold ${TOPICS[item.topic].badgeClass}">${TOPICS[item.topic].short}</span>
+                </div>
+                <button
+                  type="button"
+                  id="flag-btn-P1-${idx}"
+                  onclick="toggleExamFlag('P1', ${idx})"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-semibold transition ${item.flagged ? 'bg-amber-100 border-amber-400 text-amber-800' : 'border-slate-200 text-slate-500 hover:bg-slate-50'}"
+                >
+                  <i class="fa-solid fa-flag"></i>
+                  <span>${item.flagged ? 'Đã cắm cờ' : 'Xem lại sau'}</span>
+                </button>
+              </div>
+
+              <div class="text-sm sm:text-base font-semibold text-slate-900 leading-relaxed">
+                ${item.question}
+              </div>
+
+              <div class="grid grid-cols-1 gap-2.5" id="exam-opts-P1-${idx}">
+                ${['A', 'B', 'C', 'D'].map(letter => {
+                  const selected = item.userAnswer === letter;
+                  return `
+                    <button
+                      type="button"
+                      onclick="chooseExamP1Answer(${idx}, '${letter}')"
+                      class="w-full text-left p-3 sm:p-3.5 rounded-xl border transition-all flex items-start sm:items-center gap-3 ${selected ? 'border-emerald-600 bg-emerald-50/90 text-emerald-950 ring-1 ring-emerald-600/30' : 'border-slate-200 hover:border-emerald-300 bg-slate-50/40 text-slate-800'}"
+                    >
+                      <span class="w-7 h-7 rounded-lg border text-xs font-extrabold flex items-center justify-center shrink-0 ${selected ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-slate-300 text-slate-700'}">
+                        ${letter}
+                      </span>
+                      <span class="text-xs sm:text-sm font-medium leading-relaxed flex-1">${item.displayOptions[letter]}</span>
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      if (sess.p2Items.length > 0) {
+        html += `
+          <div class="bg-teal-900 text-white rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-xs mt-6">
+            <div>
+              <div class="text-xs uppercase tracking-wider text-teal-300 font-bold">Phần II</div>
+              <div class="font-extrabold text-sm sm:text-base">Trắc nghiệm Đúng - Sai (${sess.p2Items.length} câu • Mỗi câu 4 ý)</div>
+            </div>
+            <span class="text-xs bg-white/15 px-2.5 py-1 rounded-lg font-semibold">Chọn Đúng hoặc Sai cho cả 4 ý</span>
+          </div>
+        `;
+
+        sess.p2Items.forEach((item, idx) => {
+          html += `
+            <div id="exam-q-P2-${idx}" class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs space-y-4">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-3 py-1 rounded-lg bg-teal-700 text-white text-xs font-extrabold">Phần II • Câu ${item.examIndex}</span>
+                  <span class="text-xs text-slate-400 font-medium">(${item.originalLabel})</span>
+                  <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold ${TOPICS[item.topic].badgeClass}">${TOPICS[item.topic].short}</span>
+                </div>
+                <button
+                  type="button"
+                  id="flag-btn-P2-${idx}"
+                  onclick="toggleExamFlag('P2', ${idx})"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-semibold transition ${item.flagged ? 'bg-amber-100 border-amber-400 text-amber-800' : 'border-slate-200 text-slate-500 hover:bg-slate-50'}"
+                >
+                  <i class="fa-solid fa-flag"></i>
+                  <span>${item.flagged ? 'Đã cắm cờ' : 'Xem lại sau'}</span>
+                </button>
+              </div>
+
+              <div class="rounded-xl bg-slate-50 border-l-4 border-teal-600 p-3.5 sm:p-4 text-xs sm:text-sm text-slate-700 italic leading-relaxed">
+                "${item.passage}"
+              </div>
+
+              <div class="space-y-2.5" id="exam-stmts-P2-${idx}">
+                ${item.statements.map(stmt => {
+                  const chosen = item.userAnswers[stmt.key];
+                  return `
+                    <div class="rounded-xl border border-slate-200 p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/30">
+                      <div class="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed flex-1">
+                        <span class="font-extrabold text-teal-900 mr-1">${stmt.key})</span> ${stmt.text}
+                      </div>
+                      <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                        <button
+                          type="button"
+                          onclick="chooseExamP2Answer(${idx}, '${stmt.key}', true)"
+                          class="px-3.5 py-1.5 rounded-lg border text-xs font-bold transition ${chosen === true ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs' : 'bg-white text-slate-700 border-slate-300 hover:border-emerald-400'}"
+                        >
+                          Đúng
+                        </button>
+                        <button
+                          type="button"
+                          onclick="chooseExamP2Answer(${idx}, '${stmt.key}', false)"
+                          class="px-3.5 py-1.5 rounded-lg border text-xs font-bold transition ${chosen === false ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs' : 'bg-white text-slate-700 border-slate-300 hover:border-emerald-400'}"
+                        >
+                          Sai
+                        </button>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      container.innerHTML = html;
+    }
+
+    function chooseExamP1Answer(idx, letter) {
+      const sess = state.examSession;
+      if (!sess || sess.submitted) return;
+      const item = sess.p1Items[idx];
+      item.userAnswer = letter;
+
+      // Re-render just this question's options cleanly
+      const optBox = document.getElementById(`exam-opts-P1-${idx}`);
+      if (optBox) {
+        optBox.innerHTML = ['A', 'B', 'C', 'D'].map(l => {
+          const selected = item.userAnswer === l;
+          return `
+            <button
+              type="button"
+              onclick="chooseExamP1Answer(${idx}, '${l}')"
+              class="w-full text-left p-3 sm:p-3.5 rounded-xl border transition-all flex items-start sm:items-center gap-3 ${selected ? 'border-emerald-600 bg-emerald-50/90 text-emerald-950 ring-1 ring-emerald-600/30' : 'border-slate-200 hover:border-emerald-300 bg-slate-50/40 text-slate-800'}"
+            >
+              <span class="w-7 h-7 rounded-lg border text-xs font-extrabold flex items-center justify-center shrink-0 ${selected ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-slate-300 text-slate-700'}">
+                ${l}
+              </span>
+              <span class="text-xs sm:text-sm font-medium leading-relaxed flex-1">${item.displayOptions[l]}</span>
+            </button>
+          `;
+        }).join('');
+      }
+      updateExamPaletteAndProgress();
+    }
+
+    function chooseExamP2Answer(idx, stmtKey, boolVal) {
+      const sess = state.examSession;
+      if (!sess || sess.submitted) return;
+      const item = sess.p2Items[idx];
+      item.userAnswers[stmtKey] = boolVal;
+
+      const stmtBox = document.getElementById(`exam-stmts-P2-${idx}`);
+      if (stmtBox) {
+        stmtBox.innerHTML = item.statements.map(stmt => {
+          const chosen = item.userAnswers[stmt.key];
+          return `
+            <div class="rounded-xl border border-slate-200 p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/30">
+              <div class="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed flex-1">
+                <span class="font-extrabold text-teal-900 mr-1">${stmt.key})</span> ${stmt.text}
+              </div>
+              <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                <button
+                  type="button"
+                  onclick="chooseExamP2Answer(${idx}, '${stmt.key}', true)"
+                  class="px-3.5 py-1.5 rounded-lg border text-xs font-bold transition ${chosen === true ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs' : 'bg-white text-slate-700 border-slate-300 hover:border-emerald-400'}"
+                >
+                  Đúng
+                </button>
+                <button
+                  type="button"
+                  onclick="chooseExamP2Answer(${idx}, '${stmt.key}', false)"
+                  class="px-3.5 py-1.5 rounded-lg border text-xs font-bold transition ${chosen === false ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs' : 'bg-white text-slate-700 border-slate-300 hover:border-emerald-400'}"
+                >
+                  Sai
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+      updateExamPaletteAndProgress();
+    }
+
+    function toggleExamFlag(part, idx) {
+      const sess = state.examSession;
+      if (!sess || sess.submitted) return;
+      const item = part === 'P1' ? sess.p1Items[idx] : sess.p2Items[idx];
+      item.flagged = !item.flagged;
+
+      const btn = document.getElementById(`flag-btn-${part}-${idx}`);
+      if (btn) {
+        btn.className = `inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-semibold transition ${item.flagged ? 'bg-amber-100 border-amber-400 text-amber-800' : 'border-slate-200 text-slate-500 hover:bg-slate-50'}`;
+        btn.innerHTML = `<i class="fa-solid fa-flag"></i><span>${item.flagged ? 'Đã cắm cờ' : 'Xem lại sau'}</span>`;
+      }
+      updateExamPaletteAndProgress();
+    }
+
+    function scrollToExamQuestion(part, idx) {
+      const modal = document.getElementById('mobile-palette-modal');
+      if (!modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+      }
+      const el = document.getElementById(`exam-q-${part}-${idx}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function toggleMobilePalette() {
+      document.getElementById('mobile-palette-modal').classList.toggle('hidden');
+    }
+
+    function updateExamPaletteAndProgress() {
+      const sess = state.examSession;
+      if (!sess) return;
+
+      const p1Done = sess.p1Items.filter(i => Boolean(i.userAnswer)).length;
+      const p2Done = sess.p2Items.filter(i => Object.keys(i.userAnswers).length === 4).length;
+      const totalQ = sess.p1Items.length + sess.p2Items.length;
+      const totalDone = p1Done + p2Done;
+      const totalFlags = sess.p1Items.filter(i => i.flagged).length + sess.p2Items.filter(i => i.flagged).length;
+
+      document.getElementById('exam-answered-count').textContent = `${totalDone}/${totalQ}`;
+      document.getElementById('exam-flag-counter').textContent = `${totalFlags} cờ xem lại`;
+
+      const buildPaletteHtml = () => {
+        let h = '';
+        if (sess.p1Items.length > 0) {
+          h += `<div class="text-xs font-bold text-slate-500 uppercase">Phần I (${p1Done}/${sess.p1Items.length})</div>`;
+          h += `<div class="grid grid-cols-6 gap-1.5">`;
+          sess.p1Items.forEach((item, idx) => {
+            const done = Boolean(item.userAnswer);
+            const cls = done
+              ? 'bg-emerald-600 text-white border-emerald-600'
+              : 'bg-slate-100 text-slate-700 border-slate-300 hover:border-emerald-400';
+            h += `
+              <button type="button" onclick="scrollToExamQuestion('P1', ${idx})" class="relative h-9 rounded-lg border text-xs font-bold transition ${cls}">
+                ${item.examIndex}
+                ${item.flagged ? '<span class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 ring-2 ring-white"></span>' : ''}
+              </button>
+            `;
+          });
+          h += `</div>`;
+        }
+
+        if (sess.p2Items.length > 0) {
+          h += `<div class="text-xs font-bold text-slate-500 uppercase pt-2">Phần II (${p2Done}/${sess.p2Items.length})</div>`;
+          h += `<div class="grid grid-cols-4 gap-2">`;
+          sess.p2Items.forEach((item, idx) => {
+            const countAns = Object.keys(item.userAnswers).length;
+            let cls = 'bg-slate-100 text-slate-700 border-slate-300';
+            if (countAns === 4) cls = 'bg-emerald-600 text-white border-emerald-600';
+            else if (countAns > 0) cls = 'bg-amber-100 text-amber-900 border-amber-400';
+
+            h += `
+              <button type="button" onclick="scrollToExamQuestion('P2', ${idx})" class="relative py-2 rounded-lg border text-xs font-bold transition ${cls}">
+                II.${item.examIndex} <span class="text-[10px] opacity-85">(${countAns}/4)</span>
+                ${item.flagged ? '<span class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 ring-2 ring-white"></span>' : ''}
+              </button>
+            `;
+          });
+          h += `</div>`;
+        }
+        return h;
+      };
+
+      const paletteMarkup = buildPaletteHtml();
+      document.getElementById('exam-palette-desktop').innerHTML = paletteMarkup;
+      document.getElementById('exam-palette-mobile').innerHTML = paletteMarkup;
+    }
+
+    function confirmCancelExam() {
+      openModal({
+        title: 'Thoát phòng thi hiện tại?',
+        message: 'Bài đang làm dở sẽ không được lưu điểm. Bạn có chắc muốn quay về màn hình chọn chế độ đề?',
+        confirmText: 'Thoát bài thi',
+        variant: 'danger',
+        onConfirm: () => {
+          if (examTimerInterval) clearInterval(examTimerInterval);
+          state.examSession = null;
+          document.getElementById('exam-active-screen').classList.add('hidden');
+          document.getElementById('exam-result-screen').classList.add('hidden');
+          document.getElementById('exam-setup-screen').classList.remove('hidden');
+          updateExamSetupWrongBanner();
+        }
+      });
+    }
+
+    function requestSubmitExam() {
+      const sess = state.examSession;
+      if (!sess || sess.submitted) return;
+
+      const unansweredP1 = sess.p1Items.filter(i => !i.userAnswer).length;
+      const incompleteP2 = sess.p2Items.filter(i => Object.keys(i.userAnswers).length < 4).length;
+      const flaggedCount = sess.p1Items.filter(i => i.flagged).length + sess.p2Items.filter(i => i.flagged).length;
+
+      let msg = 'Bạn đã hoàn thành đầy đủ mọi câu hỏi trong đề. Bạn muốn nộp bài ngay để chấm điểm?';
+      let variant = 'emerald';
+
+      if (unansweredP1 > 0 || incompleteP2 > 0) {
+        variant = 'warning';
+        msg = `Cảnh báo: Bạn còn <strong>${unansweredP1} câu Phần I</strong> chưa chọn đáp án và <strong>${incompleteP2} câu Phần II</strong> chưa điền đủ 4 ý Đúng/Sai.` +
+              (flaggedCount > 0 ? `<br/>Ngoài ra đang có <strong>${flaggedCount} câu cắm cờ</strong> xem lại.` : '') +
+              `<br/><br/>Bạn vẫn muốn nộp bài ngay chứ?`;
+      } else if (flaggedCount > 0) {
+        msg = `Bạn đã điền kín đáp án nhưng đang cắm cờ xem lại <strong>${flaggedCount} câu</strong>. Bạn chắc chắn muốn nộp bài?`;
+      }
+
+      openModal({
+        title: 'Xác nhận nộp bài thi?',
+        message: msg,
+        confirmText: 'Nộp bài & Xem điểm',
+        cancelText: 'Kiểm tra lại',
+        variant,
+        onConfirm: () => finalizeExamSubmission()
+      });
+    }
+
+    // Progressive MOET Scoring for 1 Part II Question (max 1.0 raw point)
+    function calcPart2RawQuestionScore(correctCount) {
+      if (correctCount === 4) return 1.0;
+      if (correctCount === 3) return 0.5;
+      if (correctCount === 2) return 0.25;
+      if (correctCount === 1) return 0.1;
+      return 0.0;
+    }
+
+    function finalizeExamSubmission() {
+      const sess = state.examSession;
+      if (!sess || sess.submitted) return;
+      if (examTimerInterval) clearInterval(examTimerInterval);
+      sess.submitted = true;
+
+      const spentSeconds = Math.max(1, sess.totalSeconds - Math.max(0, sess.remainingSeconds));
+
+      // Topic breakdown tracker
+      const topicStats = {
+        T1: { earned: 0, max: 0 },
+        T2: { earned: 0, max: 0 },
+        T3: { earned: 0, max: 0 }
+      };
+
+      // Weight calculation:
+      // Standard mode: 24 P1 * 0.25 = 6.0; 4 P2 * 1.0 = 4.0 => Exact 10.0
+      // Full mode (36 P1 + 10 P2): P1 scaled to 6.0, P2 scaled to 4.0 => Exact 10.0
+      // Wrong-only custom mode: scaled proportionally to 10.0
+      let p1WeightEach = 0.25;
+      let p2ScaleFactor = 1.0;
+
+      if (sess.modeKey === 'full') {
+        p1WeightEach = 6.0 / sess.p1Items.length; // 6 / 36
+        p2ScaleFactor = 4.0 / sess.p2Items.length; // 4 / 10 = 0.4
+      } else if (sess.modeKey === 'wrong_retry') {
+        const rawMax = sess.p1Items.length * 0.25 + sess.p2Items.length * 1.0;
+        const factor = rawMax > 0 ? (10.0 / rawMax) : 1.0;
+        p1WeightEach = 0.25 * factor;
+        p2ScaleFactor = 1.0 * factor;
+      }
+
+      let p1CorrectCount = 0;
+      let p1Score = 0;
+      const wrongSourceIdsThisExam = [];
+
+      sess.p1Items.forEach(item => {
+        item.isCorrect = (item.userAnswer === item.correctDisplayLetter);
+        const pts = item.isCorrect ? p1WeightEach : 0;
+        item.earnedPoints = pts;
+        item.maxPoints = p1WeightEach;
+
+        p1Score += pts;
+        if (item.isCorrect) {
+          p1CorrectCount++;
+        } else {
+          wrongSourceIdsThisExam.push(item.sourceId);
+          state.wrongQuestionCounts[item.sourceId] = (state.wrongQuestionCounts[item.sourceId] || 0) + 1;
+        }
+
+        topicStats[item.topic].earned += pts;
+        topicStats[item.topic].max += p1WeightEach;
+      });
+
+      let p2TotalSubCorrect = 0;
+      let p2Score = 0;
+
+      sess.p2Items.forEach(item => {
+        let subCorrect = 0;
+        item.statements.forEach(stmt => {
+          const u = item.userAnswers[stmt.key];
+          stmt.isUserCorrect = (typeof u === 'boolean' && u === stmt.answer);
+          if (stmt.isUserCorrect) subCorrect++;
+        });
+        item.subCorrectCount = subCorrect;
+        p2TotalSubCorrect += subCorrect;
+
+        const rawPts = calcPart2RawQuestionScore(subCorrect);
+        const scaledPts = rawPts * p2ScaleFactor;
+        item.rawPoints = rawPts;
+        item.earnedPoints = scaledPts;
+        item.maxPoints = 1.0 * p2ScaleFactor;
+
+        p2Score += scaledPts;
+        if (subCorrect < 4) {
+          wrongSourceIdsThisExam.push(item.sourceId);
+          state.wrongQuestionCounts[item.sourceId] = (state.wrongQuestionCounts[item.sourceId] || 0) + 1;
+        }
+
+        topicStats[item.topic].earned += scaledPts;
+        topicStats[item.topic].max += item.maxPoints;
+      });
+
+      const totalScore = Math.round((p1Score + p2Score) * 100) / 100;
+
+      sess.summary = {
+        totalScore,
+        p1Score: Math.round(p1Score * 100) / 100,
+        p2Score: Math.round(p2Score * 100) / 100,
+        p1CorrectCount,
+        p1Total: sess.p1Items.length,
+        p2TotalSubCorrect,
+        p2TotalSub: sess.p2Items.length * 4,
+        spentSeconds,
+        topicStats,
+        wrongSourceIds: wrongSourceIdsThisExam
+      };
+
+      // Save to history
+      state.examHistory.unshift({
+        id: 'HIST_' + Date.now(),
+        timestamp: new Date().toISOString(),
+        modeTitle: sess.modeTitle,
+        shuffled: sess.shuffled,
+        totalScore,
+        p1Score: sess.summary.p1Score,
+        p2Score: sess.summary.p2Score,
+        p1Accuracy: `${p1CorrectCount}/${sess.p1Items.length}`,
+        p2Accuracy: `${p2TotalSubCorrect}/${sess.p2Items.length * 4} ý`,
+        spentSeconds,
+        wrongSourceIds: wrongSourceIdsThisExam
+      });
+      if (state.examHistory.length > 30) state.examHistory = state.examHistory.slice(0, 30);
+
+      savePersistedState();
+      updateStudyStats();
+
+      document.getElementById('exam-active-screen').classList.add('hidden');
+      document.getElementById('exam-result-screen').classList.remove('hidden');
+      renderExamResultScreen();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function formatDuration(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${m} phút ${String(s).padStart(2, '0')} giây`;
+    }
+
+    function setExamReviewFilter(filterType) {
+      if (!state.examSession) return;
+      state.examSession.reviewFilter = filterType;
+      renderExamResultScreen();
+    }
+
+    function backToExamSetup() {
+      state.examSession = null;
+      document.getElementById('exam-result-screen').classList.add('hidden');
+      document.getElementById('exam-setup-screen').classList.remove('hidden');
+      updateExamSetupWrongBanner();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderExamResultScreen() {
+      const sess = state.examSession;
+      if (!sess || !sess.summary) return;
+      const sum = sess.summary;
+      const container = document.getElementById('exam-result-screen');
+
+      let gradeBadge = { text: 'Cần cố gắng thêm', cls: 'bg-rose-100 text-rose-800' };
+      if (sum.totalScore >= 9.0) gradeBadge = { text: 'Xuất sắc • Nắm chắc kiến thức!', cls: 'bg-emerald-100 text-emerald-900' };
+      else if (sum.totalScore >= 8.0) gradeBadge = { text: 'Giỏi • Sẵn sàng bước vào phòng thi!', cls: 'bg-emerald-100 text-emerald-800' };
+      else if (sum.totalScore >= 6.5) gradeBadge = { text: 'Khá • Ôn kỹ lại các câu nhầm', cls: 'bg-amber-100 text-amber-900' };
+      else if (sum.totalScore >= 5.0) gradeBadge = { text: 'Đạt • Cần củng cố thêm lý thuyết', cls: 'bg-amber-100 text-amber-800' };
+
+      const filter = sess.reviewFilter || 'ALL';
+      const filteredP1 = sess.p1Items.filter(i => {
+        if (filter === 'WRONG') return !i.isCorrect;
+        if (filter === 'FLAGGED') return i.flagged;
+        return true;
+      });
+      const filteredP2 = sess.p2Items.filter(i => {
+        if (filter === 'WRONG') return i.subCorrectCount < 4;
+        if (filter === 'FLAGGED') return i.flagged;
+        return true;
+      });
+
+      let html = `
+        <!-- Score Hero Card -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="bg-gradient-to-r from-emerald-800 via-forest-800 to-teal-900 p-6 sm:p-8 text-white">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div class="space-y-2">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-extrabold ${gradeBadge.cls}">
+                  ${gradeBadge.text}
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold">Kết quả bài thi của bạn</h2>
+                <p class="text-emerald-100 text-xs sm:text-sm">
+                  ${sess.modeTitle} • Thời gian hoàn thành: <strong>${formatDuration(sum.spentSeconds)}</strong>
+                </p>
+              </div>
+              <div class="bg-white/15 backdrop-blur rounded-3xl px-7 py-5 text-center border border-white/20 shrink-0">
+                <div class="text-xs uppercase tracking-wider text-emerald-200 font-bold">Tổng điểm thang 10</div>
+                <div class="text-4xl sm:text-5xl font-extrabold tracking-tight mt-1">${sum.totalScore.toFixed(2)}</div>
+                <div class="text-xs text-emerald-100 mt-1">Phần I: ${sum.p1Score.toFixed(2)}đ • Phần II: ${sum.p2Score.toFixed(2)}đ</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Breakdown & Topic Mastery -->
+          <div class="p-5 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
+                <div class="text-xs text-slate-500 font-semibold">Phần I (Nhiều lựa chọn)</div>
+                <div class="text-xl font-extrabold text-slate-900 mt-1">${sum.p1CorrectCount} / ${sum.p1Total} câu</div>
+                <div class="text-xs text-emerald-700 font-bold mt-0.5">+${sum.p1Score.toFixed(2)} điểm</div>
+              </div>
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
+                <div class="text-xs text-slate-500 font-semibold">Phần II (Đúng - Sai)</div>
+                <div class="text-xl font-extrabold text-slate-900 mt-1">${sum.p2TotalSubCorrect} / ${sum.p2TotalSub} ý</div>
+                <div class="text-xs text-teal-700 font-bold mt-0.5">+${sum.p2Score.toFixed(2)} điểm (Lũy tiến)</div>
+              </div>
+              <div class="col-span-2 flex flex-wrap gap-2.5 pt-1">
+                ${sum.wrongSourceIds.length > 0 ? `
+                  <button onclick="startExam(${JSON.stringify(sum.wrongSourceIds).replace(/"/g, "'")})" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-extrabold bg-rose-600 hover:bg-rose-700 text-white shadow-sm transition">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Làm lại ${sum.wrongSourceIds.length} câu chưa trọn điểm</span>
+                  </button>
+                ` : ''}
+                <button onclick="backToExamSetup()" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 text-slate-700 hover:bg-slate-50 transition">
+                  <i class="fa-solid fa-plus"></i>
+                  <span>Thi đề mới khác</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Topic Progress Bars -->
+            <div class="lg:col-span-7 bg-slate-50/70 rounded-2xl border border-slate-200 p-4 sm:p-5 space-y-3.5">
+              <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Độ vững kiến thức theo 3 Chủ đề</div>
+              ${['T1', 'T2', 'T3'].map(tKey => {
+                const st = sum.topicStats[tKey];
+                if (!st || st.max === 0) return '';
+                const pct = Math.round((st.earned / st.max) * 100);
+                let barCls = 'bg-emerald-600';
+                if (pct < 50) barCls = 'bg-rose-500';
+                else if (pct < 80) barCls = 'bg-amber-500';
+
+                return `
+                  <div class="space-y-1">
+                    <div class="flex items-center justify-between text-xs sm:text-sm">
+                      <span class="font-semibold text-slate-800">${TOPICS[tKey].name}</span>
+                      <span class="font-extrabold text-slate-900">${pct}% (${st.earned.toFixed(2)}/${st.max.toFixed(2)}đ)</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full rounded-full transition-all ${barCls}" style="width: ${pct}%"></div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Review Filter Bar -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="font-extrabold text-slate-900 text-sm sm:text-base">
+            Chi tiết đáp án & Giải thích sau bài thi
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="setExamReviewFilter('ALL')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${filter === 'ALL' ? 'bg-emerald-700 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
+              Tất cả câu (${sess.p1Items.length + sess.p2Items.length})
+            </button>
+            <button onclick="setExamReviewFilter('WRONG')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${filter === 'WRONG' ? 'bg-rose-600 text-white' : 'bg-rose-50 text-rose-700 hover:bg-rose-100'}">
+              Câu sai / thiếu điểm (${sum.wrongSourceIds.length})
+            </button>
+            <button onclick="setExamReviewFilter('FLAGGED')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${filter === 'FLAGGED' ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-800 hover:bg-amber-100'}">
+              Câu đã cắm cờ
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Review List
+      if (filteredP1.length === 0 && filteredP2.length === 0) {
+        html += `
+          <div class="bg-white rounded-2xl border border-slate-200 p-8 text-center text-sm text-slate-500">
+            Tuyệt vời! Không có câu hỏi nào thuộc mục lọc này.
+          </div>
+        `;
+      } else {
+        html += `<div class="space-y-4">`;
+        filteredP1.forEach(item => {
+          html += `
+            <div class="bg-white rounded-2xl border ${item.isCorrect ? 'border-emerald-200' : 'border-rose-300'} p-4 sm:p-6 space-y-3.5">
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold ${item.isCorrect ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'}">
+                    Câu ${item.examIndex} • ${item.isCorrect ? 'Đúng (+' + item.earnedPoints.toFixed(2) + 'đ)' : (item.userAnswer ? 'Sai (0đ)' : 'Bỏ trống (0đ)')}
+                  </span>
+                  <span class="text-xs text-slate-500">(${item.originalLabel})</span>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-md ${TOPICS[item.topic].badgeClass}">${TOPICS[item.topic].short}</span>
+              </div>
+
+              ${item.warningNote ? `
+                <div class="rounded-xl bg-amber-50 border border-amber-300 px-3.5 py-2 text-xs text-amber-950 font-semibold">
+                  <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1.5"></i>${item.warningNote}
+                </div>
+              ` : ''}
+
+              <div class="text-sm sm:text-base font-semibold text-slate-900">${item.question}</div>
+
+              <div class="grid grid-cols-1 gap-2">
+                ${['A', 'B', 'C', 'D'].map(letter => {
+                  const isCorrect = letter === item.correctDisplayLetter;
+                  const isPicked = letter === item.userAnswer;
+                  let cls = 'border-slate-200 bg-slate-50/40 text-slate-600';
+                  let tag = '';
+                  if (isCorrect) {
+                    cls = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-semibold';
+                    tag = `<span class="ml-auto text-xs font-bold text-emerald-700 shrink-0"><i class="fa-solid fa-check mr-1"></i>Đáp án đúng</span>`;
+                  } else if (isPicked && !isCorrect) {
+                    cls = 'border-rose-400 bg-rose-50 text-rose-950';
+                    tag = `<span class="ml-auto text-xs font-bold text-rose-700 shrink-0"><i class="fa-solid fa-xmark mr-1"></i>Bạn đã chọn</span>`;
+                  }
+                  return `
+                    <div class="p-3 rounded-xl border text-xs sm:text-sm flex items-center gap-3 ${cls}">
+                      <span class="w-6 h-6 rounded-md border flex items-center justify-center text-xs font-bold shrink-0 ${isCorrect ? 'bg-emerald-600 text-white border-emerald-600' : (isPicked ? 'bg-rose-600 text-white border-rose-600' : 'bg-white border-slate-300')}">${letter}</span>
+                      <span class="flex-1">${item.displayOptions[letter]}</span>
+                      ${tag}
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+
+              <div class="rounded-xl bg-emerald-50/60 border border-emerald-200 p-3.5 text-xs sm:text-sm text-slate-700">
+                <strong class="text-emerald-900"><i class="fa-solid fa-lightbulb mr-1 text-emerald-600"></i>Giải thích:</strong> ${item.explanation}
+              </div>
+            </div>
+          `;
+        });
+
+        filteredP2.forEach(item => {
+          html += `
+            <div class="bg-white rounded-2xl border ${item.subCorrectCount === 4 ? 'border-emerald-200' : 'border-amber-300'} p-4 sm:p-6 space-y-3.5">
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-extrabold ${item.subCorrectCount === 4 ? 'bg-emerald-600 text-white' : 'bg-amber-600 text-white'}">
+                    Phần II • Câu ${item.examIndex} • Đúng ${item.subCorrectCount}/4 ý (+${item.earnedPoints.toFixed(2)}đ)
+                  </span>
+                  <span class="text-xs text-slate-500">(${item.originalLabel})</span>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-md ${TOPICS[item.topic].badgeClass}">${TOPICS[item.topic].short}</span>
+              </div>
+
+              <div class="rounded-xl bg-slate-50 border-l-4 border-teal-600 p-3.5 text-xs sm:text-sm text-slate-700 italic">
+                "${item.passage}"
+              </div>
+
+              <div class="space-y-2.5">
+                ${item.statements.map(stmt => {
+                  const u = item.userAnswers[stmt.key];
+                  const userText = typeof u === 'boolean' ? (u ? 'Đúng' : 'Sai') : 'Bỏ trống';
+                  const corrText = stmt.answer ? 'ĐÚNG' : 'SAI';
+                  return `
+                    <div class="rounded-xl border p-3.5 space-y-1.5 ${stmt.isUserCorrect ? 'border-emerald-300 bg-emerald-50/40' : 'border-rose-300 bg-rose-50/40'}">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs sm:text-sm">
+                        <div class="font-medium text-slate-900"><strong class="text-teal-900">${stmt.key})</strong> ${stmt.text}</div>
+                        <div class="flex items-center gap-2 shrink-0 text-xs font-bold">
+                          <span class="px-2 py-0.5 rounded ${stmt.isUserCorrect ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'}">Bạn chọn: ${userText}</span>
+                          <span class="px-2 py-0.5 rounded bg-slate-800 text-white">Đáp án: ${corrText}</span>
+                        </div>
+                      </div>
+                      <div class="text-xs text-slate-700 pt-1 border-t border-slate-200/60">
+                        <strong>Giải thích:</strong> ${stmt.explanation}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          `;
+        });
+        html += `</div>`;
+      }
+
+      container.innerHTML = html;
+    }
+
+    // =========================================================================
+    // 6. TAB 4: HISTORY & ANALYTICS VIEW
+    // =========================================================================
+    function renderHistoryView() {
+      const kpiGrid = document.getElementById('history-kpi-grid');
+      const wrongBank = document.getElementById('history-wrong-bank');
+      const attemptsList = document.getElementById('history-attempts-list');
+      const clearBtn = document.getElementById('btn-clear-history');
+
+      const totalExams = state.examHistory.length;
+      clearBtn.classList.toggle('hidden', totalExams === 0 && Object.keys(state.wrongQuestionCounts).length === 0);
+
+      const bestScore = totalExams > 0 ? Math.max(...state.examHistory.map(h => h.totalScore)).toFixed(2) : '—';
+      const avgScore = totalExams > 0
+        ? (state.examHistory.reduce((acc, h) => acc + h.totalScore, 0) / totalExams).toFixed(2)
+        : '—';
+      const wrongEntries = Object.entries(state.wrongQuestionCounts)
+        .filter(([, count]) => count > 0)
+        .sort((a, b) => b[1] - a[1]);
+
+      kpiGrid.innerHTML = `
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+          <div class="text-xs text-slate-500 font-medium">Số lần thi thử</div>
+          <div class="text-2xl font-extrabold text-slate-900 mt-1">${totalExams} lần</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+          <div class="text-xs text-slate-500 font-medium">Điểm cao nhất</div>
+          <div class="text-2xl font-extrabold text-emerald-700 mt-1">${bestScore}</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+          <div class="text-xs text-slate-500 font-medium">Điểm trung bình</div>
+          <div class="text-2xl font-extrabold text-teal-700 mt-1">${avgScore}</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs">
+          <div class="text-xs text-slate-500 font-medium">Câu từng làm sai</div>
+          <div class="text-2xl font-extrabold text-rose-600 mt-1">${wrongEntries.length} câu</div>
+        </div>
+      `;
+
+      // Render Wrong Questions Bank
+      if (wrongEntries.length === 0) {
+        wrongBank.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-extrabold text-base text-slate-900">Danh sách câu hay nhầm</h3>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">Hiện tại bạn chưa có câu hỏi nào bị đánh dấu làm sai. Hãy thử sức ở phòng Thi thử!</p>
+            </div>
+          </div>
+        `;
+      } else {
+        wrongBank.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div>
+              <h3 class="font-extrabold text-base text-slate-900">Các câu bạn từng làm sai (${wrongEntries.length} câu)</h3>
+              <p class="text-xs text-slate-500">Bấm vào câu bất kỳ để xem lại giải thích hoặc thi thử lại riêng nhóm câu này.</p>
+            </div>
+            <button onclick="startWrongQuestionsExam()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold bg-rose-600 hover:bg-rose-700 text-white shadow-xs transition shrink-0">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Thi lại tất cả câu sai</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+            ${wrongEntries.slice(0, 12).map(([qId, count]) => {
+              const isP1 = qId.startsWith('P1_');
+              const qObj = isP1
+                ? PART1_QUESTIONS.find(q => q.id === qId)
+                : PART2_QUESTIONS.find(q => q.id === qId);
+              if (!qObj) return '';
+              const title = isP1 ? `Phần I • Câu ${qObj.num}` : `Phần II • Câu ${qObj.num}`;
+              const preview = isP1 ? stripHtml(qObj.question) : qObj.passage;
+              return `
+                <button onclick="jumpToQuestion('${qId}')" class="text-left p-3 rounded-xl border border-slate-200 hover:border-rose-300 hover:bg-rose-50/30 transition flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="text-xs font-extrabold text-slate-900">${title}</div>
+                    <div class="text-xs text-slate-600 truncate mt-0.5">${preview}</div>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[11px] font-bold shrink-0">Sai ${count}x</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      // Render Exam Attempts Table
+      if (totalExams === 0) {
+        attemptsList.innerHTML = `
+          <div class="text-center py-8 space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto text-xl">
+              <i class="fa-solid fa-stopwatch"></i>
+            </div>
+            <div class="font-bold text-slate-800">Chưa có lịch sử làm đề thi thử</div>
+            <p class="text-xs sm:text-sm text-slate-500">Hoàn thành một bài thi thử 45 phút để hệ thống lưu điểm và phân tích tiến bộ của bạn.</p>
+            <button onclick="switchTab('exam')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 text-white">
+              Vào phòng thi thử ngay
+            </button>
+          </div>
+        `;
+      } else {
+        attemptsList.innerHTML = `
+          <h3 class="font-extrabold text-base text-slate-900 mb-3">Nhật ký các lần nộp bài gần đây</h3>
+          <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-100 text-slate-700 font-bold">
+                <tr>
+                  <th class="p-3">Thời điểm</th>
+                  <th class="p-3">Chế độ đề</th>
+                  <th class="p-3 text-center">Phần I</th>
+                  <th class="p-3 text-center">Phần II</th>
+                  <th class="p-3 text-center">Thời gian</th>
+                  <th class="p-3 text-right">Tổng điểm</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                ${state.examHistory.map(item => {
+                  const dt = new Date(item.timestamp);
+                  const dateStr = dt.toLocaleDateString('vi-VN') + ' ' + dt.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+                  return `
+                    <tr class="hover:bg-slate-50/80">
+                      <td class="p-3 text-slate-600 whitespace-nowrap">${dateStr}</td>
+                      <td class="p-3 font-semibold text-slate-800">
+                        ${item.modeTitle}
+                        ${item.shuffled ? '<span class="ml-1 text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800">Đảo đề</span>' : ''}
+                      </td>
+                      <td class="p-3 text-center">${item.p1Accuracy} (${item.p1Score.toFixed(2)}đ)</td>
+                      <td class="p-3 text-center">${item.p2Accuracy} (${item.p2Score.toFixed(2)}đ)</td>
+                      <td class="p-3 text-center whitespace-nowrap">${formatDuration(item.spentSeconds)}</td>
+                      <td class="p-3 text-right font-extrabold text-emerald-700 text-base">${item.totalScore.toFixed(2)}</td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+    }
+
+    function confirmClearHistory() {
+      openModal({
+        title: 'Xóa lịch sử thi thử & thống kê câu sai?',
+        message: 'Toàn bộ lịch sử điểm các lần thi trước và bộ đếm câu hay sai sẽ được đặt lại về 0. Hành động này không thể hoàn tác.',
+        confirmText: 'Xóa toàn bộ',
+        variant: 'danger',
+        onConfirm: () => {
+          state.examHistory = [];
+          state.wrongQuestionCounts = {};
+          savePersistedState();
+          updateStudyStats();
+          renderHistoryView();
+          showToast('Đã xóa lịch sử làm bài!');
+        }
+      });
+    }
+
+    // =========================================================================
+    // 7. INITIALIZATION ON WINDOW LOAD
+    // =========================================================================
+    window.onload = function () {
+      loadPersistedState();
+      switchTab('study');
+    };
+  </script>
+</body>
+</html>

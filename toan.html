@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Tổng Ôn Chương I Toán 12 (GDPT 2018) & Bí Kíp Flexio FX-799VN</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- KaTeX CDN for Fast & Crisp Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="window.initMathOnMobile && window.initMathOnMobile()"></script>
+
+    <style>
+        /* Chống tràn ngang & tối ưu cảm ứng trên điện thoại */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        button, label, input, select, a {
+            touch-action: manipulation;
+        }
+
+        /* Quy tắc gạch chân bắt buộc trong toàn bộ lý thuyết */
+        .hl-blue {
+            border-bottom: 2.5px solid #2563eb;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-weight: 600;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+        .dark .hl-blue {
+            border-bottom-color: #60a5fa;
+            background-color: rgba(37, 99, 235, 0.22);
+            color: #93c5fd;
+        }
+
+        .hl-red {
+            border-bottom: 2.5px solid #dc2626;
+            background-color: #fef2f2;
+            color: #b91c1c;
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-weight: 600;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+        .dark .hl-red {
+            border-bottom-color: #f87171;
+            background-color: rgba(220, 38, 38, 0.22);
+            color: #fca5a5;
+        }
+
+        /* Phím bấm máy tính Casio / Flexio FX-799VN */
+        .calc-key {
+            display: inline-block;
+            background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+            color: #f8fafc;
+            border: 1px solid #475569;
+            border-bottom-width: 3px;
+            border-radius: 6px;
+            padding: 1px 7px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin: 1px 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .calc-key-shift {
+            background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+            border-color: #92400e;
+            color: #fffbeb;
+        }
+
+        /* Bảng biến thiên chuẩn SGK - Cuộn mượt không bị bóp cột trên điện thoại */
+        .bbt-table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 480px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .bbt-table th, .bbt-table td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 8px;
+        }
+        .dark .bbt-table th, .dark .bbt-table td {
+            border-color: #475569;
+        }
+        .double-bar {
+            display: inline-block;
+            border-left: 2px solid currentColor;
+            border-right: 2px solid currentColor;
+            width: 6px;
+            height: 1.3em;
+            vertical-align: middle;
+        }
+
+        /* Hiệu ứng mượt mà cho hộp lời giải */
+        .fade-enter {
+            animation: slideFade 0.25s ease-out;
+        }
+        @keyframes slideFade {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Giữ công thức KaTeX không tràn màn hình điện thoại nhỏ */
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            padding: 6px 2px;
+            max-width: 100%;
+        }
+        .katex {
+            font-size: 1.02em;
+        }
+        @media (max-width: 640px) {
+            .katex {
+                font-size: 0.95em;
+            }
+            /* Cuộn mượt cho các công thức inline quá dài (như hệ điều kiện) */
+            li, p {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+            .katex-html {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+    <!-- STICKY TOP NAVBAR & PROGRESS TRACKER (Tối ưu gọn gàng cho Mobile) -->
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 space-y-2 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:justify-between gap-3">
+            <!-- Hàng 1 trên Mobile: Brand + Điểm + Nút Sáng/Tối -->
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center font-extrabold text-base sm:text-lg shadow">
+                        12
+                    </div>
+                    <div class="min-w-0">
+                        <h1 class="text-sm sm:text-lg font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight truncate">
+                            CHƯƠNG I: ĐẠO HÀM & ĐỒ THỊ
+                        </h1>
+                        <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate">
+                            Toán 12 (GDPT 2018) • Bí kíp FX-799VN
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Điểm rút gọn trên Mobile + Nút đổi giao diện -->
+                <div class="flex items-center gap-1.5 shrink-0 sm:hidden">
+                    <span class="px-2 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
+                        <span id="nav-score-mobile">0.0</span>đ
+                    </span>
+                    <button type="button" onclick="toggleTheme()" title="Chuyển chế độ Sáng / Tối" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300">
+                        <span class="theme-icon-el text-sm">🌙</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hàng 2 trên Mobile: Thanh chuyển Tab rộng dễ bấm ngón tay -->
+            <div class="flex items-center justify-between sm:justify-end gap-2 sm:gap-3">
+                <div class="grid grid-cols-2 sm:inline-flex w-full sm:w-auto rounded-xl bg-slate-100 dark:bg-slate-800 p-1 border border-slate-200 dark:border-slate-700">
+                    <button type="button" id="tab-btn-theory" onclick="switchMainTab('theory')" class="px-3 py-2 sm:py-1.5 rounded-lg text-xs sm:text-sm font-bold text-center transition-all bg-blue-600 text-white shadow">
+                        📚 Lý Thuyết
+                    </button>
+                    <button type="button" id="tab-btn-practice" onclick="switchMainTab('practice')" class="px-3 py-2 sm:py-1.5 rounded-lg text-xs sm:text-sm font-bold text-center transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
+                        🎯 Bài Tập (18 Câu)
+                    </button>
+                </div>
+
+                <!-- Score Pill Desktop -->
+                <div class="hidden md:flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 px-3 py-1.5 rounded-xl text-xs font-semibold text-emerald-800 dark:text-emerald-300">
+                    <span>Tiến độ: <strong id="nav-progress-count">0/18</strong></span>
+                    <span>•</span>
+                    <span>Điểm: <strong id="nav-score-count">0.00</strong>/10</span>
+                </div>
+
+                <!-- Theme Toggle Desktop -->
+                <button type="button" onclick="toggleTheme()" title="Chuyển chế độ Sáng / Tối" class="hidden sm:inline-flex p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 transition">
+                    <span id="theme-icon" class="theme-icon-el text-base">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER & QUY ƯỚC GẠCH CHÂN BẮT BUỘC -->
+    <section class="max-w-7xl mx-auto px-4 pt-6 pb-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-sm">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 mb-2">
+                        ⚡ Hệ thống quy ước màu sắc độc quyền
+                    </span>
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                        Chú giải ký hiệu xuyên suốt tài liệu ôn thi Giữa kì 1
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:max-w-2xl w-full">
+                    <div class="p-3 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 flex items-start gap-2.5">
+                        <span class="text-blue-600 dark:text-blue-400 text-lg mt-0.5">🔹</span>
+                        <div class="text-xs sm:text-sm leading-relaxed">
+                            <span class="hl-blue">Gạch chân màu XANH DƯƠNG</span>: Kiến thức <strong>CẦN CHÚ Ý</strong>, điều kiện mấu chốt, công thức giải nhanh bắt buộc thuộc lòng.
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-red-50/70 dark:bg-red-950/30 border border-red-200 dark:border-red-800 flex items-start gap-2.5">
+                        <span class="text-red-600 dark:text-red-400 text-lg mt-0.5">🚨</span>
+                        <div class="text-xs sm:text-sm leading-relaxed">
+                            <span class="hl-red">Gạch chân màu ĐỎ</span>: Các <strong>BẪY CHÍ MẠNG</strong> đề thi rất hay gài (sai tập xác định, nhầm tên gọi, nghiệm kép, quên dấu...).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- PHẦN 1: TỔNG HỢP LÝ THUYẾT CHUYÊN SÂU 5 CHUYÊN ĐỀ                   -->
+    <!-- =================================================================== -->
+    <main id="view-theory" class="max-w-7xl mx-auto px-4 pb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- Sidebar mục lục chuyên đề -->
+            <aside class="lg:col-span-3">
+                <div class="lg:sticky lg:top-20 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm space-y-2">
+                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400 px-2 mb-2">Mục lục 5 chuyên đề</p>
+                    <a href="#cd-1" class="block px-3 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                        1. Tính Đơn Điệu & Cực Trị
+                    </a>
+                    <a href="#cd-2" class="block px-3 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                        2. GTLN (Max) & GTNN (Min)
+                    </a>
+                    <a href="#cd-3" class="block px-3 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                        3. Ba Loại Đường Tiệm Cận
+                    </a>
+                    <a href="#cd-4" class="block px-3 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                        4. Khảo Sát Đồ Thị & Dấu Hệ Số
+                    </a>
+                    <a href="#cd-5" class="block px-3 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                        5. Tốc Độ Tức Thời & Toán Thực Tế
+                    </a>
+                    <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
+                        <button onclick="switchMainTab('practice')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold text-sm shadow transition">
+                            Chuyển sang làm 18 bài tập ➔
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Nội dung chi tiết 5 chuyên đề -->
+            <div class="lg:col-span-9 space-y-8">
+
+                <!-- CHUYÊN ĐỀ 1 -->
+                <article id="cd-1" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-7 shadow-sm scroll-mt-20">
+                    <div class="flex items-center gap-3 pb-4 mb-5 border-b border-slate-200 dark:border-slate-800">
+                        <span class="px-3 py-1 rounded-lg bg-blue-600 text-white font-extrabold text-sm">CHUYÊN ĐỀ 1</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Tính Đơn Điệu và Cực Trị Của Hàm Số</h3>
+                    </div>
+
+                    <div class="space-y-6 text-sm sm:text-base leading-relaxed">
+                        <!-- 1.1 Đơn điệu -->
+                        <div>
+                            <h4 class="text-lg font-bold text-blue-700 dark:text-blue-400 mb-2">1.1. Định lý điều kiện đủ về tính đơn điệu</h4>
+                            <p class="mb-2">Cho hàm số $y = f(x)$ có đạo hàm trên khoảng $K$:</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Nếu <span class="hl-blue">$f'(x) \ge 0, \forall x \in K$</span> và đẳng thức <span class="hl-blue">$f'(x) = 0$ chỉ xảy ra tại hữu hạn điểm</span> trên $K$ thì hàm số <strong>đồng biến</strong> trên $K$.</li>
+                                <li>Nếu <span class="hl-blue">$f'(x) \le 0, \forall x \in K$</span> và đẳng thức <span class="hl-blue">$f'(x) = 0$ chỉ xảy ra tại hữu hạn điểm</span> trên $K$ thì hàm số <strong>nghịch biến</strong> trên $K$.</li>
+                                <li><span class="hl-red">BẪY ĐỎ 1 (Hợp hai khoảng rời nhau):</span> Với hàm phân thức $y = \dfrac{ax+b}{cx+d}$, tuyệt đối <span class="hl-red">KHÔNG ĐƯỢC kết luận đồng biến trên $\mathbb{R} \setminus \{-d/c\}$ hay $(-\infty; -d/c) \cup (-d/c; +\infty)$</span>! Phải phát biểu là: <span class="hl-blue">đồng biến trên từng khoảng xác định $(-\infty; -d/c)$ và $(-d/c; +\infty)$</span>.</li>
+                                <li><span class="hl-red">BẪY ĐỎ 2 (Đạo hàm phân thức bậc 1/bậc 1):</span> Với $y = \dfrac{ax+b}{cx+d}$, ta có $y' = \dfrac{ad - bc}{(cx+d)^2}$. Để hàm đồng biến thì bắt buộc <span class="hl-red">$ad - bc > 0$ (TUYỆT ĐỐI KHÔNG CÓ DẤU "$=$")</span> vì nếu $ad - bc = 0$ thì tử đạo hàm bằng $0$ với mọi $x \neq -d/c$, hàm suy biến thành hàm hằng!</li>
+                                <li><span class="hl-red">BẪY ĐỎ 3 (Đơn điệu trên khoảng cho trước $(a;b)$):</span> Để $y = \dfrac{u(x)}{x - m}$ đơn điệu trên khoảng $(a;b)$, ngoài dấu của $y'$, bắt buộc phải kèm điều kiện <span class="hl-red">nghiệm mẫu $x = m \notin (a;b)$</span>!</li>
+                            </ul>
+                        </div>
+
+                        <!-- 1.2 Phân biệt tên gọi cực trị -->
+                        <div class="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <h4 class="text-lg font-bold text-red-600 dark:text-red-400 mb-2">1.2. Phân biệt rõ 3 khái niệm tên gọi (Bẫy câu chữ kinh điển!)</h4>
+                            <p class="mb-3">Giả sử hàm số $y = f(x)$ đạt cực đại (hoặc cực tiểu) tại $x_0$ và $y_0 = f(x_0)$:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700">
+                                    <p class="font-bold text-sm text-slate-900 dark:text-white mb-1">1. Điểm cực trị của HÀM SỐ</p>
+                                    <p class="text-sm">Là hoành độ <span class="hl-blue">$x = x_0$</span> (một con số thực).</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700">
+                                    <p class="font-bold text-sm text-slate-900 dark:text-white mb-1">2. Giá trị cực trị (Cực trị)</p>
+                                    <p class="text-sm">Là tung độ <span class="hl-blue">$y_0 = f(x_0)$</span> (còn gọi tắt là Cực đại $y_{\text{CĐ}}$ / Cực tiểu $y_{\text{CT}}$).</p>
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700">
+                                    <p class="font-bold text-sm text-slate-900 dark:text-white mb-1">3. Điểm cực trị của ĐỒ THỊ</p>
+                                    <p class="text-sm"><span class="hl-red">Phải là cặp tọa độ $M(x_0; y_0)$</span>, không phải $x_0$!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1.3 Điều kiện đổi dấu & Công thức nhanh -->
+                        <div>
+                            <h4 class="text-lg font-bold text-blue-700 dark:text-blue-400 mb-2">1.3. Quy tắc đổi dấu đạo hàm & Công thức giải nhanh</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Điểm $x_0$ là điểm cực trị khi hàm số <span class="hl-blue">liên tục tại $x_0$</span> và đạo hàm <span class="hl-blue">$f'(x)$ đổi dấu khi đi qua $x_0$</span>:
+                                    <br>• Đổi từ $(+)$ sang $(-)$ $\Rightarrow$ Điểm cực đại ($x_{\text{CĐ}}$).
+                                    <br>• Đổi từ $(-)$ sang $(+)$ $\Rightarrow$ Điểm cực tiểu ($x_{\text{CT}}$).
+                                </li>
+                                <li>Nếu $f'(x) = (x - a)^m (x - b)^n$: Chỉ các <span class="hl-blue">nghiệm bội LẺ ($m, n$ lẻ) mới làm $f'(x)$ đổi dấu</span> (là cực trị); còn <span class="hl-red">nghiệm bội CHẴN không làm $f'(x)$ đổi dấu $\Rightarrow$ KHÔNG là cực trị!</span></li>
+                                <li><span class="hl-red">BẪY ĐỎ 4 (Đạo hàm không xác định):</span> Hàm số <span class="hl-red">VẪN CÓ THỂ đạt cực trị tại điểm $x_0$ mà $f'(x_0)$ không xác định</span> (ký hiệu `||` ở dòng $f'(x)$), miễn là <span class="hl-blue">$f(x)$ liên tục tại $x_0$</span> và $f'(x)$ đổi dấu qua $x_0$ (điển hình: $y = |x|$ đạt cực tiểu tại $x = 0$ dù $y'(0)$ không tồn tại!).</li>
+                                <li><span class="hl-red">BẪY ĐỎ 5:</span> Nói chung $y_{\text{CĐ}}$ <span class="hl-red">KHÔNG nhất thiết lớn hơn $y_{\text{CT}}$</span> (vì cực trị chỉ mang tính địa phương; ví dụ hàm phân thức bậc 2/bậc 1 thường có $y_{\text{CĐ}} < y_{\text{CT}}$!).</li>
+                            </ul>
+
+                            <div class="mt-4 p-4 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 space-y-2 text-sm">
+                                <p class="font-bold text-blue-800 dark:text-blue-300">⚡ Tổ hợp công thức nhanh cần nhớ:</p>
+                                <p>• <strong>Hàm bậc ba</strong> $y = ax^3 + bx^2 + cx + d$ ($a \neq 0$) có $y' = 3ax^2 + 2bx + c$, biệt thức thu gọn $\Delta'_{y'} = b^2 - 3ac$:</p>
+                                <p class="pl-4">- Hàm đơn điệu trên toàn $\mathbb{R}$ (không có cực trị) $\Longleftrightarrow$ <span class="hl-blue">$b^2 - 3ac \le 0$</span>.</p>
+                                <p class="pl-4">- Hàm có 2 điểm cực trị phân biệt $\Longleftrightarrow$ <span class="hl-blue">$b^2 - 3ac > 0$</span>.</p>
+                                <p>• <strong>Phương trình đường thẳng qua 2 điểm cực trị hàm bậc 3:</strong> Thực hiện phép chia đa thức $y = y' \cdot q(x) + r(x)$, phần dư bậc nhất <span class="hl-blue">$y = r(x) = \left(c - \dfrac{b^2}{3a}\right)x + d - \dfrac{bc}{9a}$</span> chính là đường thẳng qua 2 cực trị!</p>
+                                <p>• <strong>Đạo hàm nhanh hàm bậc 2 trên bậc 1:</strong> Với $y = \dfrac{ax^2 + bx + c}{mx + n}$, tử số đạo hàm tính trong 3 giây: <span class="hl-blue">$y' = \dfrac{am x^2 + 2an x + (bn - cm)}{(mx + n)^2}$</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHUYÊN ĐỀ 2 -->
+                <article id="cd-2" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-7 shadow-sm scroll-mt-20">
+                    <div class="flex items-center gap-3 pb-4 mb-5 border-b border-slate-200 dark:border-slate-800">
+                        <span class="px-3 py-1 rounded-lg bg-emerald-600 text-white font-extrabold text-sm">CHUYÊN ĐỀ 2</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Giá Trị Lớn Nhất (Max) và Giá Trị Nhỏ Nhất (Min)</h3>
+                    </div>
+
+                    <div class="space-y-5 text-sm sm:text-base leading-relaxed">
+                        <div>
+                            <h4 class="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-2">2.1. Định nghĩa chặt chẽ trên tập $D$</h4>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li>Số $M = \max_{x \in D} f(x) \Longleftrightarrow \begin{cases} f(x) \le M, \forall x \in D \\ \exists x_0 \in D \text{ sao cho } f(x_0) = M \end{cases}$</li>
+                                <li>Số $m = \min_{x \in D} f(x) \Longleftrightarrow \begin{cases} f(x) \ge m, \forall x \in D \\ \exists x_0 \in D \text{ sao cho } f(x_0) = m \end{cases}$</li>
+                                <li><span class="hl-red">BẪY ĐỎ:</span> Phải <span class="hl-red">tồn tại điểm $x_0 \in D$</span> để dấu bằng xảy ra! Nếu $\lim_{x \to a^+} f(x) = 5$ và $f(x) < 5, \forall x \in (a; b)$ thì $5$ <span class="hl-red">KHÔNG PHẢI là GTLN</span> trên khoảng mở $(a; b)$ (hàm không có GTLN trên $(a;b)$).</li>
+                            </ul>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                <h5 class="font-bold text-blue-700 dark:text-blue-400 mb-2">📌 Bài toán 1: Trên ĐOẠN đóng $[a; b]$</h5>
+                                <p class="text-sm mb-2">(Với $f(x)$ liên tục trên $[a;b]$ — <span class="hl-blue">KHÔNG CẦN lập BBT</span>):</p>
+                                <ol class="list-decimal pl-5 text-sm space-y-1">
+                                    <li>Giải $f'(x) = 0$ (và tìm các điểm $f'(x)$ không xác định).</li>
+                                    <li><span class="hl-red">Chỉ giữ lại các điểm $x_i \in (a; b)$</span> (rất hay quên loại nghiệm ngoài đoạn!).</li>
+                                    <li>Tính $f(a), f(b)$ và các $f(x_i)$. Số lớn nhất là $\max$, nhỏ nhất là $\min$.</li>
+                                </ol>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                <h5 class="font-bold text-amber-700 dark:text-amber-400 mb-2">📌 Bài toán 2: Trên KHOẢNG $(a; b)$ / nửa khoảng</h5>
+                                <p class="text-sm mb-2">(<span class="hl-blue">BẮT BUỘC lập Bảng biến thiên</span> trên $(a;b)$):</p>
+                                <ol class="list-decimal pl-5 text-sm space-y-1">
+                                    <li>Tính đạo hàm $f'(x)$ và xét dấu trên $(a; b)$.</li>
+                                    <li>Tính các giới hạn một bên $\lim_{x \to a^+} f(x)$ và $\lim_{x \to b^-} f(x)$.</li>
+                                    <li>So sánh đỉnh cực trị với giới hạn đầu mút hở để kết luận có tồn tại Max/Min hay không.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-sm space-y-1.5">
+                            <p class="font-bold text-emerald-800 dark:text-emerald-300">💡 Bất đẳng thức AM-GM (Cauchy) xử đẹp toán thực tế không cần đạo hàm:</p>
+                            <p>• 2 số dương ($A, B > 0$): <span class="hl-blue">$A + B \ge 2\sqrt{AB}$</span> (dấu "$=$" khi $A = B$). Ví dụ: $ax + \dfrac{b}{x} \ge 2\sqrt{ab}$ tại $x = \sqrt{b/a}$.</p>
+                            <p>• 3 số dương ($A, B, C > 0$): <span class="hl-blue">$A + B + C \ge 3\sqrt[3]{ABC}$</span> (dấu "$=$" khi $A = B = C$). Ví dụ: $x^2 + \dfrac{k}{x} = x^2 + \dfrac{k}{2x} + \dfrac{k}{2x} \ge 3\sqrt[3]{\dfrac{k^2}{4}}$.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHUYÊN ĐỀ 3: ĐẦY ĐỦ 3 LOẠI TIỆM CẬN -->
+                <article id="cd-3" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-7 shadow-sm scroll-mt-20">
+                    <div class="flex items-center gap-3 pb-4 mb-5 border-b border-slate-200 dark:border-slate-800">
+                        <span class="px-3 py-1 rounded-lg bg-purple-600 text-white font-extrabold text-sm">CHUYÊN ĐỀ 3</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Đường Tiệm Cận Của Đồ Thị Hàm Số (Đủ 3 Loại + Bẫy)</h3>
+                    </div>
+
+                    <div class="space-y-6 text-sm sm:text-base leading-relaxed">
+                        <!-- 3.1 TCN -->
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="text-lg font-bold text-blue-700 dark:text-blue-400 mb-2">3.1. Tiệm cận ngang (TCN): $y = y_0$</h4>
+                            <p class="mb-2">Đường thẳng $y = y_0$ là TCN của đồ thị $(C)$ nếu <span class="hl-blue">$\lim_{x \to +\infty} f(x) = y_0$</span> HOẶC <span class="hl-blue">$\lim_{x \to -\infty} f(x) = y_0$</span> ($y_0$ hữu hạn).</p>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li>Một đồ thị hàm số có <span class="hl-blue">tối đa 2 đường TCN</span> (ứng với $x \to +\infty$ và $x \to -\infty$). Nếu hai giới hạn ra cùng một số $y_0$ thì chỉ tính là <strong>1 TCN</strong>!</li>
+                                <li><strong>Quy tắc bậc tử & bậc mẫu</strong> (với phân thức đa thức $y = \dfrac{P(x)}{Q(x)}$):
+                                    <br>• Bậc tử $<$ Bậc mẫu $\Longrightarrow$ Có 1 TCN là <span class="hl-blue">$y = 0$</span> (trục hoành $Ox$).
+                                    <br>• Bậc tử $=$ Bậc mẫu $\Longrightarrow$ Có 1 TCN là <span class="hl-blue">$y = \dfrac{\text{Hệ số bậc cao nhất của tử}}{\text{Hệ số bậc cao nhất của mẫu}}$</span>.
+                                    <br>• Bậc tử $>$ Bậc mẫu $\Longrightarrow$ <strong>Không có TCN</strong>.
+                                </li>
+                                <li><span class="hl-red">BẪY ĐỎ CĂN THỨC:</span> Khi đưa $x^2$ ra khỏi căn bậc hai: $\sqrt{ax^2 + bx + c} = |x|\sqrt{a + \frac{b}{x} + \frac{c}{x^2}}$. Khi $x \to +\infty$ thì $|x| = x$, nhưng <span class="hl-red">khi $x \to -\infty$ bắt buộc $|x| = -x$ (đổi dấu!)</span> nên các hàm kiểu $y = \dfrac{\sqrt{4x^2 + 1}}{x - 1}$ có tới <strong>2 TCN khác nhau</strong> là $y = 2$ và $y = -2$! Ngoài ra nếu TXĐ là $[a; +\infty)$ thì <span class="hl-red">không tồn tại giới hạn khi $x \to -\infty$</span>!</li>
+                            </ul>
+                        </div>
+
+                        <!-- 3.2 TCĐ -->
+                        <div class="border-l-4 border-rose-500 pl-4">
+                            <h4 class="text-lg font-bold text-rose-700 dark:text-rose-400 mb-2">3.2. Tiệm cận đứng (TCĐ): $x = x_0$</h4>
+                            <p class="mb-2">Đường thẳng $x = x_0$ là TCĐ của đồ thị $(C)$ nếu thỏa mãn <span class="hl-blue">ÍT NHẤT MỘT trong 4 điều kiện</span>: $\lim_{x \to x_0^+} f(x) = \pm\infty$ hoặc $\lim_{x \to x_0^-} f(x) = \pm\infty$.</p>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li><span class="hl-red">BẪY ĐỎ CHÍ MẠNG 1 (Nghiệm mẫu bị triệt tiêu với tử):</span> Nếu $x_0$ vừa là nghiệm của mẫu vừa là nghiệm của tử, phải rút gọn (hoặc nhân liên hợp) trước! Nếu sau khi rút gọn, mẫu số <strong>không còn nhân tử $(x - x_0)$</strong> (ví dụ $y = \dfrac{x^2 - 1}{x - 1}$ tại $x = 1$ có $\lim_{x \to 1} y = 2$ hữu hạn) thì <span class="hl-red">$x = x_0$ KHÔNG PHẢI là TCĐ!</span> (Nếu bậc nghiệm ở mẫu lớn hơn bậc nghiệm ở tử thì vẫn còn nhân tử $(x-x_0)$ dưới mẫu $\Rightarrow$ vẫn là TCĐ).</li>
+                                <li><span class="hl-red">BẪY ĐỎ CHÍ MẠNG 2 (Vi phạm Tập xác định của căn):</span> Nếu $x_0$ là nghiệm của mẫu nhưng thay vào làm <span class="hl-red">biểu thức dưới căn trên tử bị âm</span> (không thể lấy giới hạn $x \to x_0^+$ hay $x \to x_0^-$ trong TXĐ) thì <span class="hl-red">$x = x_0$ TUYỆT ĐỐI KHÔNG là TCĐ!</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- 3.3 TCX (Mới của chương trình GDPT 2018!) -->
+                        <div class="border-l-4 border-amber-500 pl-4">
+                            <h4 class="text-lg font-bold text-amber-700 dark:text-amber-400 mb-2">3.3. Tiệm cận xiên (TCX): $y = ax + b \quad (a \neq 0)$</h4>
+                            <p class="mb-2">Đường thẳng $y = ax + b$ (<span class="hl-blue">bắt buộc $a \neq 0$</span>) là TCX của đồ thị $(C)$ nếu <span class="hl-blue">$\lim_{x \to +\infty} [f(x) - (ax + b)] = 0$</span> hoặc <span class="hl-blue">$\lim_{x \to -\infty} [f(x) - (ax + b)] = 0$</span>.</p>
+                            <ul class="list-disc pl-5 space-y-1.5">
+                                <li><strong>Công thức tổng quát tìm $(a, b)$:</strong> <span class="hl-blue">$a = \lim_{x \to \pm\infty} \dfrac{f(x)}{x}$</span> và <span class="hl-blue">$b = \lim_{x \to \pm\infty} [f(x) - ax]$</span>.</li>
+                                <li><strong>Cách tìm siêu tốc với hàm phân thức bậc 2 / bậc 1:</strong> Với $y = \dfrac{px^2 + qx + r}{mx + n}$, thực hiện chia đa thức tử cho mẫu đưa về dạng:
+                                    $$y = ax + b + \frac{c}{mx + n}$$
+                                    Khi $c \neq 0$ và $a \neq 0$, đường thẳng <span class="hl-blue">$y = ax + b$ chính là TCX</span>, còn $x = -\frac{n}{m}$ là TCĐ!</li>
+                                <li><span class="hl-red">BẪY ĐỎ TCX 1:</span> Nếu tính ra <span class="hl-red">$a = 0$ thì đường $y = b$ là TCN</span> chứ không được gọi là TCX! Mặt khác, tại cùng một đầu $+\infty$ (hoặc $-\infty$), đồ thị đã có TCN thì sẽ không có TCX và ngược lại.</li>
+                                <li><span class="hl-red">BẪY ĐỎ TCX 2 (Chia hết - Suy biến):</span> Nếu phần dư <span class="hl-red">$c = 0$ (tử chia hết cho mẫu)</span> thì $y = ax + b$ với $x \neq -\frac{n}{m}$, đồ thị suy biến thành một đường thẳng bị thủng 1 điểm nên <span class="hl-red">KHÔNG CÓ TCX lẫn KHÔNG CÓ TCĐ!</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- 3.4 Đọc tiệm cận từ BBT -->
+                        <div class="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-2">🔍 Bí quyết đọc chuẩn 100% số TCĐ, TCN từ Bảng Biến Thiên (BBT):</h4>
+                            <ul class="list-disc pl-5 text-sm space-y-1.5">
+                                <li><strong>Đếm TCN:</strong> Chỉ nhìn <strong>2 đầu mút ngoài cùng</strong> dưới $x \to -\infty$ và $x \to +\infty$ ở dòng $y$: nếu ra <strong>số hữu hạn</strong> thì là TCN; nếu ra $\pm\infty$ thì bỏ. (Nhớ kiểm tra xem 2 số hữu hạn ở 2 đầu có trùng nhau không!).</li>
+                                <li><strong>Đếm TCĐ:</strong> Nhìn các vị trí số $x_0$ ở giữa dòng $x$ mà dòng $y$ có giới hạn: chỉ cần <strong>1 bên trái hoặc phải có ký hiệu $+\infty$ hoặc $-\infty$</strong> thì $x = x_0$ là 1 TCĐ. <span class="hl-red">Bẫy: Dù có hai gạch sọc `||` nhưng cả hai bên của dòng $y$ đều là số hữu hạn thì KHÔNG PHẢI là TCĐ!</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHUYÊN ĐỀ 4: KHẢO SÁT & NHẬN DIỆN ĐỒ THỊ 3 HÀM TRỌNG TÂM -->
+                <article id="cd-4" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-7 shadow-sm scroll-mt-20">
+                    <div class="flex items-center gap-3 pb-4 mb-5 border-b border-slate-200 dark:border-slate-800">
+                        <span class="px-3 py-1 rounded-lg bg-amber-600 text-white font-extrabold text-sm">CHUYÊN ĐỀ 4</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Nhận Diện Đồ Thị 3 Hàm Trọng Tâm & Xét Dấu Hệ Số</h3>
+                    </div>
+
+                    <div class="space-y-6 text-sm sm:text-base leading-relaxed">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Card 1: Bậc 3 -->
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                                <div>
+                                    <h4 class="font-bold text-blue-700 dark:text-blue-400 mb-2">1. Hàm bậc ba<br>$y = ax^3 + bx^2 + cx + d$</h4>
+                                    <!-- Mini SVG Cubic -->
+                                    <svg viewBox="0 0 180 110" class="w-full h-28 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 mb-3">
+                                        <line x1="10" y1="65" x2="170" y2="65" stroke="#94a3b8" stroke-width="1.2"/>
+                                        <line x1="65" y1="10" x2="65" y2="100" stroke="#94a3b8" stroke-width="1.2"/>
+                                        <path d="M 25 95 C 48 15, 72 15, 95 55 C 118 95, 140 95, 160 15" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+                                        <circle cx="95" cy="55" r="3.5" fill="#dc2626"/>
+                                        <text x="100" y="52" font-size="10" fill="#dc2626" font-weight="bold">I (Uốn)</text>
+                                    </svg>
+                                    <ul class="list-disc pl-4 text-xs sm:text-sm space-y-1.5">
+                                        <li><strong>Tâm đối xứng:</strong> Điểm uốn $I(x_I; y_I)$ với <span class="hl-blue">$x_I = -\dfrac{b}{3a}$</span> (nghiệm của $y'' = 0$, trung điểm 2 cực trị).</li>
+                                        <li><strong>Dấu $a$:</strong> Nhìn <span class="hl-blue">nhánh cuối cùng bên phải</span>: đi lên $\Rightarrow a > 0$; đi xuống $\Rightarrow a < 0$.</li>
+                                        <li><strong>Dấu $d$:</strong> Giao với trục $Oy$ tại $(0; d)$.</li>
+                                        <li><strong>Dấu $b, c$:</strong> Dùng Viet cho $y' = 0$: <span class="hl-blue">$x_1 + x_2 = -\dfrac{2b}{3a}$</span> và <span class="hl-blue">$x_1 x_2 = \dfrac{c}{3a}$</span>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Bậc 1 / Bậc 1 -->
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                                <div>
+                                    <h4 class="font-bold text-purple-700 dark:text-purple-400 mb-2">2. Phân thức Bậc 1/Bậc 1<br>$y = \dfrac{ax + b}{cx + d}$</h4>
+                                    <!-- Mini SVG Rational 1/1 -->
+                                    <svg viewBox="0 0 180 110" class="w-full h-28 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 mb-3">
+                                        <line x1="10" y1="70" x2="170" y2="70" stroke="#94a3b8" stroke-width="1.2"/>
+                                        <line x1="65" y1="10" x2="65" y2="100" stroke="#94a3b8" stroke-width="1.2"/>
+                                        <line x1="100" y1="10" x2="100" y2="100" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 3"/>
+                                        <line x1="10" y1="42" x2="170" y2="42" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 3"/>
+                                        <path d="M 15 50 Q 85 52 94 98" fill="none" stroke="#7c3aed" stroke-width="2.3"/>
+                                        <path d="M 106 12 Q 115 34 165 36" fill="none" stroke="#7c3aed" stroke-width="2.3"/>
+                                        <circle cx="100" cy="42" r="3.5" fill="#dc2626"/>
+                                    </svg>
+                                    <ul class="list-disc pl-4 text-xs sm:text-sm space-y-1.5">
+                                        <li><strong>TCĐ:</strong> $x = -\dfrac{d}{c}$; <strong>TCN:</strong> $y = \dfrac{a}{c}$.</li>
+                                        <li><strong>Tâm đối xứng:</strong> Giao điểm 2 tiệm cận <span class="hl-blue">$I\left(-\dfrac{d}{c}; \dfrac{a}{c}\right)$</span>.</li>
+                                        <li><strong>Giao $Oy$:</strong> $\left(0; \dfrac{b}{d}\right)$; <strong>Giao $Ox$:</strong> $\left(-\dfrac{b}{a}; 0\right)$.</li>
+                                        <li><span class="hl-red">Luôn không có cực trị</span> và đơn điệu từng khoảng.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Bậc 2 / Bậc 1 -->
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col justify-between">
+                                <div>
+                                    <h4 class="font-bold text-amber-700 dark:text-amber-400 mb-2">3. Phân thức Bậc 2/Bậc 1<br>$y = \dfrac{ax^2 + bx + c}{mx + n}$</h4>
+                                    <!-- Mini SVG Rational 2/1 -->
+                                    <svg viewBox="0 0 180 110" class="w-full h-28 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 mb-3">
+                                        <line x1="10" y1="65" x2="170" y2="65" stroke="#94a3b8" stroke-width="1.2"/>
+                                        <line x1="90" y1="10" x2="90" y2="100" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 3"/>
+                                        <line x1="25" y1="95" x2="155" y2="15" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 3"/>
+                                        <path d="M 30 96 Q 75 62 84 98" fill="none" stroke="#d97706" stroke-width="2.3"/>
+                                        <path d="M 96 12 Q 105 48 150 14" fill="none" stroke="#d97706" stroke-width="2.3"/>
+                                        <circle cx="90" cy="55" r="3.5" fill="#dc2626"/>
+                                    </svg>
+                                    <ul class="list-disc pl-4 text-xs sm:text-sm space-y-1.5">
+                                        <li><strong>TCĐ:</strong> $x = -\dfrac{n}{m}$; <strong>TCX:</strong> $y = px + q$ (thương phép chia).</li>
+                                        <li><strong>Tâm đối xứng:</strong> <span class="hl-blue">Giao điểm của TCĐ và TCX!</span></li>
+                                        <li>Đường thẳng qua 2 cực trị (nếu có): <span class="hl-blue">$y = \dfrac{(ax^2+bx+c)'}{(mx+n)'} = \dfrac{2ax + b}{m}$</span>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CHUYÊN ĐỀ 5: TOÁN THỰC TẾ & TỔ HỢP BÍ KÍP FLEXIO FX-799VN -->
+                <article id="cd-5" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-7 shadow-sm scroll-mt-20">
+                    <div class="flex items-center gap-3 pb-4 mb-5 border-b border-slate-200 dark:border-slate-800">
+                        <span class="px-3 py-1 rounded-lg bg-rose-600 text-white font-extrabold text-sm">CHUYÊN ĐỀ 5</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Tốc Độ Thay Đổi Tức Thời, Toán Thực Tế & Bí Kíp FX-799VN</h3>
+                    </div>
+
+                    <div class="space-y-6 text-sm sm:text-base leading-relaxed">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                <h4 class="font-bold text-rose-700 dark:text-rose-400 mb-2">5.1. Ý nghĩa thực tiễn của đạo hàm</h4>
+                                <ul class="list-disc pl-5 text-sm space-y-1.5">
+                                    <li><strong>Vật lý:</strong> Quãng đường $s(t) \Rightarrow$ Vận tốc tức thời <span class="hl-blue">$v(t) = s'(t)$</span> $\Rightarrow$ Gia tốc tức thời <span class="hl-blue">$a(t) = v'(t) = s''(t)$</span>.</li>
+                                    <li><strong>Sinh học / Hóa học:</strong> Tốc độ tăng trưởng quần thể <span class="hl-blue">$N'(t)$</span>; tốc độ thay đổi nồng độ thuốc <span class="hl-blue">$C'(t)$</span>.</li>
+                                    <li><span class="hl-red">BẪY ĐỎ TỐC ĐỘ ĐẠT ĐỈNH:</span> Hỏi "số lượng lớn nhất" thì tìm Max của $N(t)$; nhưng hỏi <span class="hl-red">"tốc độ tăng/lây lan lớn nhất" phải tìm Max của đạo hàm $N'(t)$</span> (tức giải $N''(t) = 0$)!</li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+                                <h4 class="font-bold text-indigo-700 dark:text-indigo-400 mb-2">5.2. Bộ công thức Kinh tế bắt buộc nhớ</h4>
+                                <ul class="list-disc pl-5 text-sm space-y-1.5">
+                                    <li><strong>Tổng chi phí:</strong> $C(x)$ ($x$ là số đơn vị sản phẩm).</li>
+                                    <li><strong>Chi phí trung bình (bình quân):</strong> <span class="hl-blue">$\overline{C}(x) = \dfrac{C(x)}{x}$</span>.</li>
+                                    <li><strong>Chi phí biên:</strong> <span class="hl-blue">$C'(x)$</span> (xấp xỉ chi phí để sản xuất thêm 1 đơn vị sản phẩm thứ $x+1$).</li>
+                                    <li><strong>Doanh thu:</strong> <span class="hl-blue">$R(x) = x \cdot p(x)$</span> ($p(x)$ là giá bán 1 sản phẩm).</li>
+                                    <li><strong>Lợi nhuận:</strong> <span class="hl-blue">$P(x) = R(x) - C(x)$</span>.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- BÍ KÍP MÁY TÍNH FLEXIO FX-799VN TỔNG QUÁT -->
+                        <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-slate-900 border-2 border-amber-300 dark:border-amber-700">
+                            <h4 class="text-lg font-extrabold text-amber-900 dark:text-amber-300 mb-3 flex items-center gap-2">
+                                ⚡ TỔNG HỢP "VÕ CÔNG" BẤM MÁY FLEXIO FX-799VN CHƯƠNG I
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                                <div class="bg-white/80 dark:bg-slate-900/80 p-3.5 rounded-xl border border-amber-200 dark:border-amber-800/60">
+                                    <p class="font-bold text-amber-800 dark:text-amber-300 mb-1">1. Tìm nghiệm $f'(x)=0$ KHÔNG CẦN đạo hàm tay:</p>
+                                    <p>Nhập <span class="calc-key calc-key-shift">SHIFT</span> <span class="calc-key">∫dx</span> $\to$ nhập $\left.\dfrac{d}{dx}(f(X))\right|_{X=X}$ $\to$ bấm <span class="calc-key calc-key-shift">SHIFT</span> <span class="calc-key">CALC</span> (SOLVE) $\to$ nhập giá trị gợi ý $x = 1$ rồi bấm <span class="calc-key">=</span>. Máy tìm ra ngay điểm cực trị chính xác tới 10 chữ số!</p>
+                                </div>
+                                <div class="bg-white/80 dark:bg-slate-900/80 p-3.5 rounded-xl border border-amber-200 dark:border-amber-800/60">
+                                    <p class="font-bold text-amber-800 dark:text-amber-300 mb-1">2. Quét Max / Min trên $[a;b]$ bằng Bảng giá trị:</p>
+                                    <p>Bấm <span class="calc-key">MENU</span> <span class="calc-key">8</span> $\to$ nhập $f(X)$ (có thể tắt $g(X)$ bằng <span class="calc-key calc-key-shift">SHIFT</span> <span class="calc-key">MENU</span> $\to$ Bảng giá trị $\to$ 1 hàm để nhận tối đa 45 dòng!). Đặt `Start = a`, `End = b`, `Step = (b-a)/40`.</p>
+                                </div>
+                                <div class="bg-white/80 dark:bg-slate-900/80 p-3.5 rounded-xl border border-amber-200 dark:border-amber-800/60">
+                                    <p class="font-bold text-amber-800 dark:text-amber-300 mb-1">3. Bóc tách Tiệm cận xiên $y = ax + b$ trong 5 giây:</p>
+                                    <p>Nhập $f(X)$ ở <span class="calc-key">MENU</span> <span class="calc-key">1</span> $\to$ bấm <span class="calc-key">CALC</span> $X = 10000$. Ví dụ kết quả ra $20001{,}0007 = 2 \cdot 10000 + 1 \Rightarrow a = 2, b = 1$! (Hoặc ra $19997{,}002 = 2 \cdot 10000 - 3 \Rightarrow a = 2, b = -3$).</p>
+                                </div>
+                                <div class="bg-white/80 dark:bg-slate-900/80 p-3.5 rounded-xl border border-amber-200 dark:border-amber-800/60">
+                                    <p class="font-bold text-amber-800 dark:text-amber-300 mb-1">4. Kiểm tra nhanh TCN & TCĐ chống bẫy căn/liên hợp:</p>
+                                    <p>• <strong>TCN:</strong> <span class="calc-key">CALC</span> $X = 10^8$ và $X = -10^8$ (nếu báo Math ERROR tức vi phạm TXĐ $\to$ không có TCN đầu đó!).<br>• <strong>TCĐ tại $x_0$:</strong> <span class="calc-key">CALC</span> $X = x_0 + 10^{-7}$ và $x_0 - 10^{-7}$: ra số khổng lồ ($\pm 10^6, 10^7$) mới là TCĐ!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- PHẦN 2: NGÂN HÀNG BÀI TẬP THỰC CHIẾN ĐỒ SỘ (18 CÂU ĐỦ 3 PHẦN)       -->
+    <!-- =================================================================== -->
+    <main id="view-practice" class="hidden max-w-6xl mx-auto px-4 pb-20">
+
+        <!-- Thanh tiến độ, thống kê điểm và bộ lọc -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-6 shadow-sm mb-6 space-y-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
+                        🎯 Ngân Hàng Luyện Tập Thực Chiến (18 Câu Chuẩn Đề Giữa Kì 1)
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                        Đầy đủ 3 định dạng mới: Trắc nghiệm 4 lựa chọn • Trắc nghiệm Đúng/Sai (4 ý) • Trả lời ngắn thực tế
+                    </p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="resetAllPractice()" class="px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs sm:text-sm font-semibold transition">
+                        🔄 Làm lại từ đầu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress bar -->
+            <div>
+                <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+                    <span>Đã kiểm tra: <strong id="practice-done-label" class="text-blue-600 dark:text-blue-400">0 / 18 câu</strong></span>
+                    <span>Điểm quy đổi thang 10: <strong id="practice-score-label" class="text-emerald-600 dark:text-emerald-400">0.00 / 10.00</strong></span>
+                </div>
+                <div class="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div id="practice-progress-bar" class="h-full bg-gradient-to-r from-blue-600 to-emerald-500 transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Bộ lọc Chuyên đề & Định dạng -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-slate-200 dark:border-slate-800">
+                <div class="flex flex-wrap gap-1.5" id="topic-filters">
+                    <button type="button" onclick="setFilterTopic('all')" data-topic="all" class="filter-topic-btn px-3 py-2 sm:py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white">Tất cả (18)</button>
+                    <button type="button" onclick="setFilterTopic('lythuyet')" data-topic="lythuyet" class="filter-topic-btn px-3 py-2 sm:py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Lý thuyết & Bẫy</button>
+                    <button type="button" onclick="setFilterTopic('tiemcan')" data-topic="tiemcan" class="filter-topic-btn px-3 py-2 sm:py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tiệm cận & Đồ thị</button>
+                    <button type="button" onclick="setFilterTopic('thucte')" data-topic="thucte" class="filter-topic-btn px-3 py-2 sm:py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Toán Thực tế Tối ưu</button>
+                </div>
+
+                <!-- text-base trên mobile để chống lỗi tự zoom trên iPhone Safari -->
+                <select id="format-filter" onchange="setFilterFormat(this.value)" class="w-full sm:w-auto px-3 py-2 sm:py-1.5 rounded-lg text-base sm:text-xs font-semibold bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none">
+                    <option value="all">Mọi định dạng câu hỏi</option>
+                    <option value="mcq">Phần I: Trắc nghiệm 4 lựa chọn (8 câu)</option>
+                    <option value="tf">Phần II: Đúng / Sai 4 mệnh đề (3 câu)</option>
+                    <option value="short">Phần III: Trả lời ngắn điền đáp số (7 câu)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Danh sách câu hỏi được render động -->
+        <div id="questions-container" class="space-y-6"></div>
+
+    </main>
+
+    <!-- JAVASCRIPT: DỮ LIỆU 18 CÂU HỎI CHUẨN XÁC 100% & LOGIC TƯƠNG TÁC -->
+    <script>
+        // Ngân hàng 18 câu hỏi được kiểm chứng toán học tuyệt đối
+        const QUESTIONS = [
+            // ================= PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN (Câu 1 -> Câu 8) =================
+            {
+                id: 1,
+                part: "PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN",
+                type: "mcq",
+                topic: "lythuyet",
+                badge: "Bẫy lý thuyết đơn điệu & cực trị",
+                prompt: `Cho hàm số $y = \\dfrac{2x - 1}{x + 1}$. Khẳng định nào sau đây là <strong>ĐÚNG</strong>?`,
+                options: [
+                    "A. Hàm số đồng biến trên tập xác định $\\mathbb{R} \\setminus \\{-1\\}$.",
+                    "B. Hàm số đồng biến trên các khoảng $(-\\infty; -1)$ và $(-1; +\\infty)$.",
+                    "C. Đồ thị hàm số đạt cực tiểu tại điểm $x = -1$.",
+                    "D. Hàm số đồng biến trên $(-\\infty; -1) \\cup (-1; +\\infty)$."
+                ],
+                correct: 1, // B
+                explanation: `
+                    <p><strong>Bước 1:</strong> Tập xác định $D = \\mathbb{R} \\setminus \\{-1\\}$.</p>
+                    <p><strong>Bước 2:</strong> Tính đạo hàm nhanh $y' = \\dfrac{2 \\cdot 1 - 1 \\cdot (-1)}{(x + 1)^2} = \\dfrac{3}{(x + 1)^2} > 0, \\forall x \\neq -1$.</p>
+                    <p><strong>Bước 3 (Tránh bẫy):</strong> Vì $y' > 0$ trên từng khoảng xác định nên hàm số đồng biến trên $(-\\infty; -1)$ và $(-1; +\\infty)$. <span class="hl-red">Đáp án A và D bị gài bẫy ký hiệu $\\setminus$ và $\\cup$</span> (ví dụ lấy $x_1 = -2 < x_2 = 0$ nhưng $f(-2) = 5 > f(0) = -1$ nên không đồng biến trên hợp hai khoảng!).</p>
+                `,
+                casioTrick: `
+                    <p>• Bấm nhanh đạo hàm tại 2 miền bằng <span class="calc-key calc-key-shift">SHIFT</span> <span class="calc-key">∫dx</span> trên <strong>FX-799VN</strong>: nhập $\\left.\\dfrac{d}{dx}\\left(\\dfrac{2X-1}{X+1}\\right)\\right|_{X=2} = 0{,}333 > 0$ $\\Rightarrow$ chắc chắn đồng biến.</p>
+                    <p>• Mẹo phản bác đáp án A & D trong 2 giây: <span class="calc-key">CALC</span> $X = -2$ ra $5$, <span class="calc-key">CALC</span> $X = 0$ ra $-1$ ($X$ tăng mà $Y$ giảm!) $\\Rightarrow$ loại sạch $\\cup$ và $\\setminus$!</p>
+                `
+            },
+            {
+                id: 2,
+                part: "PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN",
+                type: "mcq",
+                topic: "lythuyet",
+                badge: "Bẫy nghiệm kép & đạo hàm không xác định",
+                prompt: `Cho hàm số $y = f(x)$ <strong>liên tục trên toàn bộ $\\mathbb{R}$</strong> và có bảng xét dấu của đạo hàm $f'(x)$ như sau:
+                <div class="my-3 overflow-x-auto">
+                    <table class="bbt-table bg-slate-50 dark:bg-slate-800/70 rounded-lg">
+                        <tr>
+                            <th class="w-16">$x$</th><td>$-\\infty$</td><td></td><td>$-2$</td><td></td><td>$0$</td><td></td><td>$3$</td><td></td><td>$+\\infty$</td>
+                        </tr>
+                        <tr>
+                            <th>$f'(x)$</th><td></td><td class="font-bold text-blue-600">$+$</td><td>$0$</td><td class="font-bold text-blue-600">$+$</td><td><span class="double-bar"></span></td><td class="font-bold text-rose-600">$-$</td><td>$0$</td><td class="font-bold text-blue-600">$+$</td><td></td>
+                        </tr>
+                    </table>
+                </div>
+                Số điểm cực trị của hàm số $y = f(x)$ đã cho là:`,
+                options: [
+                    "A. $1$",
+                    "B. $2$",
+                    "C. $3$",
+                    "D. $0$"
+                ],
+                correct: 1, // B (2)
+                explanation: `
+                    <p>• Tại $x = -2$: $f'(-2) = 0$ nhưng <span class="hl-red">$f'(x)$ KHÔNG đổi dấu</span> (từ $+$ sang $+$) $\\Rightarrow$ $x = -2$ <strong>không</strong> là điểm cực trị.</p>
+                    <p>• Tại $x = 0$: Dù $f'(0)$ không xác định (ký hiệu <span class="double-bar"></span>), nhưng đề bài cho <span class="hl-blue">$f(x)$ liên tục trên $\\mathbb{R}$</span> (xác định tại $0$) và $f'(x)$ đổi dấu từ $(+)$ sang $(-)$ $\\Rightarrow$ hàm số <strong>đạt cực đại</strong> tại $x = 0$!</p>
+                    <p>• Tại $x = 3$: $f'(3) = 0$ và $f'(x)$ đổi dấu từ $(-)$ sang $(+)$ $\\Rightarrow$ hàm số <strong>đạt cực tiểu</strong> tại $x = 3$.</p>
+                    <p>Vậy hàm số có tất cả <strong>2 điểm cực trị</strong> ($x = 0$ và $x = 3$).</p>
+                `,
+                casioTrick: `
+                    <p>• <strong>Mẹo thần tốc nhìn bảng xét dấu $f'(x)$:</strong> Đầu tiên đọc kỹ đề xem hàm có <em>liên tục trên $\\mathbb{R}$</em> không. Nếu liên tục trên $\\mathbb{R}$ thì đếm thẳng <strong>số lần đổi dấu</strong> của dòng $f'(x)$, bất chấp tại đó là số $0$ hay gạch kép <span class="double-bar"></span>!</p>
+                `
+            },
+            {
+                id: 3,
+                part: "PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN",
+                type: "mcq",
+                topic: "tiemcan",
+                badge: "Bẫy kép Tiệm cận chứa căn & nghiệm trùng",
+                prompt: `Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y = \\dfrac{\\sqrt{x + 4} - 2}{x^2 + x}$ là:`,
+                options: [
+                    "A. $1$",
+                    "B. $2$",
+                    "C. $3$",
+                    "D. $4$"
+                ],
+                correct: 1, // B (2)
+                explanation: `
+                    <p><strong>1. Tập xác định:</strong> $x + 4 \\ge 0$ và $x^2 + x \\neq 0 \\Longleftrightarrow D = [-4; +\\infty) \\setminus \\{-1; 0\\}$.</p>
+                    <p><strong>2. Tiệm cận ngang (TCN):</strong>
+                        <br>• Không tồn tại $\\lim_{x \\to -\\infty} y$ (do $x \\ge -4$).
+                        <br>• $\\lim_{x \\to +\\infty} \\dfrac{\\sqrt{x+4}-2}{x^2+x} = 0$ (bậc tử $1/2 <$ bậc mẫu $2$) $\\Longrightarrow$ Có <strong>1 TCN</strong> là $y = 0$.
+                    </p>
+                    <p><strong>3. Tiệm cận đứng (TCĐ):</strong> Mẫu có 2 nghiệm $x = 0$ và $x = -1$ (đều thỏa $x > -4$):
+                        <br>• Nhân liên hợp tử: $y = \\dfrac{(x+4) - 4}{x(x+1)(\\sqrt{x+4}+2)} = \\dfrac{1}{(x+1)(\\sqrt{x+4}+2)}$ (với $x \\neq 0$).
+                        <br>• Tại $x = 0$: $\\lim_{x \\to 0} y = \\dfrac{1}{1 \\cdot 4} = \\dfrac{1}{4}$ (hữu hạn!) $\\Longrightarrow$ <span class="hl-red">$x = 0$ bị triệt tiêu, KHÔNG là TCĐ!</span>
+                        <br>• Tại $x = -1$: Tử $\\sqrt{3} - 2 \\neq 0$, mẫu $\\to 0 \\Longrightarrow \\lim_{x \\to -1^+} y = +\\infty \\Longrightarrow$ <strong>$x = -1$ là 1 TCĐ</strong>.
+                    </p>
+                    <p>Vậy đồ thị có tổng cộng $1 + 1 = \\mathbf{2}$ đường tiệm cận.</p>
+                `,
+                casioTrick: `
+                    <p><strong>Bấm máy FX-799VN diệt gọn mọi bẫy trong 15 giây:</strong> Nhập biểu thức $\\dfrac{\\sqrt{X+4}-2}{X^2+X}$ ở <span class="calc-key">MENU</span> <span class="calc-key">1</span>:</p>
+                    <p>1. <span class="calc-key">CALC</span> $X = 10^8 \\to$ máy hiện $\\approx 10^{-12} \\approx 0 \\Rightarrow$ có TCN $y = 0$. <span class="calc-key">CALC</span> $X = -10^8 \\to$ báo <em>Math ERROR</em> $\\Rightarrow$ không có TCN đầu $-\\infty$.</p>
+                    <p>2. Thử nghiệm mẫu $x = 0$: <span class="calc-key">CALC</span> $X = 0{,}000001 \\to$ ra $0{,}249999 \\approx 1/4$ (số nhỏ, hữu hạn!) $\\Rightarrow$ <strong>LOẠI $x=0$</strong>!</p>
+                    <p>3. Thử nghiệm mẫu $x = -1$: <span class="calc-key">CALC</span> $X = -1 + 10^{-7} \\to$ ra $2{,}679 \\times 10^6$ (vô cực!) $\\Rightarrow$ <strong>NHẬN $x = -1$</strong>!</p>
+                `
+            },
+            {
+                id: 4,
+                part: "PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN",
+                type: "mcq",
+                topic: "tiemcan",
+                badge: "Tiệm cận xiên (Mới GDPT 2018)",
+                prompt: `Biết đường thẳng $y = ax + b$ là đường tiệm cận xiên của đồ thị hàm số $y = \\dfrac{2x^2 - 3x + 5}{x - 2}$. Tính giá trị của biểu thức $T = 2a + b$.`,
+                options: [
+                    "A. $T = 3$",
+                    "B. $T = 5$",
+                    "C. $T = 1$",
+                    "D. $T = 7$"
+                ],
+                correct: 1, // B (5)
+                explanation: `
+                    <p><strong>Chia đa thức tử cho mẫu:</strong></p>
+                    <p>$$2x^2 - 3x + 5 = 2x(x - 2) + x + 5 = (2x + 1)(x - 2) + 7$$</p>
+                    <p>Suy ra $y = 2x + 1 + \\dfrac{7}{x - 2}$.</p>
+                    <p>Vì $\\lim_{x \\to \\pm\\infty} [y - (2x + 1)] = \\lim_{x \\to \\pm\\infty} \\dfrac{7}{x - 2} = 0$ nên tiệm cận xiên là đường thẳng $y = 2x + 1$.</p>
+                    <p>Do đó $a = 2, b = 1 \\Longrightarrow T = 2a + b = 2(2) + 1 = \\mathbf{5}$.</p>
+                `,
+                casioTrick: `
+                    <p><strong>Tuyệt kỹ "Bóc số 10000" trên FX-799VN (không cần chia đa thức):</strong></p>
+                    <p>• Nhập $\\dfrac{2X^2 - 3X + 5}{X - 2}$ rồi bấm <span class="calc-key">CALC</span> $X = 10000$ <span class="calc-key">=</span>.</p>
+                    <p>• Màn hình hiện: $20001{,}0007$. Bỏ phần thập phân đi còn $20001 = \\mathbf{2} \\times 10000 + \\mathbf{1} \\Longrightarrow a = 2, b = 1 \\Longrightarrow T = 5$ trong đúng 4 giây!</p>
+                `
+            },
+            {
+                id: 5,
+                part: "PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN",
+                type: "mcq",
+                topic: "tiemcan",
+                badge: "Đọc BBT tìm Tiệm cận có bẫy gạch sọc",
+                prompt: `Cho hàm số $y = f(x)$ có bảng biến thiên như hình dưới đây:
+                <div class="my-3 overflow-x-auto">
+                    <table class="bbt-table bg-slate-50 dark:bg-slate-800/70 rounded-lg">
+                        <tr>
+                            <th class="w-16">$x$</th><td>$-\\infty$</td><td></td><td>$-1$</td><td></td><td>$2$</td><td></td><td>$+\\infty$</td>
+                        </tr>
+                        <tr>
+                            <th>$f'(x)$</th><td></td><td>$-$</td><td><span class="double-bar"></span></td><td>$-$</td><td><span class="double-bar"></span></td><td>$+$</td><td></td>
+                        </tr>
+                        <tr>
+                            <th>$f(x)$</th>
+                            <td>$3$</td>
+                            <td>$\\searrow$</td>
+                            <td>$-\\infty$ <span class="double-bar mx-1"></span> $4$</td>
+                            <td>$\\searrow$</td>
+                            <td>$1$ <span class="double-bar mx-1"></span> $5$</td>
+                            <td>$\\nearrow$</td>
+                            <td>$+\\infty$</td>
+                        </tr>
+                    </table>
+                </div>
+                Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y = f(x)$ là:`,
+                options: [
+                    "A. $4$",
+                    "B. $3$",
+                    "C. $2$",
+                    "D. $1$"
+                ],
+                correct: 2, // C (2)
+                explanation: `
+                    <p><strong>1. Đếm TCN (nhìn 2 đầu $-\\infty$ và $+\\infty$):</strong>
+                        <br>• $\\lim_{x \\to -\\infty} f(x) = 3$ (hữu hạn) $\\Rightarrow y = 3$ là <strong>1 TCN</strong>.
+                        <br>• $\\lim_{x \\to +\\infty} f(x) = +\\infty \\Rightarrow$ không có TCN ở đầu $+\\infty$.
+                    </p>
+                    <p><strong>2. Đếm TCĐ (nhìn các điểm gián đoạn ở giữa):</strong>
+                        <br>• Tại $x = -1$: Có $\\lim_{x \\to -1^-} f(x) = -\\infty$ (chỉ cần 1 bên ra $\\pm\\infty$ là đủ!) $\\Rightarrow x = -1$ là <strong>1 TCĐ</strong>.
+                        <br>• Tại $x = 2$: <span class="hl-red">Dù có vạch kép nhưng bên trái ra $1$ và bên phải ra $5$ (cả hai đều hữu hạn!)</span> $\\Rightarrow x = 2$ <strong>KHÔNG</strong> phải là TCĐ!
+                    </p>
+                    <p>Tổng cộng có $1 + 1 = \\mathbf{2}$ đường tiệm cận.</p>
+                `,
+                casioTrick: `
+                    <p>• <strong>Quy tắc mắt thần 3 giây:</strong> Đầu mút $\\pm\\infty$ phải ra <em>số</em> $\\to$ TCN; ở giữa vạch kép phải có ít nhất một chữ $\\infty$ $\\to$ TCĐ. Thấy vạch kép mà hai bên toàn số ($1$ và $5$) là bẫy gián đoạn hữu hạn, gạch bỏ ngay!</p>
+                `
+            },
+            {
+                id: 6,
+                part: "PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN",
+                type: "mcq",
+                topic: "tiemcan",
+                badge: "Nhận diện dấu bộ hệ số (a, b, c, d)",
+                prompt: `Cho hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ có đồ thị như hình vẽ bên dưới. Khẳng định nào sau đây đúng về dấu của bộ hệ số $(a, b, c, d)$?
+                <div class="my-4 flex justify-center">
+                    <svg viewBox="0 0 280 210" class="w-72 h-52 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-inner">
+                        <!-- Trục tọa độ Ox, Oy -->
+                        <line x1="20" y1="125" x2="260" y2="125" stroke="#64748b" stroke-width="1.5"/>
+                        <polygon points="260,125 253,121 253,129" fill="#64748b"/>
+                        <text x="250" y="142" font-size="12" fill="#64748b" font-weight="bold">x</text>
+
+                        <line x1="75" y1="195" x2="75" y2="15" stroke="#64748b" stroke-width="1.5"/>
+                        <polygon points="75,15 71,22 79,22" fill="#64748b"/>
+                        <text x="82" y="25" font-size="12" fill="#64748b" font-weight="bold">y</text>
+                        <text x="61" y="139" font-size="11" fill="#64748b" font-weight="bold">O</text>
+
+                        <!-- Đồ thị chuẩn hàm y = x^3 - 6x^2 + 9x - 1 -->
+                        <!-- Scale: X_svg = 75 + x*40, Y_svg = 125 - y*22 -->
+                        <path d="M 65 186 C 85 110, 102 59, 115 59 C 135 59, 175 147, 195 147 C 212 147, 228 85, 240 42" fill="none" stroke="#2563eb" stroke-width="3"/>
+
+                        <!-- Điểm đặc biệt: Giao Oy (0,-1)->(75,147), CĐ (1,3)->(115,59), CT (3,-1)->(195,147) -->
+                        <line x1="115" y1="59" x2="115" y2="125" stroke="#94a3b8" stroke-dasharray="3 3"/>
+                        <line x1="195" y1="147" x2="195" y2="125" stroke="#94a3b8" stroke-dasharray="3 3"/>
+                        <circle cx="75" cy="147" r="4" fill="#dc2626"/>
+                        <circle cx="115" cy="59" r="4" fill="#16a34a"/>
+                        <circle cx="195" cy="147" r="4" fill="#16a34a"/>
+                        <text x="108" y="140" font-size="11" fill="#0f172a" class="dark:fill-slate-200">$x_1$</text>
+                        <text x="190" y="119" font-size="11" fill="#0f172a" class="dark:fill-slate-200">$x_2$</text>
+                    </svg>
+                </div>`,
+                options: [
+                    "A. $a > 0,\\; b < 0,\\; c > 0,\\; d < 0$",
+                    "B. $a > 0,\\; b > 0,\\; c < 0,\\; d < 0$",
+                    "C. $a > 0,\\; b < 0,\\; c < 0,\\; d < 0$",
+                    "D. $a < 0,\\; b > 0,\\; c > 0,\\; d < 0$"
+                ],
+                correct: 0, // A
+                explanation: `
+                    <p><strong>Bước 1 (Dấu $a$):</strong> Nhánh ngoài cùng bên phải đi lên $+\\infty \\Longrightarrow \\mathbf{a > 0}$.</p>
+                    <p><strong>Bước 2 (Dấu $d$):</strong> Đồ thị cắt trục tung $Oy$ (chấm đỏ) phía dưới gốc tọa độ $O \\Longrightarrow y(0) = \\mathbf{d < 0}$.</p>
+                    <p><strong>Bước 3 (Dấu $b$ và $c$):</strong> Hai điểm cực trị $x_1, x_2$ đều nằm bên phải trục $Oy$ nên $0 < x_1 < x_2$. Áp dụng định lý Viète cho $y' = 3ax^2 + 2bx + c = 0$:
+                        <br>• $x_1 + x_2 = -\\dfrac{2b}{3a} > 0$, mà $a > 0 \\Longrightarrow \\mathbf{b < 0}$.
+                        <br>• $x_1 \\cdot x_2 = \\dfrac{c}{3a} > 0$, mà $a > 0 \\Longrightarrow \\mathbf{c > 0}$.
+                    </p>
+                    <p>Vậy bộ dấu đúng là $a > 0,\\; b < 0,\\; c > 0,\\; d < 0$ (Đáp án <strong>A</strong>).</p>
+                `,
+                casioTrick: `
+                    <p>• <strong>Mẹo "Điểm uốn & Độ dốc tại $O$":</strong> Không cần nhớ công thức Viète!
+                        <br>- Dốc tiếp tuyến tại giao điểm $Oy$ (chấm đỏ) đang <strong>đi lên</strong> $\\Rightarrow y'(0) = c > 0$!
+                        <br>- Tâm đối xứng (trung điểm 2 cực trị) nằm bên phải $Oy \\Rightarrow x_I = -\\dfrac{b}{3a} > 0 \\Rightarrow a, b$ trái dấu $\\Rightarrow b < 0$!</p>
+                `
+            },
+            {
+                id: 7,
+                part: "PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN",
+                type: "mcq",
+                topic: "lythuyet",
+                badge: "Bẫy tham số m hàm phân thức trên khoảng",
+                prompt: `Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số $y = \\dfrac{x + 4}{x - m}$ nghịch biến trên khoảng $(1; +\\infty)$?`,
+                options: [
+                    "A. $4$",
+                    "B. $5$",
+                    "C. $6$",
+                    "D. Vô số"
+                ],
+                correct: 1, // B (5)
+                explanation: `
+                    <p><strong>Bước 1:</strong> Tập xác định $D = \\mathbb{R} \\setminus \\{m\\}$. Đạo hàm $y' = \\dfrac{-m - 4}{(x - m)^2}$.</p>
+                    <p><strong>Bước 2 (Hai điều kiện bắt buộc):</strong> Để hàm số nghịch biến trên $(1; +\\infty)$ thì:
+                        $$\\begin{cases} y' < 0 \\text{ (không có dấu }=\\text{!)} \\\\ x = m \\notin (1; +\\infty) \\text{ (mẫu khác 0 trên khoảng)} \\end{cases} \\Longleftrightarrow \\begin{cases} -m - 4 < 0 \\\\ m \\le 1 \\end{cases} \\Longleftrightarrow -4 < m \\le 1$$
+                    </p>
+                    <p><span class="hl-red">Lưu ý 2 bẫy chết người:</span> Nếu quên $m \\le 1$ sẽ chọn D (vô số); nếu viết nhầm $m < 1$ sẽ chọn A ($4$ số); nếu cho $-m-4 \\le 0$ sẽ lấy thừa $m = -4$ chọn C ($6$ số)!</p>
+                    <p><strong>Bước 3:</strong> Do $m \\in \\mathbb{Z}$ nên $m \\in \\{-3; -2; -1; 0; 1\\} \\Longrightarrow$ Có <strong>5 giá trị nguyên</strong>.</p>
+                `,
+                casioTrick: `
+                    <p>• Khi phân vân lấy hay bỏ đầu mút $m = 1$ và $m = -4$, chỉ cần <strong>thay thẳng số đó vào đề bài</strong> và mở <span class="calc-key">MENU</span> <span class="calc-key">8</span> quét trên $(1; 10)$:
+                        <br>- Với $m = -4$: $y = \\frac{x+4}{x+4} = 1$ (không giảm $\\to$ loại ngay!).
+                        <br>- Với $m = 1$: $y = \\frac{x+4}{x-1}$ xác định và giảm đẹp trên $(1; 10)$ ($\\to$ nhận ngay $m = 1$!).</p>
+                `
+            },
+            {
+                id: 8,
+                part: "PHẦN I: TRẮC NGHIỆM 4 LỰA CHỌN",
+                type: "mcq",
+                topic: "lythuyet",
+                badge: "Vận dụng Cực trị hàm hợp",
+                prompt: `Cho hàm số $y = f(x)$ có đạo hàm trên $\\mathbb{R}$ là $f'(x) = (x + 1)(x - 1)^2(x - 3)$. Hàm số $g(x) = f(x^2 - 2x)$ có bao nhiêu điểm cực trị?`,
+                options: [
+                    "A. $2$",
+                    "B. $3$",
+                    "C. $4$",
+                    "D. $5$"
+                ],
+                correct: 1, // B (3)
+                explanation: `
+                    <p><strong>Bước 1:</strong> Loại bỏ ngay nhân tử bội chẵn $(x - 1)^2$ trong $f'(x)$ vì nó không làm đổi dấu đạo hàm! Chỉ giữ các nghiệm đơn của $f'(u) = 0$ là $u = -1$ và $u = 3$.</p>
+                    <p><strong>Bước 2:</strong> Đạo hàm hàm hợp: $g'(x) = (2x - 2) \\cdot f'(x^2 - 2x)$.</p>
+                    <p>Phương trình đổi dấu của $g'(x)$ tương đương với:
+                        <br>• $2x - 2 = 0 \\Longleftrightarrow x = 1$ (bội $1$).
+                        <br>• $x^2 - 2x = -1 \\Longleftrightarrow (x - 1)^2 = 0 \\Longleftrightarrow x = 1$ (bội $2$).
+                        <br>• $x^2 - 2x = 3 \\Longleftrightarrow x^2 - 2x - 3 = 0 \\Longleftrightarrow x = -1$ (bội $1$) hoặc $x = 3$ (bội $1$).
+                    </p>
+                    <p><strong>Bước 3 (Cộng gộp bội nghiệm trùng):</strong> Tại $x = 1$, tổng số mũ là $1 + 2 = 3$ (<span class="hl-blue">vẫn là nghiệm bội LẺ nên vẫn đổi dấu!</span>). Cùng với $x = -1$ (bội $1$) và $x = 3$ (bội $1$), hàm số $g(x)$ có tất cả <strong>3 điểm cực trị</strong>.</p>
+                `,
+                casioTrick: `
+                    <p><strong>Mẹo Casio "Chọn hàm đại diện":</strong> Bỏ mũ chẵn, coi $f'(u) = (u+1)(u-3)$, thế $u = X^2 - 2X$ vào $g'(X) = (2X - 2)(X^2 - 2X + 1)(X^2 - 2X - 3)$. Bấm <span class="calc-key">MENU</span> <span class="calc-key">8</span> quét $X$ từ $-3$ đến $5$ với <code>Step = 0.5</code>, đếm số lần cột $g'(X)$ đổi dấu âm $\\leftrightarrow$ dương $\\Rightarrow$ thấy đúng <strong>3 lần đổi dấu</strong> qua $-1, 1, 3$!</p>
+                `
+            },
+
+            // ================= PHẦN II: TRẮC NGHIỆM ĐÚNG / SAI (Câu 9 -> Câu 11) =================
+            {
+                id: 9,
+                part: "PHẦN II: TRẮC NGHIỆM ĐÚNG / SAI (4 MỆNH ĐỀ)",
+                type: "tf",
+                topic: "tiemcan",
+                badge: "Khảo sát toàn diện Bậc 2 / Bậc 1",
+                prompt: `Cho hàm số $y = f(x) = \\dfrac{x^2 - 2x + 5}{x - 1}$ có đồ thị $(C)$. Xét tính <strong>Đúng</strong> hoặc <strong>Sai</strong> của mỗi mệnh đề sau:`,
+                statements: [
+                    { key: "a", text: "a) Hàm số nghịch biến trên khoảng $(-1; 3)$.", answer: false },
+                    { key: "b", text: "b) Giá trị cực đại của hàm số nhỏ hơn giá trị cực tiểu của hàm số ($y_{\\text{CĐ}} < y_{\\text{CT}}$).", answer: true },
+                    { key: "c", text: "c) Đường thẳng $y = x - 1$ là đường tiệm cận xiên của đồ thị $(C)$.", answer: true },
+                    { key: "d", text: "d) Tâm đối xứng của đồ thị $(C)$ là điểm $I(1; 1)$.", answer: false }
+                ],
+                explanation: `
+                    <p>Chia đa thức ta có: $f(x) = x - 1 + \\dfrac{4}{x - 1}$, TXĐ: $D = \\mathbb{R} \\setminus \\{1\\}$.</p>
+                    <p>Đạo hàm: $f'(x) = 1 - \\dfrac{4}{(x - 1)^2} = \\dfrac{(x - 3)(x + 1)}{(x - 1)^2} = 0 \\Longleftrightarrow x = -1$ hoặc $x = 3$.</p>
+                    <p>• <strong>Ý a) SAI:</strong> <span class="hl-red">Bẫy kinh điển!</span> Tại $x = 1 \\in (-1; 3)$ hàm số không xác định nên phải phát biểu nghịch biến trên $(-1; 1)$ và $(1; 3)$.</p>
+                    <p>• <strong>Ý b) ĐÚNG:</strong> Tại $x_{\\text{CĐ}} = -1 \\Rightarrow y_{\\text{CĐ}} = f(-1) = -4$; tại $x_{\\text{CT}} = 3 \\Rightarrow y_{\\text{CT}} = f(3) = 4$. Rõ ràng $-4 < 4$ ($y_{\\text{CĐ}} < y_{\\text{CT}}$).</p>
+                    <p>• <strong>Ý c) ĐÚNG:</strong> Vì $\\lim_{x \\to \\pm\\infty} [f(x) - (x - 1)] = \\lim_{x \\to \\pm\\infty} \\dfrac{4}{x - 1} = 0$ nên $y = x - 1$ là TCX.</p>
+                    <p>• <strong>Ý d) SAI:</strong> Tâm đối xứng là giao của TCĐ $x = 1$ và TCX $y = x - 1$, thay $x = 1$ vào $y = x - 1$ được $y = 0 \\Longrightarrow$ Tâm đối xứng phải là <span class="hl-blue">$I(1; 0)$</span> chứ không phải $(1; 1)$!</p>
+                `,
+                casioTrick: `
+                    <p>• <strong>Ý c & d bằng FX-799VN:</strong> Bấm <span class="calc-key">CALC</span> $X = 10000 \\to$ ra $9999{,}0004 = 1 \\cdot 10000 - 1 \\Rightarrow$ TCX là $y = x - 1$. Giao với TCĐ $x = 1$ cho ngay $I(1; 0)$!</p>
+                    <p>• <strong>Ý b:</strong> Dùng <span class="calc-key">MENU</span> <span class="calc-key">8</span> quét từ $-5$ đến $6$ thấy đỉnh nhánh trái tại $(-1; -4)$ và đáy nhánh phải tại $(3; 4)$!</p>
+                `
+            },
+            {
+                id: 10,
+                part: "PHẦN II: TRẮC NGHIỆM ĐÚNG / SAI (4 MỆNH ĐỀ)",
+                type: "tf",
+                topic: "thucte",
+                badge: "Thực tế Y sinh - Nồng độ thuốc trong máu",
+                prompt: `Sau khi tiêm một loại thuốc vào tĩnh mạch bệnh nhân, nồng độ thuốc trong máu sau $t$ giờ ($t \\ge 0$) được xác định bởi công thức $C(t) = \\dfrac{5t}{t^2 + 4}$ (đơn vị: $\\text{mg/lít}$). Xét tính <strong>Đúng</strong> hoặc <strong>Sai</strong> của các mệnh đề sau:`,
+                statements: [
+                    { key: "a", text: "a) Tốc độ thay đổi tức thời của nồng độ thuốc tại thời điểm $t = 1$ giờ là $0{,}6\\text{ mg/lít/giờ}$.", answer: true },
+                    { key: "b", text: "b) Nồng độ thuốc trong máu giảm dần trong suốt khoảng thời gian từ $1$ giờ đến $3$ giờ sau khi tiêm.", answer: false },
+                    { key: "c", text: "c) Nồng độ thuốc trong máu đạt mức cao nhất là $1{,}25\\text{ mg/lít}$ tại thời điểm $2$ giờ sau khi tiêm.", answer: true },
+                    { key: "d", text: "d) Đồ thị hàm số $y = C(t)$ ($t \\ge 0$) nhận đường thẳng $y = 0$ làm tiệm cận ngang, biểu thị nồng độ thuốc giảm dần về $0$ theo thời gian.", answer: true }
+                ],
+                explanation: `
+                    <p>Ta có đạo hàm: $C'(t) = \\dfrac{5(t^2 + 4) - 5t \\cdot 2t}{(t^2 + 4)^2} = \\dfrac{20 - 5t^2}{(t^2 + 4)^2}$ với $t \\ge 0$.</p>
+                    <p>• <strong>Ý a) ĐÚNG:</strong> Tốc độ thay đổi tức thời tại $t = 1$ là $C'(1) = \\dfrac{20 - 5}{(1 + 4)^2} = \\dfrac{15}{25} = 0{,}6$ ($\\text{mg/lít/giờ}$).</p>
+                    <p>• <strong>Ý b) SAI:</strong> $C'(t) = 0 \\Longleftrightarrow t = 2$ (do $t \\ge 0$). Từ $1$ giờ đến $2$ giờ thì $C'(t) > 0$ nên nồng độ vẫn <strong>tăng</strong>, chỉ bắt đầu giảm sau thời điểm $t = 2$ giờ!</p>
+                    <p>• <strong>Ý c) ĐÚNG:</strong> Bảng biến thiên trên $[0; +\\infty)$ đạt GTLN tại $t = 2$ giờ với $C_{\\max} = C(2) = \\dfrac{10}{8} = 1{,}25\\text{ mg/lít}$.</p>
+                    <p>• <strong>Ý d) ĐÚNG:</strong> Vì $\\lim_{t \\to +\\infty} \\dfrac{5t}{t^2 + 4} = 0$ nên $y = 0$ là TCN của đồ thị.</p>
+                `,
+                casioTrick: `
+                    <p>• <strong>Ý a:</strong> Bấm thẳng <span class="calc-key calc-key-shift">SHIFT</span> <span class="calc-key">∫dx</span> nhập $\\left.\\dfrac{d}{dx}\\left(\\dfrac{5X}{X^2+4}\\right)\\right|_{X=1} \\to$ ra ngay $0{,}6$ không cần quy đồng đạo hàm!</p>
+                    <p>• <strong>Ý b & c:</strong> Mở <span class="calc-key">MENU</span> <span class="calc-key">8</span> cho <code>Start = 0</code>, <code>End = 5</code>, <code>Step = 0.5</code> thấy hàm tăng từ $t=0$ lên đỉnh $1{,}25$ tại $X = 2$ rồi giảm dần!</p>
+                `
+            },
+            {
+                id: 11,
+                part: "PHẦN II: TRẮC NGHIỆM ĐÚNG / SAI (4 MỆNH ĐỀ)",
+                type: "tf",
+                topic: "thucte",
+                badge: "Thực tế Kinh tế - Chi phí biên & Lợi nhuận",
+                prompt: `Một doanh nghiệp sản xuất $x$ đơn vị sản phẩm mỗi tháng ($1 \\le x \\le 100,\\; x \\in \\mathbb{N}^*$). Tổng chi phí sản xuất là $C(x) = x^2 + 30x + 400$ (triệu đồng) và giá bán mỗi đơn vị sản phẩm là $p(x) = 150 - 0{,}5x$ (triệu đồng). Xét tính <strong>Đúng</strong> hoặc <strong>Sai</strong> của các mệnh đề sau:`,
+                statements: [
+                    { key: "a", text: "a) Hàm chi phí biên là $C'(x) = 2x + 30$, do đó chi phí biên tại mức sản lượng $x = 20$ là $70$ triệu đồng.", answer: true },
+                    { key: "b", text: "b) Chi phí trung bình trên mỗi đơn vị sản phẩm đạt nhỏ nhất khi doanh nghiệp sản xuất $20$ sản phẩm/tháng.", answer: true },
+                    { key: "c", text: "c) Hàm lợi nhuận hàng tháng của doanh nghiệp là $P(x) = -0{,}5x^2 + 120x - 400$ (triệu đồng).", answer: false },
+                    { key: "d", text: "d) Lợi nhuận tối đa doanh nghiệp có thể thu được trong một tháng là $2000$ triệu đồng.", answer: true }
+                ],
+                explanation: `
+                    <p>• <strong>Ý a) ĐÚNG:</strong> Chi phí biên $C'(x) = 2x + 30 \\Longrightarrow C'(20) = 2(20) + 30 = 70$ triệu đồng.</p>
+                    <p>• <strong>Ý b) ĐÚNG:</strong> Chi phí trung bình $\\overline{C}(x) = \\dfrac{C(x)}{x} = x + 30 + \\dfrac{400}{x} \\ge 2\\sqrt{x \\cdot \\dfrac{400}{x}} + 30 = 70$, dấu "$=$" xảy ra khi $x = \\dfrac{400}{x} \\Longleftrightarrow x = 20$ sản phẩm.</p>
+                    <p>• <strong>Ý c) SAI:</strong> Doanh thu $R(x) = x \\cdot p(x) = -0{,}5x^2 + 150x$. Lợi nhuận $P(x) = R(x) - C(x) = (-0{,}5x^2 + 150x) - (x^2 + 30x + 400) =$ <span class="hl-red">$-1{,}5x^2 + 120x - 400$</span> (bẫy quên trừ $x^2$!).</p>
+                    <p>• <strong>Ý d) ĐÚNG:</strong> $P'(x) = -3x + 120 = 0 \\Longleftrightarrow x = 40 \\in [1; 100]$. Khi đó $P_{\\max} = P(40) = -1{,}5(1600) + 120(40) - 400 = 2000$ triệu đồng.</p>
+                `,
+                casioTrick: `
+                    <p>• <strong>Mẹo tránh sai dấu Ý c & d:</strong> Không cần thu gọn tay! Nhập thẳng $X(150 - 0{,}5X) - (X^2 + 30X + 400)$ vào <span class="calc-key">MENU</span> <span class="calc-key">8</span> với <code>Start = 10</code>, <code>End = 80</code>, <code>Step = 5</code>, liếc cột $f(X)$ thấy ngay đỉnh $2000$ tại $X = 40$!</p>
+                `
+            },
+
+            // ================= PHẦN III: TRẢ LỜI NGẮN / ĐIỀN ĐÁP ÁN SỐ (Câu 12 -> Câu 18) =================
+            {
+                id: 12,
+                part: "PHẦN III: TRẢ LỜI NGẮN (TOÁN THỰC TẾ & VẬN DỤNG)",
+                type: "short",
+                topic: "thucte",
+                badge: "Thực tế - Tối ưu giá thuê phòng khách sạn",
+                prompt: `Một khách sạn có $50$ phòng. Nếu định giá thuê $400$ nghìn đồng/ngày cho mỗi phòng thì tất cả các phòng đều được thuê kín. Biết rằng cứ mỗi lần tăng giá thuê thêm $20$ nghìn đồng/ngày thì sẽ có thêm $2$ phòng bị bỏ trống (giả sử số phòng trống tỉ lệ thuận với mức tăng giá, tức tăng $10$ nghìn đồng thì trống thêm $1$ phòng). Chi phí dọn dẹp, bảo trì cho mỗi phòng <strong>có khách thuê</strong> là $40$ nghìn đồng/ngày. Hỏi khách sạn nên đặt giá thuê mỗi phòng là bao nhiêu <strong>nghìn đồng</strong>/ngày để lợi nhuận một ngày là lớn nhất?`,
+                unit: "nghìn đồng",
+                placeholder: "Nhập số (VD: 450)",
+                correctValue: 470,
+                tolerance: 0.001,
+                explanation: `
+                    <p><strong>Bước 1 (Đặt ẩn thông minh):</strong> Gọi $x$ ($0 \\le x \\le 25$) là số lần tăng giá thêm $20$ nghìn đồng (hoặc gọi $k = 2x$ là số phòng trống, tăng $10k$ nghìn đồng).</p>
+                    <p>• Giá thuê 1 phòng: $p = 400 + 20x$ (nghìn đồng). Số phòng có khách thuê: $50 - 2x$ (phòng).</p>
+                    <p>• Tiền lãi thực thu trên mỗi phòng có khách (sau khi trừ $40$ nghìn bảo trì): $(400 + 20x) - 40 = 360 + 20x$ (nghìn đồng).</p>
+                    <p><strong>Bước 2 (Lập hàm tổng lợi nhuận):</strong>
+                        $$P(x) = (50 - 2x)(360 + 20x) = -40x^2 + 280x + 18000$$
+                    </p>
+                    <p><strong>Bước 3 (Tìm cực đại):</strong> $P'(x) = -80x + 280 = 0 \\Longleftrightarrow x = 3{,}5$ (ứng với $7$ phòng trống, còn $43$ phòng có khách — hoàn toàn nguyên!).</p>
+                    <p>Khi đó giá thuê mỗi phòng là: $p = 400 + 20 \\cdot 3{,}5 = \\mathbf{470}$ (nghìn đồng/ngày), cho lợi nhuận tối đa $18\\,490$ nghìn đồng.</p>
+                `,
+                casioTrick: `
+                    <p><strong>Mẹo "Đặt ẩn trực tiếp theo câu hỏi" trên FX-799VN (chống quên bước đổi lại giá):</strong></p>
+                    <p>• Đề hỏi giá phòng $X$ (nghìn đồng) $\\Rightarrow$ đặt luôn giá thuê là $X$! Mức tăng giá là $(X - 400)$, số phòng trống là $\\dfrac{X - 400}{10}$.</p>
+                    <p>• Nhập thẳng vào <span class="calc-key">MENU</span> <span class="calc-key">8</span>: $f(X) = \\left(50 - \\dfrac{X - 400}{10}\\right)(X - 40)$ với <code>Start = 400</code>, <code>End = 600</code>, <code>Step = 10</code> $\\Rightarrow$ thấy ngay Max $= 18490$ tại đúng <strong>$X = 470$</strong>!</p>
+                `
+            },
+            {
+                id: 13,
+                part: "PHẦN III: TRẢ LỜI NGẮN (TOÁN THỰC TẾ & VẬN DỤNG)",
+                type: "short",
+                topic: "thucte",
+                badge: "Thực tế - Tối thiểu hóa Chi phí trung bình",
+                prompt: `Một phân xưởng sản xuất $x$ sản phẩm mỗi ngày ($x > 0$) với tổng chi phí là $C(x) = 0{,}05x^2 + 20x + 500$ (triệu đồng). Tìm số lượng sản phẩm $x$ cần sản xuất trong một ngày để <strong>chi phí trung bình</strong> trên một sản phẩm là thấp nhất.`,
+                unit: "sản phẩm",
+                placeholder: "Nhập số nguyên",
+                correctValue: 100,
+                tolerance: 0.001,
+                explanation: `
+                    <p><strong>Bước 1:</strong> Lập hàm chi phí trung bình trên 1 sản phẩm ($x > 0$):
+                        $$\\overline{C}(x) = \\dfrac{C(x)}{x} = \\dfrac{0{,}05x^2 + 20x + 500}{x} = 0{,}05x + 20 + \\dfrac{500}{x}$$
+                    </p>
+                    <p><strong>Bước 2:</strong> Tính đạo hàm:
+                        $$\\overline{C}'(x) = 0{,}05 - \\dfrac{500}{x^2} = 0 \\Longleftrightarrow x^2 = \\dfrac{500}{0{,}05} = 10\\,000 \\Longleftrightarrow x = \\mathbf{100}\\; (\\text{do } x > 0)$$
+                    </p>
+                    <p>Bảng biến thiên (hoặc BĐT Cauchy $0{,}05x + \\frac{500}{x} \\ge 2\\sqrt{25} = 10$) khẳng định chi phí trung bình nhỏ nhất bằng $30$ triệu đồng/sản phẩm khi $x = \\mathbf{100}$.</p>
+                `,
+                casioTrick: `
+                    <p>• <strong>Tà đạo 2 giây:</strong> Với mọi hàm tổng chi phí bậc hai $C(x) = ax^2 + bx + c$ ($a, c > 0$), chi phí trung bình $\\overline{C}(x)$ <strong>LUÔN</strong> đạt GTNN tại <span class="hl-blue">$x = \\sqrt{\\dfrac{c}{a}} = \\sqrt{\\dfrac{500}{0{,}05}} = 100$</span>!</p>
+                `
+            },
+            {
+                id: 14,
+                part: "PHẦN III: TRẢ LỜI NGẮN (TOÁN THỰC TẾ & VẬN DỤNG)",
+                type: "short",
+                topic: "thucte",
+                badge: "Thực tế - Thiết kế bể nước không nắp chi phí nhỏ nhất",
+                prompt: `Người ta cần xây một bể chứa nước hình hộp chữ nhật <strong>không có nắp</strong> có thể tích bằng $32\\text{ m}^3$, đáy bể có chiều dài gấp đôi chiều rộng. Giá xây đáy bể là $600$ nghìn đồng/$\\text{m}^2$, còn giá xây thành xung quanh bể là $400$ nghìn đồng/$\\text{m}^2$. Tính chi phí thấp nhất để xây bể chứa nước đó theo đơn vị <strong>triệu đồng</strong> <em>(làm tròn kết quả đến hàng phần mười)</em>.`,
+                unit: "triệu đồng",
+                placeholder: "VD: 20,5 hoặc 20.5",
+                correctValue: 22.9,
+                tolerance: 0.05,
+                explanation: `
+                    <p><strong>Bước 1:</strong> Gọi chiều rộng đáy là $x$ ($\\text{m}, x > 0$) $\\Rightarrow$ chiều dài đáy là $2x$ ($\\text{m}$), chiều cao bể là $h$ ($\\text{m}$).</p>
+                    <p>• Thể tích: $V = x \\cdot (2x) \\cdot h = 2x^2 h = 32 \\Longrightarrow h = \\dfrac{16}{x^2}$ ($\\text{m}$).</p>
+                    <p><strong>Bước 2 (Lập hàm chi phí tính theo triệu đồng):</strong>
+                        <br>• Diện tích đáy (bể không nắp!): $S_{\\text{đáy}} = 2x^2 \\Longrightarrow$ Chi phí đáy $= 0{,}6 \\cdot 2x^2 = 1{,}2x^2$ (triệu đồng).
+                        <br>• Diện tích 4 thành bên: $S_{\\text{xq}} = 2(x + 2x)h = 6x \\cdot \\dfrac{16}{x^2} = \\dfrac{96}{x} \\Longrightarrow$ Chi phí thành $= 0{,}4 \\cdot \\dfrac{96}{x} = \\dfrac{38{,}4}{x}$ (triệu đồng).
+                        <br>• Tổng chi phí: $T(x) = 1{,}2x^2 + \\dfrac{38{,}4}{x}$ ($x > 0$).
+                    </p>
+                    <p><strong>Bước 3:</strong> $T'(x) = 2{,}4x - \\dfrac{38{,}4}{x^2} = 0 \\Longleftrightarrow x^3 = \\dfrac{38{,}4}{2{,}4} = 16 \\Longleftrightarrow x = \\sqrt[3]{16}$ ($\\text{m}$).</p>
+                    <p>Thay $x = \\sqrt[3]{16}$ vào $T(x)$ được $T_{\\min} = 14{,}4\\sqrt[3]{4} \\approx 22{,}8586 \\approx \\mathbf{22{,}9}$ (triệu đồng).</p>
+                `,
+                casioTrick: `
+                    <p><strong>Khi nghiệm lẻ căn bậc 3, tổ hợp <code>d/dx + SOLVE</code> trên FX-799VN phát huy tối đa sức mạnh:</strong></p>
+                    <p>1. Nhập <span class="calc-key calc-key-shift">SHIFT</span> <span class="calc-key">∫dx</span> $\\left.\\dfrac{d}{dx}\\left(1{,}2X^2 + \\dfrac{38{,}4}{X}\\right)\\right|_{X=X}$ rồi bấm <span class="calc-key calc-key-shift">SHIFT</span> <span class="calc-key">CALC</span> nhập $X = 2$ <span class="calc-key">=</span> $\\to$ máy lưu ngay nghiệm chính xác $X = 2{,}5198421$ vào biến nhớ <code>X</code>!</p>
+                    <p>2. Bấm <span class="calc-key">AC</span>, gõ lại $1{,}2X^2 + \\dfrac{38{,}4}{X}$ bấm <span class="calc-key">=</span> $\\to$ ra ngay <strong>$22{,}858575... \\approx 22{,}9$</strong> chính xác tuyệt đối!</p>
+                `
+            },
+            {
+                id: 15,
+                part: "PHẦN III: TRẢ LỜI NGẮN (TOÁN THỰC TẾ & VẬN DỤNG)",
+                type: "short",
+                topic: "thucte",
+                badge: "Thực tế - Kéo cáp điện qua sông tối ưu",
+                prompt: `Một nhà máy $A$ ở bờ bên này và một trạm biến áp $B$ ở bờ bên kia của một con sông thẳng rộng $1\\text{ km}$. Gọi $H$ là hình chiếu vuông góc của $B$ lên bờ sông phía nhà máy ($BH = 1\\text{ km}$), biết $AH = 4\\text{ km}$. Người ta kéo cáp điện ngầm dưới nước từ $B$ đến một điểm $M$ trên đoạn bờ $AH$, rồi kéo tiếp trên bờ từ $M$ đến $A$. Giá kéo cáp dưới nước là $50$ triệu đồng/km và trên bờ là $30$ triệu đồng/km. Hỏi điểm lên bờ $M$ phải cách điểm $H$ bao nhiêu <strong>km</strong> để tổng chi phí là nhỏ nhất?`,
+                unit: "km",
+                placeholder: "VD: 0,75 hoặc 0.75",
+                correctValue: 0.75,
+                tolerance: 0.001,
+                explanation: `
+                    <p><strong>Bước 1:</strong> Đặt $HM = x$ ($\\text{km}$, với $0 \\le x \\le 4$).</p>
+                    <p>• Quãng đường cáp dưới nước: $BM = \\sqrt{BH^2 + HM^2} = \\sqrt{1 + x^2}$ ($\\text{km}$).</p>
+                    <p>• Quãng đường cáp trên bờ: $MA = 4 - x$ ($\\text{km}$).</p>
+                    <p><strong>Bước 2:</strong> Hàm tổng chi phí (triệu đồng): $C(x) = 50\\sqrt{1 + x^2} + 30(4 - x)$, $x \\in [0; 4]$.</p>
+                    <p><strong>Bước 3:</strong> Đạo hàm:
+                        $$C'(x) = \\dfrac{50x}{\\sqrt{1 + x^2}} - 30 = 0 \\Longleftrightarrow 5x = 3\\sqrt{1 + x^2} \\Longleftrightarrow \\begin{cases} x > 0 \\\\ 25x^2 = 9(1 + x^2) \\end{cases} \\Longleftrightarrow x^2 = \\dfrac{9}{16} \\Longleftrightarrow x = \\mathbf{0{,}75}\\text{ km}$$
+                    </p>
+                    <p>So sánh $C(0) = 170$, $C(0{,}75) = 160$, $C(4) = 50\\sqrt{17} \\approx 206{,}2 \\Longrightarrow$ Chi phí nhỏ nhất đạt tại $x = \\mathbf{0{,}75}\\text{ km}$.</p>
+                `,
+                casioTrick: `
+                    <p>⚡ <strong>TÀ ĐẠO ĐỊNH LUẬT KHÚC XẠ SNELL (3 GIÂY RA LUÔN ĐÁP SỐ!):</strong></p>
+                    <p>Mọi bài toán đi qua 2 môi trường (dưới nước đơn giá $c_1$, trên bờ đơn giá $c_2 < c_1$, sông rộng $d$) đều tuân theo công thức khúc xạ ánh sáng:
+                        $$\\sin\\alpha = \\dfrac{c_{\\text{bờ}}}{c_{\\text{nước}}} = \\dfrac{30}{50} = \\dfrac{3}{5} \\Longrightarrow \\tan\\alpha = \\dfrac{3}{4} \\Longrightarrow x = d \\cdot \\tan\\alpha = 1 \\cdot \\dfrac{3}{4} = \\mathbf{0{,}75\\text{ km}}!$$
+                        <em>(Chỉ cần kiểm tra nếu $d \\cdot \\tan\\alpha > AH$ thì lấy $x = AH$ đi chéo thẳng luôn!).</em>
+                    </p>
+                `
+            },
+            {
+                id: 16,
+                part: "PHẦN III: TRẢ LỜI NGẮN (TOÁN THỰC TẾ & VẬN DỤNG)",
+                type: "short",
+                topic: "thucte",
+                badge: "Thực tế - Cắt 4 góc tấm tôn gập hộp Max V",
+                prompt: `Từ một tấm tôn hình vuông có cạnh bằng $24\\text{ cm}$, người ta cắt bỏ ở bốn góc bốn hình vuông bằng nhau cạnh $x$ ($\\text{cm}$) rồi gập các mép lên tạo thành một chiếc hộp hình hộp chữ nhật không có nắp. Tính thể tích lớn nhất (đơn vị: $\\text{cm}^3$) của chiếc hộp tạo thành.`,
+                unit: "cm³",
+                placeholder: "Nhập số nguyên",
+                correctValue: 1024,
+                tolerance: 0.001,
+                explanation: `
+                    <p><strong>Bước 1:</strong> Sau khi cắt 4 góc cạnh $x$, đáy hộp là hình vuông cạnh $24 - 2x$ và chiều cao hộp là $x$. Điều kiện: $0 < x < 12$.</p>
+                    <p><strong>Bước 2:</strong> Thể tích hộp: $V(x) = x(24 - 2x)^2$.</p>
+                    <p><strong>Bước 3:</strong> Đạo hàm:
+                        $$V'(x) = (24 - 2x)^2 + x \\cdot 2(24 - 2x)(-2) = (24 - 2x)(24 - 6x) = 0$$
+                        Vì $x \\in (0; 12)$ nên nhận $x = 4\\text{ cm}$.
+                    </p>
+                    <p>Thể tích lớn nhất là: $V_{\\max} = V(4) = 4 \\cdot (24 - 8)^2 = 4 \\cdot 16^2 = \\mathbf{1024}\\; (\\text{cm}^3)$.</p>
+                `,
+                casioTrick: `
+                    <p>⚡ <strong>CÔNG THỨC TÀ ĐẠO 2 GIÂY:</strong> Với tấm tôn hình vuông cạnh $a$ cắt 4 góc làm hộp không nắp, thể tích hộp <strong>LUÔN ĐẠT LỚN NHẤT</strong> khi cắt cạnh góc bằng <span class="hl-blue">$x = \\dfrac{a}{6}$</span> và <span class="hl-blue">$V_{\\max} = \\dfrac{2a^3}{27}$</span>!</p>
+                    <p>Thay $a = 24$: $x = \\dfrac{24}{6} = 4 \\Longrightarrow V_{\\max} = \\dfrac{2 \\cdot 24^3}{27} = \\mathbf{1024}\\text{ cm}^3$!</p>
+                `
+            },
+            {
+                id: 17,
+                part: "PHẦN III: TRẢ LỜI NGẮN (TOÁN THỰC TẾ & VẬN DỤNG)",
+                type: "short",
+                topic: "thucte",
+                badge: "Bẫy gắt - Tốc độ lây lan dịch bệnh đạt đỉnh",
+                prompt: `Tại một khu dân cư, tổng số người nhiễm một loại virus cúm sau $t$ ngày ($0 \\le t \\le 18$) kể từ khi bùng phát được mô hình hóa bởi hàm số $N(t) = -t^3 + 24t^2 + 108t + 1$ (người). Hỏi vào ngày thứ mấy ($t$ bằng bao nhiêu) thì <strong>tốc độ lây lan tức thời</strong> của dịch bệnh đạt mức cao nhất?`,
+                unit: "ngày thứ",
+                placeholder: "Nhập giá trị t",
+                correctValue: 8,
+                tolerance: 0.001,
+                explanation: `
+                    <p><span class="hl-red">CẢNH BÁO BẪY CHẾT NGƯỜI:</span> Đề hỏi ngày mà <strong>tốc độ lây lan tức thời</strong> đạt cao nhất, tức là tìm GTLN của đạo hàm $v(t) = N'(t)$, <strong>KHÔNG PHẢI</strong> tìm GTLN của $N(t)$! (Ai bấm cực đại hàm $N(t)$ ra $t = 18$ là sập bẫy ngay!).</p>
+                    <p><strong>Bước 1:</strong> Hàm tốc độ lây lan tức thời trên $[0; 18]$ là:
+                        $$v(t) = N'(t) = -3t^2 + 48t + 108$$
+                    </p>
+                    <p><strong>Bước 2:</strong> Tìm GTLN của parabol $v(t)$:
+                        $$v'(t) = N''(t) = -6t + 48 = 0 \\Longleftrightarrow t = \\mathbf{8} \\in [0; 18]$$
+                    </p>
+                    <p>Vậy vào ngày thứ <strong>$8$</strong>, tốc độ lây lan đạt đỉnh cao nhất ($300$ ca/ngày), sau đó tốc độ lây chậm dần.</p>
+                `,
+                casioTrick: `
+                    <p>• <strong>Tà đạo Điểm uốn hàm bậc 3:</strong> Tốc độ của hàm bậc 3 $N(t) = at^3 + bt^2 + ct + d$ luôn đạt cực trị tại đúng <strong>hoành độ điểm uốn</strong>: <span class="hl-blue">$t = -\\dfrac{b}{3a} = -\\dfrac{24}{3(-1)} = 8$</span> (nhẩm nháy mắt trong 1 giây!).</p>
+                `
+            },
+            {
+                id: 18,
+                part: "PHẦN III: TRẢ LỜI NGẮN (TOÁN THỰC TẾ & VẬN DỤNG)",
+                type: "short",
+                topic: "lythuyet",
+                badge: "Vận dụng GTLN trên đoạn & GTNN trên khoảng mở",
+                prompt: `Cho hàm số $f(x) = \\dfrac{x^2 - 3x + 6}{x - 1}$. Gọi $M$ là giá trị lớn nhất của hàm số trên đoạn $[-2; 0]$ và $m$ là giá trị nhỏ nhất của hàm số trên khoảng $(1; +\\infty)$. Tính giá trị của tổng $S = M + m$.`,
+                unit: "",
+                placeholder: "Nhập số (có thể âm)",
+                correctValue: -2,
+                tolerance: 0.001,
+                explanation: `
+                    <p>Ta viết lại: $f(x) = x - 2 + \\dfrac{4}{x - 1} \\Longrightarrow f'(x) = 1 - \\dfrac{4}{(x - 1)^2} = \\dfrac{(x - 3)(x + 1)}{(x - 1)^2}$.</p>
+                    <p><strong>1. Tìm $M = \\max_{[-2; 0]} f(x)$:</strong> Hàm số liên tục trên $[-2; 0]$ và $f'(x) = 0$ có nghiệm $x = -1 \\in (-2; 0)$.
+                        <br>• $f(-2) = -\\dfrac{16}{3} \\approx -5{,}33$; $\\quad f(-1) = -5$; $\\quad f(0) = -6$.
+                        <br>$\\Longrightarrow M = f(-1) = \\mathbf{-5}$.
+                    </p>
+                    <p><strong>2. Tìm $m = \\min_{(1; +\\infty)} f(x)$:</strong> Trên khoảng $(1; +\\infty)$ ta có $x - 1 > 0$, áp dụng AM-GM (hoặc BBT đổi dấu từ $-$ sang $+$ qua $x = 3$):
+                        $$f(x) = (x - 1) + \\dfrac{4}{x - 1} - 1 \\ge 2\\sqrt{4} - 1 = 3 \\quad (\\text{đạt tại } x = 3)$$
+                        $\\Longrightarrow m = f(3) = \\mathbf{3}$.
+                    </p>
+                    <p>Vậy tổng $S = M + m = -5 + 3 = \\mathbf{-2}$.</p>
+                `,
+                casioTrick: `
+                    <p><strong>Quét 2 lần <span class="calc-key">MENU</span> <span class="calc-key">8</span> trên FX-799VN:</strong></p>
+                    <p>• Lần 1 (<code>Start = -2</code>, <code>End = 0</code>, <code>Step = 0.25</code>): cột $f(X)$ lớn nhất bằng $-5$ $\\Rightarrow M = -5$.</p>
+                    <p>• Lần 2 (<code>Start = 1.2</code>, <code>End = 8</code>, <code>Step = 0.2</code>): cột $f(X)$ nhỏ nhất bằng $3$ (tại $X = 3$) $\\Rightarrow m = 3$. Cộng lại ra ngay <strong>$-2$</strong>!</p>
+                `
+            }
+        ];
+
+        // Trạng thái người học
+        let currentTopic = 'all';
+        let currentFormat = 'all';
+        const userProgress = {}; // { [questionId]: { checked: true, points: 0..1 } }
+
+        // Render KaTeX cho toàn bộ vùng DOM
+        function renderMathInContainer(element = document.body) {
+            if (window.renderMathInElement) {
+                window.renderMathInElement(element, {
+                    delimiters: [
+                        { left: "$$", right: "$$", display: true },
+                        { left: "$", right: "$", display: false },
+                        { left: "\\(", right: "\\)", display: false },
+                        { left: "\\[", right: "\\]", display: true }
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+
+        // Chuyển Tab Lý thuyết <-> Luyện tập
+        function switchMainTab(tab) {
+            const theoryView = document.getElementById('view-theory');
+            const practiceView = document.getElementById('view-practice');
+            const btnTheory = document.getElementById('tab-btn-theory');
+            const btnPractice = document.getElementById('tab-btn-practice');
+
+            if (tab === 'theory') {
+                theoryView.classList.remove('hidden');
+                practiceView.classList.add('hidden');
+                btnTheory.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all bg-blue-600 text-white shadow";
+                btnPractice.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white";
+            } else {
+                theoryView.classList.add('hidden');
+                practiceView.classList.remove('hidden');
+                btnPractice.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all bg-blue-600 text-white shadow";
+                btnTheory.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white";
+                renderQuestions();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Đổi giao diện Sáng / Tối
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const symbol = html.classList.contains('dark') ? '☀️' : '🌙';
+            document.querySelectorAll('.theme-icon-el').forEach(el => {
+                el.textContent = symbol;
+            });
+        }
+
+        // Bộ lọc
+        function setFilterTopic(topic) {
+            currentTopic = topic;
+            document.querySelectorAll('.filter-topic-btn').forEach(btn => {
+                if (btn.dataset.topic === topic) {
+                    btn.className = "filter-topic-btn px-3 py-2 sm:py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white";
+                } else {
+                    btn.className = "filter-topic-btn px-3 py-2 sm:py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700";
+                }
+            });
+            renderQuestions();
+        }
+
+        function setFilterFormat(format) {
+            currentFormat = format;
+            renderQuestions();
+        }
+
+        // Đổi dấu âm/dương nhanh trên bàn phím điện thoại (hỗ trợ iOS thiếu dấu trừ ở bàn phím số)
+        function toggleMinusSign(id) {
+            const inp = document.getElementById(`short-input-q${id}`);
+            if (!inp) return;
+            const v = inp.value.trim();
+            if (v.startsWith('-')) {
+                inp.value = v.slice(1);
+            } else {
+                inp.value = '-' + v;
+            }
+            inp.focus();
+        }
+
+        // Render danh sách câu hỏi
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            const filtered = QUESTIONS.filter(q => {
+                const matchTopic = currentTopic === 'all' || q.topic === currentTopic;
+                const matchFormat = currentFormat === 'all' || q.type === currentFormat;
+                return matchTopic && matchFormat;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center text-slate-500">
+                        Không có câu hỏi nào khớp với bộ lọc hiện tại. Hãy chọn "Tất cả" để xem đầy đủ nhé!
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            let lastPart = '';
+
+            filtered.forEach(q => {
+                if (q.part !== lastPart) {
+                    lastPart = q.part;
+                    html += `
+                        <div class="pt-3 pb-1">
+                            <span class="inline-block px-3.5 py-1.5 rounded-xl bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 text-xs sm:text-sm font-extrabold tracking-wide shadow-sm">
+                                ${q.part}
+                            </span>
+                        </div>
+                    `;
+                }
+
+                // Vùng tương tác tối ưu cho ngón tay trên màn hình cảm ứng
+                let interactionHtml = '';
+
+                if (q.type === 'mcq') {
+                    interactionHtml = `
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-4" id="options-q${q.id}">
+                            ${q.options.map((opt, idx) => `
+                                <label id="opt-label-q${q.id}-${idx}" class="flex items-start sm:items-center gap-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 active:bg-blue-50 dark:active:bg-slate-800 hover:bg-blue-50/50 dark:hover:bg-slate-800/70 cursor-pointer transition select-none">
+                                    <input type="radio" name="mcq-q${q.id}" value="${idx}" class="mt-1 sm:mt-0 w-5 h-5 shrink-0 text-blue-600 focus:ring-blue-500">
+                                    <span class="text-sm sm:text-base min-w-0 break-words">${opt}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    `;
+                } else if (q.type === 'tf') {
+                    interactionHtml = `
+                        <div class="my-4 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+                            <table class="w-full text-left border-collapse text-sm">
+                                <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                                    <tr>
+                                        <th class="p-3 font-bold">Mệnh đề</th>
+                                        <th class="p-2.5 w-16 sm:w-20 text-center font-bold text-emerald-600">Đúng</th>
+                                        <th class="p-2.5 w-16 sm:w-20 text-center font-bold text-rose-600">Sai</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                    ${q.statements.map((st, idx) => `
+                                        <tr id="tf-row-q${q.id}-${idx}" class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                                            <td class="p-3 leading-relaxed">${st.text}</td>
+                                            <td class="p-0 text-center">
+                                                <label class="flex items-center justify-center w-full h-full py-3.5 px-2 cursor-pointer">
+                                                    <input type="radio" name="tf-q${q.id}-${idx}" value="true" class="w-5 h-5 accent-emerald-600 cursor-pointer">
+                                                </label>
+                                            </td>
+                                            <td class="p-0 text-center">
+                                                <label class="flex items-center justify-center w-full h-full py-3.5 px-2 cursor-pointer">
+                                                    <input type="radio" name="tf-q${q.id}-${idx}" value="false" class="w-5 h-5 accent-rose-600 cursor-pointer">
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                } else if (q.type === 'short') {
+                    interactionHtml = `
+                        <div class="my-4 flex flex-wrap items-center gap-2">
+                            <button type="button" onclick="toggleMinusSign(${q.id})" title="Đổi dấu âm / dương"
+                                class="px-3.5 py-2.5 rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 font-extrabold text-base text-slate-700 dark:text-slate-200 active:scale-95 transition">
+                                ±
+                            </button>
+                            <input type="text" inputmode="decimal" id="short-input-q${q.id}" placeholder="${q.placeholder}"
+                                onkeydown="if(event.key==='Enter'){event.preventDefault(); checkQuestion(${q.id});}"
+                                class="flex-1 min-w-[160px] sm:flex-none sm:w-60 px-4 py-2.5 rounded-xl border-2 border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-base text-slate-900 dark:text-white font-semibold focus:outline-none focus:border-blue-500 transition">
+                            ${q.unit ? `<span class="text-sm font-semibold text-slate-500 dark:text-slate-400">${q.unit}</span>` : ''}
+                        </div>
+                    `;
+                }
+
+                html += `
+                    <article id="card-q${q.id}" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-6 shadow-sm transition">
+                        <!-- Header câu hỏi -->
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="px-3 py-1 rounded-lg bg-blue-600 text-white font-extrabold text-xs sm:text-sm">CÂU ${q.id}</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold">${q.badge}</span>
+                            </div>
+                            <span id="status-pill-q${q.id}" class="text-xs font-bold text-slate-400">Chưa kiểm tra</span>
+                        </div>
+
+                        <!-- Đề bài -->
+                        <div class="text-sm sm:text-base leading-relaxed text-slate-800 dark:text-slate-100 overflow-x-auto">
+                            ${q.prompt}
+                        </div>
+
+                        <!-- Khu vực chọn / điền đáp án -->
+                        ${interactionHtml}
+
+                        <!-- Nút hành động (Full-width gọn đẹp trên điện thoại nhỏ) -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2">
+                            <button type="button" onclick="checkQuestion(${q.id})" class="px-5 py-3 sm:py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-bold shadow-sm transition text-center">
+                                ✓ Kiểm tra đáp án
+                            </button>
+                            <button type="button" onclick="toggleExplanation(${q.id})" id="btn-sol-q${q.id}" class="px-4 py-3 sm:py-2.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700 text-xs sm:text-sm font-bold transition text-center">
+                                💡 Hiện Đáp án & Giải thích + FX-799VN
+                            </button>
+                        </div>
+
+                        <!-- Thông báo kết quả trực quan -->
+                        <div id="feedback-q${q.id}" class="hidden mt-4 p-3.5 rounded-xl text-sm font-semibold fade-enter"></div>
+
+                        <!-- Hộp Lời giải chi tiết & Bí kíp Tà đạo / FX-799VN -->
+                        <div id="explain-box-q${q.id}" class="hidden mt-5 space-y-4 fade-enter">
+                            <!-- Lời giải tự luận chuẩn -->
+                            <div class="p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm leading-relaxed space-y-2 overflow-x-auto">
+                                <h4 class="font-extrabold text-emerald-700 dark:text-emerald-400 text-base flex items-center gap-2">
+                                    📘 Đáp án chuẩn & Giải thích tự luận cặn kẽ:
+                                </h4>
+                                ${q.explanation}
+                            </div>
+
+                            <!-- Khung riêng nổi bật Tà đạo & FX-799VN -->
+                            <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-purple-50 via-amber-50 to-orange-50 dark:from-purple-950/40 dark:via-slate-900 dark:to-amber-950/40 border-2 border-amber-300 dark:border-amber-700 text-sm leading-relaxed space-y-2 overflow-x-auto">
+                                <h4 class="font-extrabold text-purple-800 dark:text-amber-300 text-base flex items-center gap-2">
+                                    ⚡ Cách tính Tà Đạo & Bấm máy Flexio FX-799VN:
+                                </h4>
+                                ${q.casioTrick}
+                            </div>
+                        </div>
+                    </article>
+                `;
+            });
+
+            container.innerHTML = html;
+            renderMathInContainer(container);
+        }
+
+        // Kiểm tra đáp án cho từng câu hỏi
+        function checkQuestion(id) {
+            const q = QUESTIONS.find(item => item.id === id);
+            if (!q) return;
+            const feedback = document.getElementById(`feedback-q${id}`);
+            const statusPill = document.getElementById(`status-pill-q${id}`);
+
+            if (q.type === 'mcq') {
+                const selected = document.querySelector(`input[name="mcq-q${id}"]:checked`);
+                if (!selected) {
+                    showFeedback(feedback, 'warn', '⚠️ Bạn chưa chọn phương án nào! Hãy chạm chọn A, B, C hoặc D trước khi kiểm tra nhé.');
+                    return;
+                }
+                const val = parseInt(selected.value, 10);
+
+                // Reset highlight
+                q.options.forEach((_, idx) => {
+                    const lbl = document.getElementById(`opt-label-q${id}-${idx}`);
+                    if (lbl) {
+                        lbl.className = "flex items-start sm:items-center gap-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer transition select-none";
+                    }
+                });
+
+                const chosenLabel = document.getElementById(`opt-label-q${id}-${val}`);
+                if (val === q.correct) {
+                    chosenLabel.classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/40');
+                    showFeedback(feedback, 'ok', '✅ Chính xác tuyệt đối! Bạn đã vượt qua câu hỏi này mà không dính bẫy.');
+                    statusPill.textContent = '✓ Đã làm đúng';
+                    statusPill.className = 'text-xs font-bold text-emerald-600 dark:text-emerald-400';
+                    userProgress[id] = { checked: true, points: 1 };
+                } else {
+                    chosenLabel.classList.add('border-rose-500', 'bg-rose-50', 'dark:bg-rose-950/40');
+                    showFeedback(feedback, 'err', '❌ Chưa chính xác rồi! Bạn có thể chọn lại phương án khác hoặc bấm xem giải thích bên dưới.');
+                    statusPill.textContent = '✗ Cần xem lại';
+                    statusPill.className = 'text-xs font-bold text-rose-600 dark:text-rose-400';
+                    userProgress[id] = { checked: true, points: 0 };
+                }
+            } else if (q.type === 'tf') {
+                let answeredAll = true;
+                let correctCount = 0;
+
+                q.statements.forEach((st, idx) => {
+                    const sel = document.querySelector(`input[name="tf-q${id}-${idx}"]:checked`);
+                    if (!sel) answeredAll = false;
+                });
+
+                if (!answeredAll) {
+                    showFeedback(feedback, 'warn', '⚠️ Vui lòng chạm chọn Đúng hoặc Sai cho đủ cả 4 mệnh đề a, b, c, d trước khi kiểm tra!');
+                    return;
+                }
+
+                q.statements.forEach((st, idx) => {
+                    const sel = document.querySelector(`input[name="tf-q${id}-${idx}"]:checked`);
+                    const row = document.getElementById(`tf-row-q${id}-${idx}`);
+                    const userBool = (sel.value === 'true');
+                    if (userBool === st.answer) {
+                        correctCount++;
+                        row.className = "bg-emerald-50/70 dark:bg-emerald-950/30 transition";
+                    } else {
+                        row.className = "bg-rose-50/70 dark:bg-rose-950/30 transition";
+                    }
+                });
+
+                const gdptPointsMap = [0, 0.1, 0.25, 0.5, 1.0];
+                const earned = gdptPointsMap[correctCount];
+                userProgress[id] = { checked: true, points: earned };
+
+                if (correctCount === 4) {
+                    showFeedback(feedback, 'ok', `✅ Xuất sắc! Bạn trả lời đúng cả 4/4 mệnh đề (đạt trọn vẹn 100% số điểm câu này).`);
+                    statusPill.textContent = '✓ Đúng 4/4 ý';
+                    statusPill.className = 'text-xs font-bold text-emerald-600 dark:text-emerald-400';
+                } else {
+                    showFeedback(feedback, 'err', `📌 Bạn làm đúng ${correctCount}/4 mệnh đề (các dòng màu đỏ là mệnh đề bị sai). Hãy thử chỉnh lại hoặc mở lời giải chi tiết nhé!`);
+                    statusPill.textContent = `Đúng ${correctCount}/4 ý`;
+                    statusPill.className = 'text-xs font-bold text-amber-600 dark:text-amber-400';
+                }
+            } else if (q.type === 'short') {
+                const inputEl = document.getElementById(`short-input-q${id}`);
+                const raw = inputEl.value.trim();
+                if (!raw) {
+                    showFeedback(feedback, 'warn', '⚠️ Bạn hãy nhập con số đáp án vào ô trống trước khi bấm kiểm tra nhé!');
+                    return;
+                }
+                const normalized = raw.replace(/\s+/g, '').replace(',', '.');
+                const numVal = parseFloat(normalized);
+
+                if (isNaN(numVal)) {
+                    showFeedback(feedback, 'warn', '⚠️ Định dạng số chưa hợp lệ! Chỉ nhập chữ số, dấu trừ (hoặc nút ±) và dấu phẩy/chấm thập phân.');
+                    return;
+                }
+
+                // Ẩn bàn phím ảo trên điện thoại sau khi kiểm tra để nhìn rõ kết quả
+                inputEl.blur();
+
+                if (Math.abs(numVal - q.correctValue) <= q.tolerance) {
+                    showFeedback(feedback, 'ok', `✅ Tuyệt vời! Đáp số ${raw} ${q.unit || ''} hoàn toàn chính xác!`);
+                    statusPill.textContent = '✓ Đã làm đúng';
+                    statusPill.className = 'text-xs font-bold text-emerald-600 dark:text-emerald-400';
+                    userProgress[id] = { checked: true, points: 1 };
+                } else {
+                    showFeedback(feedback, 'err', `❌ Kết quả "${raw}" chưa khớp đáp án chuẩn! Kiểm tra lại điều kiện/làm tròn hoặc bấm xem lời giải + mẹo FX-799VN nhé.`);
+                    statusPill.textContent = '✗ Cần xem lại';
+                    statusPill.className = 'text-xs font-bold text-rose-600 dark:text-rose-400';
+                    userProgress[id] = { checked: true, points: 0 };
+                }
+            }
+
+            updateScoreBoard();
+        }
+
+        function showFeedback(el, type, message) {
+            el.classList.remove('hidden');
+            if (type === 'ok') {
+                el.className = "mt-4 p-3.5 rounded-xl text-sm font-semibold fade-enter bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800";
+            } else if (type === 'err') {
+                el.className = "mt-4 p-3.5 rounded-xl text-sm font-semibold fade-enter bg-rose-50 dark:bg-rose-950/50 text-rose-800 dark:text-rose-300 border border-rose-300 dark:border-rose-800";
+            } else {
+                el.className = "mt-4 p-3.5 rounded-xl text-sm font-semibold fade-enter bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800";
+            }
+            el.textContent = message;
+        }
+
+        // Bật / tắt hộp lời giải & Casio
+        function toggleExplanation(id) {
+            const box = document.getElementById(`explain-box-q${id}`);
+            const btn = document.getElementById(`btn-sol-q${id}`);
+            const isHidden = box.classList.contains('hidden');
+            if (isHidden) {
+                box.classList.remove('hidden');
+                btn.textContent = '🔼 Ẩn Đáp án & Giải thích';
+                renderMathInContainer(box);
+            } else {
+                box.classList.add('hidden');
+                btn.textContent = '💡 Hiện Đáp án & Giải thích + FX-799VN';
+            }
+        }
+
+        // Cập nhật điểm số & thanh tiến độ (cả Desktop & Mobile)
+        function updateScoreBoard() {
+            const totalQuestions = QUESTIONS.length;
+            const checkedIds = Object.keys(userProgress);
+            const doneCount = checkedIds.length;
+            let rawPoints = 0;
+            checkedIds.forEach(k => { rawPoints += userProgress[k].points; });
+
+            const score10 = ((rawPoints / totalQuestions) * 10).toFixed(2);
+            const scoreMobile = ((rawPoints / totalQuestions) * 10).toFixed(1);
+            const pct = Math.round((doneCount / totalQuestions) * 100);
+
+            const navProg = document.getElementById('nav-progress-count');
+            const navScore = document.getElementById('nav-score-count');
+            const navScoreMob = document.getElementById('nav-score-mobile');
+            if (navProg) navProg.textContent = `${doneCount}/${totalQuestions}`;
+            if (navScore) navScore.textContent = score10;
+            if (navScoreMob) navScoreMob.textContent = scoreMobile;
+
+            document.getElementById('practice-done-label').textContent = `${doneCount} / ${totalQuestions} câu`;
+            document.getElementById('practice-score-label').textContent = `${score10} / 10.00`;
+            document.getElementById('practice-progress-bar').style.width = `${pct}%`;
+        }
+
+        // Làm lại toàn bộ
+        function resetAllPractice() {
+            Object.keys(userProgress).forEach(k => delete userProgress[k]);
+            updateScoreBoard();
+            renderQuestions();
+        }
+
+        // Đảm bảo KaTeX luôn hiển thị chuẩn ngay cả khi mạng 4G trên điện thoại tải chậm
+        window.initMathOnMobile = function () {
+            renderMathInContainer(document.body);
+        };
+
+        function waitAndRenderMath(attempts = 0) {
+            if (window.renderMathInElement) {
+                renderMathInContainer(document.body);
+            } else if (attempts < 25) {
+                setTimeout(() => waitAndRenderMath(attempts + 1), 200);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            waitAndRenderMath();
+        });
+        window.addEventListener('load', () => {
+            renderMathInContainer(document.body);
+        });
+    </script>
+</body>
+</html>

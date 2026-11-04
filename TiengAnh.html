@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Đề Thi Tốt Nghiệp THPT Môn Tiếng Anh - Mobile First</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --passage-font-size: 0.95rem;
+            --passage-line-height: 1.7;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f1f5f9;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .exam-serif {
+            font-family: 'Noto Serif', Georgia, serif;
+            font-size: var(--passage-font-size);
+            line-height: var(--passage-line-height);
+        }
+        .blank-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border: 1.5px solid #93c5fd;
+            font-weight: 700;
+            padding: 1px 7px;
+            border-radius: 6px;
+            margin: 0 2px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            vertical-align: baseline;
+        }
+        .blank-chip:hover, .blank-chip:active {
+            background-color: #dbeafe;
+            border-color: #2563eb;
+            transform: scale(1.03);
+        }
+        .blank-chip.filled {
+            background-color: #dbeafe;
+            color: #1e40af;
+            border-color: #3b82f6;
+        }
+        .blank-chip.correct-blank {
+            background-color: #d1fae5;
+            color: #065f46;
+            border-color: #10b981;
+        }
+        .blank-chip.wrong-blank {
+            background-color: #ffe4e6;
+            color: #9f1239;
+            border-color: #f43f5e;
+        }
+        @keyframes pulseHighlight {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+            50% { box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.35); background-color: #fef08a; }
+        }
+        .flash-highlight {
+            animation: pulseHighlight 1.4s ease-in-out 2;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-full {
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: visible !important;
+                position: static !important;
+            }
+            body {
+                background: white;
+                padding-bottom: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col pb-24 lg:pb-10">
+
+    <!-- COMPACT STICKY TOP HEADER (MOBILE & DESKTOP OPTIMIZED) -->
+    <header class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-40 shadow-xs no-print">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between gap-2">
+            <!-- Left: Title & Exam Code -->
+            <div class="flex items-center gap-2 min-w-0">
+                <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-700 text-white flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 shadow-xs">
+                    THPT
+                </div>
+                <div class="min-w-0">
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                        <h1 class="font-bold text-slate-900 text-xs sm:text-sm truncate">Đề Tiếng Anh 2025</h1>
+                        <span id="examCodeBadge" class="bg-amber-100 text-amber-900 border border-amber-300 text-[11px] font-bold px-2 py-0.5 rounded-full shrink-0">Mã đề: 401</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 hidden sm:block truncate">Bám sát ngữ liệu gốc • Tự động đổi câu hỏi ngữ pháp & từ vựng mỗi lần làm</p>
+                </div>
+            </div>
+
+            <!-- Right Controls: Font Size, Sticky Mode Toggle, Timer, Desktop Actions -->
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- Font Size Adjuster (Helpful on Mobile) -->
+                <div class="flex items-center bg-slate-100 rounded-lg p-0.5 border border-slate-200" title="Cỡ chữ bài đọc">
+                    <button onclick="adjustFontSize(-1)" class="px-2 py-1 text-xs font-bold text-slate-700 hover:bg-white rounded-md active:scale-95 transition">A-</button>
+                    <button onclick="adjustFontSize(1)" class="px-2 py-1 text-xs font-bold text-slate-700 hover:bg-white rounded-md active:scale-95 transition">A+</button>
+                </div>
+
+                <!-- Sticky Passage Mode Toggle -->
+                <button id="stickyModeBtn" onclick="toggleStickyPassageMode()" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 active:scale-95 transition" title="Bật/Tắt ghim bài đọc khi cuộn câu hỏi">
+                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                    <span id="stickyModeLabel" class="hidden md:inline">Ghim bài đọc: Bật</span>
+                    <span id="stickyModeShortLabel" class="md:hidden">Ghim</span>
+                </button>
+
+                <!-- Countdown Timer -->
+                <div class="flex items-center gap-1 bg-slate-900 text-white px-2.5 py-1.5 rounded-lg font-mono text-xs sm:text-sm font-bold shadow-inner">
+                    <svg class="w-3.5 h-3.5 text-emerald-400 animate-pulse shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span id="timerDisplay">50:00</span>
+                </div>
+
+                <!-- Desktop Buttons (Hidden on Mobile because Mobile has Bottom Action Bar) -->
+                <button onclick="generateNewExam(true)" class="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow-xs transition active:scale-95">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    <span>Đổi Đề Mới</span>
+                </button>
+
+                <button id="desktopSubmitBtn" onclick="submitExam()" class="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition active:scale-95">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span>Nộp Bài</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SCORE & FEEDBACK BANNER (Revealed upon submission) -->
+    <div id="resultBanner" class="hidden bg-gradient-to-br from-blue-950 via-indigo-900 to-slate-900 text-white border-b border-indigo-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3.5 w-full sm:w-auto">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/10 backdrop-blur border border-white/20 flex flex-col items-center justify-center p-2 shrink-0">
+                    <span class="text-[10px] uppercase tracking-wider text-blue-200 font-semibold">Điểm hệ 10</span>
+                    <span id="finalScoreText" class="text-2xl sm:text-3xl font-extrabold text-amber-400">0.00</span>
+                </div>
+                <div class="min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h2 class="text-base sm:text-lg font-bold">Kết quả bài làm</h2>
+                        <span id="resultGradeBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">Hoàn thành</span>
+                    </div>
+                    <p id="resultSummaryText" class="text-xs sm:text-sm text-blue-100 mt-1 leading-relaxed"></p>
+                    <p class="text-[11px] text-amber-300 mt-1">💡 Bấm <b>"Đổi Đề Mới"</b> để luyện tiếp trên chính các chủ đề này với vị trí đục lỗ và câu hỏi hoàn toàn khác!</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                <button onclick="generateNewExam(false)" class="flex-1 sm:flex-initial justify-center px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm shadow transition flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    <span>Làm Đề Mới Khác Câu Hỏi</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div class="max-w-7xl w-full mx-auto px-2.5 sm:px-4 py-3 sm:py-5 flex-1 flex flex-col lg:flex-row gap-5">
+
+        <!-- LEFT / MAIN EXAM PAPER -->
+        <main class="flex-1 min-w-0 space-y-4 sm:space-y-6 print-full">
+
+            <!-- Collapsible Exam Paper Info Box on Mobile -->
+            <div class="bg-white rounded-2xl border-2 border-slate-800 p-3.5 sm:p-5 shadow-xs">
+                <div class="flex items-center justify-between gap-2">
+                    <div>
+                        <p class="text-[11px] sm:text-xs font-bold uppercase text-blue-800 tracking-wide">KỲ THI TỐT NGHIỆP TRUNG HỌC PHỔ THÔNG (FORMAT 2025)</p>
+                        <h2 class="text-sm sm:text-base font-extrabold text-slate-900 mt-0.5">Bài thi: NGOẠI NGỮ — Môn: TIẾNG ANH (28 Câu)</h2>
+                    </div>
+                    <button onclick="togglePaperHeaderDetails()" class="sm:hidden text-xs font-semibold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200 shrink-0">
+                        <span id="paperDetailToggleText">Chi tiết ▾</span>
+                    </button>
+                </div>
+
+                <div id="paperHeaderDetails" class="hidden sm:block mt-3 pt-3 border-t border-slate-200 text-xs text-slate-600 space-y-2">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-semibold text-slate-700">Chủ đề đề hiện tại:</span>
+                            <span id="activeTopicsSummary" class="bg-slate-100 text-slate-800 px-2 py-0.5 rounded font-medium border border-slate-200">Đang tải...</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="toggleWritingInputMode()" class="text-xs font-semibold text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200 px-2.5 py-1 rounded-lg transition">
+                                <span id="writingInputModeText">✍ Phần Viết: Bật ô tự gõ + Trắc nghiệm</span>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-slate-500">
+                        📱 <b>Mẹo làm trên điện thoại:</b> Bấm trực tiếp vào số <b>(1), (2)...</b> trong bài đọc để nhảy nhanh tới câu hỏi, hoặc bấm nút <b>"Thu gọn / Mở rộng bài đọc"</b> ở thanh tiêu đề mỗi bài đọc.
+                    </p>
+                </div>
+            </div>
+
+            <!-- QUICK SECTION JUMP PILLS (Scrollable horizontally on mobile) -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-1 no-print custom-scrollbar">
+                <button onclick="scrollToSection('sec-1')" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-blue-500 hover:text-blue-700 shadow-2xs">
+                    Phần I: Quảng cáo (Câu 1-6)
+                </button>
+                <button onclick="scrollToSection('sec-2')" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-indigo-500 hover:text-indigo-700 shadow-2xs">
+                    Phần II: Đục lỗ câu (Câu 7-11)
+                </button>
+                <button onclick="scrollToSection('sec-3')" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 shadow-2xs">
+                    Phần III: Đọc hiểu (Câu 12-17)
+                </button>
+                <button onclick="scrollToSection('sec-4')" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-amber-500 hover:text-amber-700 shadow-2xs">
+                    Phần IV: Sắp xếp (Câu 18-21)
+                </button>
+                <button onclick="scrollToSection('sec-5')" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:border-purple-500 hover:text-purple-700 shadow-2xs">
+                    Phần V: Viết lại câu (Câu 22-28)
+                </button>
+            </div>
+
+            <!-- DYNAMIC EXAM SECTIONS -->
+            <div id="examSectionsContainer" class="space-y-6">
+                <!-- Populated dynamically by JS -->
+            </div>
+
+        </main>
+
+        <!-- DESKTOP RIGHT SIDEBAR: ANSWER SHEET PALETTE (Hidden on Mobile, replaced by Slide-up Drawer) -->
+        <aside class="hidden lg:block w-72 shrink-0 no-print">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 sticky top-16 shadow-xs space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-sm">Phiếu Trả Lời</h3>
+                        <p class="text-xs text-slate-500">Chạm số câu để chuyển nhanh</p>
+                    </div>
+                    <span id="desktopProgressBadge" class="text-xs font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full border border-blue-200">0 / 28</span>
+                </div>
+
+                <!-- 28 Question Grid -->
+                <div id="desktopPaletteGrid" class="grid grid-cols-5 gap-1.5"></div>
+
+                <!-- Legend -->
+                <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-xs text-slate-600">
+                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600 inline-block"></span> Đã chọn</div>
+                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-100 border border-slate-300 inline-block"></span> Chưa làm</div>
+                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600 inline-block"></span> Đúng</div>
+                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-600 inline-block"></span> Sai</div>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 space-y-1">
+                    <p class="font-bold text-amber-800">🔄 Đề thi biến thiên thông minh</p>
+                    <p class="leading-relaxed text-amber-800/90">
+                        Mỗi lần bấm <b>"Đổi Đề Mới"</b>, các đoạn văn giữ nguyên chủ đề gốc nhưng thay đổi vị trí đục lỗ và câu hỏi để rèn tư duy ngữ pháp thực chất.
+                    </p>
+                </div>
+
+                <button onclick="submitExam()" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-xs transition">
+                    Chấm Điểm & Xem Giải Thích
+                </button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- MOBILE FIXED BOTTOM NAVIGATION BAR (Only visible on < lg screens) -->
+    <div class="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-slate-200 z-40 px-3 py-2 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] no-print">
+        <div class="max-w-lg mx-auto flex items-center justify-between gap-2">
+            <!-- Open Answer Sheet Drawer Button -->
+            <button onclick="toggleMobileDrawer(true)" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 active:bg-slate-200 text-slate-800 font-bold text-xs border border-slate-300">
+                <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                <span>Phiếu (<span id="mobileProgressText" class="text-blue-700">0/28</span>)</span>
+            </button>
+
+            <!-- New Dynamic Exam Button -->
+            <button onclick="generateNewExam(true)" class="flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-amber-500 active:bg-amber-600 text-white font-bold text-xs shadow-xs">
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>Đổi Đề</span>
+            </button>
+
+            <!-- Submit Exam Button -->
+            <button onclick="submitExam()" class="flex-1 flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 active:bg-blue-700 text-white font-bold text-xs shadow-xs">
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span id="mobileSubmitBtnText">Nộp Bài</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE SLIDE-UP ANSWER SHEET DRAWER -->
+    <div id="mobileDrawerBackdrop" onclick="toggleMobileDrawer(false)" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden items-end justify-center no-print">
+        <div onclick="event.stopPropagation()" class="bg-white w-full max-w-lg rounded-t-3xl p-4 sm:p-5 shadow-2xl border-t border-slate-200 space-y-4 max-h-[82vh] flex flex-col">
+            <div class="w-12 h-1.5 bg-slate-300 rounded-full mx-auto"></div>
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div>
+                    <h3 class="font-bold text-slate-900 text-base">Phiếu Trả Lời Trắc Nghiệm</h3>
+                    <p class="text-xs text-slate-500">Chạm vào số câu để di chuyển đến câu hỏi đó</p>
+                </div>
+                <button onclick="toggleMobileDrawer(false)" class="p-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <!-- Mobile Grid -->
+            <div id="mobilePaletteGrid" class="grid grid-cols-7 gap-2 overflow-y-auto py-1"></div>
+
+            <!-- Legend -->
+            <div class="flex items-center justify-around pt-2 border-t border-slate-100 text-xs text-slate-600">
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600 inline-block"></span> Đã làm</div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-100 border border-slate-300 inline-block"></span> Chưa làm</div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600 inline-block"></span> Đúng</div>
+                <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-600 inline-block"></span> Sai</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5 pt-1">
+                <button onclick="toggleMobileDrawer(false); generateNewExam(true);" class="py-2.5 rounded-xl bg-amber-500 text-white font-bold text-xs">
+                    Đổi Đề Mới
+                </button>
+                <button onclick="toggleMobileDrawer(false); submitExam();" class="py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs">
+                    Chấm Điểm Ngay
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM MODAL (Never use window.alert or window.confirm) -->
+    <div id="customModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden items-center justify-center p-4 no-print">
+        <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-xl border border-slate-200 space-y-4">
+            <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 font-bold text-lg">!</div>
+                <div>
+                    <h3 id="modalTitle" class="font-bold text-slate-900 text-base">Xác nhận</h3>
+                    <p id="modalMessage" class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed"></p>
+                </div>
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closeModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700">Quay lại</button>
+                <button id="modalConfirmBtn" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white">Đồng ý</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =========================================================================
+        // 1. COMPREHENSIVE QUESTION BANK (Strictly following the uploaded DOCX)
+        //    Multiple Question Set Variants per passage so each test is fresh!
+        // =========================================================================
+        const QUESTION_BANK = {
+            // ---------------------------------------------------------------------
+            // PART I: SHORT ADVERTISEMENT / ANNOUNCEMENT CLOZE (Questions 1 - 6)
+            // Themes: LoopWear, Harmony Language Hub, Life Stories We Admire
+            // ---------------------------------------------------------------------
+            section1Pools: [
+                {
+                    id: "s1_loopwear_v1",
+                    topicName: "LoopWear (Bộ câu hỏi 1)",
+                    title: "RENT YOUR STYLE WITH LOOPWEAR!",
+                    rawPassage: `Enjoy endless {{1}} in your wardrobe with <b>LoopWear</b>, a clothing rental service that offers a smart alternative {{2}} fast fashion. Instead of buying outfits you will wear only once, you can rent them for a small monthly fee. After every use, each item is professionally cleaned and sent back into circulation, {{3}} it to be worn dozens of times before it is finally recycled. LoopWear has already welcomed over 50,000 young members across the country, which reflects a growing desire for {{4}} fashion. Every delivery box is filled with {{5}} that suit both school events and weekend parties. By joining us, you not only cut down on {{6}} but also help build a culture of sharing. Start your LoopWear journey today!`,
+                    questions: [
+                        {
+                            slot: 1,
+                            options: ["A. variety", "B. various", "C. vary", "D. variously"],
+                            shortTokens: ["variety", "various", "vary", "variously"],
+                            answer: 0,
+                            grammarPoint: "Từ loại (Word Form)",
+                            explanation: "Sau tính từ 'endless' (vô tận) và trước giới từ 'in', ta cần một <b>danh từ</b>. 'variety' (sự đa dạng) là đáp án đúng."
+                        },
+                        {
+                            slot: 2,
+                            options: ["A. for", "B. with", "C. to", "D. from"],
+                            shortTokens: ["for", "with", "to", "from"],
+                            answer: 2,
+                            grammarPoint: "Giới từ cố định (Collocation)",
+                            explanation: "Cấu trúc: <b>an alternative to something</b> (một lựa chọn thay thế cho cái gì đó)."
+                        },
+                        {
+                            slot: 3,
+                            options: ["A. which allow", "B. allowing", "C. allowed", "D. that allows"],
+                            shortTokens: ["which allow", "allowing", "allowed", "that allows"],
+                            answer: 1,
+                            grammarPoint: "Rút gọn mệnh đề bằng Hiện tại phân từ (V-ing)",
+                            explanation: "Dùng <b>allowing</b> sau dấu phẩy để diễn tả kết quả của toàn bộ quá trình phía trước (= which allows it to be worn...)."
+                        },
+                        {
+                            slot: 4,
+                            options: ["A. mindful", "B. mindfully", "C. mindfulness", "D. minding"],
+                            shortTokens: ["mindful", "mindfully", "mindfulness", "minding"],
+                            answer: 0,
+                            grammarPoint: "Từ loại & Từ vựng",
+                            explanation: "Trước danh từ 'fashion' cần một tính từ: <b>mindful fashion</b> (thời trang có ý thức bảo vệ môi trường)."
+                        },
+                        {
+                            slot: 5,
+                            options: [
+                                "A. vintage stylish cotton pieces",
+                                "B. stylish vintage cotton pieces",
+                                "C. cotton vintage stylish pieces",
+                                "D. stylish cotton vintage pieces"
+                            ],
+                            shortTokens: [
+                                "vintage stylish cotton pieces",
+                                "stylish vintage cotton pieces",
+                                "cotton vintage stylish pieces",
+                                "stylish cotton vintage pieces"
+                            ],
+                            answer: 1,
+                            grammarPoint: "Trật tự tính từ (OSASCOMP)",
+                            explanation: "Theo quy tắc OSASCOMP: <b>Opinion</b> (stylish - hợp mốt) + <b>Age</b> (vintage - cổ điển) + <b>Material</b> (cotton - bằng vải bông) + Danh từ (pieces)."
+                        },
+                        {
+                            slot: 6,
+                            options: ["A. reusable fabric", "B. green wardrobe", "C. textile waste", "D. recycled landfill"],
+                            shortTokens: ["reusable fabric", "green wardrobe", "textile waste", "recycled landfill"],
+                            answer: 2,
+                            grammarPoint: "Cụm danh từ chủ đề Sống Xanh",
+                            explanation: "<b>cut down on textile waste</b>: cắt giảm rác thải dệt may."
+                        }
+                    ]
+                },
+                {
+                    id: "s1_loopwear_v2",
+                    topicName: "LoopWear (Bộ câu hỏi 2 - Biến thiên)",
+                    title: "RENT YOUR STYLE WITH LOOPWEAR!",
+                    rawPassage: `Enjoy endless variety in your wardrobe with <b>LoopWear</b>, a clothing rental service {{1}} a smart alternative to fast fashion. Instead of {{2}} outfits you will wear only once, you can rent them for a small monthly {{3}}. After every use, each item is {{4}} cleaned and sent back into circulation, allowing it to be worn dozens of times before it is finally recycled. LoopWear has already welcomed over 50,000 young members across the country, {{5}} a growing desire for mindful fashion. Every delivery box is filled with stylish vintage cotton pieces that suit both school events and weekend parties. By joining us, you not only {{6}} textile waste but also help build a culture of sharing.`,
+                    questions: [
+                        {
+                            slot: 1,
+                            options: ["A. offered", "B. offering", "C. which offer", "D. is offering"],
+                            shortTokens: ["offered", "offering", "which offer", "is offering"],
+                            answer: 1,
+                            grammarPoint: "Rút gọn mệnh đề quan hệ chủ động",
+                            explanation: "Danh từ 'a clothing rental service' mang nghĩa chủ động ('that offers...') nên rút gọn thành <b>offering</b>."
+                        },
+                        {
+                            slot: 2,
+                            options: ["A. buy", "B. to buy", "C. buying", "D. bought"],
+                            shortTokens: ["buy", "to buy", "buying", "bought"],
+                            answer: 2,
+                            grammarPoint: "Danh động từ sau giới từ (Gerund)",
+                            explanation: "Sau giới từ <b>Instead of</b> (Thay vì), động từ luôn ở dạng <b>V-ing (buying)</b>."
+                        },
+                        {
+                            slot: 3,
+                            options: ["A. fee", "B. fine", "C. fare", "D. wage"],
+                            shortTokens: ["fee", "fine", "fare", "wage"],
+                            answer: 0,
+                            grammarPoint: "Từ vựng cùng trường nghĩa",
+                            explanation: "<b>a small monthly fee</b>: một khoản phí dịch vụ hàng tháng nhỏ."
+                        },
+                        {
+                            slot: 4,
+                            options: ["A. profession", "B. professional", "C. professionally", "D. professionalism"],
+                            shortTokens: ["profession", "professional", "professionally", "professionalism"],
+                            answer: 2,
+                            grammarPoint: "Từ loại (Trạng từ trước V-ed/V3)",
+                            explanation: "Trước động từ bị động 'cleaned' cần một <b>trạng từ (professionally)</b> để chỉ cách thức làm sạch chuyên nghiệp."
+                        },
+                        {
+                            slot: 5,
+                            options: ["A. which reflects", "B. that reflect", "C. reflected", "D. which reflect"],
+                            shortTokens: ["which reflects", "that reflect", "reflected", "which reflect"],
+                            answer: 0,
+                            grammarPoint: "Mệnh đề quan hệ nối tiếp sau dấu phẩy",
+                            explanation: "Sau dấu phẩy dùng <b>which + V(số ít: reflects)</b> để thay cho cả mệnh đề phía trước (không dùng 'that' sau dấu phẩy)."
+                        },
+                        {
+                            slot: 6,
+                            options: ["A. cut down on", "B. look down on", "C. keep up with", "D. run out of"],
+                            shortTokens: ["cut down on", "look down on", "keep up with", "run out of"],
+                            answer: 0,
+                            grammarPoint: "Cụm động từ (Phrasal Verbs)",
+                            explanation: "<b>cut down on</b>: cắt giảm (rác thải dệt may)."
+                        }
+                    ]
+                },
+                {
+                    id: "s1_harmony_v1",
+                    topicName: "Harmony Language Hub",
+                    title: "DISCOVER HARMONY LANGUAGE HUB!",
+                    rawPassage: `Welcome to <b>Harmony Language Hub</b>, where curious learners meet the whole world! Our {{1}} is helping people speak confidently with neighbours from every background, including communities such as {{2}} Peru's Andean villages, where Quechua is still used every day. Our mentors never {{3}} learners who make mistakes; they treat every error as a small step forward. Our courses also reflect the growing {{4}} of intercultural skills in study and work. Join our weekend conversation clubs {{5}} a truly memorable cultural experience, and share food, songs and stories from six continents. Don't miss the chance to become part of a {{6}}! A wider world is waiting for you.`,
+                    questions: [
+                        {
+                            slot: 1,
+                            options: ["A. warning", "B. mission", "C. barrier", "D. silence"],
+                            shortTokens: ["warning", "mission", "barrier", "silence"],
+                            answer: 1,
+                            grammarPoint: "Từ vựng theo ngữ cảnh",
+                            explanation: "<b>Our mission</b> (Sứ mệnh của chúng tôi) là giúp mọi người giao tiếp tự tin với bạn bè từ mọi nền tảng văn hóa."
+                        },
+                        {
+                            slot: 2,
+                            options: ["A. a", "B. an", "C. the", "D. Ø (no article)"],
+                            shortTokens: ["a", "an", "the", "Ø"],
+                            answer: 3,
+                            grammarPoint: "Mạo từ (Articles)",
+                            explanation: "Trước tên quốc gia số ít (Peru) và sở hữu cách 'Peru's Andean villages', ta <b>không dùng mạo từ (Ø)</b>."
+                        },
+                        {
+                            slot: 3,
+                            options: ["A. look down on", "B. keep up with", "C. hold on to", "D. come up with"],
+                            shortTokens: ["look down on", "keep up with", "hold on to", "come up with"],
+                            answer: 0,
+                            grammarPoint: "Cụm động từ (Phrasal Verbs)",
+                            explanation: "<b>look down on somebody</b>: coi thường ai đó. Câu mang nghĩa: Người hướng dẫn không bao giờ coi thường học viên mắc lỗi."
+                        },
+                        {
+                            slot: 4,
+                            options: ["A. important", "B. importantly", "C. importance", "D. importing"],
+                            shortTokens: ["important", "importantly", "importance", "importing"],
+                            answer: 2,
+                            grammarPoint: "Từ loại (Word Form)",
+                            explanation: "Sau 'the growing' và trước giới từ 'of' cần một <b>danh từ</b>: <b>importance</b> (tầm quan trọng ngày càng tăng)."
+                        },
+                        {
+                            slot: 5,
+                            options: ["A. to", "B. for", "C. with", "D. at"],
+                            shortTokens: ["to", "for", "with", "at"],
+                            answer: 1,
+                            grammarPoint: "Giới từ chỉ mục đích",
+                            explanation: "<b>Join our clubs for + Noun phrase</b>: Tham gia câu lạc bộ của chúng tôi để có một trải nghiệm văn hóa đáng nhớ."
+                        },
+                        {
+                            slot: 6,
+                            options: [
+                                "A. global genuinely friendly community",
+                                "B. friendly genuinely global community",
+                                "C. community friendly genuinely global",
+                                "D. genuinely friendly global community"
+                            ],
+                            shortTokens: [
+                                "global genuinely friendly community",
+                                "friendly genuinely global community",
+                                "community friendly genuinely global",
+                                "genuinely friendly global community"
+                            ],
+                            answer: 3,
+                            grammarPoint: "Trật tự Trạng từ + Tính từ + Danh từ",
+                            explanation: "Trạng từ <b>genuinely</b> bổ nghĩa cho tính từ chỉ đánh giá <b>friendly</b>, đứng trước tính từ phân loại <b>global</b> và danh từ chính <b>community</b>."
+                        }
+                    ]
+                },
+                {
+                    id: "s1_lifestories_v1",
+                    topicName: "Life Stories We Admire",
+                    title: "LIFE STORIES WE ADMIRE",
+                    rawPassage: `In life, everyone faces struggles, and at times we may even {{1}} out of money. But what makes a story truly {{2}} is how one rises above these challenges. <i>Life Stories We Admire</i> often involve people who refuse to give {{3}}, even when they seem to have nothing left. From {{4}} financial difficulties to chasing their dreams, these stories show us that success is not always about having resources, but about finding the strength to push forward. Our resources, {{5}} to help those who have run out of money but refuse to quit, will guide you on your path to success. These resources include {{6}} that can help you get back on track.`,
+                    questions: [
+                        {
+                            slot: 1,
+                            options: ["A. give", "B. run", "C. put", "D. take"],
+                            shortTokens: ["give", "run", "put", "take"],
+                            answer: 1,
+                            grammarPoint: "Cụm động từ (Phrasal Verbs)",
+                            explanation: "Cụm cố định: <b>run out of money</b> (hết tiền, cạn kiệt tiền bạc)."
+                        },
+                        {
+                            slot: 2,
+                            options: ["A. to inspiring", "B. inspire", "C. inspired", "D. inspiring"],
+                            shortTokens: ["to inspiring", "inspire", "inspired", "inspiring"],
+                            answer: 3,
+                            grammarPoint: "Cấu trúc make + O + Adj (-ing/-ed)",
+                            explanation: "Bản chất câu chuyện ('a story') truyền cảm hứng nên dùng tính từ đuôi <b>-ing (inspiring)</b>."
+                        },
+                        {
+                            slot: 3,
+                            options: ["A. to", "B. up", "C. on", "D. back"],
+                            shortTokens: ["to", "up", "on", "back"],
+                            answer: 1,
+                            grammarPoint: "Cụm động từ (Phrasal Verbs)",
+                            explanation: "<b>give up</b>: từ bỏ, bỏ cuộc."
+                        },
+                        {
+                            slot: 4,
+                            options: ["A. overcome", "B. overcame", "C. overcoming", "D. to overcome"],
+                            shortTokens: ["overcome", "overcame", "overcoming", "to overcome"],
+                            answer: 2,
+                            grammarPoint: "Cấu trúc song hành From V-ing to V-ing",
+                            explanation: "Sau giới từ 'From' và song song với 'to chasing their dreams', ta dùng <b>overcoming</b>."
+                        },
+                        {
+                            slot: 5,
+                            options: ["A. designing", "B. that designed", "C. designed", "D. was designing"],
+                            shortTokens: ["designing", "that designed", "designed", "was designing"],
+                            answer: 2,
+                            grammarPoint: "Rút gọn mệnh đề quan hệ bị động (V-ed/V3)",
+                            explanation: "'Our resources' được thiết kế (which are designed) nên rút gọn thành <b>designed</b>."
+                        },
+                        {
+                            slot: 6,
+                            options: [
+                                "A. simple financial tools",
+                                "B. tools simple financial",
+                                "C. simple tools financial",
+                                "D. tools financial simple"
+                            ],
+                            shortTokens: [
+                                "simple financial tools",
+                                "tools simple financial",
+                                "simple tools financial",
+                                "tools financial simple"
+                            ],
+                            answer: 0,
+                            grammarPoint: "Trật tự từ trong cụm danh từ",
+                            explanation: "Tính từ chỉ đánh giá (<b>simple</b>) + Tính từ phân loại (<b>financial</b>) + Danh từ chính (<b>tools</b>)."
+                        }
+                    ]
+                }
+            ],
+
+            // ---------------------------------------------------------------------
+            // PART II: SENTENCE / CLAUSE CLOZE (Questions 7 - 11)
+            // Themes: VinFast Electric Vehicles, Vo Thi Sau, Globalisation
+            // ---------------------------------------------------------------------
+            section2Pools: [
+                {
+                    id: "s2_vinfast_v1",
+                    topicName: "VinFast Electric Vehicles (Bộ 1)",
+                    title: "Switching to VinFast Electric Vehicles for a Green Lifestyle",
+                    rawPassage: `<p class="mb-2.5">Switching to electric vehicles, like those made by VinFast, {{7}}. More eco-friendly than traditional gasoline-powered cars, electric vehicles significantly reduce our carbon footprint and improve air quality. In addition, being more energy-efficient, they help conserve natural resources by wasting less energy. If more people start choosing electric vehicles, the environment will benefit greatly.</p>
+                    <p class="mb-2.5">VinFast, a Vietnamese electric vehicle company, offers a variety of electric cars {{8}}. Equipped with advanced technology, {{9}}. As the demand for electric cars grows, more countries are implementing policies to encourage their use, such as offering subsidies for buyers and building more charging stations, {{10}}.</p>
+                    <p>Electric cars also have the advantage of being cheaper to maintain since they don't require frequent oil changes or complex mechanical repairs. In addition, electric cars are much quieter, contributing to less noise pollution in urban areas. {{11}}.</p>`,
+                    questions: [
+                        {
+                            slot: 7,
+                            options: [
+                                "A. which plays a vital role in advancing environmental sustainability",
+                                "B. being a crucial step for promoting a greener future",
+                                "C. has become a crucial step in promoting a greener future",
+                                "D. having become a key action in reducing environmental damage"
+                            ],
+                            shortTokens: ["which plays...", "being a crucial step...", "has become a crucial step...", "having become..."],
+                            answer: 2,
+                            grammarPoint: "Vị ngữ chính của câu (Finite Verb)",
+                            explanation: "Chủ ngữ là cụm danh động từ số ít <b>'Switching to electric vehicles'</b> nên cần động từ chính chia số ít: <b>has become a crucial step...</b>"
+                        },
+                        {
+                            slot: 8,
+                            options: [
+                                "A. which are designed with sustainability in mind",
+                                "B. designing their vehicles with sustainability in mind by focusing on energy",
+                                "C. are becoming increasingly popular worldwide",
+                                "D. whose design sustainability in mind for eco-conscious consumers"
+                            ],
+                            shortTokens: ["which are designed...", "designing their vehicles...", "are becoming...", "whose design..."],
+                            answer: 0,
+                            grammarPoint: "Mệnh đề quan hệ (Relative Clause)",
+                            explanation: "Câu đã có động từ chính 'offers', nên cần mệnh đề quan hệ bổ nghĩa cho 'electric cars': <b>which are designed with sustainability in mind</b>."
+                        },
+                        {
+                            slot: 9,
+                            options: [
+                                "A. are providing a smooth and efficient driving experience",
+                                "B. these vehicles to provide a smooth and efficient driving experience",
+                                "C. VinFast has been equipped with a smooth driving experience",
+                                "D. these vehicles provide a smooth and efficient driving experience"
+                            ],
+                            shortTokens: ["are providing...", "these vehicles to provide...", "VinFast has been...", "these vehicles provide..."],
+                            answer: 3,
+                            grammarPoint: "Rút gọn mệnh đề đồng chủ ngữ (Participle Clause)",
+                            explanation: "Mở đầu bằng <b>'Equipped with advanced technology'</b> (Được trang bị công nghệ tiên tiến) thì chủ ngữ ngay sau dấu phẩy phải là đối tượng được trang bị: <b>these vehicles provide...</b>"
+                        },
+                        {
+                            slot: 10,
+                            options: [
+                                "A. as people become more aware of the environmental impacts of gasoline-powered vehicles",
+                                "B. governments encourage the development of electric cars and reduce emissions globally",
+                                "C. are becoming aware about the environmental impacts of gasoline-powered vehicles",
+                                "D. despite people becoming more aware of the impact of gasoline-powered vehicles"
+                            ],
+                            shortTokens: ["as people become more aware...", "governments encourage...", "are becoming aware...", "despite people becoming..."],
+                            answer: 0,
+                            grammarPoint: "Mệnh đề trạng ngữ chỉ lý do/thời gian",
+                            explanation: "Nối với mệnh đề chính bằng liên từ <b>as + S + V</b> (khi/bởi vì mọi người ngày càng ý thức rõ hơn về tác động môi trường của xe chạy xăng)."
+                        },
+                        {
+                            slot: 11,
+                            options: [
+                                "A. Many people believe that electric cars will eventually replace public transport in big cities",
+                                "B. Some experts claim that the manufacturing process of electric cars is not eco-friendly",
+                                "C. By choosing VinFast electric vehicles, people can make a positive impact on both the environment and their daily lives",
+                                "D. Electric cars are only suitable for drivers who never travel in urban areas"
+                            ],
+                            shortTokens: ["Many people believe...", "Some experts claim...", "By choosing VinFast...", "Electric cars are only..."],
+                            answer: 2,
+                            grammarPoint: "Câu kết luận mạch lạc (Coherence)",
+                            explanation: "Câu kết tóm lược toàn bộ lợi ích cho cả môi trường và đời sống hàng ngày: <b>By choosing VinFast electric vehicles, people can make a positive impact...</b>"
+                        }
+                    ]
+                },
+                {
+                    id: "s2_vinfast_v2",
+                    topicName: "VinFast Electric Vehicles (Bộ 2 - Biến thiên)",
+                    title: "Switching to VinFast Electric Vehicles for a Green Lifestyle",
+                    rawPassage: `<p class="mb-2.5">Switching to electric vehicles, like those made by VinFast, has become a crucial step in promoting a greener future. {{7}}, electric vehicles significantly reduce our carbon footprint and improve air quality. In addition, being more energy-efficient, they help conserve natural resources by wasting less energy. {{8}}.</p>
+                    <p class="mb-2.5">VinFast, {{9}}, offers a variety of electric cars which meet the needs of eco-conscious consumers. Equipped with advanced technology, these vehicles provide a smooth and efficient driving experience. As the demand for electric cars grows, more countries are implementing policies to encourage their use, {{10}}.</p>
+                    <p>Electric cars also have the advantage of being cheaper to maintain {{11}}. In addition, electric cars are much quieter, contributing to less noise pollution in urban areas.</p>`,
+                    questions: [
+                        {
+                            slot: 7,
+                            options: [
+                                "A. Being more eco-friendly than traditional gasoline-powered cars",
+                                "B. Having reduced traditional gasoline-powered cars' eco-friendliness",
+                                "C. Although they are less eco-friendly than traditional gasoline-powered cars",
+                                "D. Which are more eco-friendly than traditional gasoline-powered cars"
+                            ],
+                            shortTokens: ["Being more eco-friendly...", "Having reduced...", "Although they are...", "Which are more..."],
+                            answer: 0,
+                            grammarPoint: "Mệnh đề phân từ đồng chủ ngữ",
+                            explanation: "Chủ ngữ chính sau dấu phẩy là 'electric vehicles', nên cụm phân từ <b>Being more eco-friendly than traditional gasoline-powered cars</b> là hoàn toàn chuẩn xác."
+                        },
+                        {
+                            slot: 8,
+                            options: [
+                                "A. Unless more people start choosing electric vehicles, the environment will benefit greatly",
+                                "B. If more people start choosing electric vehicles, the environment will benefit greatly",
+                                "C. Were more people to stop choosing electric vehicles, the environment would benefit",
+                                "D. Because the environment benefits greatly, fewer people choose electric vehicles"
+                            ],
+                            shortTokens: ["Unless more people...", "If more people start...", "Were more people...", "Because the environment..."],
+                            answer: 1,
+                            grammarPoint: "Câu điều kiện loại 1 (First Conditional)",
+                            explanation: "Giả thiết có thật ở hiện tại/tương lai: <b>If + S + V(hiện tại đơn), S + will + V(nguyên thể)</b>."
+                        },
+                        {
+                            slot: 9,
+                            options: [
+                                "A. is a Vietnamese electric vehicle company",
+                                "B. that is a Vietnamese electric vehicle company",
+                                "C. a Vietnamese electric vehicle company",
+                                "D. which being a Vietnamese electric vehicle company"
+                            ],
+                            shortTokens: ["is a Vietnamese...", "that is a Vietnamese...", "a Vietnamese EV company", "which being..."],
+                            answer: 2,
+                            grammarPoint: "Cụm danh từ đồng vị (Appositive Phrase)",
+                            explanation: "Nằm giữa 2 dấu phẩy sau 'VinFast' và trước động từ chính 'offers', ta dùng cụm đồng vị <b>a Vietnamese electric vehicle company</b>."
+                        },
+                        {
+                            slot: 10,
+                            options: [
+                                "A. such as offering subsidies for buyers and building more charging stations",
+                                "B. for example offer subsidies for buyers and build more charging stations",
+                                "C. included offering subsidies for buyers and building more charging stations",
+                                "D. so that offering subsidies for buyers and building more charging stations"
+                            ],
+                            shortTokens: ["such as offering subsidies...", "for example offer...", "included offering...", "so that offering..."],
+                            answer: 0,
+                            grammarPoint: "Cấu trúc song hành sau 'such as'",
+                            explanation: "Sau giới từ <b>such as</b> dùng các danh động từ song song: <b>offering subsidies... and building more charging stations</b>."
+                        },
+                        {
+                            slot: 11,
+                            options: [
+                                "A. despite not requiring frequent oil changes or complex mechanical repairs",
+                                "B. since they don't require frequent oil changes or complex mechanical repairs",
+                                "C. because of they don't require frequent oil changes or complex mechanical repairs",
+                                "D. therefore they don't require frequent oil changes or complex mechanical repairs"
+                            ],
+                            shortTokens: ["despite not requiring...", "since they don't require...", "because of they...", "therefore they..."],
+                            answer: 1,
+                            grammarPoint: "Mệnh đề chỉ nguyên nhân với 'since'",
+                            explanation: "Giải thích lý do xe điện rẻ hơn khi bảo dưỡng: <b>since + S + V</b> (bởi vì chúng không cần thay dầu thường xuyên...)."
+                        }
+                    ]
+                },
+                {
+                    id: "s2_vothisau_v1",
+                    topicName: "Vo Thi Sau - National Heroine",
+                    title: "Vo Thi Sau: A Symbol of Bravery and Patriotism",
+                    rawPassage: `<p class="mb-2.5">Vo Thi Sau, who was born in 1933 in Ba Ria - Vung Tau province, {{7}}. She became a symbol of bravery and resistance against French colonial forces, even though she was just a teenager at the time. Having joined a local guerilla unit at the age of 14, {{8}}, killing one officer and injuring many others.</p>
+                    <p class="mb-2.5">Her actions led to her arrest, but she was not afraid. In 1952, when she was only 19 years old, Vo Thi Sau was sentenced to death. Despite this, she remained strong and fearless. {{9}}. Her song still echoes in the hearts of those who visit her grave at Con Dao Island, where thousands of people come every year to pay homage to her courage.</p>
+                    <p>Vo Thi Sau's grave, {{10}}, has now become a famous historical destination. Demonstrating her lasting legacy, the place is not only a memorial but also a testament to her unwavering spirit. {{11}}, Vo Thi Sau's life is a powerful reminder of the price of freedom and the strength of the human spirit.</p>`,
+                    questions: [
+                        {
+                            slot: 7,
+                            options: [
+                                "A. is one of the most iconic figures in Vietnamese history",
+                                "B. having been one of the most typical historical heroes in Vietnam",
+                                "C. who was one of the national heroes in Vietnamese history",
+                                "D. where the most typical female generals in Vietnamese history died"
+                            ],
+                            shortTokens: ["is one of the most iconic...", "having been one of...", "who was one of...", "where the most typical..."],
+                            answer: 0,
+                            grammarPoint: "Động từ chính của câu (Finite Verb)",
+                            explanation: "Chủ ngữ 'Vo Thi Sau' đã có mệnh đề quan hệ 'who was born...' xen giữa, nên cần động từ chính <b>is one of the most iconic figures...</b>"
+                        },
+                        {
+                            slot: 8,
+                            options: [
+                                "A. a grenade was thrown at a group of French soldiers",
+                                "B. French soldiers captured her and took her to prison",
+                                "C. she proved her courage by throwing a grenade at a group of French soldiers",
+                                "D. her bravery was recognized by the local guerilla unit"
+                            ],
+                            shortTokens: ["a grenade was thrown...", "French soldiers captured...", "she proved her courage...", "her bravery was..."],
+                            answer: 2,
+                            grammarPoint: "Phân từ hoàn thành đồng chủ ngữ (Having + V3/ed)",
+                            explanation: "Mở đầu bằng 'Having joined a local guerilla unit at the age of 14', chủ ngữ sau dấu phẩy phải là Võ Thị Sáu: <b>she proved her courage by...</b>"
+                        },
+                        {
+                            slot: 9,
+                            options: [
+                                "A. In her last moments, as she was tied to a pole and blindfolded, she sang revolutionary songs, refusing to show any fear",
+                                "B. In her last moments, she was executed without saying a word, refusing to sing any songs",
+                                "C. When she was finally saved by the army, her singing haunted the soldiers later",
+                                "D. Vo Thi Sau spent many decades after 1952 composing songs in Con Dao prison"
+                            ],
+                            shortTokens: ["In her last moments, she sang...", "she was executed without...", "When she was saved...", "Vo Thi Sau spent many decades..."],
+                            answer: 0,
+                            grammarPoint: "Sự liên kết mạch văn (Coherence)",
+                            explanation: "Khớp với câu trước ('remained strong and fearless') và câu sau ('Her song still echoes...')."
+                        },
+                        {
+                            slot: 10,
+                            options: [
+                                "A. which is located on Con Dao Island",
+                                "B. who visit her grave to pay their respects and pray every year",
+                                "C. is located on Con Dao Island and attracts many tourists",
+                                "D. visiting her grave to pay their respects and pray for good luck"
+                            ],
+                            shortTokens: ["which is located on Con Dao...", "who visit her grave...", "is located on...", "visiting her grave..."],
+                            answer: 0,
+                            grammarPoint: "Mệnh đề quan hệ không xác định",
+                            explanation: "Bổ nghĩa cho 'Vo Thi Sau's grave' giữa hai dấu phẩy: <b>which is located on Con Dao Island</b>."
+                        },
+                        {
+                            slot: 11,
+                            options: [
+                                "A. Despite her youth, having made no significant contributions to the war effort",
+                                "B. Known to everyone only for her peaceful diplomatic negotiations",
+                                "C. Having been one of the most remarkable resistance fighters during the war",
+                                "D. Because she was afraid of fighting against colonial forces"
+                            ],
+                            shortTokens: ["Despite her youth...", "Known to everyone only...", "Having been one of the most...", "Because she was afraid..."],
+                            answer: 2,
+                            grammarPoint: "Cụm phân từ tổng kết đầu câu",
+                            explanation: "<b>Having been one of the most remarkable resistance fighters during the war</b> đúc kết vai trò lịch sử của chị Võ Thị Sáu."
+                        }
+                    ]
+                },
+                {
+                    id: "s2_globalisation_v1",
+                    topicName: "Globalisation in Food, Music & Fashion",
+                    title: "Globalisation and Cultural Exchange",
+                    rawPassage: `<p class="mb-2.5">Fast food chains and international restaurants have become popular, offering a wide range of dishes and more food choices to local people. For example, here in Viet Nam, {{7}}. Moreover, some international dishes use local ingredients, which makes them unique and more suitable to local tastes. On the other hand, Vietnamese specialties, such as <i>pho</i> and <i>banh mi</i>, {{8}}.</p>
+                    <p class="mb-2.5">Thanks to globalisation, {{9}}. People nowadays enjoy listening to music from different countries and cultures, and in different languages. For example, American teens are captivated by K-pop music and dance. There are also many music festivals around the globe {{10}}.</p>
+                    <p>Globalisation has also impacted fashion by opening it up to a variety of styles and influences from around the world. {{11}}. This presents opportunities for fashion designers to be creative and reflect the cultural richness of the world.</p>`,
+                    questions: [
+                        {
+                            slot: 7,
+                            options: [
+                                "A. we can enjoy Italian pizza or Japanese sushi, in addition, our traditional food",
+                                "B. in addition to our traditional food that we can enjoy Italian pizza or Japanese sushi",
+                                "C. we can enjoy Italian pizza or Japanese sushi, in addition to our traditional food",
+                                "D. enjoying Italian pizza or Japanese sushi in addition to our traditional food"
+                            ],
+                            shortTokens: ["we can enjoy..., in addition,...", "in addition to... that...", "we can enjoy..., in addition to...", "enjoying Italian pizza..."],
+                            answer: 2,
+                            grammarPoint: "Mệnh đề độc lập & Cụm giới từ 'in addition to'",
+                            explanation: "Cần một mệnh đề đầy đủ S + V kèm cụm giới từ <b>in addition to + Noun phrase</b>."
+                        },
+                        {
+                            slot: 8,
+                            options: [
+                                "A. are also gaining popularity worldwide",
+                                "B. which are also gaining popularity worldwide",
+                                "C. also gaining popularity worldwide",
+                                "D. which is also gaining popularity worldwide"
+                            ],
+                            shortTokens: ["are also gaining popularity...", "which are also gaining...", "also gaining...", "which is also..."],
+                            answer: 0,
+                            grammarPoint: "Sự hòa hợp Chủ ngữ - Động từ",
+                            explanation: "Chủ ngữ số nhiều 'Vietnamese specialties' cần động từ chính <b>are also gaining popularity worldwide</b>."
+                        },
+                        {
+                            slot: 9,
+                            options: [
+                                "A. people who can quickly discover new music from all over the world",
+                                "B. new music from all over the world that people can quickly discover",
+                                "C. people can quickly discover new music from all over the world",
+                                "D. new music people can quickly discover from all over the world"
+                            ],
+                            shortTokens: ["people who can...", "new music... that...", "people can quickly discover...", "new music people..."],
+                            answer: 2,
+                            grammarPoint: "Mệnh đề chính sau 'Thanks to + N'",
+                            explanation: "Sau cụm giới từ 'Thanks to globalisation,' cần một mệnh đề chính hoàn chỉnh: <b>people can quickly discover new music...</b>"
+                        },
+                        {
+                            slot: 10,
+                            options: [
+                                "A. that bring artists and music fans together",
+                                "B. bring artists and music fans together",
+                                "C. whose artists and music fans are brought together",
+                                "D. which artists and music fans being brought together"
+                            ],
+                            shortTokens: ["that bring artists...", "bring artists...", "whose artists...", "which artists..."],
+                            answer: 0,
+                            grammarPoint: "Mệnh đề quan hệ xác định",
+                            explanation: "Bổ nghĩa cho danh từ số nhiều 'many music festivals': <b>that bring artists and music fans together</b>."
+                        },
+                        {
+                            slot: 11,
+                            options: [
+                                "A. Cross-cultural styles, both traditional and modern elements' blending, are on the rise",
+                                "B. Cross-cultural styles that blend both traditional and modern elements are on the rise",
+                                "C. Cross-cultural styles to blend both traditional and modern elements are on the rise",
+                                "D. Whose cross-cultural styles blend both traditional and modern elements are on the rise"
+                            ],
+                            shortTokens: ["Cross-cultural styles, both...", "Cross-cultural styles that blend...", "Cross-cultural styles to blend...", "Whose cross-cultural..."],
+                            answer: 1,
+                            grammarPoint: "Cấu trúc câu phức với Mệnh đề quan hệ",
+                            explanation: "Chủ ngữ 'Cross-cultural styles' + MĐQH 'that blend both traditional and modern elements' + động từ chính 'are on the rise'."
+                        }
+                    ]
+                }
+            ],
+
+            // ---------------------------------------------------------------------
+            // PART III: READING COMPREHENSION (Questions 12 - 17: 6 Questions)
+            // Themes: Steve Jobs, Cultural Appropriation, Green Living, Cultural Diversity
+            // ---------------------------------------------------------------------
+            section3Pools: [
+                {
+                    id: "s3_stevejobs_v1",
+                    topicName: "Steve Jobs' Biography (Bộ 1)",
+                    title: "Steve Jobs: From a Family Garage to Global Innovation",
+                    paragraphs: [
+                        `<b>[1]</b> Steve Jobs' childhood did not begin the way most people imagine a future genius would start out. Shortly after his birth in 1955, his biological parents decided he should go up for adoption, and he was adopted by a working-class couple in California who had promised to send him to college one day. The family bonded over weekend trips to the garage, where his adoptive father taught him how electronics worked.`,
+                        `<b>[2]</b> Jobs did attend college, but he dropped out of Reed College after only one semester, unable to see how the standard curriculum would help him. While he was sitting in on classes that <span class="underline font-bold text-blue-800">fascinated</span> him, he discovered a course on calligraphy that would later shape the elegant typography of his products.`,
+                        `<b>[3]</b> In 1976, Jobs co-founded Apple in his family's garage, aiming to make computers accessible to ordinary people rather than only to large corporations. Over the following decades, the company released one cutting-edge product after another, from personal computers to the iPhone. Not every idea succeeded immediately, but Jobs insisted on refining each product until it felt effortless to use.`,
+                        `<b>[4]</b> Each of these devices contributed to a genuine change in the way people worked, communicated, and were entertained. Several became instant blockbusters, selling millions of units within days of release.`,
+                        `<b>[5]</b> Behind these impressive achievements, however, Jobs' life was not without hardship. His marriage gave him a <span class="underline font-bold text-blue-800">steady</span> personal foundation from which to lead a demanding company, but in 2003 he was diagnosed with pancreatic cancer, a disease he battled for years while continuing to run Apple. <span class="bg-amber-100 px-1 rounded underline decoration-amber-600">He passed away in 2011, but the products he helped create remain in daily use around the world, a lasting testament to a man widely regarded as a genius.</span>`
+                    ],
+                    questions: [
+                        {
+                            prompt: "In paragraph 1, the writer's main purpose is to _______.",
+                            options: [
+                                "A. criticise the couple who adopted Jobs as a child",
+                                "B. compare Jobs' childhood with that of other geniuses",
+                                "C. describe how ordinary Jobs' early family life actually was",
+                                "D. explain why Jobs never felt close to his adoptive family"
+                            ],
+                            answer: 2,
+                            grammarPoint: "Mục đích của đoạn văn (Purpose)",
+                            explanation: "Đoạn 1 mô tả xuất thân giản dị của Steve Jobs trong một gia đình lao động bình thường ('working-class couple', 'weekend trips to the garage')."
+                        },
+                        {
+                            prompt: "The word 'fascinated' in paragraph 2 is CLOSEST in meaning to _______.",
+                            options: ["A. bored", "B. captivated", "C. confused", "D. worried"],
+                            answer: 1,
+                            grammarPoint: "Từ đồng nghĩa (Synonym)",
+                            explanation: "<b>fascinated</b> = <b>captivated</b> (làm say mê, cuốn hút)."
+                        },
+                        {
+                            prompt: "The word 'steady' in paragraph 5 is OPPOSITE in meaning to _______.",
+                            options: ["A. stable", "B. gentle", "C. private", "D. shaky"],
+                            answer: 3,
+                            grammarPoint: "Từ trái nghĩa (Antonym)",
+                            explanation: "<b>steady</b> (vững vàng, ổn định) >< <b>shaky</b> (bấp bênh, lung lay)."
+                        },
+                        {
+                            prompt: "Which of the following best paraphrases the highlighted sentence in paragraph 5?",
+                            options: [
+                                "A. The continued use of his products worldwide still reflects his lasting influence.",
+                                "B. Jobs became widely regarded as a genius because his products continued to sell well after his death.",
+                                "C. Jobs' products remained popular worldwide mainly because people wished to honour his achievement.",
+                                "D. Every product he personally designed is still commonly used around the world."
+                            ],
+                            answer: 0,
+                            grammarPoint: "Diễn giải câu (Paraphrasing)",
+                            explanation: "Việc các sản phẩm ông góp phần tạo ra vẫn được sử dụng hàng ngày trên toàn thế giới phản ánh tầm ảnh hưởng bền vững của ông = Đáp án A."
+                        },
+                        {
+                            prompt: "In which paragraph does the writer give examples of products to illustrate Apple's technological development?",
+                            options: ["A. Paragraph 2", "B. Paragraph 4", "C. Paragraph 3", "D. Paragraph 1"],
+                            answer: 2,
+                            grammarPoint: "Định vị thông tin theo đoạn",
+                            explanation: "Đoạn 3 nêu rõ: '...from personal computers to the iPhone'."
+                        },
+                        {
+                            prompt: "Which of the following statements would the writer most likely agree with?",
+                            options: [
+                                "A. Jobs' early setbacks had no real influence on his later success.",
+                                "B. Formal education mattered more to Jobs than hands-on curiosity.",
+                                "C. Apple's success depended entirely on luck rather than persistence.",
+                                "D. Jobs' unconventional choices ultimately shaped his creative achievements."
+                            ],
+                            answer: 3,
+                            grammarPoint: "Suy luận từ bài đọc (Inference)",
+                            explanation: "Những lựa chọn khác thường (bỏ ngang chương trình chuẩn để dự thính lớp thư pháp, khởi nghiệp ở gara) và sự kiên trì hoàn thiện sản phẩm đã định hình thành tựu sáng tạo của Jobs."
+                        }
+                    ]
+                },
+                {
+                    id: "s3_cultural_v1",
+                    topicName: "Cultural Borrowing vs. Appropriation",
+                    title: "Cultural Appreciation or Cultural Appropriation?",
+                    paragraphs: [
+                        `<b>[1]</b> When a well-known fashion brand released a clothing line featuring patterns borrowed from an indigenous community last year, the backlash was immediate. Critics accused the company of profiting from a culture it had neither consulted nor credited. The controversy <span class="underline font-bold text-blue-800">reignited</span> a long-running debate: where exactly is the line between appreciating another culture and appropriating it?`,
+                        `<b>[2]</b> Those who defend cultural borrowing point out that cultures have always influenced one another, often in ways that enrich rather than diminish. Music genres, culinary traditions, and fashion trends have historically spread across borders, evolving as they travel. From this perspective, treating every instance of cross-cultural influence as offensive risks discouraging the very exchange that has shaped human creativity for centuries.`,
+                        `<b>[3]</b> Critics, however, argue that context matters considerably. <span class="bg-amber-100 px-1 rounded underline decoration-amber-600">Borrowing becomes problematic, they contend, when it involves a dominant group profiting from elements of a marginalised culture without acknowledgement, compensation, or understanding of their original significance.</span> A sacred symbol reduced to a fashion accessory, <span class="underline font-bold text-blue-800">they</span> argue, is stripped of meaning for the sake of profit, regardless of how visually appealing the result may be.`,
+                        `<b>[4]</b> Resolving this tension may depend less on drawing a single fixed line than on asking better questions. Has the community whose culture is being referenced been consulted or credited? Does the exchange benefit only one side? For companies and individuals navigating an increasingly connected world, shaped as it is by globalisation, these questions, uncomfortable as they can be, are proving difficult to avoid.`
+                    ],
+                    questions: [
+                        {
+                            prompt: "What is the main purpose of paragraph 1?",
+                            options: [
+                                "A. To describe the design process behind a specific fashion collection.",
+                                "B. To argue that fashion brands should never reference other cultures.",
+                                "C. To introduce a real controversy that frames the passage's central debate.",
+                                "D. To compare the practices of several different fashion companies."
+                            ],
+                            answer: 2,
+                            grammarPoint: "Mục đích của đoạn văn",
+                            explanation: "Đoạn 1 giới thiệu một vụ tranh cãi thực tế để dẫn dắt vào chủ đề chính: ranh giới giữa trân trọng và chiếm dụng văn hóa."
+                        },
+                        {
+                            prompt: "The word 'reignited' in paragraph 1 is CLOSEST in meaning to _______.",
+                            options: ["A. eliminated", "B. avoided", "C. simplified", "D. revived"],
+                            answer: 3,
+                            grammarPoint: "Từ đồng nghĩa (Synonym)",
+                            explanation: "<b>reignited</b> (thổi bùng lại, làm sống lại cuộc tranh luận) = <b>revived</b>."
+                        },
+                        {
+                            prompt: "Which of the following best paraphrases the highlighted sentence in paragraph 3?",
+                            options: [
+                                "A. Critics believe cultural borrowing should always be equally acceptable between any two groups involved.",
+                                "B. Critics believe borrowing turns harmful mainly when powerful groups profit from marginalised cultures unfairly.",
+                                "C. Critics argue that marginalised cultures rarely produce traditions worth referencing in fashion design.",
+                                "D. Critics suggest that compensation alone always makes any cultural borrowing completely acceptable."
+                            ],
+                            answer: 1,
+                            grammarPoint: "Diễn giải câu (Paraphrasing)",
+                            explanation: "Việc vay mượn trở nên có hại khi một nhóm ưu thế trục lợi bất công từ nền văn hóa yếu thế mà không ghi nhận, đền bù hay thấu hiểu ý nghĩa gốc."
+                        },
+                        {
+                            prompt: "The word 'they' in paragraph 3 refers to _______.",
+                            options: ["A. companies", "B. communities", "C. critics", "D. designers"],
+                            answer: 2,
+                            grammarPoint: "Quy chiếu đại từ (Reference)",
+                            explanation: "Chủ ngữ ở đầu đoạn 3 là <b>Critics</b> ('Critics, however, argue... they contend... they argue')."
+                        },
+                        {
+                            prompt: "Which of the following statements would the writer most likely agree with?",
+                            options: [
+                                "A. Appreciation and appropriation are usually separated more by context than by a fixed rule.",
+                                "B. Cultural exchange should always be avoided completely in order to prevent controversy.",
+                                "C. Only large fashion brands are capable of appropriating other people's cultures.",
+                                "D. Consulting the communities involved makes no real difference to how borrowing is judged."
+                            ],
+                            answer: 0,
+                            grammarPoint: "Suy luận quan điểm tác giả",
+                            explanation: "Đoạn 3 & 4 khẳng định 'context matters considerably' và việc giải quyết phụ thuộc vào đặt các câu hỏi đúng ngữ cảnh hơn là kẻ một đường ranh giới cứng nhắc."
+                        },
+                        {
+                            prompt: "In which paragraph does the writer present the argument defending cultural borrowing?",
+                            options: ["A. Paragraph 1", "B. Paragraph 2", "C. Paragraph 3", "D. Paragraph 4"],
+                            answer: 1,
+                            grammarPoint: "Định vị thông tin theo đoạn",
+                            explanation: "Đoạn 2 mở đầu bằng 'Those who defend cultural borrowing point out that...'."
+                        }
+                    ]
+                },
+                {
+                    id: "s3_greenliving_v1",
+                    topicName: "Green Living Lifestyle",
+                    title: "Green Living: Conscious Choices for a Sustainable Future",
+                    paragraphs: [
+                        `<b>[1]</b> Green living is a lifestyle focused on reducing our environmental footprint through conscious choices. It involves taking actions that help <span class="underline font-bold text-blue-800">conserve</span> resources and protect the environment. By embracing eco-friendly habits, individuals contribute to a sustainable future. Simple steps like reducing energy use, recycling, and using less plastic can make a big difference in the long term.`,
+                        `<b>[2]</b> Energy conservation is a crucial part of green living. Using energy-efficient appliances, turning off lights when not in use, and utilizing renewable energy sources like solar and wind power are key strategies. <span class="underline font-bold text-blue-800">These</span> help reduce greenhouse gas emissions and lower our <span class="underline font-bold text-blue-800">dependence</span> on fossil fuels, contributing to a cleaner, greener planet.`,
+                        `<b>[3]</b> Another important aspect of green living is waste reduction. Instead of relying on single-use plastics, people can recycle materials like paper and plastic, compost organic waste, and reduce overall consumption. <span class="bg-amber-100 px-1 rounded underline decoration-amber-600">By recycling and reusing items, we help conserve resources and reduce the amount of waste that ends up in landfills, which can take years to decompose.</span>`,
+                        `<b>[4]</b> Transportation choices also play a significant role in reducing our environmental impact. Opting for public transportation, cycling, or walking instead of driving can significantly lower carbon emissions. These eco-friendly alternatives not only reduce pollution but also promote healthier lifestyles by encouraging physical activity.`
+                    ],
+                    questions: [
+                        {
+                            prompt: "Which of the following is NOT mentioned as part of green living in the passage?",
+                            options: [
+                                "A. reducing plastic use",
+                                "B. recycling things",
+                                "C. reducing energy use",
+                                "D. manufacturing electric planes"
+                            ],
+                            answer: 3,
+                            grammarPoint: "Thông tin Không được đề cập (NOT Mentioned)",
+                            explanation: "Đoạn 1 nhắc tới 'reducing energy use, recycling, and using less plastic', không hề nhắc tới sản xuất máy bay điện."
+                        },
+                        {
+                            prompt: "The word 'conserve' in paragraph 1 is OPPOSITE in meaning to _______.",
+                            options: ["A. save", "B. protect", "C. reuse", "D. waste"],
+                            answer: 3,
+                            grammarPoint: "Từ trái nghĩa (Antonym)",
+                            explanation: "<b>conserve</b> (bảo tồn, tiết kiệm tài nguyên) >< <b>waste</b> (lãng phí)."
+                        },
+                        {
+                            prompt: "The word 'These' in paragraph 2 refers to _______.",
+                            options: [
+                                "A. Key energy-conserving strategies",
+                                "B. Greenhouse gas emissions",
+                                "C. Fossil fuels",
+                                "D. Landfills"
+                            ],
+                            answer: 0,
+                            grammarPoint: "Quy chiếu đại từ (Reference)",
+                            explanation: "'These' thay thế cho toàn bộ các chiến lược tiết kiệm năng lượng ở câu trước ('Using energy-efficient appliances, turning off lights..., and utilizing renewable energy sources... are key strategies')."
+                        },
+                        {
+                            prompt: "The word 'dependence' in paragraph 2 could be best replaced by _______.",
+                            options: ["A. reduction", "B. conservation", "C. destruction", "D. reliance"],
+                            answer: 3,
+                            grammarPoint: "Từ đồng nghĩa (Synonym)",
+                            explanation: "<b>dependence on</b> = <b>reliance on</b> (sự phụ thuộc vào nhiên liệu hóa thạch)."
+                        },
+                        {
+                            prompt: "Which of the following best paraphrases the highlighted sentence in paragraph 3?",
+                            options: [
+                                "A. People should focus only on burning single-use plastics in landfills.",
+                                "B. Recycling and reusing materials help save resources and minimize slow-decomposing landfill waste.",
+                                "C. Waste that ends up in landfills decomposes immediately without harming resources.",
+                                "D. Reusing items increases the amount of organic waste sent to landfills."
+                            ],
+                            answer: 1,
+                            grammarPoint: "Diễn giải câu (Paraphrasing)",
+                            explanation: "Bằng cách tái chế và tái sử dụng, chúng ta giúp bảo tồn tài nguyên và giảm lượng rác thải ra bãi chôn lấp (vốn mất nhiều năm để phân hủy)."
+                        },
+                        {
+                            prompt: "Which of the following is TRUE according to paragraph 4?",
+                            options: [
+                                "A. Cycling and walking increase carbon emissions over time.",
+                                "B. Eco-friendly transport choices reduce physical activity and harm the planet.",
+                                "C. Public transport increases carbon and creates more urban pollution.",
+                                "D. Eco-friendly transport alternatives lower emissions and boost physical health."
+                            ],
+                            answer: 3,
+                            grammarPoint: "Đọc hiểu thông tin Đúng (TRUE)",
+                            explanation: "Câu cuối đoạn 4: 'These eco-friendly alternatives not only reduce pollution but also promote healthier lifestyles by encouraging physical activity.'"
+                        }
+                    ]
+                },
+                {
+                    id: "s3_diversity_v1",
+                    topicName: "Cultural Diversity",
+                    title: "Cultural Diversity: Celebrating Human Differences",
+                    paragraphs: [
+                        `<b>[1]</b> Cultural diversity is like having a big mix of different cultures all living together in one place. It's not just about different traditions and languages; it's about the unique ways people live their lives. This mix is crucial for creating a friendly and connected world, where everyone's uniqueness is not just accepted but also celebrated.`,
+                        `<b>[2]</b> One of the most interesting things about cultural diversity is that it allows us to share and exchange ideas. When people from different cultures meet, it's like a cultural exchange programme happening naturally. <span class="bg-amber-100 px-1 rounded underline decoration-amber-600">We get to learn from each other, understand different perspectives, and appreciate the varied combination of human experiences.</span> This <span class="underline font-bold text-blue-800">mutual learning</span> helps us realise that even though we may be from different backgrounds, we share more similarities than differences.`,
+                        `<b>[3]</b> Cultural diversity isn't just about the present, it's also about the preservation of the past. Every culture has <span class="underline font-bold text-blue-800">its</span> own special story, a history that goes way back, and things they always do like traditions. When we celebrate cultural diversity, we're not just acknowledging where people come from, we're recognising the wealth of knowledge and wisdom that has been passed down through generations.`,
+                        `<b>[4]</b> Moreover, this mix of cultures makes our world interesting and more creative. When people from different backgrounds work together, they bring unique insights and approaches. This variety of new ideas and creative solutions allows society to develop in different areas, from technology and science to art and entertainment. To keep this great mix of cultures lively, we must make an effort to actively include everyone. Being <span class="underline font-bold text-blue-800">inclusive</span> means making sure everyone feels welcome, regardless of where they're from or what language they speak.`
+                    ],
+                    questions: [
+                        {
+                            prompt: "Which of the following best paraphrases the highlighted sentence in paragraph 2?",
+                            options: [
+                                "A. Cultural diversity allows individuals to connect by sharing traditions and perspectives.",
+                                "B. Meeting people from other cultures always eliminates all personal differences.",
+                                "C. People from different cultures avoid sharing their traditions and experiences.",
+                                "D. Diversity hinders mutual understanding between different cultural groups."
+                            ],
+                            answer: 0,
+                            grammarPoint: "Diễn giải câu (Paraphrasing)",
+                            explanation: "Câu gốc nhấn mạnh sự học hỏi lẫn nhau, thấu hiểu các góc nhìn khác nhau và trân trọng trải nghiệm đa dạng = Đáp án A."
+                        },
+                        {
+                            prompt: "The phrase 'mutual learning' in paragraph 2 means _______.",
+                            options: [
+                                "A. learning from oneself",
+                                "B. learning from textbooks",
+                                "C. learning from each other",
+                                "D. learning without communication"
+                            ],
+                            answer: 2,
+                            grammarPoint: "Từ vựng (Vocabulary in Context)",
+                            explanation: "<b>mutual learning</b> = học hỏi lẫn nhau (learning from each other)."
+                        },
+                        {
+                            prompt: "According to paragraph 1, why is cultural diversity important to create a friendly world?",
+                            options: [
+                                "A. It develops a sense of connection and celebration of uniqueness.",
+                                "B. It decreases the uniqueness of one culture over others.",
+                                "C. It encourages everyone to speak only one language.",
+                                "D. It limits interaction between different cultures."
+                            ],
+                            answer: 0,
+                            grammarPoint: "Đọc hiểu chi tiết",
+                            explanation: "Đoạn 1: 'This mix is crucial for creating a friendly and connected world, where everyone's uniqueness is not just accepted but also celebrated.'"
+                        },
+                        {
+                            prompt: "The word 'its' in paragraph 3 refers to _______.",
+                            options: ["A. cultural diversity", "B. culture", "C. story", "D. history"],
+                            answer: 1,
+                            grammarPoint: "Quy chiếu đại từ (Reference)",
+                            explanation: "'Every <b>culture</b> has <b>its</b> own special story...' -> 'its' quy chiếu cho 'culture'."
+                        },
+                        {
+                            prompt: "The word 'inclusive' in paragraph 4 is CLOSEST in meaning to _______.",
+                            options: ["A. welcoming and connecting", "B. exclusive and closed", "C. separated", "D. identical"],
+                            answer: 0,
+                            grammarPoint: "Từ đồng nghĩa (Synonym)",
+                            explanation: "'Being <b>inclusive</b> means making sure everyone feels welcome...' (hòa nhập, chào đón và gắn kết mọi người)."
+                        },
+                        {
+                            prompt: "Which of the following is NOT mentioned in the passage as a benefit of cultural diversity?",
+                            options: [
+                                "A. It helps preserve historical knowledge and traditions.",
+                                "B. It fosters mutual understanding between people.",
+                                "C. It encourages innovation and creativity.",
+                                "D. It completely eliminates all military conflicts between nations."
+                            ],
+                            answer: 3,
+                            grammarPoint: "Thông tin Không được đề cập (NOT Mentioned)",
+                            explanation: "Bài đọc đề cập A (đoạn 3), B (đoạn 2), C (đoạn 4), nhưng không đề cập việc xóa bỏ hoàn toàn xung đột quân sự."
+                        }
+                    ]
+                }
+            ],
+
+            // ---------------------------------------------------------------------
+            // PART IV: REORDERING UTTERANCES / SENTENCES (Questions 18 - 21: 4 Questions)
+            // All 8 reordering items from the uploaded DOCX
+            // ---------------------------------------------------------------------
+            section4Items: [
+                {
+                    id: "s4_1",
+                    topic: "Cultural Traditions Dialogue",
+                    lines: [
+                        "a. Minh: Do you think these cultural traditions are still important today?",
+                        "b. Minh: I agree, they're a reminder of where we come from and what we value.",
+                        "c. Sarah: Absolutely, they connect us to our past and help keep our heritage alive."
+                    ],
+                    options: ["A. b - a - c", "B. a - b - c", "C. c - b - a", "D. a - c - b"],
+                    answer: 3,
+                    explanation: "Trình tự hợp lý: <b>a</b> (Minh đặt câu hỏi) → <b>c</b> (Sarah khẳng định tầm quan trọng) → <b>b</b> (Minh đồng tình)."
+                },
+                {
+                    id: "s4_2",
+                    topic: "Green Classroom Competition",
+                    lines: [
+                        "a. Nam: Hey guys, look at this notice! Our school is holding a Green Classroom Competition. The greenest classroom will win an ecotour!",
+                        "b. Nam: It says here that classrooms will be judged on raising environmental awareness, reducing our carbon footprint, and using resources efficiently.",
+                        "c. Mark: I guess we should start by cleaning up our classroom more frequently and having more plants in it.",
+                        "d. Mark: How exciting! But how will the classrooms be judged?"
+                    ],
+                    options: ["A. c - b - d - a", "B. a - d - b - c", "C. a - c - b - d", "D. b - a - d - c"],
+                    answer: 1,
+                    explanation: "Trình tự: <b>a</b> (Nam báo tin cuộc thi) → <b>d</b> (Mark hỏi tiêu chí chấm) → <b>b</b> (Nam đọc tiêu chí) → <b>c</b> (Mark đề xuất việc cần làm)."
+                },
+                {
+                    id: "s4_3",
+                    topic: "Letter to Grandparents",
+                    header: "Dear Grandpa and Grandma,",
+                    footer: "With love, Alex",
+                    lines: [
+                        "a. I believe his story could teach me a lot about resilience and strength.",
+                        "b. I hope you're both doing well, and I've been thinking a lot about Grandpa and his life lately.",
+                        "c. I would love to hear more about his younger years, especially how he overcame the challenges of poverty and war.",
+                        "d. Any memories or lessons you could share would mean a lot to me as I navigate my own path.",
+                        "e. What values did he hold dear, and how did he view family, work, and life?"
+                    ],
+                    options: ["A. b - c - e - a - d", "B. b - d - e - a - c", "C. b - c - e - d - a", "D. c - e - a - b - d"],
+                    answer: 0,
+                    explanation: "Cấu trúc thư: <b>b</b> (Hỏi thăm & mở đầu về ông) → <b>c</b> (Mong muốn nghe thời trẻ của ông) → <b>e</b> (Hỏi về các giá trị sống của ông) → <b>a</b> (Bài học về sự kiên cường) → <b>d</b> (Lời kết)."
+                },
+                {
+                    id: "s4_4",
+                    topic: "Green Lifestyle Paragraph",
+                    lines: [
+                        "a. We can start by using energy-efficient appliances at home, which reduce electricity consumption and lower our bills.",
+                        "b. Additionally, choosing organic food helps reduce the harmful chemicals that pollute our environment, so it's a win-win situation.",
+                        "c. Recycling is another easy step we can take, but many people still forget to separate their waste.",
+                        "d. Adopting a green lifestyle is essential for protecting the planet, and it can also save us money in the long run.",
+                        "e. If we all make small changes, we can contribute to a healthier planet for future generations."
+                    ],
+                    options: ["A. d - a - c - b - e", "B. e - a - c - b - d", "C. c - e - a - d - b", "D. e - a - d - b - c"],
+                    answer: 0,
+                    explanation: "Đoạn văn chuẩn: <b>d</b> (Câu chủ đề) → <b>a</b> (We can start by...) → <b>c</b> (Recycling is another easy step...) → <b>b</b> (Additionally, choosing organic food...) → <b>e</b> (Câu kết)."
+                },
+                {
+                    id: "s4_5",
+                    topic: "Sky Lanterns & Environment",
+                    lines: [
+                        "a. Emily: That's true. The litter from lanterns and balloons is very hard to decompose.",
+                        "b. Jack: Yes, I tried releasing sky lanterns during a festival. It looked beautiful! But I heard it's bad for the environment.",
+                        "c. Emily: Have you ever released sky lanterns or balloons, Jack?"
+                    ],
+                    options: ["A. a - b - c", "B. c - a - b", "C. b - c - a", "D. c - b - a"],
+                    answer: 3,
+                    explanation: "Trình tự: <b>c</b> (Emily hỏi Jack) → <b>b</b> (Jack kể trải nghiệm & tác hại môi trường) → <b>a</b> (Emily đồng tình)."
+                },
+                {
+                    id: "s4_6",
+                    topic: "Food Waste Dialogue",
+                    lines: [
+                        "a. Jack: Yeah, it's a huge issue. A lot of food gets thrown away, contributing to landfill waste and methane emissions.",
+                        "b. Jack: We can start by planning meals better and using leftovers creatively, like turning them into new dishes.",
+                        "c. Emma: That sounds great! I'll also start composting food scraps to help reduce waste.",
+                        "d. Emma: I've been reading a lot about the environmental impact of food waste. It's concerning.",
+                        "e. Emma: What can we do to reduce food waste at home?"
+                    ],
+                    options: ["A. d - a - e - b - c", "B. e - b - d - a - c", "C. e - b - c - a - d", "D. d - a - c - b - e"],
+                    answer: 0,
+                    explanation: "Trình tự: <b>d</b> (Emma nêu vấn đề lãng phí thức ăn) → <b>a</b> (Jack đồng tình) → <b>e</b> (Emma hỏi giải pháp) → <b>b</b> (Jack đề xuất cách làm) → <b>c</b> (Emma hưởng ứng)."
+                },
+                {
+                    id: "s4_7",
+                    topic: "Letter to Grandma about Hanoi Pho",
+                    header: "Dear Grandma,",
+                    footer: "Warmest regards, Nick",
+                    lines: [
+                        "a. Around me, locals shared stories, their warmth making me feel welcomed and connected.",
+                        "b. This morning in Hanoi, I found a bustling local eatery to try authentic Pho; its clear broth shimmered with tender slices of beef and vibrant herbs.",
+                        "c. The first sip revealed why this dish is celebrated: a perfect blend of savory and sweet, enriched by its complex flavors.",
+                        "d. It was not just a meal but a dive into Vietnamese culture, reminding me of our shared moments.",
+                        "e. I hope this letter finds you in good health and high spirits."
+                    ],
+                    options: ["A. a - c - d - e - b", "B. a - d - b - c - e", "C. e - b - c - a - d", "D. e - c - b - a - d"],
+                    answer: 2,
+                    explanation: "Trình tự bức thư: <b>e</b> (Lời hỏi thăm mở đầu) → <b>b</b> (Tìm quán Phở sáng nay ở Hà Nội) → <b>c</b> (Cảm nhận hương vị ngụm đầu tiên) → <b>a</b> (Không khí ấm áp xung quanh) → <b>d</b> (Ý nghĩa văn hóa kết đoạn)."
+                },
+                {
+                    id: "s4_8",
+                    topic: "Son Tung M-TP Paragraph",
+                    lines: [
+                        "a. His commitment to his craft is evident in his consistent release of hit songs, such as Lac Troi and Hay Trao Cho Anh, which have set new records in the Vietnamese music scene.",
+                        "b. Son Tung M-TP is a shining example of dedication and hard work in the Vietnamese music industry, achieving massive success at a young age.",
+                        "c. Over the years, he has faced numerous challenges, including criticism and the pressure of maintaining his popularity, yet his determination to improve and create new music has never wavered.",
+                        "d. Additionally, his ability to stay true to himself while adapting to global trends shows how perseverance and passion can lead to long-term success in a competitive industry.",
+                        "e. He not only broke through with his unique musical style, blending pop, rap, and traditional Vietnamese elements, but also gained a loyal fan base across Asia."
+                    ],
+                    options: ["A. d - b - a - c - e", "B. e - d - a - b - c", "C. b - c - e - a - d", "D. b - e - c - a - d"],
+                    answer: 3,
+                    explanation: "Trình tự: <b>b</b> (Giới thiệu Sơn Tùng M-TP) → <b>e</b> (Phong cách âm nhạc đột phá) → <b>c</b> (Vượt qua thử thách qua các năm) → <b>a</b> (Minh chứng qua các bản hit) → <b>d</b> (Ý bổ sung 'Additionally' và kết luận)."
+                }
+            ],
+
+            // ---------------------------------------------------------------------
+            // PART V: SENTENCE TRANSFORMATION & COMBINATION (Questions 22 - 28: 7 Questions)
+            // Drawn from all 11 sentences in the uploaded DOCX
+            // ---------------------------------------------------------------------
+            section5Items: [
+                {
+                    id: "s5_1",
+                    type: "Chuyển đổi Hiện tại hoàn thành ↔ Quá khứ đơn",
+                    original: "Dang Thuy Tram's diary has been published for more than twenty years.",
+                    promptHint: "Viết lại câu bắt đầu bằng: Dang Thuy Tram's diary was...",
+                    acceptedAnswers: [
+                        "Dang Thuy Tram's diary was first published more than twenty years ago.",
+                        "Dang Thuy Tram's diary was published more than twenty years ago."
+                    ],
+                    options: [
+                        "A. Dang Thuy Tram's diary was first published more than twenty years ago.",
+                        "B. Dang Thuy Tram's diary was published for more than twenty years ago.",
+                        "C. Dang Thuy Tram's diary has been published more than twenty years ago.",
+                        "D. Dang Thuy Tram's diary was stopped publishing more than twenty years ago."
+                    ],
+                    answer: 0,
+                    explanation: "Cấu trúc: <b>has/have been + V3/ed + for + khoảng thời gian</b> ⇔ <b>was/were (first) + V3/ed + khoảng thời gian + ago</b>."
+                },
+                {
+                    id: "s5_2",
+                    type: "Chuyển đổi Hiện tại hoàn thành ↔ Quá khứ đơn",
+                    original: "Local supermarkets have stopped providing free thin plastic bags for two years.",
+                    promptHint: "Viết lại câu bắt đầu bằng: Local supermarkets stopped...",
+                    acceptedAnswers: [
+                        "Local supermarkets stopped providing free thin plastic bags two years ago."
+                    ],
+                    options: [
+                        "A. Local supermarkets stopped to provide free thin plastic bags two years ago.",
+                        "B. Local supermarkets stopped providing free thin plastic bags two years ago.",
+                        "C. Local supermarkets stopped providing free thin plastic bags for two years ago.",
+                        "D. Local supermarkets have stopped providing free thin plastic bags two years ago."
+                    ],
+                    answer: 1,
+                    explanation: "Đổi từ HTHT sang QKĐ: bỏ <b>have</b> và đổi <b>for two years</b> thành <b>two years ago</b>."
+                },
+                {
+                    id: "s5_3",
+                    type: "Chuyển đổi Hiện tại hoàn thành ↔ Quá khứ đơn",
+                    original: "Many households in this area have sorted their rubbish for several months.",
+                    promptHint: "Viết lại câu bắt đầu bằng: Many households in this area started...",
+                    acceptedAnswers: [
+                        "Many households in this area started sorting their rubbish several months ago.",
+                        "Many households in this area started to sort their rubbish several months ago."
+                    ],
+                    options: [
+                        "A. Many households in this area started sorting their rubbish for several months.",
+                        "B. Many households in this area started sorting their rubbish several months ago.",
+                        "C. Many households in this area started sort their rubbish several months ago.",
+                        "D. Many households in this area have started sorting their rubbish several months ago."
+                    ],
+                    answer: 1,
+                    explanation: "<b>S + have/has + V3/ed + for + time</b> ⇔ <b>S + started/began + V-ing/to V + time + ago</b>."
+                },
+                {
+                    id: "s5_4",
+                    type: "Chuyển đổi Hiện tại hoàn thành ↔ Quá khứ đơn",
+                    original: "People in this district have adopted an eco-friendly lifestyle for a decade.",
+                    promptHint: "Viết lại câu bắt đầu bằng: People in this district began...",
+                    acceptedAnswers: [
+                        "People in this district began adopting an eco-friendly lifestyle a decade ago.",
+                        "People in this district began to adopt an eco-friendly lifestyle a decade ago."
+                    ],
+                    options: [
+                        "A. People in this district began adopting an eco-friendly lifestyle a decade ago.",
+                        "B. People in this district began adopting an eco-friendly lifestyle for a decade.",
+                        "C. People in this district began adopt an eco-friendly lifestyle a decade ago.",
+                        "D. People in this district have begun adopting an eco-friendly lifestyle a decade ago."
+                    ],
+                    answer: 0,
+                    explanation: "<b>have adopted ... for a decade</b> ⇔ <b>began adopting / to adopt ... a decade ago</b>."
+                },
+                {
+                    id: "s5_5",
+                    type: "Quá khứ tiếp diễn & Quá khứ đơn với WHEN",
+                    original: "In the middle of my dinner yesterday, the lights suddenly went out.",
+                    promptHint: "Viết lại câu dùng WHEN, bắt đầu bằng: I was...",
+                    acceptedAnswers: [
+                        "I was having dinner yesterday when the lights suddenly went out.",
+                        "I was having my dinner yesterday when the lights suddenly went out."
+                    ],
+                    options: [
+                        "A. I was having my dinner yesterday when the lights suddenly went out.",
+                        "B. I had my dinner yesterday when the lights were suddenly going out.",
+                        "C. I was having my dinner yesterday while the lights suddenly went out.",
+                        "D. When I was having my dinner yesterday, the lights were going out."
+                    ],
+                    answer: 0,
+                    explanation: "Hành động đang diễn ra (<b>I was having my dinner</b>) thì hành động ngắn cắt ngang (<b>when the lights suddenly went out</b>)."
+                },
+                {
+                    id: "s5_6",
+                    type: "Quá khứ tiếp diễn & Quá khứ đơn với WHILE",
+                    original: "During her volunteer work at the field hospital, Dr. Tram wrote in her diary.",
+                    promptHint: "Viết lại câu dùng WHILE, bắt đầu bằng: Dr. Tram wrote...",
+                    acceptedAnswers: [
+                        "Dr. Tram wrote in her diary while she was working as a volunteer at the field hospital.",
+                        "Dr. Tram wrote in her diary while she was volunteering at the field hospital.",
+                        "Dr. Tram wrote in her diary while she was doing her volunteer work at the field hospital."
+                    ],
+                    options: [
+                        "A. Dr. Tram wrote in her diary while she was volunteering at the field hospital.",
+                        "B. Dr. Tram was writing in her diary while she volunteered at the field hospital.",
+                        "C. Dr. Tram wrote in her diary during while she was volunteering at the field hospital.",
+                        "D. While Dr. Tram wrote in her diary, she was volunteering at the field hospital."
+                    ],
+                    answer: 0,
+                    explanation: "Thay <b>During + cụm danh từ</b> bằng mệnh đề <b>while + S + was/were + V-ing</b>."
+                },
+                {
+                    id: "s5_7",
+                    type: "Quá khứ tiếp diễn & Quá khứ đơn với WHEN",
+                    original: "Someone knocked on the front door while we were watching a documentary about General Vo Nguyen Giap.",
+                    promptHint: "Viết lại câu dùng WHEN, bắt đầu bằng: We were...",
+                    acceptedAnswers: [
+                        "We were watching a documentary about General Vo Nguyen Giap when someone knocked on the front door."
+                    ],
+                    options: [
+                        "A. We were watching a documentary about General Vo Nguyen Giap when someone knocked on the front door.",
+                        "B. We watched a documentary about General Vo Nguyen Giap when someone was knocking on the front door.",
+                        "C. We were watching a documentary about General Vo Nguyen Giap when someone was knocking on the front door.",
+                        "D. When we watched a documentary about General Vo Nguyen Giap, someone knocked on the front door."
+                    ],
+                    answer: 0,
+                    explanation: "<b>We were watching... (QKTD) + when + someone knocked... (QKĐ)</b>."
+                },
+                {
+                    id: "s5_8",
+                    type: "Kết hợp câu dùng Mệnh đề quan hệ WHICH",
+                    original: "Many supermarkets have started banning thin plastic bags. This makes green consumers glad.",
+                    promptHint: "Kết hợp câu sử dụng đại từ quan hệ WHICH:",
+                    acceptedAnswers: [
+                        "Many supermarkets have started banning thin plastic bags, which makes green consumers glad."
+                    ],
+                    options: [
+                        "A. Many supermarkets have started banning thin plastic bags, which makes green consumers glad.",
+                        "B. Many supermarkets have started banning thin plastic bags which make green consumers glad.",
+                        "C. Many supermarkets have started banning thin plastic bags, that makes green consumers glad.",
+                        "D. Many supermarkets, which makes green consumers glad, have started banning thin plastic bags."
+                    ],
+                    answer: 0,
+                    explanation: "Dùng <b>, which + V(số ít: makes)</b> để thay thế cho cả mệnh đề phía trước."
+                },
+                {
+                    id: "s5_9",
+                    type: "Kết hợp câu dùng Mệnh đề quan hệ WHICH",
+                    original: "We can turn food leftovers into organic compost. This helps reduce landfill waste.",
+                    promptHint: "Kết hợp câu sử dụng đại từ quan hệ WHICH:",
+                    acceptedAnswers: [
+                        "We can turn food leftovers into organic compost, which helps reduce landfill waste."
+                    ],
+                    options: [
+                        "A. We can turn food leftovers into organic compost, which help reduce landfill waste.",
+                        "B. We can turn food leftovers into organic compost, which helps reduce landfill waste.",
+                        "C. We can turn food leftovers into organic compost that helps reduce landfill waste.",
+                        "D. We can turn food leftovers, which helps reduce landfill waste, into organic compost."
+                    ],
+                    answer: 1,
+                    explanation: "Có dấu phẩy trước <b>which</b> và động từ <b>helps</b> chia số ít khi bổ nghĩa cho toàn bộ mệnh đề đứng trước."
+                },
+                {
+                    id: "s5_10",
+                    type: "Kết hợp câu dùng Mệnh đề quan hệ WHICH",
+                    original: "The students clean up the school yard every Friday. This is highly praised by teachers.",
+                    promptHint: "Kết hợp câu sử dụng đại từ quan hệ WHICH:",
+                    acceptedAnswers: [
+                        "The students clean up the school yard every Friday, which is highly praised by teachers."
+                    ],
+                    options: [
+                        "A. The students clean up the school yard every Friday, which is highly praised by teachers.",
+                        "B. The students clean up the school yard every Friday, that is highly praised by teachers.",
+                        "C. The students clean up the school yard every Friday which are highly praised by teachers.",
+                        "D. The school yard, which is highly praised by teachers, is cleaned up every Friday."
+                    ],
+                    answer: 0,
+                    explanation: "Dùng <b>, which is highly praised by teachers</b> để thay cho 'This' (việc học sinh dọn sân trường mỗi thứ Sáu)."
+                },
+                {
+                    id: "s5_11",
+                    type: "Kết hợp câu dùng Quá khứ tiếp diễn với WHILE / WHEN",
+                    original: "Walt Disney was living in Chicago. He attended McKinley High School.",
+                    promptHint: "Kết hợp câu sử dụng WHILE:",
+                    acceptedAnswers: [
+                        "While Walt Disney was living in Chicago, he attended McKinley High School.",
+                        "Walt Disney attended McKinley High School while he was living in Chicago."
+                    ],
+                    options: [
+                        "A. While Walt Disney was living in Chicago, he attended McKinley High School.",
+                        "B. While Walt Disney lived in Chicago, he was attending McKinley High School.",
+                        "C. Walt Disney was living in Chicago while he was attended McKinley High School.",
+                        "D. During Walt Disney was living in Chicago, he attended McKinley High School."
+                    ],
+                    answer: 0,
+                    explanation: "<b>While + S + was/were + V-ing</b> (While Walt Disney was living in Chicago), <b>S + V2/ed</b> (he attended McKinley High School)."
+                }
+            ]
+        };
+
+        // =========================================================================
+        // 2. STATE MANAGEMENT
+        // =========================================================================
+        let currentExam = {
+            code: 401,
+            section1: null,
+            section2: null,
+            section3: null,
+            section4: [],
+            section5: [],
+            allQuestions: [] // 28 questions total (6 + 5 + 6 + 4 + 7)
+        };
+
+        let userAnswers = {};      // { qNum: selectedIdx }
+        let userTypedAnswers = {}; // { qNum: string }
+        let isSubmitted = false;
+        let stickyPassageEnabled = true;
+        let collapsedPassages = { 1: false, 2: false, 3: false };
+        let showTypingForWriting = true;
+        let fontSizeStep = 0; // -1, 0, 1, 2
+        let timerSeconds = 50 * 60;
+        let timerInterval = null;
+        let lastUsedIndices = { s1: -1, s2: -1, s3: -1 };
+
+        // =========================================================================
+        // 3. RANDOMIZED EXAM BUILDER
+        // =========================================================================
+        function pickNextIndex(len, lastIdx) {
+            if (len <= 1) return 0;
+            let idx = Math.floor(Math.random() * len);
+            if (idx === lastIdx) idx = (idx + 1) % len;
+            return idx;
+        }
+
+        function shuffleArray(arr) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        function generateNewExam(confirmIfActive = false) {
+            if (confirmIfActive && !isSubmitted && Object.keys(userAnswers).length > 0) {
+                openModal(
+                    "Đổi mã đề kiểm tra mới?",
+                    "Bạn đang làm dở bài thi hiện tại. Nếu đổi đề mới, hệ thống sẽ tạo một mã đề mới với vị trí đục lỗ, từ vựng và câu hỏi khác.",
+                    () => {
+                        closeModal();
+                        buildExamSet();
+                    }
+                );
+                return;
+            }
+            buildExamSet();
+        }
+
+        function buildExamSet() {
+            userAnswers = {};
+            userTypedAnswers = {};
+            isSubmitted = false;
+            collapsedPassages = { 1: false, 2: false, 3: false };
+
+            document.getElementById("resultBanner").classList.add("hidden");
+            document.getElementById("mobileSubmitBtnText").textContent = "Nộp Bài";
+
+            const newCode = Math.floor(100 + Math.random() * 899);
+            currentExam.code = newCode;
+            document.getElementById("examCodeBadge").textContent = `Mã đề: ${newCode}`;
+
+            const s1Idx = pickNextIndex(QUESTION_BANK.section1Pools.length, lastUsedIndices.s1);
+            const s2Idx = pickNextIndex(QUESTION_BANK.section2Pools.length, lastUsedIndices.s2);
+            const s3Idx = pickNextIndex(QUESTION_BANK.section3Pools.length, lastUsedIndices.s3);
+            lastUsedIndices = { s1: s1Idx, s2: s2Idx, s3: s3Idx };
+
+            currentExam.section1 = QUESTION_BANK.section1Pools[s1Idx];
+            currentExam.section2 = QUESTION_BANK.section2Pools[s2Idx];
+            currentExam.section3 = QUESTION_BANK.section3Pools[s3Idx];
+            currentExam.section4 = shuffleArray(QUESTION_BANK.section4Items).slice(0, 4);
+            currentExam.section5 = shuffleArray(QUESTION_BANK.section5Items).slice(0, 7);
+
+            document.getElementById("activeTopicsSummary").textContent =
+                `${currentExam.section1.topicName} • ${currentExam.section2.topicName} • ${currentExam.section3.topicName}`;
+
+            // Assemble 28 questions
+            currentExam.allQuestions = [];
+            let qNum = 1;
+
+            currentExam.section1.questions.forEach(q => {
+                currentExam.allQuestions.push({ qNum: qNum++, section: 1, ...q });
+            });
+            currentExam.section2.questions.forEach(q => {
+                currentExam.allQuestions.push({ qNum: qNum++, section: 2, ...q });
+            });
+            currentExam.section3.questions.forEach(q => {
+                currentExam.allQuestions.push({ qNum: qNum++, section: 3, ...q });
+            });
+            currentExam.section4.forEach(q => {
+                currentExam.allQuestions.push({ qNum: qNum++, section: 4, ...q });
+            });
+            currentExam.section5.forEach(q => {
+                currentExam.allQuestions.push({ qNum: qNum++, section: 5, ...q });
+            });
+
+            renderExamPaper();
+            renderPalettes();
+            resetTimer();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // =========================================================================
+        // 4. INTERACTIVE PASSAGE PARSER (Injects clickable blanks with live fill!)
+        // =========================================================================
+        function formatInteractivePassage(rawHtml, sectionQuestions) {
+            let formatted = rawHtml;
+            sectionQuestions.forEach(q => {
+                const selectedIdx = userAnswers[q.qNum];
+                let chipContent = `(${q.qNum}) _______`;
+                let extraClass = "";
+
+                if (selectedIdx !== undefined) {
+                    const token = q.shortTokens ? q.shortTokens[selectedIdx] : q.options[selectedIdx].replace(/^[A-D]\.\s*/, "");
+                    chipContent = `(${q.qNum}) ${token}`;
+                    extraClass = "filled";
+                }
+
+                if (isSubmitted) {
+                    const rightToken = q.shortTokens ? q.shortTokens[q.answer] : q.options[q.answer].replace(/^[A-D]\.\s*/, "");
+                    if (selectedIdx === q.answer) {
+                        chipContent = `(${q.qNum}) ✓ ${rightToken}`;
+                        extraClass = "correct-blank";
+                    } else {
+                        chipContent = `(${q.qNum}) ✗ ${rightToken}`;
+                        extraClass = "wrong-blank";
+                    }
+                }
+
+                const badgeHtml = `<button type="button" id="blank-slot-${q.qNum}" onclick="jumpFromBlankToQuestion(${q.qNum})" class="blank-chip ${extraClass}" title="Chạm để nhảy tới Câu ${q.qNum}">${chipContent}</button>`;
+                formatted = formatted.replace(`{{${q.slot}}}`, badgeHtml);
+            });
+            return formatted;
+        }
+
+        // =========================================================================
+        // 5. MOBILE-FIRST RENDERING ENGINE
+        // =========================================================================
+        function renderExamPaper() {
+            const container = document.getElementById("examSectionsContainer");
+
+            // Sticky classes for Mobile & Desktop Split
+            const splitLayoutClass = stickyPassageEnabled
+                ? "grid grid-cols-1 xl:grid-cols-12 gap-4 sm:gap-6 items-start"
+                : "space-y-4";
+
+            let html = "";
+
+            // -----------------------------------------------------------------
+            // PART I (Questions 1 - 6)
+            // -----------------------------------------------------------------
+            const s1Questions = currentExam.allQuestions.filter(q => q.section === 1);
+            const s1PassageHtml = formatInteractivePassage(currentExam.section1.rawPassage, s1Questions);
+            html += renderReadingSection({
+                secId: "sec-1",
+                secNum: 1,
+                badgeColor: "text-blue-700 bg-blue-50 border-blue-200",
+                badgeTitle: "Phần I • Đọc điền Quảng cáo / Thông báo (Câu 1 – 6)",
+                instruction: "Read the following advertisement/announcement and mark the letter A, B, C, or D to indicate the option that best fits each of the numbered blanks from 1 to 6.",
+                passageTitle: currentExam.section1.title,
+                passageBodyHtml: `<div class="text-justify">${s1PassageHtml}</div>`,
+                questionsHtml: s1Questions.map(q => renderMCQuestionCard(q, `Câu ${q.qNum}`, true, 1)).join(""),
+                splitLayoutClass
+            });
+
+            // -----------------------------------------------------------------
+            // PART II (Questions 7 - 11)
+            // -----------------------------------------------------------------
+            const s2Questions = currentExam.allQuestions.filter(q => q.section === 2);
+            const s2PassageHtml = formatInteractivePassage(currentExam.section2.rawPassage, s2Questions);
+            html += renderReadingSection({
+                secId: "sec-2",
+                secNum: 2,
+                badgeColor: "text-indigo-700 bg-indigo-50 border-indigo-200",
+                badgeTitle: "Phần II • Đọc điền Khuyết mệnh đề / Câu (Câu 7 – 11)",
+                instruction: "Read the following passage and mark the letter A, B, C, or D to indicate the option that best fits each of the numbered blanks from 7 to 11.",
+                passageTitle: currentExam.section2.title,
+                passageBodyHtml: `<div class="text-justify">${s2PassageHtml}</div>`,
+                questionsHtml: s2Questions.map(q => renderMCQuestionCard(q, `Câu ${q.qNum}`, true, 2)).join(""),
+                splitLayoutClass
+            });
+
+            // -----------------------------------------------------------------
+            // PART III (Questions 12 - 17)
+            // -----------------------------------------------------------------
+            const s3Questions = currentExam.allQuestions.filter(q => q.section === 3);
+            html += renderReadingSection({
+                secId: "sec-3",
+                secNum: 3,
+                badgeColor: "text-emerald-700 bg-emerald-50 border-emerald-200",
+                badgeTitle: "Phần III • Đọc hiểu văn bản (Câu 12 – 17)",
+                instruction: "Read the following passage and mark the letter A, B, C, or D to indicate the best answer to each of the following questions from 12 to 17.",
+                passageTitle: currentExam.section3.title,
+                passageBodyHtml: `<div class="space-y-2.5 text-justify">${currentExam.section3.paragraphs.map(p => `<p>${p}</p>`).join("")}</div>`,
+                questionsHtml: s3Questions.map(q => renderMCQuestionCard(q, `Câu ${q.qNum}: ${q.prompt}`, false, 3)).join(""),
+                splitLayoutClass
+            });
+
+            // -----------------------------------------------------------------
+            // PART IV (Questions 18 - 21: Reordering)
+            // -----------------------------------------------------------------
+            const s4Questions = currentExam.allQuestions.filter(q => q.section === 4);
+            html += `
+                <section id="sec-4" class="bg-white rounded-2xl border border-slate-200 p-3.5 sm:p-6 shadow-xs scroll-mt-16">
+                    <div class="border-b border-slate-200 pb-3 mb-4">
+                        <span class="inline-block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 border border-amber-200 px-2.5 py-1 rounded-md">Phần IV • Sắp xếp hội thoại, thư & đoạn văn (Câu 18 – 21)</span>
+                        <h2 class="font-bold text-slate-900 text-xs sm:text-sm mt-2 leading-relaxed">
+                            Mark the letter A, B, C, or D to indicate the best arrangement of utterances or sentences to make a meaningful exchange or text in each of the following questions.
+                        </h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${s4Questions.map(q => renderReorderingCard(q)).join("")}
+                    </div>
+                </section>
+            `;
+
+            // -----------------------------------------------------------------
+            // PART V (Questions 22 - 28: Sentence Transformation & Combination)
+            // -----------------------------------------------------------------
+            const s5Questions = currentExam.allQuestions.filter(q => q.section === 5);
+            html += `
+                <section id="sec-5" class="bg-white rounded-2xl border border-slate-200 p-3.5 sm:p-6 shadow-xs scroll-mt-16">
+                    <div class="border-b border-slate-200 pb-3 mb-4">
+                        <span class="inline-block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-md">Phần V • Viết lại câu & Kết hợp câu (Câu 22 – 28)</span>
+                        <h2 class="font-bold text-slate-900 text-xs sm:text-sm mt-2 leading-relaxed">
+                            Choose the sentence that best rewrites or combines each of the following questions while keeping its original meaning. (Có hỗ trợ ô tự gõ câu để luyện kỹ năng viết).
+                        </h2>
+                    </div>
+                    <div class="space-y-4">
+                        ${s5Questions.map(q => renderWritingCard(q)).join("")}
+                    </div>
+                </section>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function renderReadingSection({ secId, secNum, badgeColor, badgeTitle, instruction, passageTitle, passageBodyHtml, questionsHtml, splitLayoutClass }) {
+            const isCollapsed = collapsedPassages[secNum];
+            const stickyWrapperClass = stickyPassageEnabled
+                ? "sticky top-13 z-20 xl:col-span-5 xl:top-16"
+                : "";
+            const rightColClass = stickyPassageEnabled
+                ? "xl:col-span-7 space-y-3.5"
+                : "space-y-3.5";
+
+            // On mobile, when sticky is enabled and not collapsed, cap height at 34vh so questions below are clearly visible!
+            const mobileScrollHeightClass = stickyPassageEnabled
+                ? "max-h-[34vh] xl:max-h-[70vh] overflow-y-auto custom-scrollbar"
+                : "";
+
+            return `
+                <section id="${secId}" class="bg-white rounded-2xl border border-slate-200 p-3 sm:p-6 shadow-xs scroll-mt-16">
+                    <div class="border-b border-slate-200 pb-2.5 mb-3.5">
+                        <span class="inline-block text-[11px] sm:text-xs font-bold uppercase tracking-wider border px-2.5 py-0.5 rounded-md ${badgeColor}">${badgeTitle}</span>
+                        <h2 class="font-semibold text-slate-700 text-xs sm:text-sm mt-1.5 leading-relaxed">${instruction}</h2>
+                    </div>
+
+                    <div class="${splitLayoutClass}">
+                        <!-- Sticky Collapsible Passage Container -->
+                        <div class="${stickyWrapperClass}">
+                            <div id="passage-box-${secNum}" class="bg-slate-50 rounded-xl border-2 border-slate-300 shadow-sm overflow-hidden">
+                                <!-- Passage Top Bar with Collapse/Expand button for mobile -->
+                                <div class="bg-slate-200/80 px-3 py-2 flex items-center justify-between gap-2 border-b border-slate-300">
+                                    <span class="font-bold text-slate-900 text-xs sm:text-sm truncate">📖 ${passageTitle}</span>
+                                    <button type="button" onclick="togglePassageCollapse(${secNum})" class="px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 text-blue-700 font-bold text-[11px] border border-slate-300 shrink-0 shadow-2xs active:scale-95 transition">
+                                        ${isCollapsed ? "Mở bài đọc ▾" : "Thu gọn ▴"}
+                                    </button>
+                                </div>
+                                <!-- Passage Body -->
+                                <div class="${isCollapsed ? 'hidden' : 'p-3 sm:p-4'} exam-serif text-slate-800 ${mobileScrollHeightClass}">
+                                    ${passageBodyHtml}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Questions Column -->
+                        <div class="${rightColClass}">
+                            ${questionsHtml}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderMCQuestionCard(q, titleHtml, hasBlankLink = false, secNum = 1) {
+            const selected = userAnswers[q.qNum];
+            return `
+                <div id="q-card-${q.qNum}" class="rounded-xl border border-slate-200 bg-white p-3.5 sm:p-4 transition scroll-mt-44">
+                    <div class="flex items-start justify-between gap-2 mb-2.5">
+                        <h4 class="font-bold text-slate-900 text-xs sm:text-sm leading-snug">${titleHtml}</h4>
+                        <div class="flex items-center gap-1.5 shrink-0">
+                            ${hasBlankLink ? `
+                                <button type="button" onclick="jumpFromQuestionToBlank(${q.qNum}, ${secNum})" class="text-[11px] font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2 py-0.5 rounded-md transition" title="Xem vị trí chỗ trống trong bài đọc">
+                                    🔍 Vị trí (${q.qNum})
+                                </button>
+                            ` : ""}
+                            <span class="hidden sm:inline-block text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">${q.grammarPoint || "Reading"}</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-2">
+                        ${q.options.map((opt, idx) => {
+                            const isChecked = selected === idx;
+                            let btnStyle = isChecked
+                                ? "border-blue-600 bg-blue-50/90 text-blue-950 font-semibold ring-1 ring-blue-600"
+                                : "border-slate-200 hover:border-blue-300 active:bg-slate-100 text-slate-700";
+
+                            if (isSubmitted) {
+                                if (idx === q.answer) {
+                                    btnStyle = "border-emerald-600 bg-emerald-50 text-emerald-950 font-bold ring-1 ring-emerald-600";
+                                } else if (isChecked && idx !== q.answer) {
+                                    btnStyle = "border-rose-500 bg-rose-50 text-rose-900 line-through ring-1 ring-rose-500";
+                                } else {
+                                    btnStyle = "border-slate-200 text-slate-400 opacity-75";
+                                }
+                            }
+
+                            return `
+                                <button type="button"
+                                    onclick="selectOption(${q.qNum}, ${idx})"
+                                    ${isSubmitted ? "disabled" : ""}
+                                    class="w-full text-left px-3.5 py-2.5 sm:py-3 rounded-xl border text-xs sm:text-sm transition flex items-center justify-between gap-2 ${btnStyle}">
+                                    <span class="leading-snug">${opt}</span>
+                                    ${isSubmitted && idx === q.answer ? `<span class="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded shrink-0">Đúng</span>` : ""}
+                                    ${isSubmitted && isChecked && idx !== q.answer ? `<span class="text-[11px] font-bold text-rose-800 bg-rose-100 px-2 py-0.5 rounded shrink-0">Bạn chọn</span>` : ""}
+                                </button>
+                            `;
+                        }).join("")}
+                    </div>
+                    ${renderExplanationBox(q)}
+                </div>
+            `;
+        }
+
+        function renderReorderingCard(q) {
+            const selected = userAnswers[q.qNum];
+            return `
+                <div id="q-card-${q.qNum}" class="rounded-xl border border-slate-200 bg-white p-3.5 sm:p-4 flex flex-col justify-between scroll-mt-24">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="font-bold text-slate-900 text-xs sm:text-sm">Câu ${q.qNum}:</span>
+                            <span class="text-[11px] bg-amber-50 text-amber-800 px-2 py-0.5 rounded border border-amber-200">${q.topic}</span>
+                        </div>
+                        <div class="bg-slate-50 rounded-xl border border-slate-200 p-3 mb-3 space-y-1.5 exam-serif text-slate-800">
+                            ${q.header ? `<p class="font-bold text-slate-900">${q.header}</p>` : ""}
+                            ${q.lines.map(line => `<p class="leading-relaxed">${line}</p>`).join("")}
+                            ${q.footer ? `<p class="font-bold text-slate-900 pt-1">${q.footer}</p>` : ""}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="grid grid-cols-2 gap-2">
+                            ${q.options.map((opt, idx) => {
+                                const isChecked = selected === idx;
+                                let btnStyle = isChecked
+                                    ? "border-blue-600 bg-blue-50 text-blue-950 font-bold ring-1 ring-blue-600"
+                                    : "border-slate-200 hover:border-blue-300 active:bg-slate-100 text-slate-700";
+
+                                if (isSubmitted) {
+                                    if (idx === q.answer) {
+                                        btnStyle = "border-emerald-600 bg-emerald-50 text-emerald-950 font-bold ring-1 ring-emerald-600";
+                                    } else if (isChecked && idx !== q.answer) {
+                                        btnStyle = "border-rose-500 bg-rose-50 text-rose-900 line-through";
+                                    }
+                                }
+
+                                return `
+                                    <button type="button"
+                                        onclick="selectOption(${q.qNum}, ${idx})"
+                                        ${isSubmitted ? "disabled" : ""}
+                                        class="px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-left transition ${btnStyle}">
+                                        ${opt}
+                                    </button>
+                                `;
+                            }).join("")}
+                        </div>
+                        ${renderExplanationBox(q)}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderWritingCard(q) {
+            const selected = userAnswers[q.qNum];
+            const typedVal = userTypedAnswers[q.qNum] || "";
+
+            return `
+                <div id="q-card-${q.qNum}" class="rounded-xl border border-slate-200 bg-white p-3.5 sm:p-5 scroll-mt-24">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <span class="font-bold text-slate-900 text-xs sm:text-sm">Câu ${q.qNum}:</span>
+                        <span class="text-[11px] font-medium bg-purple-50 text-purple-800 px-2 py-0.5 rounded border border-purple-200">${q.type}</span>
+                    </div>
+
+                    <div class="bg-slate-50 border-l-4 border-purple-600 p-3 rounded-r-xl mb-3">
+                        <p class="font-semibold text-slate-900 exam-serif">${q.original}</p>
+                        <p class="text-xs text-purple-700 font-semibold mt-1">➜ ${q.promptHint}</p>
+                    </div>
+
+                    ${showTypingForWriting ? `
+                        <div class="mb-3">
+                            <input type="text"
+                                value="${typedVal.replace(/"/g, '&quot;')}"
+                                oninput="handleTypingAnswer(${q.qNum}, this.value)"
+                                ${isSubmitted ? "disabled" : ""}
+                                placeholder="✍ Tự gõ câu viết lại của bạn tại đây để kiểm tra (hoặc chọn A, B, C, D bên dưới)..."
+                                class="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-300 focus:border-purple-600 focus:outline-none bg-white">
+                            ${isSubmitted && typedVal.trim() !== "" ? renderTypedFeedback(q, typedVal) : ""}
+                        </div>
+                    ` : ""}
+
+                    <div class="grid grid-cols-1 gap-2">
+                        ${q.options.map((opt, idx) => {
+                            const isChecked = selected === idx;
+                            let btnStyle = isChecked
+                                ? "border-blue-600 bg-blue-50 text-blue-950 font-semibold ring-1 ring-blue-600"
+                                : "border-slate-200 hover:border-blue-300 active:bg-slate-100 text-slate-700";
+
+                            if (isSubmitted) {
+                                if (idx === q.answer) {
+                                    btnStyle = "border-emerald-600 bg-emerald-50 text-emerald-950 font-bold ring-1 ring-emerald-600";
+                                } else if (isChecked && idx !== q.answer) {
+                                    btnStyle = "border-rose-500 bg-rose-50 text-rose-900 line-through";
+                                }
+                            }
+
+                            return `
+                                <button type="button"
+                                    onclick="selectOption(${q.qNum}, ${idx})"
+                                    ${isSubmitted ? "disabled" : ""}
+                                    class="w-full text-left px-3.5 py-2.5 sm:py-3 rounded-xl border text-xs sm:text-sm transition flex items-center justify-between gap-2 ${btnStyle}">
+                                    <span class="leading-snug">${opt}</span>
+                                    ${isSubmitted && idx === q.answer ? `<span class="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded shrink-0">Đúng</span>` : ""}
+                                </button>
+                            `;
+                        }).join("")}
+                    </div>
+                    ${renderExplanationBox(q)}
+                </div>
+            `;
+        }
+
+        function normalizeSentence(str) {
+            return str.trim().toLowerCase().replace(/\s+/g, " ").replace(/[.?!]+$/, "");
+        }
+
+        function renderTypedFeedback(q, typedVal) {
+            const normUser = normalizeSentence(typedVal);
+            const isMatch = q.acceptedAnswers.some(ans => normalizeSentence(ans) === normUser);
+            if (isMatch) {
+                return `<p class="text-xs font-bold text-emerald-700 mt-1.5">✓ Câu bạn tự gõ hoàn toàn chính xác!</p>`;
+            }
+            return `<p class="text-xs font-medium text-amber-800 mt-1.5">⚠ Đáp án chuẩn: <b>${q.acceptedAnswers[0]}</b></p>`;
+        }
+
+        function renderExplanationBox(q) {
+            if (!isSubmitted) return "";
+            const userChoice = userAnswers[q.qNum];
+            const isCorrect = userChoice === q.answer;
+            const badge = isCorrect
+                ? `<span class="text-emerald-700 font-bold text-xs">✓ Chính xác</span>`
+                : `<span class="text-rose-700 font-bold text-xs">✗ ${userChoice === undefined ? "Chưa làm" : "Sai"}</span>`;
+
+            return `
+                <div class="mt-3 pt-2.5 border-t border-slate-200 bg-slate-50 rounded-xl p-3 text-xs sm:text-sm space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="font-bold text-slate-800">💡 Giải thích (${q.grammarPoint || "Kiến thức THPT"}):</span>
+                        ${badge}
+                    </div>
+                    <p class="text-slate-700 leading-relaxed">${q.explanation}</p>
+                </div>
+            `;
+        }
+
+        // =========================================================================
+        // 6. INTERACTIONS: TWO-WAY BLANK LINKING, COLLAPSING & PALETTE
+        // =========================================================================
+        function selectOption(qNum, optionIdx) {
+            if (isSubmitted) return;
+            userAnswers[qNum] = optionIdx;
+            renderExamPaper();
+            renderPalettes();
+        }
+
+        function handleTypingAnswer(qNum, val) {
+            if (isSubmitted) return;
+            userTypedAnswers[qNum] = val;
+            const q = currentExam.allQuestions.find(item => item.qNum === qNum);
+            if (q && q.acceptedAnswers) {
+                const normUser = normalizeSentence(val);
+                const isExact = q.acceptedAnswers.some(a => normalizeSentence(a) === normUser);
+                if (isExact) {
+                    userAnswers[qNum] = q.answer;
+                    renderPalettes();
+                }
+            }
+        }
+
+        function jumpFromBlankToQuestion(qNum) {
+            const card = document.getElementById(`q-card-${qNum}`);
+            if (card) {
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
+                card.classList.add("flash-highlight");
+                setTimeout(() => card.classList.remove("flash-highlight"), 2600);
+            }
+        }
+
+        function jumpFromQuestionToBlank(qNum, secNum) {
+            if (collapsedPassages[secNum]) {
+                collapsedPassages[secNum] = false;
+                renderExamPaper();
+            }
+            const blankEl = document.getElementById(`blank-slot-${qNum}`);
+            if (blankEl) {
+                blankEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                blankEl.classList.add("flash-highlight");
+                setTimeout(() => blankEl.classList.remove("flash-highlight"), 2600);
+            }
+        }
+
+        function togglePassageCollapse(secNum) {
+            collapsedPassages[secNum] = !collapsedPassages[secNum];
+            renderExamPaper();
+        }
+
+        function toggleStickyPassageMode() {
+            stickyPassageEnabled = !stickyPassageEnabled;
+            document.getElementById("stickyModeLabel").textContent = stickyPassageEnabled
+                ? "Ghim bài đọc: Bật"
+                : "Ghim bài đọc: Tắt";
+            document.getElementById("stickyModeShortLabel").textContent = stickyPassageEnabled
+                ? "Ghim: Bật"
+                : "Ghim: Tắt";
+            renderExamPaper();
+        }
+
+        function adjustFontSize(delta) {
+            fontSizeStep = Math.max(-1, Math.min(3, fontSizeStep + delta));
+            const sizes = {
+                "-1": { size: "0.85rem", lh: "1.6" },
+                "0": { size: "0.95rem", lh: "1.7" },
+                "1": { size: "1.05rem", lh: "1.75" },
+                "2": { size: "1.15rem", lh: "1.8" },
+                "3": { size: "1.25rem", lh: "1.85" }
+            };
+            const chosen = sizes[String(fontSizeStep)];
+            document.documentElement.style.setProperty("--passage-font-size", chosen.size);
+            document.documentElement.style.setProperty("--passage-line-height", chosen.lh);
+        }
+
+        function togglePaperHeaderDetails() {
+            const el = document.getElementById("paperHeaderDetails");
+            const txt = document.getElementById("paperDetailToggleText");
+            if (el.classList.contains("hidden")) {
+                el.classList.remove("hidden");
+                txt.textContent = "Thu gọn ▴";
+            } else {
+                el.classList.add("hidden");
+                txt.textContent = "Chi tiết ▾";
+            }
+        }
+
+        function toggleWritingInputMode() {
+            showTypingForWriting = !showTypingForWriting;
+            document.getElementById("writingInputModeText").textContent = showTypingForWriting
+                ? "✍ Phần Viết: Bật ô tự gõ + Trắc nghiệm"
+                : "✍ Phần Viết: Chỉ Trắc nghiệm";
+            renderExamPaper();
+        }
+
+        function scrollToSection(secId) {
+            const el = document.getElementById(secId);
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        function renderPalettes() {
+            const total = currentExam.allQuestions.length;
+            const answeredCount = Object.keys(userAnswers).length;
+
+            document.getElementById("desktopProgressBadge").textContent = `${answeredCount} / ${total}`;
+            document.getElementById("mobileProgressText").textContent = `${answeredCount}/${total}`;
+
+            const buttonsHtml = currentExam.allQuestions.map(q => {
+                const ans = userAnswers[q.qNum];
+                let btnClass = "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300";
+
+                if (!isSubmitted && ans !== undefined) {
+                    btnClass = "bg-blue-600 text-white font-bold border-blue-700";
+                } else if (isSubmitted) {
+                    if (ans === q.answer) {
+                        btnClass = "bg-emerald-600 text-white font-bold border-emerald-700";
+                    } else {
+                        btnClass = "bg-rose-600 text-white font-bold border-rose-700";
+                    }
+                }
+
+                return `
+                    <button type="button"
+                        onclick="handlePaletteClick(${q.qNum})"
+                        class="h-9 rounded-xl text-xs font-bold transition flex items-center justify-center ${btnClass}">
+                        ${q.qNum}
+                    </button>
+                `;
+            }).join("");
+
+            document.getElementById("desktopPaletteGrid").innerHTML = buttonsHtml;
+            document.getElementById("mobilePaletteGrid").innerHTML = buttonsHtml;
+        }
+
+        function handlePaletteClick(qNum) {
+            toggleMobileDrawer(false);
+            jumpFromBlankToQuestion(qNum);
+        }
+
+        function toggleMobileDrawer(open) {
+            const drawer = document.getElementById("mobileDrawerBackdrop");
+            if (open) {
+                drawer.classList.remove("hidden");
+                drawer.classList.add("flex");
+            } else {
+                drawer.classList.add("hidden");
+                drawer.classList.remove("flex");
+            }
+        }
+
+        // =========================================================================
+        // 7. TIMER & GRADING
+        // =========================================================================
+        function resetTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerSeconds = 50 * 60;
+            updateTimerUI();
+            timerInterval = setInterval(() => {
+                if (isSubmitted) {
+                    clearInterval(timerInterval);
+                    return;
+                }
+                if (timerSeconds > 0) {
+                    timerSeconds--;
+                    updateTimerUI();
+                } else {
+                    clearInterval(timerInterval);
+                    finalizeSubmission();
+                }
+            }, 1000);
+        }
+
+        function updateTimerUI() {
+            const mins = String(Math.floor(timerSeconds / 60)).padStart(2, "0");
+            const secs = String(timerSeconds % 60).padStart(2, "0");
+            document.getElementById("timerDisplay").textContent = `${mins}:${secs}`;
+        }
+
+        function submitExam() {
+            if (isSubmitted) return;
+            const total = currentExam.allQuestions.length;
+            const answered = Object.keys(userAnswers).length;
+
+            if (answered < total) {
+                openModal(
+                    "Nộp bài ngay?",
+                    `Bạn mới làm ${answered}/${total} câu hỏi. Bạn có muốn nộp bài luôn để chấm điểm và xem giải thích chi tiết từng câu không?`,
+                    () => {
+                        closeModal();
+                        finalizeSubmission();
+                    }
+                );
+            } else {
+                finalizeSubmission();
+            }
+        }
+
+        function finalizeSubmission() {
+            isSubmitted = true;
+            if (timerInterval) clearInterval(timerInterval);
+
+            const total = currentExam.allQuestions.length;
+            let correctCount = 0;
+
+            currentExam.allQuestions.forEach(q => {
+                if (userAnswers[q.qNum] === q.answer) {
+                    correctCount++;
+                }
+            });
+
+            const score10 = ((correctCount / total) * 10).toFixed(2);
+            document.getElementById("finalScoreText").textContent = score10;
+            document.getElementById("resultSummaryText").textContent =
+                `Đúng ${correctCount}/${total} câu (Mã đề ${currentExam.code}). Các chỗ trống trong bài đọc đã được điền đáp án chuẩn và mở toàn bộ giải thích ngữ pháp ở dưới mỗi câu.`;
+            document.getElementById("mobileSubmitBtnText").textContent = `Điểm: ${score10}`;
+
+            const gradeBadge = document.getElementById("resultGradeBadge");
+            if (score10 >= 8.5) {
+                gradeBadge.textContent = "Xuất sắc";
+            } else if (score10 >= 6.5) {
+                gradeBadge.textContent = "Khá - Tốt";
+            } else if (score10 >= 5.0) {
+                gradeBadge.textContent = "Đạt yêu cầu";
+            } else {
+                gradeBadge.textContent = "Cần ôn thêm ngữ pháp";
+            }
+
+            document.getElementById("resultBanner").classList.remove("hidden");
+            renderExamPaper();
+            renderPalettes();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // =========================================================================
+        // 8. MODAL HELPERS
+        // =========================================================================
+        function openModal(title, message, onConfirm) {
+            document.getElementById("modalTitle").textContent = title;
+            document.getElementById("modalMessage").textContent = message;
+            document.getElementById("modalConfirmBtn").onclick = onConfirm;
+            const modal = document.getElementById("customModal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("customModal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        }
+
+        window.onload = function () {
+            buildExamSet();
+        };
+    </script>
+</body>
+</html>
