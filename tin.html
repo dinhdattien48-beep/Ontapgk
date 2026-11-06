@@ -1410,7 +1410,164 @@ button, input, select {
   }
 }
 
-  </style>
+  
+/* ==========================================================================
+   TỰ LUẬN TRỌNG TÂM TIN HỌC 12 - DEV BY TDAT
+   ========================================================================== */
+.theory-hero-box {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.12), rgba(6, 182, 212, 0.12));
+  border: 1px solid rgba(79, 70, 229, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.theory-hero-box h2 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--brand-primary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.theory-hero-box p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.theory-nav-pills {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.theory-pill-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: var(--shadow-sm);
+}
+.theory-pill-btn:hover {
+  background: var(--brand-primary);
+  color: #ffffff !important;
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.essay-qa-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--brand-primary);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  margin: 1rem 0;
+  box-shadow: var(--shadow-sm);
+}
+.essay-qa-card.accent-net {
+  border-left-color: #06b6d4;
+}
+.essay-qa-card.accent-ethics {
+  border-left-color: #10b981;
+}
+
+.essay-q-title {
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.essay-a-content {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.essay-a-content ul {
+  padding-left: 1.35rem;
+  margin: 0.5rem 0;
+}
+.essay-a-content li {
+  margin-bottom: 0.4rem;
+}
+
+.badge-essay {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: var(--brand-primary-light);
+  color: var(--brand-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-right: 0.4rem;
+  text-transform: uppercase;
+}
+.badge-essay.badge-cyan {
+  background: #ecfeff;
+  color: #0891b2;
+}
+.badge-essay.badge-emerald {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.proto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.88rem;
+}
+.proto-table th {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  border: 1px solid var(--border-color);
+  font-weight: 700;
+}
+.proto-table td {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.proto-table tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.highlight-box {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.15rem;
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+  color: #92400e;
+  line-height: 1.6;
+}
+[data-theme="dark"] .highlight-box {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #fcd34d;
+}
+
+</style>
 </head>
 <body>
 
@@ -1480,7 +1637,8 @@ button, input, select {
             <span class="badge-count">6 câu (24 ý)</span>
           </button>
           <button class="nav-tab-btn" data-tab="theory" onclick="window.app.switchTab('theory')">
-            <span>📚 Phần III: Lý thuyết & Tự luận</span>
+            <span>📝 Phần III: Tự Luận Trọng Tâm (Bài 1, 4, 6)</span>
+            <span class="badge-count" style="background:#7c3aed; color:#fff;">Trọng điểm</span>
           </button>
           <button class="nav-tab-btn" data-tab="gallery" onclick="window.app.switchTab('gallery')">
             <span>🖼️ 6 Ảnh đề gốc</span>
@@ -2336,55 +2494,333 @@ const quizData = {
     }
   ],
 
-  // PHẦN III: HƯỚNG DẪN ÔN TẬP VÀ ĐỀ CƯƠNG TỰ LUẬN
+    // PHẦN III: HƯỚNG DẪN ÔN TẬP VÀ ĐỀ CƯƠNG TỰ LUẬN - DEV BY TDAT
   part3: {
-    title: "Phần III. Ôn tập kiến thức Tự luận trọng tâm Tin học 12",
+    title: "Phần III. Đề Cương Tự Luận Trọng Tâm Tin Học 12 (GDPT 2018)",
     topics: [
       {
-        lesson: "Bài 1: Làm quen với Trí tuệ nhân tạo (AI)",
+        lesson: "Bài 1: Làm Quen Với Trí Tuệ Nhân Tạo (AI)",
+        anchor: "lesson-bai-1",
+        icon: "🤖",
         sections: [
           {
-            heading: "Khái niệm Trí tuệ nhân tạo (AI)",
-            content: "Trí tuệ nhân tạo là ngành khoa học máy tính nghiên cứu cách chế tạo các hệ thống có khả năng thực hiện các tác vụ đòi hỏi trí thông minh của con người như: học hỏi, tư duy logic, hiểu ngôn ngữ tự nhiên, nhận dạng hình ảnh và giải quyết vấn đề."
+            heading: "1. Khái niệm Trí tuệ nhân tạo (Artificial Intelligence - AI)",
+            content: `
+              <p>• <b>Định nghĩa chuẩn:</b> Trí tuệ nhân tạo (AI) là một ngành khoa học máy tính và kỹ thuật chuyên nghiên cứu, phát triển các hệ thống máy móc hoặc chương trình máy tính có khả năng mô phỏng các hoạt động trí tuệ của con người như: học tập từ dữ liệu, tư duy logic, hiểu ngôn ngữ tự nhiên, nhận thức không gian/hình ảnh, suy luận và giải quyết vấn đề phức tạp.</p>
+              <div class="highlight-box">
+                <b>📌 Phân loại AI theo năng lực:</b><br>
+                1. <b>AI hẹp (Narrow AI / Weak AI):</b> Là hệ thống được thiết kế và huấn luyện để giải quyết xuất sắc <i>một tác vụ cụ thể</i> (ví dụ: chơi cờ vua, nhận dạng khuôn mặt FaceID, xe tự lái, dịch thuật tự động, ChatGPT). <b>Toàn bộ các hệ thống AI hiện nay đều thuộc cấp độ này.</b><br>
+                2. <b>AI tổng quát (General AI / AGI):</b> Hệ thống có năng lực trí tuệ tương đương con người trên mọi lĩnh vực, có khả năng tự tư duy và thích nghi với mọi vấn đề mới (đang trong quá trình nghiên cứu).<br>
+                3. <b>Siêu trí tuệ nhân tạo (Superintelligence / ASI):</b> Cấp độ lý thuyết vượt trội hơn hẳn trí tuệ của toàn bộ nhân loại cộng lại.
+              </div>
+              <p>• <b>So sánh AI với phần mềm truyền thống:</b></p>
+              <table class="proto-table">
+                <tr><th>Tiêu chí</th><th>Phần mềm truyền thống</th><th>Hệ thống Trí tuệ nhân tạo (AI)</th></tr>
+                <tr><td>Nguyên lí hoạt động</td><td>Chạy theo các quy tắc và thuật toán cố định do lập trình viên viết sẵn từng bước (If - Else).</td><td>Tự học hỏi quy luật ngầm từ tập dữ liệu lớn thông qua các mô hình Học máy (Machine Learning) và Mạng nơ-ron sâu.</td></tr>
+                <tr><td>Khả năng thích nghi</td><td>Không thể giải quyết tình huống nằm ngoài phạm vi lập trình ban đầu.</td><td>Có khả năng thích ứng linh hoạt, tổng quát hóa và xử lí chính xác khi gặp dữ liệu hoàn toàn mới.</td></tr>
+                <tr><td>Nâng cấp cải tiến</td><td>Cần lập trình viên chỉnh sửa và viết lại mã nguồn.</td><td>Độ chính xác và trí thông minh tự động nâng cao khi được nạp thêm nhiều dữ liệu huấn luyện.</td></tr>
+              </table>
+            `
           },
           {
-            heading: "Đặc trưng của AI so với phần mềm truyền thống",
-            content: "• Khả năng tự học từ dữ liệu (Machine Learning, Deep Learning).\n• Khả năng suy luận, thích nghi với hoàn cảnh chưa được lập trình trước.\n• Khả năng nhận thức môi trường qua các giác quan số (thị giác máy tính, nhận dạng giọng nói)."
+            heading: "2. Các đặc trưng cốt lõi của Trí tuệ nhân tạo (AI)",
+            content: `
+              <p>Hệ thống AI sở hữu <b>5 đặc trưng nền tảng</b> sau đây:</p>
+              <ul>
+                <li><b>1. Khả năng tự học (Learning / Machine Learning):</b> Hệ thống có thể tự động rút trích quy luật, phát hiện xu hướng và cải thiện hiệu suất thực hiện nhiệm vụ từ kinh nghiệm (dữ liệu quá khứ) mà không cần con người lập trình lại từng câu lệnh.</li>
+                <li><b>2. Khả năng hiểu và xử lí ngôn ngữ tự nhiên (Natural Language Processing - NLP):</b> Cho phép máy tính hiểu nghĩa, phân tích ngữ pháp, tổng hợp và giao tiếp bằng ngôn ngữ của con người (tiếng Việt, tiếng Anh...), hỗ trợ dịch tự động, tóm tắt văn bản và trả lời câu hỏi tự nhiên.</li>
+                <li><b>3. Khả năng thị giác máy tính và nhận dạng (Computer Vision):</b> Thu nhận, xử lý và hiểu nội dung từ hình ảnh, video thực tế: nhận dạng khuôn mặt, phát hiện vật thể, quét biển số xe, đọc vân tay, phân tích ảnh X-quang/MRI.</li>
+                <li><b>4. Khả năng suy luận, giải quyết vấn đề và ra quyết định (Reasoning & Problem Solving):</b> Tự liên kết các thông tin rời rạc, phân tích quan hệ logic, đánh giá nhiều phương án để tìm ra nước đi hoặc giải pháp tối ưu (ví dụ: cờ vây AlphaGo, lập kế hoạch lộ trình giao hàng).</li>
+                <li><b>5. Khả năng tự thích nghi (Adaptability):</b> Tự điều chỉnh hành vi và mô hình khi môi trường vận hành hoặc điều kiện dữ liệu đầu vào có sự thay đổi.</li>
+              </ul>
+            `
           },
           {
-            heading: "Một số ứng dụng AI tiêu biểu",
-            content: "• Y tế: Chẩn đoán hình ảnh X-quang/MRI, phát hiện tế bào ung thư, dự đoán phát triển thuốc mới.\n• Giao thông: Xe tự hành (Tesla, Waymo), hệ thống điều phối đèn tín hiệu thông minh.\n• Giáo dục: Gia sư ảo cá nhân hóa lộ trình học, chấm bài tự động.\n• AI tạo sinh (GenAI): ChatGPT, Midjourney, Gemini hỗ trợ sáng tạo nội dung văn bản, hình ảnh, mã nguồn."
+            heading: "3. Một số ứng dụng thực tế tiêu biểu của AI trong đời sống",
+            content: `
+              <table class="proto-table">
+                <tr><th>Lĩnh vực</th><th>Ứng dụng thực tế tiêu biểu</th><th>Ý nghĩa & Giá trị mang lại</th></tr>
+                <tr><td><b>Y tế & Sức khỏe</b></td><td>• Phân tích ảnh chụp CT, X-quang, MRI để phát hiện sớm tế bào ung thư.<br>• Dự đoán cấu trúc protein (AlphaFold) hỗ trợ nghiên cứu thuốc mới.<br>• Robot hỗ trợ bác sĩ phẫu thuật chính xác cao.</td><td>Nâng cao tỷ lệ chữa khỏi bệnh, giảm tải cho y bác sĩ, phát triển y học cá nhân hóa.</td></tr>
+                <tr><td><b>Giao thông & Đô thị</b></td><td>• Xe tự hành (Tesla, Waymo) tự nhận biết làn đường, người đi bộ và chướng ngại vật.<br>• Hệ thống đèn tín hiệu giao thông thông minh tự điều phối luồng xe.<br>• Camera AI phạt nguội vi phạm.</td><td>Giảm thiểu tai nạn giao thông, giảm ùn tắc đô thị và tối ưu hóa thời gian di chuyển.</td></tr>
+                <tr><td><b>Giáo dục & Đào tạo</b></td><td>• Nền tảng học tập thích ứng (Adaptive Learning) cá nhân hóa lộ trình học theo lực học từng học sinh.<br>• Trợ lí ảo giải đáp bài tập, hệ thống chấm bài tự động.</td><td>Tạo cơ hội học tập bình đẳng, giúp học sinh phát huy tối đa năng lực cá nhân.</td></tr>
+                <tr><td><b>Tài chính & Ngân hàng</b></td><td>• Hệ thống phát hiện gian lận thanh toán thẻ tín dụng trong mili giây.<br>• Chấm điểm tín dụng tự động, chatbot tư vấn tài chính 24/7.</td><td>Bảo vệ an toàn tài khoản người dùng, đẩy nhanh tốc độ giải ngân và giao dịch.</td></tr>
+                <tr><td><b>Đời sống & AI Tạo sinh</b></td><td>• Trợ lý ảo giọng nói (Siri, Google Assistant).<br>• Công cụ AI tạo sinh (ChatGPT, Gemini, Claude, Midjourney) hỗ trợ sáng tạo nội dung, viết văn bản, lập trình, tạo hình ảnh.</td><td>Tiết kiệm thời gian, tăng năng suất lao động và mở ra xu hướng công việc mới.</td></tr>
+              </table>
+            `
+          },
+          {
+            heading: "4. Câu hỏi tự luận mẫu & Hướng dẫn trả lời đạt điểm tối đa (Bài 1)",
+            content: `
+              <div class="essay-qa-card">
+                <div class="essay-q-title">
+                  <span class="badge-essay">Câu 1 (Tự luận)</span>
+                  <span>Trình bày khái niệm và các đặc trưng cơ bản của Trí tuệ nhân tạo (AI)? So sánh AI với phần mềm truyền thống?</span>
+                </div>
+                <div class="essay-a-content">
+                  <b>Dàn ý trả lời chuẩn:</b>
+                  <ul>
+                    <li><b>Ý 1 - Khái niệm:</b> Nêu rõ AI là ngành khoa học máy tính nghiên cứu chế tạo các hệ thống mô phỏng hành vi trí tuệ của con người (học hỏi, tư duy, suy luận, thích nghi...). Nêu rõ hiện nay chủ yếu là AI hẹp.</li>
+                    <li><b>Ý 2 - 5 Đặc trưng cốt lõi:</b> Nêu và giải thích ngắn gọn 5 đặc trưng: (1) Khả năng tự học (Machine Learning); (2) Hiểu ngôn ngữ tự nhiên (NLP); (3) Thị giác máy tính; (4) Suy luận logic và giải quyết vấn đề; (5) Tự thích nghi với môi trường mới.</li>
+                    <li><b>Ý 3 - So sánh với phần mềm truyền thống:</b> Nêu bảng so sánh về cơ chế (quy tắc định sẵn If-Else vs tự học từ dữ liệu) và khả năng thích nghi khi gặp tình huống mới ngoài lập trình.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="essay-qa-card">
+                <div class="essay-q-title">
+                  <span class="badge-essay">Câu 2 (Tự luận)</span>
+                  <span>Phân tích ít nhất 3 ứng dụng nổi bật của AI trong đời sống hiện nay. Theo em, học sinh cần có thái độ và kỹ năng gì khi sử dụng các công cụ AI trong học tập?</span>
+                </div>
+                <div class="essay-a-content">
+                  <b>Dàn ý trả lời chuẩn:</b>
+                  <ul>
+                    <li><b>Ý 1 - 3 Ứng dụng:</b> Chọn phân tích sâu 3 lĩnh vực (Y tế: chẩn đoán ảnh, Giao thông: xe tự hành/điều phối đèn, Giáo dục: gia sư ảo cá nhân hóa). Mỗi ứng dụng nêu ví dụ cụ thể.</li>
+                    <li><b>Ý 2 - Thái độ và kỹ năng học sinh cần có:</b>
+                      <br>• Xem AI là công cụ hỗ trợ tư duy, không sao chép nguyên văn làm bài tập để gian lận.
+                      <br>• Luôn có tư duy phản biện, kiểm chứng nguồn tin vì AI có thể đưa ra thông tin sai lệch ("ảo giác AI").
+                      <br>• Bảo vệ thông tin cá nhân, không tải tài liệu mật hoặc thông tin nhạy cảm lên các nền tảng AI công cộng.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            `
           }
         ]
       },
       {
-        lesson: "Bài 4: Giao thức mạng và Thiết bị mạng",
+        lesson: "Bài 4: Giao Thức Mạng (Network Protocols)",
+        anchor: "lesson-bai-4",
+        icon: "🌐",
         sections: [
           {
-            heading: "Bộ giao thức TCP/IP",
-            content: "• IP (Internet Protocol): Phụ trách địa chỉ hóa và định tuyến gói tin từ nguồn đến đích.\n• TCP (Transmission Control Protocol): Phụ trách chia nhỏ dữ liệu thành các gói tin, thiết lập kết nối tin cậy, kiểm tra lỗi và đảm bảo truyền đủ, đúng thứ tự."
+            heading: "1. Khái niệm & Vai trò của Giao thức mạng",
+            content: `
+              <p>• <b>Khái niệm:</b> Giao thức mạng (Network Protocol) là tập hợp các quy tắc, quy ước và thỏa thuận kỹ thuật được chuẩn hóa nhằm quy định cách thức định dạng thông điệp, đóng gói dữ liệu, truyền nhận, phát hiện lỗi và đồng bộ hóa thông tin giữa các thiết bị trên mạng máy tính.</p>
+              <p>• <b>Vai trò then chốt:</b></p>
+              <ul>
+                <li><b>Ngôn ngữ chung:</b> Cho phép các thiết bị khác biệt hoàn toàn về nhà sản xuất, phần cứng và hệ điều hành (Windows, Android, iOS, Linux) có thể hiểu và kết nối được với nhau.</li>
+                <li><b>Định dạng và phân chia dữ liệu:</b> Chia nhỏ luồng thông tin lớn thành các gói tin (packets) nhỏ hơn để truyền đi an toàn và hiệu quả.</li>
+                <li><b>Định tuyến và gửi đúng đích:</b> Quản lý việc đánh địa chỉ nguồn, địa chỉ đích và tìm đường truyền ngắn nhất, thông suốt nhất.</li>
+                <li><b>Kiểm soát lỗi và chống tắc nghẽn:</b> Phát hiện các gói tin bị mất mát, méo dạng trên đường truyền và yêu cầu gửi lại kịp thời.</li>
+              </ul>
+            `
           },
           {
-            heading: "Phân biệt các thiết bị mạng cốt lõi",
-            content: "• Switch: Bộ chuyển mạch thông minh trong mạng LAN, định vị máy đích bằng địa chỉ MAC vật lý, tối ưu hóa băng thông.\n• Router: Bộ định tuyến kết nối các mạng khác nhau (LAN với Internet), chuyển tiếp gói tin dựa trên địa chỉ IP.\n• Access Point (AP): Cầu nối chuyển đổi mạng có dây thành sóng Wi-Fi cho các thiết bị di động.\n• Hub: Thiết bị chuyển tiếp đơn giản, gửi broadcast dữ liệu tới mọi cổng, dễ gây xung đột và làm chậm mạng."
+            heading: "2. Bộ giao thức TCP/IP - Xương sống của mạng Internet",
+            content: `
+              <p>Bộ giao thức <b>TCP/IP</b> là tập hợp các giao thức nền tảng tạo nên mạng Internet toàn cầu, trong đó 2 giao thức chủ chốt nhất là <b>IP</b> và <b>TCP</b>:</p>
+              
+              <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1rem; margin-bottom:1rem;">
+                <b style="color:#0891b2; font-size:1.05rem;">📍 Giao thức IP (Internet Protocol) - Tầng Mạng:</b>
+                <p style="margin-top:0.4rem;">• <b>Chức năng:</b> Đánh địa chỉ logic cho các thiết bị và thực hiện <i>định tuyến (routing)</i> các gói tin qua các mạng khác nhau từ máy gửi đến máy nhận thông qua các Router.<br>
+                • <b>Đặc điểm:</b> IP không đảm bảo gói tin có tới đích hay không (phi kết nối, unreliable). Việc đảm bảo tin cậy do tầng trên (TCP) phụ trách.<br>
+                • <b>Phân biệt IPv4 và IPv6:</b></p>
+                <table class="proto-table">
+                  <tr><th>Tiêu chí</th><th>IPv4</th><th>IPv6</th></tr>
+                  <tr><td>Độ dài</td><td><b>32 bit</b> (4 byte)</td><td><b>128 bit</b> (16 byte)</td></tr>
+                  <tr><td>Cách biểu diễn</td><td>4 số thập phân cách nhau bằng dấu chấm (vd: <code>192.168.1.1</code>), mỗi số từ <b>0 đến 255</b>.</td><td>8 nhóm số thập lục phân (hex) cách nhau bằng dấu hai chấm (vd: <code>2001:0db8:85a3::8a2e:0370:7334</code>).</td></tr>
+                  <tr><td>Không gian địa chỉ</td><td>Khoảng 4,3 tỷ địa chỉ (đã cạn kiệt).</td><td>Gần như vô tận (~ 3,4 × 10<sup>38</sup> địa chỉ), đáp ứng kỷ nguyên IoT.</td></tr>
+                  <tr><td>Bảo mật</td><td>Phụ thuộc vào các giao thức bổ sung.</td><td>Tích hợp sẵn giao thức mã hóa bảo mật IPSec.</td></tr>
+                </table>
+              </div>
+
+              <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1rem;">
+                <b style="color:#4f46e5; font-size:1.05rem;">📦 Giao thức TCP (Transmission Control Protocol) - Tầng Giao Vận:</b>
+                <p style="margin-top:0.4rem;">• <b>Chức năng:</b> Đảm bảo truyền dữ liệu một cách <i>tin cậy, chính xác và đầy đủ</i> giữa hai ứng dụng trên mạng.<br>
+                • <b>Cơ chế hoạt động:</b><br>
+                &nbsp;&nbsp;1. Thiết lập kết nối trước khi truyền bằng cơ chế bắt tay 3 bước (<b>Three-Way Handshake</b>: SYN → SYN-ACK → ACK).<br>
+                &nbsp;&nbsp;2. Chia dữ liệu thành các gói tin nhỏ (segments) và đánh số thứ tự (Sequence number) để ráp lại đúng thứ tự tại máy nhận.<br>
+                &nbsp;&nbsp;3. Kiểm tra tính toàn vẹn (Checksum); gửi tín hiệu báo nhận (ACK). Nếu bên nhận chưa nhận được gói nào thì bên gửi sẽ tự động truyền lại gói đó.<br>
+                &nbsp;&nbsp;4. Kiểm soát luồng (Flow Control) tránh làm bên nhận bị quá tải bộ đệm.</p>
+              </div>
+            `
           },
           {
-            heading: "Địa chỉ IPv4",
-            content: "Độ dài 32 bit, chia thành 4 byte (octet), mỗi octet có giá trị từ 0 đến 255 (ví dụ: 192.168.1.1). Chú ý: Dãy có số vượt 255 (như 300) là không hợp lệ."
+            heading: "3. Bảng so sánh chuyên sâu: Giao thức TCP vs UDP",
+            content: `
+              <p>Trong tầng giao vận, ngoài TCP còn có giao thức <b>UDP (User Datagram Protocol)</b>. Đây là dạng câu hỏi so sánh cực kỳ hay gặp trong đề thi tự luận:</p>
+              <table class="proto-table">
+                <tr><th>Đặc điểm so sánh</th><th>TCP (Transmission Control Protocol)</th><th>UDP (User Datagram Protocol)</th></tr>
+                <tr><td><b>Phương thức kết nối</b></td><td><b>Hướng kết nối</b> (Phải bắt tay 3 bước thiết lập kết nối trước khi truyền dữ liệu).</td><td><b>Không hướng kết nối</b> (Gửi dữ liệu trực tiếp đi ngay không cần bắt tay hay thông báo trước).</td></tr>
+                <tr><td><b>Độ tin cậy</b></td><td><b style="color:#10b981;">Cực kì cao:</b> Đảm bảo dữ liệu đến đủ 100%, đúng thứ tự, không bị trùng lặp.</td><td><b style="color:#ef4444;">Không đảm bảo:</b> Có thể bị rơi rụng gói tin hoặc đến sai thứ tự trên đường truyền.</td></tr>
+                <tr><td><b>Cơ chế kiểm soát lỗi</b></td><td>Có kiểm tra lỗi, có cơ chế xác nhận (ACK) và <b>tự động gửi lại</b> các gói tin bị mất.</td><td>Không có xác nhận và <b>không gửi lại</b> gói tin bị mất.</td></tr>
+                <tr><td><b>Tốc độ & Độ trễ</b></td><td>Chậm hơn do mất thời gian bắt tay, xác nhận gói và kiểm soát tắc nghẽn.</td><td><b style="color:#059669;">Rất nhanh, độ trễ cực thấp</b> vì không tốn thời gian xác nhận.</td></tr>
+                <tr><td><b>Kích thước tiêu đề (Header)</b></td><td>Lớn hơn (tối thiểu 20 byte).</td><td>Rất nhẹ (chỉ 8 byte).</td></tr>
+                <tr><td><b>Ứng dụng thực tế</b></td><td>Truy cập trang web (<b>HTTP / HTTPS</b>), gửi email (<b>SMTP / IMAP</b>), truyền tệp tin (<b>FTP</b>), dòng lệnh từ xa (<b>SSH</b>).</td><td>Xem truyền hình/livestream trực tiếp, gọi điện thoại/video call (Zoom, Zalo, Teams), chơi game online thời gian thực, truy vấn tên miền (<b>DNS</b>).</td></tr>
+              </table>
+              <div class="highlight-box">
+                <b>💡 Giải thích câu hỏi thực tế:</b> Tại sao Video Call hoặc Game Online lại dùng UDP?<br>
+                <i>Trả lời:</i> Vì trong các ứng dụng thời gian thực, yếu tố <b>tốc độ và độ mượt</b> quan trọng hơn việc chính xác từng pixel. Nếu một vài khung hình bị mất, mắt người hầu như không nhận ra; nhưng nếu dùng TCP để dừng lại yêu cầu gửi lại gói tin bị mất thì cuộc gọi sẽ bị giật, lag và trễ tiếng nghiêm trọng.
+              </div>
+            `
+          },
+          {
+            heading: "4. Các giao thức tầng ứng dụng phổ biến khác trong đề thi",
+            content: `
+              <ul>
+                <li><b>HTTP (Hypertext Transfer Protocol):</b> Giao thức truyền tải siêu văn bản giữa Web Server và trình duyệt web (cổng 80). Dữ liệu truyền đi dưới dạng văn bản thô (Plain text), không mã hóa nên dễ bị nghe lén.</li>
+                <li><b>HTTPS (HTTP Secure):</b> Phiên bản nâng cấp an toàn của HTTP có bổ sung lớp mã hóa bảo mật <b>SSL/TLS</b> (cổng 443). Toàn bộ dữ liệu mật khẩu, tài khoản ngân hàng được mã hóa, biểu tượng ổ khóa xanh trên trình duyệt.</li>
+                <li><b>DNS (Domain Name System):</b> Giao thức phân giải tên miền, có nhiệm vụ "thông dịch" từ tên miền dạng chữ dễ nhớ của con người (ví dụ: <code>vietnamnet.vn</code>, <code>google.com</code>) sang địa chỉ IP máy chủ dạng số (ví dụ: <code>142.250.204.46</code>).</li>
+                <li><b>DHCP (Dynamic Host Configuration Protocol):</b> Giao thức tự động cấp phát địa chỉ IP và các thông số mạng (Subnet Mask, Default Gateway) cho máy tính/điện thoại khi kết nối vào mạng LAN/Wi-Fi, tránh xung đột IP.</li>
+                <li><b>FTP (File Transfer Protocol):</b> Giao thức chuyên dụng để truyền tải, trao đổi tệp tin lớn giữa máy trạm và máy chủ.</li>
+                <li><b>SMTP / POP3 / IMAP:</b> Bộ giao thức gửi và nhận thư điện tử (email). SMTP dùng để gửi thư đi; POP3/IMAP dùng để tải và đồng bộ thư về máy.</li>
+              </ul>
+            `
+          },
+          {
+            heading: "5. Câu hỏi tự luận mẫu & Hướng dẫn trả lời đạt điểm tối đa (Bài 4)",
+            content: `
+              <div class="essay-qa-card accent-net">
+                <div class="essay-q-title">
+                  <span class="badge-essay badge-cyan">Câu 1 (Tự luận)</span>
+                  <span>Giao thức mạng là gì? Trình bày chức năng của hai giao thức IP và TCP trong bộ giao thức TCP/IP?</span>
+                </div>
+                <div class="essay-a-content">
+                  <b>Dàn ý trả lời chuẩn:</b>
+                  <ul>
+                    <li><b>Ý 1 - Khái niệm:</b> Nêu khái niệm giao thức mạng là tập hợp quy tắc chuẩn định dạng, đóng gói, truyền nhận và kiểm soát lỗi dữ liệu giữa các thiết bị trên mạng.</li>
+                    <li><b>Ý 2 - Giao thức IP:</b> Nêu rõ tầng hoạt động (Tầng Mạng), chức năng đánh địa chỉ logic (địa chỉ IP) và định tuyến gói tin qua các router; tính chất phi kết nối không đảm bảo độ tin cậy.</li>
+                    <li><b>Ý 3 - Giao thức TCP:</b> Nêu rõ tầng hoạt động (Tầng Giao vận), cơ chế bắt tay 3 bước, đánh số thứ tự gói tin, kiểm tra lỗi và tự động gửi lại gói bị lỗi để đảm bảo truyền tin cậy 100%.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="essay-qa-card accent-net">
+                <div class="essay-q-title">
+                  <span class="badge-essay badge-cyan">Câu 2 (Tự luận)</span>
+                  <span>So sánh sự khác biệt cơ bản giữa giao thức TCP và UDP? Tại sao các ứng dụng hội thoại trực tuyến (video call) hoặc phát trực tiếp (livestream) lại ưu tiên sử dụng giao thức UDP?</span>
+                </div>
+                <div class="essay-a-content">
+                  <b>Dàn ý trả lời chuẩn:</b>
+                  <ul>
+                    <li><b>Ý 1 - So sánh:</b> Lập bảng hoặc gạch đầu dòng so sánh 4 tiêu chí: Cơ chế kết nối (hướng kết nối vs phi kết nối); Độ tin cậy (100% vs không đảm bảo); Tốc độ (chậm hơn vs cực nhanh); Phạm vi ứng dụng.</li>
+                    <li><b>Ý 2 - Giải thích ứng dụng UDP:</b> Phân tích tính chất của video call/livestream đòi hỏi tính liên tục và thời gian thực (real-time); chấp nhận mất vài khung hình nhỏ hơn là bị giật/đứng hình chờ truyền lại như TCP.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="essay-qa-card accent-net">
+                <div class="essay-q-title">
+                  <span class="badge-essay badge-cyan">Câu 3 (Tự luận)</span>
+                  <span>Nêu vai trò của giao thức DNS khi người dùng truy cập một trang web? Phân biệt giao thức HTTP và HTTPS?</span>
+                </div>
+                <div class="essay-a-content">
+                  <b>Dàn ý trả lời chuẩn:</b>
+                  <ul>
+                    <li><b>Ý 1 - Vai trò DNS:</b> Giải thích máy tính chỉ hiểu địa chỉ IP (dạng số), con người chỉ nhớ tên miền (dạng chữ). DNS đóng vai trò như danh bạ điện thoại của Internet, chuyển tên miền người dùng gõ sang địa chỉ IP của web server đích.</li>
+                    <li><b>Ý 2 - Phân biệt HTTP và HTTPS:</b> Nêu rõ HTTP truyền dữ liệu không mã hóa (dễ bị đánh cắp); HTTPS sử dụng chứng chỉ SSL/TLS mã hóa dữ liệu đầu cuối, bảo mật thông tin tài khoản và giao dịch trực tuyến.</li>
+                  </ul>
+                </div>
+              </div>
+            `
           }
         ]
       },
       {
-        lesson: "Bài 6: Giao tiếp và ứng xử trong không gian mạng",
+        lesson: "Bài 6: Giao Tiếp Và Ứng Xử Trong Không Gian Mạng",
+        anchor: "lesson-bai-6",
+        icon: "🛡️",
         sections: [
           {
-            heading: "Đạo đức số và bảo vệ danh tính",
-            content: "• Tôn trọng bản quyền tác giả: Không sao chép nguyên văn sản phẩm của người khác hoặc sao chép AI nộp bài gian lận.\n• Tránh hiện tượng 'ảo giác AI': Luôn kiểm chứng nguồn tin và số liệu thực tế trước khi sử dụng.\n• Bảo vệ dữ liệu cá nhân: Không cung cấp thông tin nhạy cảm, mật khẩu hoặc tài liệu mật lên các nền tảng AI công cộng.\n• Ứng xử văn minh: Không phát tán tin giả, không xúc phạm vu khống người khác, tuân thủ Luật An ninh mạng."
+            heading: "1. Khái niệm & Tầm quan trọng của Văn hóa ứng xử trên không gian mạng (Netiquette)",
+            content: `
+              <p>• <b>Khái niệm:</b> Văn hóa giao tiếp và ứng xử trong không gian mạng (Netiquette - Network Etiquette) là hệ thống các nguyên tắc, chuẩn mực đạo đức, hành vi và quy tắc lịch thiệp mà mỗi cá nhân, tổ chức cần tôn trọng và thực hiện khi tham gia vào các hoạt động tương tác, chia sẻ, bình luận và sinh hoạt trên môi trường Internet.</p>
+              <p>• <b>Tầm quan trọng:</b></p>
+              <ul>
+                <li>Xây dựng một không gian số an toàn, văn minh, tôn trọng lẫn nhau và giàu tính nhân văn.</li>
+                <li>Bảo vệ danh dự, nhân phẩm, tâm lý và quyền riêng tư chính đáng của bản thân và người khác.</li>
+                <li>Phòng ngừa các nguy cơ bị lừa đảo, tấn công mạng, rò rỉ dữ liệu cá nhân hoặc vướng vào các tranh chấp pháp lí nghiêm trọng.</li>
+              </ul>
+            `
+          },
+          {
+            heading: "2. 5 Nguyên tắc vàng ứng xử chuẩn mực của công dân số có văn hóa",
+            content: `
+              <ul>
+                <li><b>1. Tôn trọng người khác & Tuyệt đối không bắt nạt trực tuyến (Cyberbullying):</b>
+                  <br>- Sử dụng ngôn từ lịch sự, nhã nhặn, tôn trọng sự khác biệt về quan điểm, tôn giáo, vùng miền.
+                  <br>- Tuyệt đối không lăng mạ, bôi nhọ danh dự, miệt thị ngoại hình (body shaming), không hùa theo đám đông để tẩy chay, công kích một cá nhân trên mạng xã hội.
+                </li>
+                <li><b>2. Bảo vệ thông tin cá nhân & Quyền riêng tư (Privacy):</b>
+                  <br>- Tuyệt đối giữ bí mật mật khẩu, mã xác thực OTP, số CCCD, tài khoản ngân hàng, thông tin gia đình.
+                  <br>- Không tự ý đăng tải hình ảnh, video, tin nhắn riêng tư hoặc thông tin cá nhân của người khác lên mạng khi chưa được họ đồng ý.
+                </li>
+                <li><b>3. Tuân thủ pháp luật (Luật An ninh mạng Việt Nam 2018):</b>
+                  <br>- Không đăng tải, chia sẻ các thông tin sai sự thật (fake news), xuyên tạc, vu khống hoặc thông tin gây hoang mang trong nhân dân.
+                  <br>- Tôn trọng quyền tác giả và sở hữu trí tuệ: Trích dẫn nguồn rõ ràng khi sử dụng tư liệu của người khác; không sử dụng phần mềm bẻ khóa (crack) hoặc phát tán văn hóa phẩm độc hại.
+                </li>
+                <li><b>4. Tư duy phản biện & Kiểm chứng thông tin (Fact-Checking):</b>
+                  <br>- Thực hiện quy tắc: <i>"Đọc kĩ - Suy ngẫm - Kiểm chứng"</i> trước khi nhấn nút "Like", "Share" hoặc bình luận.
+                  <br>- Phân biệt tin giả qua các dấu hiệu: tiêu đề giật gân, câu view, tên miền giả mạo (ví dụ: mạo danh cơ quan công an, ngân hàng), bài viết không ghi rõ tác giả hoặc không xuất hiện trên các trang báo chí chính thống của Nhà nước.
+                </li>
+                <li><b>5. Văn hóa tranh luận & Kiểm soát cảm xúc:</b>
+                  <br>- Tranh luận dựa trên lập luận logic, bằng chứng xác thực, không xúc phạm công kích cá nhân (Ad Hominem).
+                  <br>- Khi gặp ý kiến trái chiều hoặc khiêu khích: Giữ thái độ bình tĩnh, không tham gia vào các cuộc cãi vã vô bổ (flame war); biết nhận lỗi khi sai và biết nói lời cảm ơn.
+                </li>
+              </ul>
+            `
+          },
+          {
+            heading: "3. Các hành vi vi phạm pháp luật mạng phổ biến & Biện pháp phòng tránh",
+            content: `
+              <table class="proto-table">
+                <tr><th>Hành vi vi phạm thường gặp</th><th>Hậu quả & Chế tài pháp luật</th><th>Biện pháp phòng ngừa & Xử lí</th></tr>
+                <tr><td><b>Phát tán tin giả (Fake news)</b></td><td>Gây hoang mang xã hội, thiệt hại kinh tế. Bị xử phạt hành chính từ <b>10 đến 20 triệu đồng</b> (Nghị định 15/2020/NĐ-CP) hoặc bị truy cứu trách nhiệm hình sự nếu gây hậu quả nghiêm trọng.</td><td>Kiểm tra thông tin từ Cổng thông tin Chính phủ, các báo chính thống. Tuyệt đối không chia sẻ bài viết giật gân không rõ nguồn gốc.</td></tr>
+                <tr><td><b>Bắt nạt trực tuyến (Cyberbullying) & Xúc phạm danh dự</b></td><td>Gây tổn thương tâm lí nghiêm trọng cho nạn nhân, dẫn đến trầm cảm, thậm chí tự tử. Người vi phạm bị phạt tiền hoặc phạt tù về tội làm nhục người khác.</td><td>Chụp ảnh màn hình lưu bằng chứng; chặn (Block) kẻ quấy rối; báo cáo (Report) với ban quản trị mạng; tâm sự với cha mẹ, thầy cô hoặc trình báo công an.</td></tr>
+                <tr><td><b>Lừa đảo trực tuyến (Phishing, mạo danh)</b></td><td>Chiếm đoạt tiền bạc, tài khoản ngân hàng, thông tin cá nhân của người dùng.</td><td>Cài đặt bảo mật 2 lớp (2FA); không bấm vào link lạ trong tin nhắn; không cung cấp mã OTP cho bất kỳ ai (kể cả người tự xưng là công an hay nhân viên ngân hàng).</td></tr>
+              </table>
+            `
+          },
+          {
+            heading: "4. Câu hỏi tự luận mẫu & Tình huống thực tế kèm lời giải đạt điểm 10 (Bài 6)",
+            content: `
+              <div class="essay-qa-card accent-ethics" id="lesson-essay-samples">
+                <div class="essay-q-title">
+                  <span class="badge-essay badge-emerald">Câu 1 (Tự luận)</span>
+                  <span>Trình bày các nguyên tắc cơ bản để trở thành một công dân số có văn hóa khi tham gia mạng xã hội? Tại sao việc bảo vệ dữ liệu cá nhân lại trở nên đặc biệt quan trọng trong thời đại số?</span>
+                </div>
+                <div class="essay-a-content">
+                  <b>Dàn ý trả lời chuẩn:</b>
+                  <ul>
+                    <li><b>Ý 1 - Các nguyên tắc công dân số có văn hóa:</b> Trình bày 4 nguyên tắc cốt lõi: Tôn trọng người khác (lời nói lịch sự, không bắt nạt mạng); Tuân thủ pháp luật (không chia sẻ tin giả, tôn trọng bản quyền); Tư duy kiểm chứng thông tin trước khi share; Tranh luận văn minh không xúc phạm cá nhân.</li>
+                    <li><b>Ý 2 - Tầm quan trọng của bảo vệ dữ liệu cá nhân:</b> Trong thời đại số, dữ liệu cá nhân (CCCD, tài khoản ngân hàng, hình ảnh, thói quen) là tài sản quý giá. Nếu để lộ sẽ dẫn đến nguy cơ bị lừa đảo tài chính, bị kẻ xấu mạo danh vay tiền tín dụng đen, bị tống tiền hoặc xâm phạm đời tư nghiêm trọng.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="essay-qa-card accent-ethics">
+                <div class="essay-q-title">
+                  <span class="badge-essay badge-emerald">Câu 2 (Tình huống thực tế)</span>
+                  <span>Tình huống: Khi đang lướt mạng xã hội Facebook, em bắt gặp một bài đăng từ một tài khoản ẩn danh chia sẻ thông tin thất thiệt và hình ảnh nhạy cảm xúc phạm một bạn học cùng lớp của em, kèm theo hàng trăm bình luận chê bai, cợt nhả của cư dân mạng.
+                  <br>a) Em có nên chia sẻ (share) hoặc bình luận vào bài đăng đó để bàn tán cùng mọi người không? Vì sao?
+                  <br>b) Là một học sinh có trách nhiệm, em sẽ thực hiện những hành động cụ thể nào để giúp đỡ bạn học của mình và ngăn chặn hành vi vi phạm trên?</span>
+                </div>
+                <div class="essay-a-content">
+                  <b>Dàn ý trả lời chuẩn đạt điểm tối đa:</b>
+                  <ul>
+                    <li><b>Trả lời câu a:</b>
+                      <br>• Em <b>tuyệt đối KHÔNG</b> chia sẻ (share) hoặc bình luận hùa theo bài đăng đó.
+                      <br>• <i>Giải thích lí do:</i>
+                      <br>&nbsp;&nbsp;- Về mặt đạo đức: Hành vi hùa theo bàn tán là tiếp tay cho vấn nạn bạo lực mạng (cyberbullying), làm tổn thương sâu sắc đến tâm lý, danh dự và nhân phẩm của bạn học.
+                      <br>&nbsp;&nbsp;- Về mặt pháp luật: Việc chia sẻ thông tin sai sự thật, xúc phạm danh dự người khác là hành vi vi phạm Luật An ninh mạng 2018 và Nghị định 15/2020/NĐ-CP, có thể bị xử phạt hành chính từ 10 - 20 triệu đồng hoặc chịu trách nhiệm pháp lý.
+                    </li>
+                    <li><b>Trả lời câu b - Các hành động xử lí đúng đắn:</b>
+                      <br>• <i>Bước 1 - Lưu trữ bằng chứng:</i> Chụp lại màn hình bài viết vi phạm (kèm tên tài khoản, thời gian, đường link) để làm bằng chứng xác thực.
+                      <br>• <i>Bước 2 - Báo cáo vi phạm:</i> Sử dụng tính năng "Báo cáo" (Report) của Facebook đối với bài viết và tài khoản trên về hành vi bắt nạt/quấy rối.
+                      <br>• <i>Bước 3 - Động viên bạn học:</i> Kịp thời nhắn tin, gặp gỡ để động viên tinh thần bạn, khuyên bạn tạm thời không đọc các bình luận tiêu cực và bình tĩnh giải quyết.
+                      <br>• <i>Bước 4 - Báo cáo người lớn có trách nhiệm:</i> Thông báo ngay sự việc cho giáo viên chủ nhiệm, Đoàn trường hoặc phụ huynh của bạn để nhà trường can thiệp, yêu cầu gỡ bài và nhờ cơ quan chức năng xử lý nếu cần thiết.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            `
           }
         ]
       }
     ]
   }
+};
+
 };
 
 
@@ -2682,20 +3118,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
-  // Render Part 3: Theory & Essay Reference
+  // Render Part 3: Theory & Essay Reference - Dev by TDat
   function renderTheory() {
     containerTheory.innerHTML = `
-      <div class="quiz-section-header">
-        <h2>📚 ${quizData.part3.title}</h2>
-        <p>Hệ thống hóa toàn bộ kiến thức Tin học 12 theo khung chương trình GDPT mới phục vụ thi học kỳ và tốt nghiệp THPT.</p>
+      <div class="theory-hero-box">
+        <h2>📝 ${quizData.part3.title}</h2>
+        <p>Đề cương ôn tập tự luận chuyên sâu bám sát chuẩn kiến thức SGK Tin học 12 (GDPT 2018) gồm 3 bài trọng điểm: <b>Bài 1 (Trí tuệ nhân tạo AI)</b>, <b>Bài 4 (Giao thức mạng TCP/IP)</b> và <b>Bài 6 (Giao tiếp & Ứng xử trong không gian mạng)</b>. Kèm các câu hỏi tự luận mẫu điểm 10.</p>
+        <div class="theory-nav-pills">
+          <a href="#lesson-bai-1" class="theory-pill-btn">🤖 Bài 1: Trí tuệ nhân tạo (AI)</a>
+          <a href="#lesson-bai-4" class="theory-pill-btn">🌐 Bài 4: Giao thức mạng (TCP/IP)</a>
+          <a href="#lesson-bai-6" class="theory-pill-btn">🛡️ Bài 6: Ứng xử không gian mạng</a>
+          <a href="#lesson-essay-samples" class="theory-pill-btn" style="background:var(--brand-primary); color:#fff;">💡 Tuyển tập câu hỏi tự luận mẫu</a>
+        </div>
       </div>
-      ${quizData.part3.topics.map(t => `
-        <div class="theory-lesson-card">
-          <h3>📘 ${t.lesson}</h3>
+
+      ${quizData.part3.topics.map((t, idx) => `
+        <div class="theory-lesson-card" id="${t.anchor || 'lesson-' + idx}">
+          <h3>${t.icon || '📘'} ${t.lesson}</h3>
           ${t.sections.map(s => `
             <div class="theory-sub-section">
               <h4>${s.heading}</h4>
-              <p>${s.content}</p>
+              <div class="essay-a-content">${s.content}</div>
             </div>
           `).join('')}
         </div>
