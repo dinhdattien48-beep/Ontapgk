@@ -2816,11 +2816,195 @@ const quizData = {
             `
           }
         ]
+      },
+      {
+        lesson: "Chuyên Đề Kỹ Năng: Hướng Dẫn Đổi Số Hệ Nhị Phân (Cơ Số 2) ⇄ Hệ Thập Phân (Cơ Số 10)",
+        anchor: "lesson-he-dem-nhi-phan",
+        icon: "🔢",
+        sections: [
+          {
+            heading: "1. Bản chất của Hệ Nhị Phân (Cơ số 2) & Trọng số Lũy thừa của 2",
+            content: `
+              <p>• <b>Khái niệm:</b> Hệ nhị phân (Binary - Cơ số 2) là hệ đếm <b>chỉ sử dụng duy nhất hai ký hiệu số: 0 và 1</b>. Mỗi ký số 0 hoặc 1 được gọi là một <b>bit</b> (viết tắt của <i>Binary Digit</i>) - đơn vị đo lượng thông tin cơ bản nhất trong máy tính.</p>
+              <div class="highlight-box">
+                <b>💡 Tại sao máy tính chỉ sử dụng hệ nhị phân (0 và 1)?</b><br>
+                Vì các vi mạch điện tử và chip xử lý bên trong máy tính được tạo nên từ hàng tỷ transistor bán dẫn. Mỗi transistor hoạt động giống như một chiếc công tắc điện tử, chỉ có 2 trạng thái vật lý ổn định: <b>Đóng mạch (có dòng điện / điện áp cao, quy ước là 1)</b> và <b>Ngắt mạch (không có dòng điện / điện áp thấp, quy ước là 0)</b>. Hai trạng thái này hoàn toàn tương ứng với 2 ký hiệu 0 và 1 trong hệ nhị phân.
+              </div>
+              <p>• <b>Bảng trọng số 8 bit (1 Byte) cần thuộc lòng:</b></p>
+              <table class="proto-table" style="text-align:center;">
+                <tr><th>Vị trí bit (từ phải sang)</th><th>Bit 7</th><th>Bit 6</th><th>Bit 5</th><th>Bit 4</th><th>Bit 3</th><th>Bit 2</th><th>Bit 1</th><th>Bit 0</th></tr>
+                <tr><td><b>Lũy thừa của 2</b></td><td>2<sup>7</sup></td><td>2<sup>6</sup></td><td>2<sup>5</sup></td><td>2<sup>4</sup></td><td>2<sup>3</sup></td><td>2<sup>2</sup></td><td>2<sup>1</sup></td><td>2<sup>0</sup></td></tr>
+                <tr><td><b>Giá trị thập phân tương ứng</b></td><td><b style="color:#2563eb;">128</b></td><td><b style="color:#2563eb;">64</b></td><td><b style="color:#2563eb;">32</b></td><td><b style="color:#2563eb;">16</b></td><td><b style="color:#2563eb;">8</b></td><td><b style="color:#2563eb;">4</b></td><td><b style="color:#2563eb;">2</b></td><td><b style="color:#2563eb;">1</b></td></tr>
+              </table>
+            `
+          },
+          {
+            heading: "2. Hướng dẫn đổi từ Hệ Nhị Phân (Cơ số 2) sang Hệ Thập Phân (Cơ số 10)",
+            content: `
+              <p>• <b>Quy tắc toán học:</b> Lấy từng bit nhân với <b>2<sup>vị trí</sup></b> (với vị trí tính từ phải qua trái, bắt đầu từ <b>0</b>), sau đó cộng tất cả các tích lại với nhau.</p>
+              <div class="highlight-box">
+                <b>⚡ Mẹo nhẩm siêu tốc trong 3 giây:</b><br>
+                Viết dãy số trọng số <code>... 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1</code> lên phía trên từng bit của số nhị phân:<br>
+                👉 Bit nào có số <b>1</b> thì lấy số đó <b>cộng vào</b>.<br>
+                👉 Bit nào có số <b>0</b> thì <b>bỏ qua</b> (không cộng).
+              </div>
+              
+              <div class="essay-qa-card">
+                <div class="essay-q-title">
+                  <span class="badge-essay">Ví dụ 1</span>
+                  <span>Đổi số nhị phân (1101)₂ sang hệ thập phân?</span>
+                </div>
+                <div class="essay-a-content">
+                  • <b>Đặt trọng số:</b> Số có 4 bit, từ phải sang trái các trọng số là: <b>8, 4, 2, 1</b>.<br>
+                  • <b>Phép tính:</b> (1101)₂ = (1 × 2³) + (1 × 2²) + (0 × 2¹) + (1 × 2⁰) = <b>8 + 4 + 0 + 1 = 13₍₁₀₎</b>.<br>
+                  👉 Kết quả: <b>(1101)₂ = 13</b>.
+                </div>
+              </div>
+
+              <div class="essay-qa-card">
+                <div class="essay-q-title">
+                  <span class="badge-essay">Ví dụ 2</span>
+                  <span>Đổi số nhị phân (101011)₂ sang hệ thập phân?</span>
+                </div>
+                <div class="essay-a-content">
+                  • <b>Dãy trọng số từ phải sang trái:</b> 32, 16, 8, 4, 2, 1.<br>
+                  • <b>Cộng các vị trí bit 1:</b> 32 + 0 + 8 + 0 + 2 + 1 = <b>43₍₁₀₎</b>.<br>
+                  👉 Kết quả: <b>(101011)₂ = 43</b>.
+                </div>
+              </div>
+
+              <div class="essay-qa-card">
+                <div class="essay-q-title">
+                  <span class="badge-essay">Ví dụ 3 (Địa chỉ IP)</span>
+                  <span>Đổi 1 Byte địa chỉ IP (11000000)₂ sang hệ thập phân?</span>
+                </div>
+                <div class="essay-a-content">
+                  • <b>Cộng các trọng số bit 1:</b> 128 + 64 + 0 + 0 + 0 + 0 + 0 + 0 = <b>192₍₁₀₎</b>.<br>
+                  👉 Đây chính là số đầu tiên trong địa chỉ mạng quen thuộc <code>192.168.1.1</code>!
+                </div>
+              </div>
+            `
+          },
+          {
+            heading: "3. Hướng dẫn đổi từ Hệ Thập Phân (Cơ số 10) sang Hệ Nhị Phân (Cơ số 2)",
+            content: `
+              <p>Có 2 phương pháp cực kì hữu dụng, tùy trường hợp bài thi tự luận hay trắc nghiệm:</p>
+              
+              <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1rem; margin-bottom:1rem;">
+                <b style="color:var(--brand-primary); font-size:1.05rem;">Phương pháp 1: Chia liên tiếp cho 2 lấy phần dư (Chuẩn mực làm bài Tự luận)</b>
+                <p style="margin-top:0.4rem;">
+                  1. Lấy số thập phân chia cho 2, ghi lại <b>thương số</b> và <b>số dư</b> (luôn là 0 hoặc 1).<br>
+                  2. Lấy thương số tiếp tục chia cho 2 cho đến khi thương số bằng <b>0</b> thì dừng lại.<br>
+                  3. <b style="color:#dc2626;">ĐỌC CÁC SỐ DƯ TỪ DƯỚI LÊN TRÊN</b> (từ phép chia cuối cùng ngược lên phép chia đầu tiên).
+                </p>
+                <div style="background:var(--bg-primary); border-left:3px solid #2563eb; padding:8px 12px; margin-top:8px; border-radius:0 8px 8px 0; font-family:monospace; font-size:0.95rem; line-height:1.7;">
+                  <b>Ví dụ minh họa: Đổi số 25₍₁₀₎ sang nhị phân:</b><br>
+                  • 25 ÷ 2 = 12 &nbsp;(dư <b>1</b>) &nbsp;↑<br>
+                  • 12 ÷ 2 = 6 &nbsp; (dư <b>0</b>) &nbsp;↑<br>
+                  • &nbsp;6 ÷ 2 = 3 &nbsp; (dư <b>0</b>) &nbsp;↑<br>
+                  • &nbsp;3 ÷ 2 = 1 &nbsp; (dư <b>1</b>) &nbsp;↑<br>
+                  • &nbsp;1 ÷ 2 = 0 &nbsp; (dư <b>1</b>) &nbsp;↑  (dừng vì thương = 0)<br>
+                  👉 Đọc các số dư từ dưới lên trên ta được: <b>(11001)₂</b>.
+                </div>
+              </div>
+
+              <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1rem;">
+                <b style="color:#059669; font-size:1.05rem;">Phương pháp 2: Trừ lùi trọng số lũy thừa của 2 (Mẹo nhẩm Trắc nghiệm 5 giây)</b>
+                <p style="margin-top:0.4rem;">
+                  So sánh số cần đổi với các lũy thừa giảm dần: <code>128 → 64 → 32 → 16 → 8 → 4 → 2 → 1</code>:<br>
+                  • Nếu số ≥ lũy thừa: Ghi bit <b>1</b> và lấy số đó trừ đi lũy thừa.<br>
+                  • Nếu số &lt; lũy thừa: Ghi bit <b>0</b> và giữ nguyên số để so sánh với lũy thừa tiếp theo.
+                </p>
+                <div style="background:var(--bg-primary); border-left:3px solid #059669; padding:8px 12px; margin-top:8px; border-radius:0 8px 8px 0; font-family:monospace; font-size:0.95rem; line-height:1.7;">
+                  <b>Ví dụ: Đổi số 53₍₁₀₎ sang nhị phân:</b><br>
+                  • 53 ≥ 32 → Ghi <b>1</b>, còn 53 - 32 = 21<br>
+                  • 21 ≥ 16 → Ghi <b>1</b>, còn 21 - 16 = 5<br>
+                  • &nbsp;5 &lt; 8 &nbsp;→ Ghi <b>0</b>, vẫn còn 5<br>
+                  • &nbsp;5 ≥ 4 &nbsp;→ Ghi <b>1</b>, còn 5 - 4 = 1<br>
+                  • &nbsp;1 &lt; 2 &nbsp;→ Ghi <b>0</b>, vẫn còn 1<br>
+                  • &nbsp;1 ≥ 1 &nbsp;→ Ghi <b>1</b>, còn 1 - 1 = 0<br>
+                  👉 Ghép các bit lại: <b>(110101)₂</b>.
+                </div>
+              </div>
+            `
+          },
+          {
+            heading: "4. Ứng dụng cốt lõi trong Tin học 12: Biểu diễn Octet địa chỉ IPv4",
+            content: `
+              <p>Mỗi địa chỉ IPv4 gồm <b>4 byte (32 bit)</b>. Mỗi byte (gọi là 1 octet) gồm 8 bit nhị phân, có giá trị nhỏ nhất là <code>(00000000)₂ = 0</code> và lớn nhất là <code>(11111111)₂ = 255</code>.<br>
+              👉 <i>Đây là lí do vì sao mọi địa chỉ IP hợp lệ thì các số chỉ được phép chạy từ <b>0 đến 255</b>!</i></p>
+              
+              <b style="color:var(--brand-primary);">📋 Bảng Quy Đổi 8 Octet Kinh Điển Trong Mạng Máy Tính & Subnet Mask:</b>
+              <table class="proto-table">
+                <tr><th>Số thập phân</th><th>Dãy bit 8-bit (Nhị phân)</th><th>Giải thích chi tiết</th><th>Ứng dụng thực tế</th></tr>
+                <tr><td><b>0</b></td><td><code>00000000</code></td><td>Tất cả 8 bit đều bằng 0</td><td>Địa chỉ mạng mặc định</td></tr>
+                <tr><td><b>128</b></td><td><code>10000000</code></td><td>Chỉ có bit 7 bật: 2<sup>7</sup> = 128</td><td>Mặt nạ mạng /25</td></tr>
+                <tr><td><b>192</b></td><td><code>11000000</code></td><td>128 + 64 = 192</td><td>Mặt nạ mạng /26, mạng LAN lớp C</td></tr>
+                <tr><td><b>224</b></td><td><code>11100000</code></td><td>128 + 64 + 32 = 224</td><td>Mặt nạ mạng /27, địa chỉ Multicast lớp D</td></tr>
+                <tr><td><b>240</b></td><td><code>11110000</code></td><td>128 + 64 + 32 + 16 = 240</td><td>Mặt nạ mạng /28</td></tr>
+                <tr><td><b>248</b></td><td><code>11111000</code></td><td>128 + 64 + 32 + 16 + 8 = 248</td><td>Mặt nạ mạng /29</td></tr>
+                <tr><td><b>252</b></td><td><code>11111100</code></td><td>128 + ... + 4 = 252</td><td>Mặt nạ mạng /30 (kết nối Point-to-Point)</td></tr>
+                <tr><td><b>255</b></td><td><code>11111111</code></td><td>Tất cả 8 bit đều là 1 (128+64+32+16+8+4+2+1)</td><td>Subnet Mask chuẩn (255.255.255.0), Broadcast</td></tr>
+              </table>
+            `
+          },
+          {
+            heading: "5. Mẹo bấm máy tính cầm tay Casio trong 2 giây (Fx-580VN X & Fx-570VN Plus)",
+            content: `
+              <div class="highlight-box">
+                <b style="font-size:1rem; color:#1e293b;">📟 Hướng dẫn bấm máy tính Casio Fx-580VN X:</b>
+                <ol style="padding-left:1.25rem; margin-top:0.4rem;">
+                  <li><b>Bước 1:</b> Bấm phím <code>MENU</code> → bấm số <code>3</code> để chọn chế độ <b>BASE-N</b> (Hệ đếm).</li>
+                  <li><b>Đổi Thập phân (Dec) sang Nhị phân (Bin):</b><br>
+                    • Màn hình đang hiện chữ <code>Dec</code>, nhập số thập phân cần đổi (ví dụ: <code>25</code>) → Bấm phím <code>=</code>.<br>
+                    • Bấm phím <code>BIN</code> (nút có chữ <b>BIN</b> màu xanh, nằm ở phím logarit <code>log□□</code>).<br>
+                    👉 Màn hình lập tức hiển thị kết quả nhị phân: <b>11001</b>!
+                  </li>
+                  <li><b>Đổi Nhị phân (Bin) sang Thập phân (Dec):</b><br>
+                    • Bấm phím <code>BIN</code> để màn hình chuyển sang chế độ nhị phân.<br>
+                    • Nhập dãy số 0 và 1 (ví dụ: <code>1101</code>) → Bấm phím <code>=</code>.<br>
+                    • Bấm phím <code>DEC</code> (nút có chữ <b>DEC</b> màu xanh, nằm ở phím bình phương <code>x²</code>).<br>
+                    👉 Màn hình lập tức hiển thị kết quả thập phân: <b>13</b>!
+                  </li>
+                </ol>
+                <p style="font-size:0.85rem; margin-top:0.5rem; color:#475569;">
+                  <i>*Đối với máy Casio Fx-570VN Plus / 570ES Plus: Bấm <code>MODE</code> → chọn số <code>4</code> (BASE-N), sau đó dùng các phím <code>BIN</code> và <code>DEC</code> tương tự.</i>
+                </p>
+              </div>
+            `
+          },
+          {
+            heading: "6. 🛠️ Công cụ chuyển đổi tương tác trực tiếp (Thử ngay)",
+            content: `
+              <div style="background:var(--bg-surface); border:2px solid var(--brand-primary); border-radius:var(--radius-lg); padding:1.25rem; margin-top:0.5rem; box-shadow:var(--shadow-md);">
+                <div style="font-weight:800; font-size:1.05rem; color:var(--brand-primary); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                  <span>⚙️ BỘ CHUYỂN ĐỔI NHỊ PHÂN (0-1) ⇄ THẬP PHÂN TRỰC TUYẾN</span>
+                </div>
+                
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+                  <!-- Box 1: Dec -> Bin -->
+                  <div style="background:var(--bg-primary); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+                    <label style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.4rem;">Nhập số Thập phân (Cơ số 10):</label>
+                    <input type="number" id="interactive-dec-input" placeholder="Ví dụ: 25, 43, 192..." style="width:100%; padding:0.6rem 0.8rem; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-size:0.95rem; font-weight:700; outline:none;" oninput="window.convertDecToBin(this.value)">
+                    <div id="dec-to-bin-result" style="margin-top:0.75rem; font-size:0.92rem; min-height:1.5rem;"></div>
+                    <div id="dec-to-bin-steps" style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-secondary); line-height:1.6; background:var(--bg-surface); padding:0.5rem; border-radius:var(--radius-sm); border:1px dashed var(--border-color);"></div>
+                  </div>
+
+                  <!-- Box 2: Bin -> Dec -->
+                  <div style="background:var(--bg-primary); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+                    <label style="font-weight:700; font-size:0.9rem; display:block; margin-bottom:0.4rem;">Nhập số Nhị phân (Chỉ gồm 0 và 1):</label>
+                    <input type="text" id="interactive-bin-input" placeholder="Ví dụ: 1101, 101011, 11000000..." style="width:100%; padding:0.6rem 0.8rem; border:1px solid var(--border-color); border-radius:var(--radius-sm); font-size:0.95rem; font-weight:700; font-family:monospace; outline:none;" oninput="window.convertBinToDec(this.value)">
+                    <div id="bin-to-dec-result" style="margin-top:0.75rem; font-size:0.92rem; min-height:1.5rem;"></div>
+                    <div id="bin-to-dec-steps" style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-secondary); line-height:1.6; background:var(--bg-surface); padding:0.5rem; border-radius:var(--radius-sm); border:1px dashed var(--border-color);"></div>
+                  </div>
+                </div>
+              </div>
+            `
+          }
+        ]
       }
     ]
   }
-};
-
 };
 
 
@@ -3128,6 +3312,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <a href="#lesson-bai-1" class="theory-pill-btn">🤖 Bài 1: Trí tuệ nhân tạo (AI)</a>
           <a href="#lesson-bai-4" class="theory-pill-btn">🌐 Bài 4: Giao thức mạng (TCP/IP)</a>
           <a href="#lesson-bai-6" class="theory-pill-btn">🛡️ Bài 6: Ứng xử không gian mạng</a>
+          <a href="#lesson-he-dem-nhi-phan" class="theory-pill-btn" style="background:#059669; color:#fff !important;">🔢 Đổi cơ số 2 ⇄ 10 (Nhị phân 0-1)</a>
           <a href="#lesson-essay-samples" class="theory-pill-btn" style="background:var(--brand-primary); color:#fff;">💡 Tuyển tập câu hỏi tự luận mẫu</a>
         </div>
       </div>
@@ -3781,6 +3966,73 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-  </script>
+  
+// --- BỘ CÔNG CỤ CHUYỂN ĐỔI HỆ ĐẾM NHỊ PHÂN ⇄ THẬP PHÂN - DEV BY TDAT ---
+window.convertDecToBin = function(val) {
+  const resEl = document.getElementById('dec-to-bin-result');
+  const stepEl = document.getElementById('dec-to-bin-steps');
+  if (!resEl) return;
+  const num = parseInt(val, 10);
+  if (isNaN(num) || num < 0) {
+    resEl.innerHTML = '<span style="color:var(--error); font-weight:700;">⚠️ Hãy nhập một số nguyên không âm!</span>';
+    if (stepEl) stepEl.innerHTML = 'Ví dụ: nhập 25, 43, 192...';
+    return;
+  }
+  if (num === 0) {
+    resEl.innerHTML = 'Kết quả Nhị phân: <b style="color:var(--brand-primary); font-size:1.15rem;">(0)₂</b>';
+    if (stepEl) stepEl.innerHTML = '0 chia cho 2 = 0 (dư <b>0</b>)';
+    return;
+  }
+  const bin = num.toString(2);
+  resEl.innerHTML = `Kết quả Nhị phân: <b style="color:var(--brand-primary); font-size:1.15rem;">(${bin})₂</b> <span style="font-size:0.82rem; color:var(--text-muted);">(${bin.length} bit)</span>`;
+  
+  let temp = num;
+  let steps = [];
+  while (temp > 0) {
+    let r = temp % 2;
+    let q = Math.floor(temp / 2);
+    steps.push(`${temp} ÷ 2 = ${q} (dư <b style="color:#ef4444;">${r}</b>)`);
+    temp = q;
+  }
+  if (stepEl) {
+    stepEl.innerHTML = `<b>Các bước chia liên tiếp cho 2:</b><br>` + steps.join('<br>') + `<br>👉 Đọc số dư từ dưới lên trên: <b style="color:var(--brand-primary); font-size:1rem;">${bin}</b>`;
+  }
+};
+
+window.convertBinToDec = function(val) {
+  const resEl = document.getElementById('bin-to-dec-result');
+  const stepEl = document.getElementById('bin-to-dec-steps');
+  if (!resEl) return;
+  const cleanVal = (val || '').trim();
+  if (!cleanVal) {
+    resEl.innerHTML = '';
+    if (stepEl) stepEl.innerHTML = 'Ví dụ: nhập 1101, 101011, 11000000...';
+    return;
+  }
+  if (!/^[01]+$/.test(cleanVal)) {
+    resEl.innerHTML = '<span style="color:var(--error); font-weight:700;">⚠️ Hệ nhị phân chỉ được chứa các ký tự 0 và 1!</span>';
+    if (stepEl) stepEl.innerHTML = '';
+    return;
+  }
+  const dec = parseInt(cleanVal, 2);
+  resEl.innerHTML = `Kết quả Thập phân: <b style="color:#059669; font-size:1.15rem;">${dec}₍₁₀₎</b>`;
+  
+  let steps = [];
+  let n = cleanVal.length;
+  for (let i = 0; i < n; i++) {
+    let bit = cleanVal[i];
+    let power = n - 1 - i;
+    if (bit === '1') {
+      steps.push(`(1 × 2<sup>${power}</sup> = <b>${Math.pow(2, power)}</b>)`);
+    } else {
+      steps.push(`(0 × 2<sup>${power}</sup> = 0)`);
+    }
+  }
+  if (stepEl) {
+    stepEl.innerHTML = `<b>Cộng các trọng số bit 1:</b><br>` + steps.join(' + ') + ` = <b style="color:#059669; font-size:1rem;">${dec}</b>`;
+  }
+};
+
+</script>
 </body>
 </html>
